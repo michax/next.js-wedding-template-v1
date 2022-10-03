@@ -1,50 +1,58 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { Container } from '@mui/system';
-
-
+import * as React from "react";
+import PropTypes from "prop-types";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import { Container } from "@mui/system";
+import Image from "next/image";
+import logo from "../../../public/logo.svg";
 
 const drawerWidth = 240;
-const navItemsLeft = ['Confirm attendance', 'Gifts', 'Location'];
-const navItemsRight = ['When', 'Our history', 'Our Photos'];
+const navItemsLeft = ["Confirm attendance", "Gifts", "Location"];
+const navItemsRight = ["When", "Our history", "Our Photos"];
 
 export const Navbar = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        E&L
-      </Typography>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: 'center',
+          alignItems: "center",
+          padding: "0.5rem ",
+
+        }}
+      >
+        <Image height="50%" src={logo} alt="Logo" />
+      </Box>
       <Divider />
       <List>
         {navItemsRight.map((item) => (
-          <ListItem key={item} disablePadding >
-            <ListItemButton sx={{ textAlign: 'center' }}>
+          <ListItem key={item} disablePadding>
+            <ListItemButton sx={{ textAlign: "center" }}>
               <Typography
                 key={item}
                 component="a"
                 href={`#${item}`}
                 variant="p"
-                sx={{ display: { xs: 'block', sm: 'none' }, ml: "20px" }}
+                sx={{ display: { sm: "block", md: "none" } }}
+
               >
                 {item}
               </Typography>
@@ -55,13 +63,14 @@ export const Navbar = (props) => {
       <List>
         {navItemsLeft.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
+            <ListItemButton sx={{ textAlign: "center" }}>
               <Typography
                 key={item}
                 component="a"
                 href={`#${item}`}
                 variant="p"
-                sx={{ display: { xs: 'block', sm: 'none' }, ml: "20px" }}
+                sx={{ display: { sm: "block", md: "none" } }}
+
               >
                 {item}
               </Typography>
@@ -69,15 +78,15 @@ export const Navbar = (props) => {
           </ListItem>
         ))}
       </List>
-
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box >
-      <AppBar component="nav">
+    <Box>
+      <AppBar component="nav" sx={{ boxShadow: "-24px 24px 72px -8px rgb(145 158 171 / 24%)", backgroundColor: '#fff' }}>
         <Container maxWidth="lg">
           <Toolbar sx={{ width: 1 }}>
             <IconButton
@@ -85,48 +94,51 @@ export const Navbar = (props) => {
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: 'none' } }}
+              sx={{ mr: 2, display: { md: "none" }, color: "#212B36" }}
             >
               <MenuIcon />
             </IconButton>
-            <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center", width: "100%" }}>
-              <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
+              <Box sx={{ display: {xs:"none", sm: "none", md: "flex" } }}>
                 {navItemsRight.map((item) => (
                   <Typography
                     key={item}
                     component="a"
                     href={`#${item}`}
-                    variant="h6"
-                    sx={{ display: { xs: 'none', sm: 'block' }, ml: "20px" }}
+                    sx={{ display: { sm: "none", md: "block" }, ml: "35px", color: "#212B36" }}
                   >
                     {item}
                   </Typography>
-
-
                 ))}
               </Box>
-              <Typography
-                component="a"
-                href="/"
-                variant="h6"
 
-                sx={{ display: { xs: 'none', sm: 'block' }, ml: "20px" }}
+              <Box
+                sx={{
+                  display: {xs:"none", sm: "none", md: "block" },
+                  width: "100px",
+                  ml: "35px",
+                  mt: "10px",
+                }}
               >
-                E&L
-              </Typography>
-              <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
+                <Image src={logo} alt="Logo" />
+              </Box>
+              <Box sx={{ display: { xs:"none", sm: "none", md: "flex" } }}>
                 {navItemsLeft.map((item) => (
                   <Typography
                     key={item}
                     component="a"
                     href={`#${item}`}
-                    variant="h6"
-                    sx={{ display: { xs: 'none', sm: 'block' }, ml: "20px" }}
+                    sx={{ ml: "35px", color: "#212B36" }}
                   >
                     {item}
                   </Typography>
-
-
                 ))}
               </Box>
             </Box>
@@ -143,16 +155,20 @@ export const Navbar = (props) => {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+
+            display: { sm: "block", md: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
           }}
         >
           {drawer}
         </Drawer>
       </Box>
-    </Box >
+    </Box>
   );
-}
+};
 
 Navbar.propTypes = {
   /**
@@ -161,9 +177,3 @@ Navbar.propTypes = {
    */
   window: PropTypes.func,
 };
-
-
-
-
-
-
