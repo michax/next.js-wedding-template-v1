@@ -8,15 +8,15 @@ export const Header = () => {
       <Container maxWidth="lg" sx={{
         position: "absolute", top: "50%",
         left: "50%", transform: `translate(${-50}%, ${-50}%)`,
-        textAlign:"center"
+        textAlign: "center"
       }}>
-        <Typography variant='h1' sx={{mb:"5rem"}}>Ewelina & Lukasz</Typography>
-        <Typography sx={{maxWidth:"35em", margin:"0 auto"}}>
+        <Typography variant='h1' sx={{ mb: "5rem" }}>Ewelina & Lukasz</Typography>
+        <Typography sx={{ maxWidth: "35em", margin: "0 auto" }}>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum quidem
           possimus magni labore accusamus hic inventore provident, beatae iure
           ducimus?
         </Typography>
-        <Button sx={{mt:"5rem",fontSize:"1.5rem"}} variant="contained" >Confirm attendance</Button>
+        <Button sx={{ mt: "5rem", fontSize: "1.5rem", backgroundColor: "#F2779A" }} variant="contained" >Confirm attendance</Button>
       </Container>
     </Box>
   )

@@ -32,7 +32,7 @@ export default function ThemeProvider({ children }) {
                 darker: '#770508',
             },
             secondary: {
-                main: "#68D8EA",
+                main: "#F2779A",
             },
             text: {
                 primary: "#212B36",
