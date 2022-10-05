@@ -22,7 +22,7 @@ export const Header = () => {
           Ewelina & Lukasz
         </Typography>
         <Typography sx={{ maxWidth: "35em", margin: "0 auto" }}>
-          Welcome to our digital wedding invitation! We're looking forward to celebrating
+          Welcome to our digital wedding invitation! We&apos;re looking forward to celebrating
           our special day with you. Please join us as we celebrate our wedding, and 
           use form to confirm your attendance.
         </Typography>

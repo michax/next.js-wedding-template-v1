@@ -1,8 +1,22 @@
 import { Grid, Typography } from "@mui/material";
 import { Box, Container, Stack } from "@mui/system";
 import React from "react";
+import GoogleMapReact from 'google-map-react';
+
+//https://www.youtube.com/watch?v=OGTG1l7yin4
+//https://www.npmjs.com/package/google-map-react
+// https://leafletjs.com/index.html
 
 export const LocationParty = () => {
+
+  const defaultProps = {
+    center: {
+      lat: 10.99835602,
+      lng: 77.01502627
+    },
+    zoom: 11
+  };
+
   return (
     <Box
       sx={{
@@ -45,8 +59,17 @@ export const LocationParty = () => {
             </Grid>
 
             <Grid item xs={12} md={6} lg={6}>
-              <Box >
-
+              <Box sx={{ height: '100vh', width: '100%' }}>
+                <GoogleMapReact
+                  bootstrapURLKeys={{ key: GOOGLE_API }}
+                  defaultCenter={defaultProps.center}
+                  defaultZoom={defaultProps.zoom}
+                  options={{
+                    styles: MapStyle,
+                    disableDefaultUI: true,
+                  }}
+                >
+                </GoogleMapReact>
               </Box>
             </Grid>
           </Grid>
