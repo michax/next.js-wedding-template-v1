@@ -4,17 +4,18 @@ import { CountdownTimer } from '../src/components/CountdownTimer/CountdownTimer'
 import { Header } from '../src/components/Header/Header'
 import { HistorySection } from '../src/components/HistorySection/HistorySection'
 import { Layout } from '../src/components/Layout/Layout'
+import { LocationParty } from '../src/components/locationParty/locationParty'
 
 
 export default function Home() {
   return (
     <Layout>
-      <Box sx={{mt:'5rem'}}>
-      <Header />
-      <CountdownTimer/>
-      <HistorySection/>
+      <Box sx={{ mt: '5rem' }}>
+        <Header />
+        <CountdownTimer />
+        <HistorySection />
+        <LocationParty />
       </Box>
-  
     </Layout>
   )
 }

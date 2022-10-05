@@ -117,7 +117,7 @@ export const HistorySection = () => {
                     >
                       {year}
                     </Typography>
-                    <Paper sx={{p:'1.5rem', mt:"2rem"}}>
+                    <Paper sx={{ p: '1.5rem', mt: "2rem" }}>
                       <Typography variant="h4" sx={{ mt: 0.5, mb: 1 }}>
                         {title}
                       </Typography>
@@ -125,8 +125,6 @@ export const HistorySection = () => {
                         variant="body2"
                         sx={{
                           opacity: 0.9,
-                     
-                    
                         }}
                       >
                         {description}
@@ -143,10 +141,11 @@ export const HistorySection = () => {
       <Box
         sx={{
           backgroundImage: `url(${waveDown.src})`,
-          height: "260px",
+          height: "380px",
           width: 1,
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover"
+          backgroundSize: "cover",
+          mb: "1rem",
         }}
       ></Box>
     </>
