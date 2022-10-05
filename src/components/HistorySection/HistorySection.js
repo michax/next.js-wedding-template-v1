@@ -6,7 +6,7 @@ import {
   TimelineItem,
   TimelineSeparator,
 } from "@mui/lab";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Paper, Stack, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 
 import React from "react";
@@ -37,13 +37,13 @@ const CORE_VALUES = [
     year: "April 2021",
     title: "We moved in together",
     description:
-      "our first flat in Oslo",
+      "After moving, we discovered that we only need a small amount of furniture to feel comfortable.",
   },
   {
     year: "July 2022",
     title: "I said YES !!!!",
     description:
-      "During a sunset walk on the beach, Sam got down on one knee",
+      "During a sunset walk on the beach, Sam got down on one knee.",
   },
   {
     year: "April 2023",
@@ -71,7 +71,7 @@ export const HistorySection = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "secondary.main",
+          backgroundColor: "#f7adc2",
         }}
       >
         <Container
@@ -88,7 +88,7 @@ export const HistorySection = () => {
               mx: "auto",
             }}
           >
-            <Typography variant="h2">Our History</Typography>
+            <Typography variant="h2" sx={{ mt: { sx: "none", md: '2rem' } }}>Our History</Typography>
             {/* <Typography sx={{ opacity: 0.72 }}>
             Nunc nonummy metus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis.
           </Typography> */}
@@ -107,31 +107,32 @@ export const HistorySection = () => {
                   }}
                 >
                   <TimelineSeparator>
-                    <TimelineDot sx={{ color: "secondary.main" }} />
-                    <TimelineConnector />
+                    <TimelineDot sx={{ color: "#FFF", backgroundColor: "#FFF" }} />
+                    <TimelineConnector sx={{ color: "#FFF", backgroundColor: "#FFF" }} />
                   </TimelineSeparator>
                   <TimelineContent sx={{ pb: { xs: 3, md: 5 } }}>
                     <Typography
-                      variant="subtitle3"
-                      sx={{ color: "primary.main" }}
+                      variant="subtitle1"
+                      sx={{ color: "primary.dark" }}
                     >
                       {year}
                     </Typography>
-                    <Typography variant="h4" sx={{ mt: 0.5, mb: 1 }}>
-                      {title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        opacity: 0.72,
-                        maxWidth: { md: 360 },
-                        ...(index % 2 && {
-                          ml: "auto",
-                        }),
-                      }}
-                    >
-                      {description}
-                    </Typography>
+                    <Paper sx={{p:'1.5rem', mt:"2rem"}}>
+                      <Typography variant="h4" sx={{ mt: 0.5, mb: 1 }}>
+                        {title}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          opacity: 0.9,
+                     
+                    
+                        }}
+                      >
+                        {description}
+                      </Typography>
+                    </Paper>
+
                   </TimelineContent>
                 </TimelineItem>
               );
