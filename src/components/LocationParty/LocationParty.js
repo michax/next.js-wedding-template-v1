@@ -34,9 +34,12 @@ export const LocationParty = () => {
                   textAlign: { xs: "center", md: "left" },
                 }}
               >
-                <Typography variant="h3">Drop Us A Line</Typography>
+                <Typography variant="h3">Join us for the wedding </Typography>
                 <Typography sx={{ color: "text.secondary" }}>
-                  We normally respond within 2 business days
+                  Dinner and dancing to follow at Casa de la Guerra
+                </Typography>
+                <Typography sx={{ color: "text.secondary" }}>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui consequuntur blanditiis minima tempora recusandae facere.
                 </Typography>
               </Stack>
             </Grid>

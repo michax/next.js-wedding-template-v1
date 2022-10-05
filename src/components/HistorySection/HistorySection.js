@@ -17,7 +17,7 @@ import waveDown from "../../../public/waveDown.svg";
 const CORE_VALUES = [
   {
     year: "May 2018",
-    title: "Met the modern way",
+    title: "We met in the modern way",
     description:
       "by swiping right on Tinder (swoon!) ",
   },
@@ -29,7 +29,7 @@ const CORE_VALUES = [
   },
   {
     year: "June 2020",
-    title: "Our first Travel",
+    title: "Our first vacation",
     description:
       "We traveled extensively—backpacking through Europe in Italy. One of our favorite memories was trying a new gelato place almost every day while visiting Rome.",
   },
@@ -37,7 +37,7 @@ const CORE_VALUES = [
     year: "April 2021",
     title: "We moved in together",
     description:
-      "After moving, we discovered that we only need a small amount of furniture to feel comfortable.",
+      "After moving, we discovered that.. we only need a small amount of furniture to feel comfortable.",
   },
   {
     year: "July 2022",
@@ -47,7 +47,7 @@ const CORE_VALUES = [
   },
   {
     year: "April 2023",
-    title: "Wedding",
+    title: "Wedding day",
     description:
       `We're so excited for you to join us as we say "I do" at our wedding. See you soon!`,
   },
