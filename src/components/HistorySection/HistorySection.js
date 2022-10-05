@@ -16,28 +16,40 @@ import waveDown from "../../../public/waveDown.svg";
 
 const CORE_VALUES = [
   {
-    year: "2021",
-    title: "Customer Satisfaction",
+    year: "May 2018",
+    title: "Met the modern way",
     description:
-      "Curabitur ullamcorper ultricies nisi. Praesent nonummy mi in odio. Donec mollis hendrerit risus.",
+      "by swiping right on Tinder (swoon!) ",
   },
   {
-    year: "2020",
-    title: "Transparency",
+    year: "December 2019",
+    title: "First date",
     description:
-      "Curabitur ullamcorper ultricies nisi. Praesent nonummy mi in odio. Donec mollis hendrerit risus.",
+      "First date was a bit of a disaster—it started pouring while we were enjoying our outdoor dinner",
   },
   {
-    year: "2019",
-    title: "Reputation",
+    year: "June 2020",
+    title: "Our first Travel",
     description:
-      "Curabitur ullamcorper ultricies nisi. Praesent nonummy mi in odio. Donec mollis hendrerit risus.",
+      "We traveled extensively—backpacking through Europe in Italy. One of our favorite memories was trying a new gelato place almost every day while visiting Rome.",
   },
   {
-    year: "2018",
-    title: "Cooperation",
+    year: "April 2021",
+    title: "We moved in together",
     description:
-      "Curabitur ullamcorper ultricies nisi. Praesent nonummy mi in odio. Donec mollis hendrerit risus.",
+      "our first flat in Oslo",
+  },
+  {
+    year: "July 2022",
+    title: "I said YES !!!!",
+    description:
+      "During a sunset walk on the beach, Sam got down on one knee",
+  },
+  {
+    year: "April 2023",
+    title: "Wedding",
+    description:
+      `We're so excited for you to join us as we say "I do" at our wedding. See you soon!`,
   },
 ];
 
@@ -55,7 +67,7 @@ export const HistorySection = () => {
       ></Box>
       <Box
         sx={{
-          height: "100vh",
+
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -76,7 +88,7 @@ export const HistorySection = () => {
               mx: "auto",
             }}
           >
-          <Typography variant="h2">Our History</Typography>
+            <Typography variant="h2">Our History</Typography>
             {/* <Typography sx={{ opacity: 0.72 }}>
             Nunc nonummy metus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis.
           </Typography> */}
