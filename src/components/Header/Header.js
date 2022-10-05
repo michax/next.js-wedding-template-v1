@@ -4,10 +4,14 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <Box sx={{ minHeight: `calc(100vh - 5rem)`, position: "relative" }}>
+    <Box sx={{
+      height: '100vh', 
+      display: "flex",
+      justifyContent: "center",
+      alignItems: 'center'
+    }}>
       <Container maxWidth="lg" sx={{
-        position: "absolute", top: "50%",
-        left: "50%", transform: `translate(${-50}%, ${-50}%)`,
+
         textAlign: "center"
       }}>
         <Typography variant='h1' sx={{ mb: "5rem" }}>Ewelina & Lukasz</Typography>

@@ -23,7 +23,6 @@ export const Navbar = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -33,10 +32,9 @@ export const Navbar = (props) => {
       <Box
         sx={{
           display: "flex",
-          justifyContent: 'center',
+          justifyContent: "center",
           alignItems: "center",
           padding: "0.5rem ",
-
         }}
       >
         <Image height="50%" src={logo} alt="Logo" />
@@ -52,7 +50,6 @@ export const Navbar = (props) => {
                 href={`#${item}`}
                 variant="p"
                 sx={{ display: { sm: "block", md: "none" } }}
-
               >
                 {item}
               </Typography>
@@ -70,7 +67,6 @@ export const Navbar = (props) => {
                 href={`#${item}`}
                 variant="p"
                 sx={{ display: { sm: "block", md: "none" } }}
-
               >
                 {item}
               </Typography>
@@ -86,7 +82,21 @@ export const Navbar = (props) => {
 
   return (
     <Box>
-      <AppBar component="nav" sx={{ boxShadow: "-24px 24px 72px -8px rgb(145 158 171 / 24%)", backgroundColor: '#fff' }}>
+      <AppBar
+        component="nav"
+        sx={{
+          boxShadow: "-24px 24px 72px -8px rgb(145 158 171 / 24%)",
+          backgroundColor: "#fff",
+          overflow: "hidden",
+          position: "fixed",
+          top: "0",
+          width: "100%",
+          height: "5rem",
+          display:"flex",
+          justifyContent:"center",
+          alignItems:'center'
+        }}
+      >
         <Container maxWidth="lg">
           <Toolbar sx={{ width: 1 }}>
             <IconButton
@@ -106,13 +116,17 @@ export const Navbar = (props) => {
                 width: "100%",
               }}
             >
-              <Box sx={{ display: {xs:"none", sm: "none", md: "flex" } }}>
+              <Box sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
                 {navItemsRight.map((item) => (
                   <Typography
                     key={item}
                     component="a"
                     href={`#${item}`}
-                    sx={{ display: { sm: "none", md: "block" }, ml: "35px", color: "#212B36" }}
+                    sx={{
+                      display: { sm: "none", md: "block" },
+                      ml: "35px",
+                      color: "#212B36",
+                    }}
                   >
                     {item}
                   </Typography>
@@ -121,7 +135,7 @@ export const Navbar = (props) => {
 
               <Box
                 sx={{
-                  display: {xs:"none", sm: "none", md: "block" },
+                  display: { xs: "none", sm: "none", md: "block" },
                   width: "100px",
                   ml: "35px",
                   mt: "10px",
@@ -129,7 +143,7 @@ export const Navbar = (props) => {
               >
                 <Image src={logo} alt="Logo" />
               </Box>
-              <Box sx={{ display: { xs:"none", sm: "none", md: "flex" } }}>
+              <Box sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
                 {navItemsLeft.map((item) => (
                   <Typography
                     key={item}
@@ -155,7 +169,6 @@ export const Navbar = (props) => {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-
             display: { sm: "block", md: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
