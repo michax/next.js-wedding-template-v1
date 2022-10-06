@@ -31,6 +31,23 @@ export const Gallery = () => {
 
     setOpenLightbox(true);
     setSelectedImage(selectedImage);
+
+    const SliderWrap = styled.div`
+    .slick-slider {
+        height: 100vh;
+        background-color: var(--brand-black);
+        .slick-list {
+            .slick-track {
+                .slick-slider.slide_item {
+                    height: 100vh;
+                    width: 100vw;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+    }
+`
   };
   return (
     <Box

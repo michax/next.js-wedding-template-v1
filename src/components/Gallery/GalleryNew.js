@@ -4,6 +4,7 @@ import { useRef } from "react";
 // @mui
 import { styled, useTheme } from "@mui/material/styles";
 import { Typography, Grid, Container, Stack, Rating, Box } from "@mui/material";
+
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 // components
@@ -59,6 +60,23 @@ export default function GalleryNew() {
         carouselRef.current?.slickNext();
     };
 
+    const SliderWrap = styled('div')`
+    .slick-slider {
+        height: 50vh;
+        background-color: var(--brand-black);
+        .slick-list {
+            .slick-track {
+                .slick-slider.slide_item {
+                    height: 100vh;
+                    width: 100vw;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+    }
+`
+
     return (
         <Box
             sx={{
@@ -78,10 +96,7 @@ export default function GalleryNew() {
                     Our Memories
                 </Typography>
 
-                <Box sx={{
-                    height: "500px",
-                
-                }}>
+                <SliderWrap>
                     <Slider
                         sx={{ position: "relative" }}
                         ref={carouselRef}
@@ -109,7 +124,7 @@ export default function GalleryNew() {
 
                         ))}
                     </Slider>
-                </Box>
+                </SliderWrap>
 
 
             </Container>
