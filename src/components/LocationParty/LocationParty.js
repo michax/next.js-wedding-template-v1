@@ -50,10 +50,15 @@ export const LocationParty = () => {
               >
                 <Typography variant="h3">Join us for the wedding </Typography>
                 <Typography sx={{ color: "text.secondary" }}>
-                  Dinner and dancing to follow at Casa de la Guerra
+                  The Wedding will take place in
+                  Saint Pro-Cathedral
+                  83 Marlborough Street, Oslo
+                  at 10.00 a.m
                 </Typography>
                 <Typography sx={{ color: "text.secondary" }}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui consequuntur blanditiis minima tempora recusandae facere.
+                  Dinner and dancing will take place in
+                  Castleknock Hotel & Country Club
+                  Castleknock, Oslo 
                 </Typography>
               </Stack>
             </Grid>

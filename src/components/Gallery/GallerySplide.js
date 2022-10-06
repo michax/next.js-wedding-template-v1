@@ -19,12 +19,7 @@ const IMAGE_MAP = [
     "https://images.unsplash.com/photo-1465281508053-aee07fc08957?dpr=1&auto=format&crop=entropy&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb",
     "https://images.unsplash.com/photo-1650493102762-196d4d2fed97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
     "https://images.unsplash.com/photo-1568484653093-ed0c410326fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    "https://images.unsplash.com/photo-1650493102762-196d4d2fed97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
-    "https://images.unsplash.com/photo-1568484653093-ed0c410326fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    "https://images.unsplash.com/photo-1650493102762-196d4d2fed97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
-    "https://images.unsplash.com/photo-1568484653093-ed0c410326fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    "https://images.unsplash.com/photo-1650493102762-196d4d2fed97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
-    "https://images.unsplash.com/photo-1568484653093-ed0c410326fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+
 ];
 
 // ----------------------------------------------------------------------
@@ -101,7 +96,7 @@ export default function GallerySplide() {
                         },
                     }}
                 >
-                    {IMAGE_MAP.map((item, index) => {
+                    {IMAGE_MAP?.map((item, index) => {
                         return (
                             <SplideSlide key={`img-${index}`} className="slide">
                                 <Box sx={{
@@ -129,15 +124,17 @@ export default function GallerySplide() {
                     })}
                 </Splide>
 
-                <LightboxModal
-                    images={IMAGE_MAP}
-                    mainSrc={IMAGE_MAP[selectedImage]}
-                    photoIndex={selectedImage}
-                    setPhotoIndex={setSelectedImage}
-                    isOpen={openLightbox}
-                    onCloseRequest={() => setOpenLightbox(false)}
-                />
+
             </Container>
+
+            {openLightbox && <LightboxModal
+                images={IMAGE_MAP}
+                mainSrc={IMAGE_MAP[selectedImage]}
+                photoIndex={selectedImage}
+                setPhotoIndex={setSelectedImage}
+                isOpen={openLightbox}
+                onCloseRequest={() => setOpenLightbox(false)}
+            />}
         </Box>
     );
 }
