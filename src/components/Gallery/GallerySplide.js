@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef, useState } from "react";
 // @mui
 
 import { Typography, Container, Box } from "@mui/material";
@@ -10,6 +10,7 @@ import "@splidejs/react-splide/css/core";
 import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 // components
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
+import LightboxModal from "./LightboxModal";
 // ----------------------------------------------------------------------
 
 const IMAGE_MAP = [
@@ -31,8 +32,18 @@ const IMAGE_MAP = [
 
 
 export default function GallerySplide() {
-
+    const [openLightbox, setOpenLightbox] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(0);
     const ref = useRef();
+
+
+    const handleOpenLightbox = (itemUrl) => {
+        // find index of clicked img
+        const selectedImage = IMAGE_MAP.findIndex((index) => itemUrl === index)
+        console.log(selectedImage)
+        setOpenLightbox(true);
+        setSelectedImage(selectedImage);
+    }
     return (
         <Box
             sx={{
@@ -90,9 +101,9 @@ export default function GallerySplide() {
                         },
                     }}
                 >
-                    {IMAGE_MAP.map(item => {
+                    {IMAGE_MAP.map((item, index) => {
                         return (
-                            <SplideSlide key={item} className="slide">
+                            <SplideSlide key={`img-${index}`} className="slide">
                                 <Box sx={{
                                     backgroundColor: "#F2779A",
                                     padding: "0.75rem",
@@ -106,9 +117,11 @@ export default function GallerySplide() {
                                             width: 1,
                                             objectFit: "cover",
                                             borderRadius: '15px',
+                                            cursor: 'pointer'
                                         }}
                                         alt="image"
                                         src={item}
+                                        onClick={() => handleOpenLightbox(item)}
                                     />
                                 </Box>
                             </SplideSlide>
@@ -116,7 +129,14 @@ export default function GallerySplide() {
                     })}
                 </Splide>
 
-
+                <LightboxModal
+                    images={IMAGE_MAP}
+                    mainSrc={IMAGE_MAP[selectedImage]}
+                    photoIndex={selectedImage}
+                    setPhotoIndex={setSelectedImage}
+                    isOpen={openLightbox}
+                    onCloseRequest={() => setOpenLightbox(false)}
+                />
             </Container>
         </Box>
     );

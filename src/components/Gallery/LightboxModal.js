@@ -6,6 +6,7 @@ import Lightbox from 'react-image-lightbox';
 import { Typography } from '@mui/material';
 
 // ----------------------------------------------------------------------
+// ----------------------------------------------------------------------
 
 LightboxModal.propTypes = {
   images: PropTypes.array.isRequired,
@@ -15,13 +16,13 @@ LightboxModal.propTypes = {
 };
 
 export default function LightboxModal({ images, photoIndex, setPhotoIndex, isOpen, ...other }) {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [isOpen]);
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     document.body.style.overflow = 'hidden';
+  //   } else {
+  //     document.body.style.overflow = 'unset';
+  //   }
+  // }, [isOpen]);
 
   const showIndex = (
     <Typography variant="subtitle2">{`${photoIndex + 1} / ${images.length}`}</Typography>
@@ -39,9 +40,9 @@ export default function LightboxModal({ images, photoIndex, setPhotoIndex, isOpe
     <>
       {/* <LightboxModalStyles /> */}
 
-      {/* {isOpen && (
+      {isOpen && (
         <Lightbox
-          animationDuration={240}
+          // animationDuration={240}
           nextSrc={images[(photoIndex + 1) % images.length]}
           prevSrc={images[(photoIndex + images.length - 1) % images.length]}
           onMovePrevRequest={() => setPhotoIndex((photoIndex + images.length - 1) % images.length)}
@@ -50,7 +51,7 @@ export default function LightboxModal({ images, photoIndex, setPhotoIndex, isOpe
           reactModalStyle={customStyles}
           {...other}
         />
-      )} */}
+      )}
     </>
   );
 }
