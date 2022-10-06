@@ -1,8 +1,7 @@
 import { Box, Button, Toolbar, Typography } from '@mui/material'
 
 import { CountdownTimer } from '../src/components/CountdownTimer/CountdownTimer'
-import { Gallery } from '../src/components/Gallery/Gallery'
-import GalleryNew from '../src/components/Gallery/GalleryNew'
+
 import GallerySplide from '../src/components/Gallery/GallerySplide'
 import { Header } from '../src/components/Header/Header'
 import { HistorySection } from '../src/components/HistorySection/HistorySection'

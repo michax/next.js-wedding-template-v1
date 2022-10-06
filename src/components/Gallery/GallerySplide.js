@@ -6,6 +6,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 
 // or
+import "@splidejs/react-splide/css/core";
 import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 // components
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
@@ -39,6 +40,7 @@ export default function GallerySplide() {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                // display: { xs: "none", sm: "none", md: "block" },
             }}
         >
             <Container
@@ -54,13 +56,38 @@ export default function GallerySplide() {
                 <Splide
                     ref={ref}
                     options={{
-                        rewind: false,
-                        perPage: 4,
-                        perMove: 1,
-                        gap: 20,
-                        padding: "3rem",
+                        rewind: true,
+                        perPage: 3,
+                        perMove: 3,
+                        gap: "1rem",
                         pagination: true,
-            
+                        arrows: false,
+                        breakpoints: {
+                            523: {
+                                perPage: 1,
+                                perMove: 1,
+                                arrows: true,
+                                pagination: false,
+                            },
+                            623: {
+                                perPage: 2,
+                                perMove: 1,
+                                arrows: true,
+                                pagination: false,
+                            },
+                            1040: {
+                                perPage: 2,
+                                perMove: 1,
+                                arrows: false,
+                                pagination: true,
+                            },
+                            1247: {
+                                perPage: 3,
+                                perMove: 3,
+                                arrows: true,
+                                pagination: true,
+                            },
+                        },
                     }}
                 >
                     {IMAGE_MAP.map(item => {
@@ -95,5 +122,5 @@ export default function GallerySplide() {
     );
 }
 
-// ----------------------------------------------------------------------
+
 

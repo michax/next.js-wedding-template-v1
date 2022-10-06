@@ -4,7 +4,6 @@ import '../styles/globals.css'
 import 'react-image-lightbox/style.css';
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import '@splidejs/splide/dist/css/splide.min.css';
-// or
 import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 
 
