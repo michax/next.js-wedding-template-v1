@@ -1,6 +1,8 @@
 import { Box, Button, Toolbar, Typography } from '@mui/material'
 
 import { CountdownTimer } from '../src/components/CountdownTimer/CountdownTimer'
+import { Gallery } from '../src/components/Gallery/Gallery'
+import GalleryNew from '../src/components/Gallery/GalleryNew'
 import { Header } from '../src/components/Header/Header'
 import { HistorySection } from '../src/components/HistorySection/HistorySection'
 import { Layout } from '../src/components/Layout/Layout'
@@ -14,6 +16,7 @@ export default function Home() {
         <Header />
         <CountdownTimer />
         <HistorySection />
+        <GalleryNew/>
         <LocationParty />
       </Box>
     </Layout>

@@ -59,7 +59,7 @@ export const LocationParty = () => {
             </Grid>
 
             <Grid item xs={12} md={6} lg={6}>
-              <Box sx={{ height: '100vh', width: '100%' }}>
+              {/* <Box sx={{ height: '100vh', width: '100%' }}>
                 <GoogleMapReact
                   bootstrapURLKeys={{ key: GOOGLE_API }}
                   defaultCenter={defaultProps.center}
@@ -70,7 +70,7 @@ export const LocationParty = () => {
                   }}
                 >
                 </GoogleMapReact>
-              </Box>
+              </Box> */}
             </Grid>
           </Grid>
         </Container>
