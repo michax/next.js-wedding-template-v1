@@ -18,7 +18,7 @@ export const FormSection = () => {
           textAlign: "center",
         }}
       >
-        <Typography variant="h1" sx={{ mb: "5rem" }}>
+        <Typography variant="h2" sx={{ mb: "5rem" }}>
           Confirm your attendance
         </Typography>
         <Typography sx={{ maxWidth: "35em", margin: "0 auto" }}>

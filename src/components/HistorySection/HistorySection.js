@@ -88,7 +88,7 @@ export const HistorySection = () => {
               mx: "auto",
             }}
           >
-            <Typography variant="h2" sx={{ mt: { sx: "none", md: '2rem' } }}>Our Story</Typography>
+            <Typography variant="h2" sx={{ mt: { sx: "none", md: '2rem',mb: "5rem" } }}>Our Story</Typography>
             {/* <Typography sx={{ opacity: 0.72 }}>
             Nunc nonummy metus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis.
           </Typography> */}

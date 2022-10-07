@@ -42,7 +42,8 @@ export default function GallerySplide() {
     return (
         <Box
             sx={{
-                height: "100vh",
+                pt: "5rem",
+                pb: "8rem",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -50,12 +51,12 @@ export default function GallerySplide() {
             }}
         >
             <Container
-                maxWidth="xl"
+                maxWidth="lg"
                 sx={{
                     textAlign: "center",
                 }}
             >
-                <Typography variant="h2" sx={{ mb: 5, textAlign: "center" }}>
+                <Typography variant="h2" sx={{ mb: { xs: "4rem", md: "7rem" }, textAlign: "center" }}>
                     Our Memories
                 </Typography>
 

@@ -9,7 +9,8 @@ export const CountdownTimer = () => {
   return (
     <Box
       sx={{
-        height: "100vh",
+        pt: "5rem",
+        pb: "8rem",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

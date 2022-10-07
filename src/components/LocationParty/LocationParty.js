@@ -8,7 +8,7 @@ import Image from "next/image";
 
 //https://www.youtube.com/watch?v=OGTG1l7yin4
 //https://www.npmjs.com/package/google-map-react
-// https://leafletjs.com/index.html
+//https://leafletjs.com/index.html
 
 export const LocationParty = () => {
 
@@ -35,7 +35,7 @@ export const LocationParty = () => {
           textAlign: "center",
         }}
       >
-        <Typography variant="h1" sx={{ mb: "5rem" }}>
+        <Typography variant="h2" sx={{ mb: "5rem" }}>
           Location
         </Typography>
         <Container>
@@ -48,14 +48,14 @@ export const LocationParty = () => {
                 spacing={2}
                 sx={{
                   mb: 5,
-                  textAlign:'left'
+                  textAlign: 'left'
                 }}
               >
-                <Typography variant="h3" sx={{mb:"2.5rem"}}>Join us for the wedding </Typography>
+                <Typography variant="h3" sx={{ mb: "2.5rem", ml: '15px' }}>Join us for the wedding </Typography>
                 <Box sx={{
                   display: "flex",
                   alignItems: "center",
-                  mb:"2rem"
+                  mb: "2rem"
                 }}>
                   <Box
                     sx={{
@@ -64,7 +64,7 @@ export const LocationParty = () => {
                   >
                     <Image src={church} alt="image" />
                   </Box>
-                  <Typography variant="body2" sx={{ maxWidth: '18rem', ml:"2rem" }}>
+                  <Typography variant="body2" sx={{ maxWidth: '18rem', ml: "2rem" }}>
                     The Wedding will take place in
                     Saint Pro-Cathedral
                     83 Marlborough Street, Oslo
@@ -75,20 +75,19 @@ export const LocationParty = () => {
                 <Box sx={{
                   display: "flex",
                   alignItems: "center",
+
                 }}>
                   <Box
                     sx={{
-
                       width: "100px",
-
                     }}
                   >
                     <Image src={wine} alt="image" />
                   </Box>
-                  <Typography variant="body2" sx={{  maxWidth: '18rem',ml:"2rem"  }}>
-                  Dinner and dancing will take place in
-                  Castleknock Hotel & Country Club
-                  Castleknock, Oslo
+                  <Typography variant="body2" sx={{ maxWidth: '18rem', ml: "2rem" }}>
+                    Dinner and dancing will take place in
+                    Castleknock Hotel & Country Club
+                    Castleknock, Oslo
                   </Typography>
                 </Box>
 
