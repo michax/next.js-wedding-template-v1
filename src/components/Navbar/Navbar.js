@@ -28,7 +28,7 @@ export const Navbar = (props) => {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center",  backgroundColor: "#FCFFF7", }}>
       <Box
         sx={{
           display: "flex",
@@ -85,8 +85,8 @@ export const Navbar = (props) => {
       <AppBar
         component="nav"
         sx={{
-          boxShadow: "-24px 24px 72px -8px rgb(145 158 171 / 24%)",
-          backgroundColor: "#fff",
+          boxShadow: "0 2px 2px -2px rgba(0,0,0,.2)",
+          backgroundColor: "#FCFFF7",
           overflow: "hidden",
           position: "fixed",
           top: "0",

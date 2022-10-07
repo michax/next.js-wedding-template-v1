@@ -113,7 +113,7 @@ export const HistorySection = () => {
                   <TimelineContent sx={{ pb: { xs: 3, md: 5 } }}>
                     <Typography
                       variant="subtitle1"
-                      sx={{ color: "primary.dark" }}
+                      // sx={{ color: "primary.dark" }}
                     >
                       {year}
                     </Typography>

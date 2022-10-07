@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #FCFFF7;
 }
 
 a {
@@ -15,26 +16,23 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-}
+/* color pink #F2779A */
 
 /* GLOBAL Custom STYLE FOR Slider  */
 
-
-
-
-
-
-
-
-.splide__pagination{
-  margin-bottom: -4rem!important;
+.splide__pagination {
+  margin-bottom: -4rem !important;
 }
 
+.splide__pagination__page.is-active {
+  background: #F2779A!important;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.splide__pagination__page {
+  background: #ccc;
+  height: 15px!important;
+  width: 15px!important;
+
+}
