@@ -15,17 +15,16 @@ export const FormSection = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        position: "relative"
       }}
     >
       <Container
-
         maxWidth="lg"
         sx={{
-          position: "relative",
           textAlign: "center",
         }}
       >
-        <Typography variant="h2" sx={{ mb: "5rem" }}>
+        <Typography variant="h2" sx={{ mb: "5rem", }}>
           Confirm your attendance
         </Typography>
         <Typography sx={{ maxWidth: "35em", margin: "0 auto" }}>
@@ -34,13 +33,12 @@ export const FormSection = () => {
         <Box
           sx={{
             position: "absolute",
-            top: {xs:"-1%", md:"-30%"},
-            left:{xs:"40%", md:"-30%"},
+            top: { xs: "5%", sm: "0%", md: "-10%" },
+            left: { xs: "40%", sm: "10%", md: "40%" },
             transform: 'translate(-50%,-50%)',
-            height: {xs:'auto', md:'200px'},
-            width: {xs:'350px', md:'200px'},
-            
-            
+            height: { xs: 'auto', sm: "200px", md: '200px' },
+            width: { xs: '450px', sm: "500px", md: '650px' },
+
           }}
         >
           <Image src={leftdeco} alt="image" />
@@ -51,14 +49,14 @@ export const FormSection = () => {
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={1} sx={{ justifyContent: "space-between" }}>
               <Grid item xs={0} sm={1} md={2} >
-      
+                {/* svg */}
               </Grid>
               <Grid item xs={12} sm={10} md={8}>
                 {/* form */}
                 <Paper sx={{ height: "700px" }}>xs=6</Paper>
               </Grid>
               <Grid item xs={0} sm={1} md={2}>
-         
+                {/* svg */}
               </Grid>
             </Grid>
           </Box>
