@@ -1,6 +1,7 @@
 import { Box, Button, Toolbar, Typography } from '@mui/material'
 
 import { CountdownTimer } from '../src/components/CountdownTimer/CountdownTimer'
+import { FormSection } from '../src/components/FormSection/FormSection'
 
 import GallerySplide from '../src/components/Gallery/GallerySplide'
 import { Header } from '../src/components/Header/Header'
@@ -18,6 +19,7 @@ export default function Home() {
         <HistorySection />
         <GallerySplide/>
         <LocationParty />
+        <FormSection/>
       </Box>
     </Layout>
   )

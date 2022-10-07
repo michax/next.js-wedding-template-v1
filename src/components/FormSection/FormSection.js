@@ -1,20 +1,27 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import { Container } from "@mui/system";
+import Image from "next/image";
 import React from "react";
+import leftdeco from "../../../public/leftdeco.svg";
+import rightdec from "../../../public/rightdec.svg";
+
 
 export const FormSection = () => {
   return (
     <Box
       sx={{
-        height: "100vh",
+        pt: "8rem",
+        pb: "8rem",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
       <Container
+
         maxWidth="lg"
         sx={{
+          position: "relative",
           textAlign: "center",
         }}
       >
@@ -24,12 +31,38 @@ export const FormSection = () => {
         <Typography sx={{ maxWidth: "35em", margin: "0 auto" }}>
           Please confirm your attendance no later than 24th March 2023
         </Typography>
-        <Button
-          sx={{ mt: "5rem", fontSize: "1.5rem", backgroundColor: "#F2779A" }}
-          variant="contained"
+        <Box
+          sx={{
+            position: "absolute",
+            top: {xs:"-1%", md:"-30%"},
+            left:{xs:"40%", md:"-30%"},
+            transform: 'translate(-50%,-50%)',
+            height: {xs:'auto', md:'200px'},
+            width: {xs:'350px', md:'200px'},
+            
+            
+          }}
         >
-          Confirm attendance
-        </Button>
+          <Image src={leftdeco} alt="image" />
+        </Box>
+        <Box sx={{
+          mt: "10rem",
+        }}>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={1} sx={{ justifyContent: "space-between" }}>
+              <Grid item xs={0} sm={1} md={2} >
+      
+              </Grid>
+              <Grid item xs={12} sm={10} md={8}>
+                {/* form */}
+                <Paper sx={{ height: "700px" }}>xs=6</Paper>
+              </Grid>
+              <Grid item xs={0} sm={1} md={2}>
+         
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );
