@@ -102,7 +102,7 @@ export default function GallerySplide() {
                                 <Box sx={{
                                     backgroundColor: "#F2779A",
                                     padding: "0.75rem",
-                                    borderRadius: '15px',
+                                    borderRadius: '14px',
 
                                 }}>
                                     <Box
@@ -111,7 +111,7 @@ export default function GallerySplide() {
                                             height: 333,
                                             width: 1,
                                             objectFit: "cover",
-                                            borderRadius: '15px',
+                                            borderRadius: '7px',
                                             cursor: 'pointer'
                                         }}
                                         alt="image"
