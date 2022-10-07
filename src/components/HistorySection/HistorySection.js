@@ -13,13 +13,11 @@ import React from "react";
 import wavetop from "../../../public/wavetop.svg";
 import waveDown from "../../../public/waveDown.svg";
 
-
 const CORE_VALUES = [
   {
     year: "May 2018",
     title: "We met in the modern way",
-    description:
-      "by swiping right on Tinder (swoon!) ",
+    description: "by swiping right on Tinder (swoon!) ",
   },
   {
     year: "December 2019",
@@ -42,14 +40,12 @@ const CORE_VALUES = [
   {
     year: "July 2022",
     title: "I said YES !!!!",
-    description:
-      "During a sunset walk on the beach, Sam got down on one knee.",
+    description: "During a sunset walk on the beach, Sam got down on one knee.",
   },
   {
     year: "April 2023",
     title: "Wedding day",
-    description:
-      `We're so excited for you to join us as we say "I do" at our wedding. See you soon!`,
+    description: `We're so excited for you to join us as we say "I do" at our wedding. See you soon!`,
   },
 ];
 
@@ -62,12 +58,11 @@ export const HistorySection = () => {
           height: "300px",
           width: 1,
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover"
+          backgroundSize: "cover",
         }}
       ></Box>
       <Box
         sx={{
-
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -88,7 +83,12 @@ export const HistorySection = () => {
               mx: "auto",
             }}
           >
-            <Typography variant="h2" sx={{ mt: { sx: "none", md: '2rem',mb: "5rem" } }}>Our Story</Typography>
+            <Typography
+              variant="h2"
+              sx={{ mt: { sx: "none", md: "2rem", mb: "5rem" } }}
+            >
+              Our Story
+            </Typography>
             {/* <Typography sx={{ opacity: 0.72 }}>
             Nunc nonummy metus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis.
           </Typography> */}
@@ -107,30 +107,30 @@ export const HistorySection = () => {
                   }}
                 >
                   <TimelineSeparator>
-                    <TimelineDot sx={{ color: "#FFF", backgroundColor: "#FFF" }} />
-                    <TimelineConnector sx={{ color: "#FFF", backgroundColor: "#FFF" }} />
+                    <TimelineDot
+                      sx={{ color: "#FFF", backgroundColor: "#FFF" }}
+                    />
+                    <TimelineConnector
+                      sx={{ color: "#FFF", backgroundColor: "#FFF" }}
+                    />
                   </TimelineSeparator>
                   <TimelineContent sx={{ pb: { xs: 3, md: 5 } }}>
                     <Typography
                       variant="subtitle1"
-                      // sx={{ color: "primary.dark" }}
+                    // sx={{ color: "primary.dark" }}
                     >
                       {year}
                     </Typography>
-                    <Paper sx={{ p: '1.5rem', mt: "2rem" }}>
+                    <Paper sx={{ p: "1.5rem", mt: "2rem",  backgroundColor: "#FCFFF7", }}>
                       <Typography variant="h4" sx={{ mt: 0.5, mb: 1 }}>
                         {title}
                       </Typography>
                       <Typography
                         variant="body2"
-                        sx={{
-                          opacity: 0.9,
-                        }}
                       >
                         {description}
                       </Typography>
                     </Paper>
-
                   </TimelineContent>
                 </TimelineItem>
               );

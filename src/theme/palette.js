@@ -45,17 +45,17 @@ const SUCCESS = {
 const WARNING = {
     lighter: '#FFF8D1',
     light: '#FFE475',
-    main: '#FFC81A',
+    main: '#FA541C',
     dark: '#B7860D',
     darker: '#7A5204',
     contrastText: contrastText.black,
 };
 const ERROR = {
-    lighter: '#FFE7D9',
-    light: '#FFA48D',
-    main: '#FF4842',
-    dark: '#B72136',
-    darker: '#7A0C2E',
+    lighter: '#FA541C',
+    light: '#FA541C',
+    main: '#FA541C',
+    dark: '#FA541C',
+    darker:'#FA541C',
     contrastText: contrastText.white,
 };
 
@@ -109,7 +109,7 @@ const palette = {
         ...COMMON,
         mode: 'light',
         text: { primary: '#fff', secondary: GREY[600], disabled: GREY[500] },
-        background: { paper: '#fff', default: '#fff', neutral: GREY[100] },
+        background: { paper: '#fff', default: '#FCFFF7', neutral: GREY[100] },
         action: { active: GREY[600], ...COMMON.action },
     },
 };

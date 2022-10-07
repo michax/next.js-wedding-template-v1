@@ -101,7 +101,8 @@ export default function GallerySplide() {
                         return (
                             <SplideSlide key={`img-${index}`} className="slide">
                                 <Box sx={{
-                                    backgroundColor: "#F2779A",
+                                    // backgroundColor: "#F2779A",
+                                    backgroundColor: "#FDECF1",
                                     padding: "0.75rem",
                                     borderRadius: '14px',
 
