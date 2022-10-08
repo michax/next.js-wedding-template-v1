@@ -36,6 +36,12 @@ export const FormSection = () => {
     lastName: "",
     email: "",
     phone: "",
+    pickedFoodChoice:"",
+    pickedChoiceAlcohol:"",
+    pickedKindMusic:"",
+    isCompanion: false,
+    firstNameCompanion: "",
+    lastNameCompanion: "",
     termsOfService: false,
   };
 
@@ -74,6 +80,12 @@ export const FormSection = () => {
       lastName: values.lastName,
       email: values.email,
       phone: values.phone,
+      // pickedFoodChoice:"",
+      // pickedChoiceAlcohol:"",
+      // pickedKindMusic:"",
+      // isCompanion: false,
+      // firstNameCompanion: "",
+      // lastNameCompanion: "",
       termsOfService: values.termsOfService,
     };
 
@@ -199,6 +211,7 @@ export const FormSection = () => {
                             actions.setSubmitting(false);
                           }}
                         >
+                          {/* FORM */}
                           <Form>
                             <Grid container spacing={2}>
                               <Grid item xs={12}>
