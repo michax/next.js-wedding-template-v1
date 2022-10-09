@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #FCFFF7;
+  background-color: #fcfff7;
 }
 
 a {
@@ -25,33 +25,33 @@ a {
 }
 
 .splide__pagination__page.is-active {
-  background: #F2779A!important;
+  background: #f2779a !important;
   transform: scale(1);
   z-index: 1;
 }
 
 .splide__pagination__page {
   background: #ccc;
-  height: 15px!important;
-  width: 15px!important;
-
+  height: 15px !important;
+  width: 15px !important;
 }
 
-
-.splide__arrow.splide__arrow--next{
-  top: 90%!important;
-  background-color: #F7F4F3;
+.splide__arrow.splide__arrow--next {
+  top: 90% !important;
+  background-color: #f7f4f3;
   border-radius: 50%;
   padding: 0.3rem;
 }
 
-.splide__arrow.splide__arrow--prev{
-  top: 90%!important;
-  background-color: #F7F4F3;
+.splide__arrow.splide__arrow--prev {
+  top: 90% !important;
+  background-color: #f7f4f3;
   border-radius: 50%;
   padding: 0.3rem;
 }
 
 .splide__arrow svg {
-  fill: #F2779A!important;
+  fill: #f2779a !important;
 }
+
+/* Iframe */
