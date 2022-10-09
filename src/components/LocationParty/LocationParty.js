@@ -10,6 +10,9 @@ import Image from "next/image";
 //https://www.npmjs.com/package/google-map-react
 //https://leafletjs.com/index.html
 
+
+const iframe = `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15993.067311743673!2d10.67386275!3d59.92992835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416d95a2fd9315%3A0xb5d6eb5de3a26594!2sNorwegian%20Radium%20Hospital!5e0!3m2!1spl!2sno!4v1665298540040!5m2!1spl!2sno" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`
+
 export const LocationParty = () => {
 
   const defaultProps = {
@@ -95,18 +98,8 @@ export const LocationParty = () => {
             </Grid>
 
             <Grid item xs={12} md={6} lg={6}>
-              {/* <Box sx={{ height: '100vh', width: '100%' }}>
-                <GoogleMapReact
-                  bootstrapURLKeys={{ key: GOOGLE_API }}
-                  defaultCenter={defaultProps.center}
-                  defaultZoom={defaultProps.zoom}
-                  options={{
-                    styles: MapStyle,
-                    disableDefaultUI: true,
-                  }}
-                >
-                </GoogleMapReact>
-              </Box> */}
+              <div dangerouslySetInnerHTML={{ __html: iframe }}/>
+
             </Grid>
           </Grid>
         </Container>
