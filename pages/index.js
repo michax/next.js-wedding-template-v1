@@ -7,6 +7,7 @@ import GallerySplide from '../src/components/Gallery/GallerySplide'
 import { Header } from '../src/components/Header/Header'
 import { HistorySection } from '../src/components/HistorySection/HistorySection'
 import { Layout } from '../src/components/Layout/Layout'
+import { LocationChurch } from '../src/components/LocationChurch/LocationChurch'
 import { LocationParty } from '../src/components/locationParty/locationParty'
 
 
@@ -18,6 +19,7 @@ export default function Home() {
         <CountdownTimer />
         <HistorySection />
         <GallerySplide/>
+        <LocationChurch />
         <LocationParty />
         <FormSection/>
       </Box>
