@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import { Box, FormControlLabel, FormGroup, FormLabel, Grid, Paper, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import leftdeco from "../../../public/leftdeco.svg";
 
@@ -19,9 +19,54 @@ import { toast } from "react-toastify";
 // Import toastify css file
 import "react-toastify/dist/ReactToastify.css";
 import { ConfettiSection } from "../ConfettiSection/ConfettiSection";
+import CheckboxField from "./FormsUI/CheckboxField";
 
 // For showing notify
 toast.configure();
+
+// Questions
+// how old are your kids?
+// What food Are you allergic to?
+
+const alcoholOptions = [
+  {
+    label: "Beer",
+    value: "beer"
+  },
+  {
+    label: "Vodka",
+    value: "vodka"
+  },
+  {
+    label: "Whiskey ",
+    value: "whiskey "
+  },
+  {
+    label: "Cocktails",
+    value: "cocktails"
+  },
+  {
+    label: "Alcohol-free",
+    value: "alcoholFree"
+  }
+];
+
+
+const foodOptions = [
+  {
+    label: "Vegetarian",
+    value: "vegetarian"
+  },
+  {
+    label: "Traditional Norwegian Dishes",
+    value: "norwegian"
+  },
+  {
+    label: "Fish",
+    value: "fish"
+  }
+];
+
 
 
 
@@ -36,14 +81,23 @@ export const FormSection = () => {
     lastName: "",
     email: "",
     phone: "",
-    pickedFoodChoice:"",
-    pickedChoiceAlcohol:"",
-    pickedKindMusic:"",
-    isCompanion: false,
+
+    isVodka: false,
+    isGin: false,
+    isWhisky: false,
+    isBeer: false,
+    isNonAlcohol: false,
+
+    isPeanuts: false,
+    isEggs: false,
+    isNuts: false,
+
+    isWithCompanion: false,
     firstNameCompanion: "",
     lastNameCompanion: "",
-    termsOfService: false,
+    isComing: false,
   };
+
 
   const FORM_VALIDATION = Yup.object().shape({
     firstName: Yup.string().required("Required"),
@@ -53,25 +107,13 @@ export const FormSection = () => {
       .integer()
       .typeError("Please enter a valid phone number")
       .required("Required"),
-    termsOfService: Yup.boolean()
-      .oneOf([true], "The terms and conditions must be accepted.")
-      .required("The terms and conditions must be accepted."),
+    isComing: Yup.boolean()
+      .oneOf([true], "Are you coming?")
+      .required("Required"),
   });
 
 
-  useEffect(() => {
-    let timer;
-    if (successMessage) {
-      timer = setTimeout(() => {
-        // onNextFormStep();
-      }, 4000);
-    }
 
-    // Clear the timer before setting a new one
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [successMessage]);
 
   const onSubmit = async (values) => {
     // alert(JSON.stringify(values, null, 2));
@@ -80,15 +122,20 @@ export const FormSection = () => {
       lastName: values.lastName,
       email: values.email,
       phone: values.phone,
-      // pickedFoodChoice:"",
-      // pickedChoiceAlcohol:"",
-      // pickedKindMusic:"",
-      // isCompanion: false,
-      // firstNameCompanion: "",
-      // lastNameCompanion: "",
-      termsOfService: values.termsOfService,
-    };
+      isComing: values.isComing,
+      isVodka: values.isVodka,
+      isGin: values.isGin,
+      isWhisky: values.isWhisky,
+      isBeer: values.isBeer,
+      isNonAlcohol: values.isNonAlcohol,
 
+
+      isPeanuts: values.isPeanuts,
+      isEggs: values.isEggs,
+      isNuts: values.isNuts,
+
+    };
+    console.log("values from form", {values})
     await fetch("/api/user", {
       method: "POST",
       headers: {
@@ -264,20 +311,62 @@ export const FormSection = () => {
 
                               <Grid item xs={12} sx={{ textAlign: "left" }}>
                                 <Checkbox
-                                  name="termsOfService"
-                                  legend="Terms Of Service"
-                                  label="I agree"
+                                  name="isComing"
+                                  legend="Are you coming?"
+                                  label="Confirm"
                                 />
                               </Grid>
 
-                              <Grid item xs={12}>
-                                <Button>confirm your attendance</Button>
+                              <Grid item xs={12} sx={{ textAlign: "left" }}>
+                                <FormLabel component="legend"> What food Are you allergic to? </FormLabel>
+                                <FormGroup>
+                                  <FormControlLabel
+                                    control={<CheckboxField name="isPeanuts" />}
+                                    label="Peanuts"
+                                  />
+                                  <FormControlLabel
+                                    control={<CheckboxField name="isEggs" />}
+                                    label="Eggs"
+                                  />
+                                  <FormControlLabel
+                                    control={<CheckboxField name="isNuts" />}
+                                    label="nuts (e.g., almonds, walnuts, pecans)"
+                                  />
+                                </FormGroup>
                               </Grid>
-                              {/* <Grid item xs={6}>
-                                <Button >
-                                cancel  your attendance
-                                </Button>
-                              </Grid> */}
+
+
+                              <Grid item xs={12} sx={{ textAlign: "left" }}>
+                                <FormLabel component="legend"> What is your most liked alcoholic drink ?</FormLabel>
+                                <FormGroup>
+                                  <FormControlLabel
+                                    control={<CheckboxField name="isVodka" />}
+                                    label="Vodka cocktails"
+                                  />
+                                  <FormControlLabel
+                                    control={<CheckboxField name="isGin" />}
+                                    label="Gin cocktails"
+                                  />
+                                  <FormControlLabel
+                                    control={<CheckboxField name="isWhisky" />}
+                                    label="Whisky cocktails"
+                                  />
+                                  <FormControlLabel
+                                    control={<CheckboxField name="isBeer" />}
+                                    label="Beer"
+                                  />
+                                  <FormControlLabel
+                                    control={<CheckboxField name="isNonAlcohol" />}
+                                    label="non-alcoholic cocktail"
+                                  />
+                                </FormGroup>
+                              </Grid>
+
+
+                              <Grid item xs={12}>
+                                <Button>Submit form</Button>
+                              </Grid>
+
                             </Grid>
                           </Form>
                         </Formik>

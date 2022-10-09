@@ -15,7 +15,18 @@ export default async function handler(req, res) {
         lastName: dataFrontend?.lastName,
         email: dataFrontend?.email,
         phone: dataFrontend?.phone,
-        termsOfService: dataFrontend?.termsOfService,
+        isComing: dataFrontend?.isComing,
+
+        isVodka: dataFrontend?.isVodka,
+        isGin: dataFrontend?.isGin,
+        isWhisky: dataFrontend?.isWhisky,
+        isBeer: dataFrontend?.isBeer,
+        isNonAlcohol: dataFrontend?.isNonAlcohol,
+  
+  
+        isPeanuts: dataFrontend?.isPeanuts,
+        isEggs: dataFrontend?.isEggs,
+        isNuts: dataFrontend?.isNuts,
     };
 
 
