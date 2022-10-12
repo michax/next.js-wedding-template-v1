@@ -3,6 +3,7 @@ import Lottie from "lottie-react";
 import { Container } from "@mui/system";
 import React from "react";
 import hearts from "../../../public/hearts.json";
+import stopwatch from "../../../public/stopwatch.json";
 
 const style = {
   height: 200,

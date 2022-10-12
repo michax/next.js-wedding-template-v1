@@ -2,6 +2,19 @@ import { Box, Button, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
 import useCountdown from "../../hooks/useCountdown";
+import Lottie from "lottie-react";
+
+
+import stopwatch from "../../../public/stopwatch.json";
+
+const style = {
+  height: 200,
+};
+
+const AnimationWatch = () => {
+  return <Lottie animationData={stopwatch} style={style} />;
+};
+
 
 export const CountdownTimer = () => {
   // '10/05/2022 17:47' month/day/year time
@@ -22,19 +35,20 @@ export const CountdownTimer = () => {
           textAlign: "center",
         }}
       >
+      <AnimationWatch/>
         <Typography variant="h1" sx={{ mb: "5rem" }}>
           8 July 2023
         </Typography>
         <Typography sx={{ maxWidth: "35em", margin: "0 auto" }}>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum quidem
         </Typography>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box sx={{ display: "flex", justifyContent: "center", mt: "5rem" }}>
           {TimeBox(countdown.days, "Days")}
-          <Typography variant="h2">:</Typography>
+          <Typography variant="h2" sx={{ mr: "5px", ml: "5px" }}>:</Typography>
           {TimeBox(countdown.hours, "Hours")}
-          <Typography variant="h2">:</Typography>
+          <Typography variant="h2" sx={{ mr: "5px", ml: "5px" }}>:</Typography>
           {TimeBox(countdown.minutes, "Minutes")}
-          <Typography variant="h2">:</Typography>
+          <Typography variant="h2" sx={{ mr: "5px", ml: "5px" }}>:</Typography>
           {TimeBox(countdown.seconds, "Seconds")}
         </Box>
       </Container>
