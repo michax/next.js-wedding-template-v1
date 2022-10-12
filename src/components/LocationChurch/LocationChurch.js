@@ -3,7 +3,8 @@ import { Box, Container, Stack } from "@mui/system";
 import React from "react";
 
 import church from "../../../public/church.svg";
-import map from "../../../public/map.png";
+import wine from "../../../public/wine.svg";
+
 import Image from "next/image";
 
 //https://www.npmjs.com/package/google-map-react
@@ -15,11 +16,11 @@ export const LocationChurch = () => {
   return (
     <Box
       sx={{
-        pb: "5rem",
+        pb: "15rem",
         pt: "5rem",
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" >
         <Typography
           variant="h2"
           sx={{ mb: "5rem", mt: "5rem", textAlign: "center" }}
@@ -28,15 +29,15 @@ export const LocationChurch = () => {
         </Typography>
 
         <Grid container justifyContent="space-between">
-          <Grid item xs={12} md={6} lg={6}>
-            <Typography variant="h3" sx={{ mb: "2.5rem", textAlign: { xs: "center", md: "left" } }}>
+          <Grid item xs={12} md={6} lg={6} >
+            <Typography variant="h3" sx={{ mb: "2.5rem", textAlign: "center" }}>
               Join us for the wedding{" "}
             </Typography>
             <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                alignItems: { xs: "center", md: "flex-start" },
+                alignItems: "center",
                 mb: "2rem",
               }}
             >
@@ -45,38 +46,89 @@ export const LocationChurch = () => {
                   width: "100px",
                 }}
               >
-                <Image src={church} alt="image" />
+                <Image src={church} alt="icon church" />
               </Box>
               <Typography
                 variant="body2"
-                sx={{ maxWidth: "20rem", textAlign: "left", mt: "1.5rem" }}
+                sx={{ maxWidth: "20rem", mt: "1.5rem", textAlign: "center" }}
               >
                 The Wedding will take place in Saint Pro-Cathedral 83
                 Marlborough Street, Oslo at 10.00 a.m
               </Typography>
               <Typography
                 variant="body2"
-                sx={{ maxWidth: "20rem", textAlign: "left", mt: "1.5rem" }}
+                sx={{ maxWidth: "20rem", textAlign: "center", mt: "1.5rem" }}
               >
                 Up to three hours free parking is available in town
               </Typography>
+              <a
+                href="https://goo.gl/maps/3q59iGCWT1WseYMK7"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: '#f2779a',
+                    mt: '1em',
+                    textDecoration: 'underline'
+                  }}
+                >
+                  see the map
+                </Typography>
+              </a>
             </Box>
           </Grid>
 
           <Grid item xs={12} md={6} lg={6}>
-            <a
-              href="https://goo.gl/maps/3q59iGCWT1WseYMK7"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Typography variant="h3" sx={{ mb: "2.5rem", textAlign: "center" }}>
+              Join us for the party
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                mb: "2rem",
+              }}
             >
               <Box
                 sx={{
-
+                  width: "100px",
                 }}
               >
-                <Image src={map} alt="image" />
+                <Image src={wine} alt="icon wine" />
               </Box>
-            </a>
+              <Typography
+                variant="body2"
+                sx={{ maxWidth: "20rem", textAlign: "center", mt: "1.5rem" }}
+              >
+                Dinner and dancing will take place in Castleknock Hotel &
+                Country Club Castleknock, Oslo
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ maxWidth: "20rem", textAlign: "center", mt: "1.5rem" }}
+              >
+                Up to three hours free parking is available in town
+              </Typography>
+              <a
+                href="https://goo.gl/maps/3q59iGCWT1WseYMK7"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: '#f2779a',
+                    mt: '1em',
+                    textDecoration: 'underline'
+                  }}
+                >
+                  see the map
+                </Typography>
+              </a>
+            </Box>
           </Grid>
         </Grid>
       </Container>
