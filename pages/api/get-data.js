@@ -1,4 +1,3 @@
-
 import connectPromise from "../../lib/mongodb";
 
 export default async function handler(req, res) {
@@ -12,21 +11,11 @@ export default async function handler(req, res) {
 
 
 
-    //   const existingAnswers = await collection
-    //     .find({
-    //       isBeer: Number(data.isBeer),
-    //     })
-    //     .toArray();
-
-
-    // Get all answers
-
     const all = await collection.find({}).toArray();
     console.log("all", all);
 
     res.status(200).json({
         allGood: true,
-        existingAnswers,
         all,
     });
 }

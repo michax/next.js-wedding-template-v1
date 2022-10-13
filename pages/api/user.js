@@ -37,7 +37,6 @@ export default async function handler(req, res) {
         return;
     } else {
         res.status(200).json({
-            id: "12231r434533533aaa",
             myBody: dataFrontend,
             message: "we got your values from FORM",
         })

@@ -20,7 +20,6 @@ export default function Home() {
         <HistorySection />
         <GallerySplide/>
         <LocationChurch />
-
         <FormSection/>
       </Box>
     </Layout>
