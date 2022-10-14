@@ -1,58 +1,124 @@
-import React, { useEffect, useState } from 'react'
-import clientPromise from '../lib/mongodb';
-
+import { Box, Container, Grid, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import clientPromise from "../lib/mongodb";
+import CardDataSummary from "../src/components/CardDataSummary/CardDataSummary";
 
 export default function DataMongoDB({ isConnected }) {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    //start loading when data is fetched
+    setLoading(true);
 
-    useEffect(() => {
-        //start loading when data is fetched
-        setLoading(true);
+    async function getData() {
+      const response = await fetch("/api/get-data");
+      const responseData = await response.json();
+      console.log("clickHandler", { responseData });
 
+      const all = responseData.all;
+      console.log("all", { all });
+      setData(all);
 
-        async function getData() {
-            const response = await fetch("/api/get-data",);
-            const responseData = await response.json();
-            console.log("clickHandler", { responseData });
+      //stop loading when data is fetched
+      setLoading(false);
+    }
 
-            const all = responseData.all;
-            console.log("all", { all });
-            setData(all)
+    getData();
+  }, []);
 
-            //stop loading when data is fetched
-            setLoading(false);
-        }
+  console.log(data);
+  // How many people is coming
 
-        getData();
-    }, []);
+  const confirmedPeople = data.filter((person) => {
+    return person.isComing === true;
+  });
 
-    console.log(data)
-    return (
+  console.log("confirmedPeople", confirmedPeople.length);
 
-        <div>
+  const nutsAllergy = data.filter((person) => {
+    return person.isNuts === true;
+  });
 
-            {data.map((person) => {
+  console.log("nutsAllergy", nutsAllergy);
+  return (
+    <div>
+      {/* {data.map((person) => {
                 return (
                     <div key={person.id}>
                         <p>{person.firstName}</p>
                     </div>
                 )
 
-            })}
-        </div>
-    )
+            })} */}
+
+      <Box
+        sx={{
+          // height: "100vh",
+          pt: "5rem",
+          pb: "15rem",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Container maxWidth="xl">
+          <Typography variant="h4" sx={{ mb: 5, textAlign: "center" }}>
+            Your Invitations Summary
+          </Typography>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6} md={3}>
+              <CardDataSummary
+                title="Confirmed"
+                total={confirmedPeople.length}
+                icon={"akar-icons:people-group"}
+                colorIcon="#20A4F3"
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={3}>
+              <CardDataSummary
+                title="Not Coming"
+                total={10}
+                color="info"
+                icon={"emojione-monotone:no-pedestrians"}
+                colorIcon="#011627"
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={3}>
+              <CardDataSummary
+                title="Children"
+                total={5}
+                color="warning"
+                icon={"ic:round-child-care"}
+                colorIcon="#2ec4b6"
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={3}>
+              <CardDataSummary
+                title="Pending"
+                total={20}
+                color="error"
+                icon={"ic:baseline-pending-actions"}
+                colorIcon="#FF3366"
+              />
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+    </div>
+  );
 }
 
 export async function getServerSideProps() {
-    // Connect with MongoDB
-    const client = await clientPromise;
-    console.log("[debug] IndexPage. Connected to mongo db");
-    const isConnected = await client.isConnected();
+  // Connect with MongoDB
+  const client = await clientPromise;
+  console.log("[debug] IndexPage. Connected to mongo db");
+  const isConnected = await client.isConnected();
 
-    return {
-        props: { isConnected },
-    };
+  return {
+    props: { isConnected },
+  };
 }
-
