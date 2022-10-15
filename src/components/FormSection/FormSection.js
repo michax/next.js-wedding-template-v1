@@ -5,11 +5,11 @@ import { Box, FormControlLabel, FormGroup, FormLabel, Grid, Paper, Typography } 
 import { Container } from "@mui/system";
 import leftdeco from "../../../public/leftdeco.svg";
 
-import { Formik, Field, Form } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import Textfield from "./FormsUI/Textfield";
-import Select from "./FormsUI/Select";
+
 
 import Checkbox from "./FormsUI/Checkbox";
 import Button from "./FormsUI/Button";
@@ -28,44 +28,7 @@ toast.configure();
 // how old are your kids?
 // What food Are you allergic to?
 
-const alcoholOptions = [
-  {
-    label: "Beer",
-    value: "beer"
-  },
-  {
-    label: "Vodka",
-    value: "vodka"
-  },
-  {
-    label: "Whiskey ",
-    value: "whiskey "
-  },
-  {
-    label: "Cocktails",
-    value: "cocktails"
-  },
-  {
-    label: "Alcohol-free",
-    value: "alcoholFree"
-  }
-];
 
-
-const foodOptions = [
-  {
-    label: "Vegetarian",
-    value: "vegetarian"
-  },
-  {
-    label: "Traditional Norwegian Dishes",
-    value: "norwegian"
-  },
-  {
-    label: "Fish",
-    value: "fish"
-  }
-];
 
 
 
@@ -96,6 +59,14 @@ export const FormSection = () => {
     firstNameCompanion: "",
     lastNameCompanion: "",
     isComing: false,
+
+    isWithCompanion: false,
+    firstNameCompanion: '',
+    lastNameCompanion: '',
+
+
+
+
   };
 
 
@@ -108,8 +79,20 @@ export const FormSection = () => {
       .typeError("Please enter a valid phone number")
       .required("Required"),
     isComing: Yup.boolean()
-      .oneOf([true], "Are you coming?")
+      .oneOf([true], "Will you attend to celebrate special day us?")
       .required("Required"),
+
+    isWithCompanion: Yup.boolean(),
+    firstNameCompanion: Yup.string().when("isWithCompanion", {
+      is: (value) => value === true,
+      then: Yup.string().required("Må fylles ut"),
+      otherwise: Yup.string().nullable(),
+    }),
+    lastNameCompanion: Yup.string().when("isWithCompanion", {
+      is: (value) => value === true,
+      then: Yup.string().required("Må fylles ut"),
+      otherwise: Yup.string().nullable(),
+    }),
   });
 
 
@@ -122,7 +105,9 @@ export const FormSection = () => {
       lastName: values.lastName,
       email: values.email,
       phone: values.phone,
+
       isComing: values.isComing,
+
       isVodka: values.isVodka,
       isGin: values.isGin,
       isWhisky: values.isWhisky,
@@ -133,6 +118,10 @@ export const FormSection = () => {
       isPeanuts: values.isPeanuts,
       isEggs: values.isEggs,
       isNuts: values.isNuts,
+
+      isWithCompanion: values.isWithCompanion,
+      firstNameCompanion: values.firstNameCompanion,
+      lastNameCompanion: values.lastNameCompanion,
 
     };
     console.log("values from form", { values })
@@ -260,48 +249,86 @@ export const FormSection = () => {
                           }}
                         >
                           {/* FORM */}
-                          <Form>
-                            <Grid container spacing={2}>
-                              <Grid item xs={12}>
-                                <Typography variant="h4" sx={{ mb: "1rem" }}>
-                                  Wedding Form
-                                </Typography>
-                              </Grid>
-                              <Grid item xs={6}>
-                                <Textfield
-                                  name="firstName"
-                                  label="First Name"
-                                />
-                              </Grid>
-                              <Grid item xs={6}>
-                                <Textfield name="lastName" label="Last Name" />
-                              </Grid>
-                              <Grid item xs={12}>
-                                <Textfield name="email" label="Email" />
-                              </Grid>
-                              <Grid item xs={12}>
-                                <Textfield name="phone" label="Phone" />
-                              </Grid>
-                              <Grid item xs={12}>
-                                {/* <Select
-                                  name="country"
-                                  label="Country"
-                                // options={countries}
-                                /> */}
-                              </Grid>
+                          {({ values, errors, touched }) => (
+                            <Form>
+                              <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                  <Typography variant="h4" sx={{ mb: "1rem" }}>
+                                    Wedding Form
+                                  </Typography>
+                                </Grid>
+                                <Grid item xs={6}>
+                                  <Textfield
+                                    name="firstName"
+                                    label="First Name"
+                                  />
+                                </Grid>
+                                <Grid item xs={6}>
+                                  <Textfield name="lastName" label="Last Name" />
+                                </Grid>
+                                <Grid item xs={12}>
+                                  <Textfield name="email" label="Email" />
+                                </Grid>
+                                <Grid item xs={12}>
+                                  <Textfield name="phone" label="Phone" />
+                                </Grid>
+                                <>
+                                  <Box sx={{ mb: "24px", ml: "16px", mt: "30px" }}>
+                                    <Checkbox name="isWithCompanion" label="Will you come with an accompanying person?" />
+                                  </Box>
 
-                              <Grid item xs={12}>
-                                <Typography
-                                  sx={{
-                                    textAlign: "left",
-                                    mt: "1rem",
-                                    mb: "1rem",
-                                  }}
-                                >
-                                  Additional information
-                                </Typography>
-                              </Grid>
-                              {/* <Grid item xs={12}>
+                                  <Box>
+                                    {values.isWithCompanion === true ? (
+                                      <>
+                                        <Typography
+                                          variant="body1"
+                                          component="p"
+                                          sx={{
+                                            textTransform: "none",
+                                            fontWeight: "600",
+                                            mb: "24px",
+                                          }}
+                                        >
+                                          SUPER! 
+                                        </Typography>
+                                        <Box
+                                          sx={{
+                                            display: "flex",
+                                            flexDirection: "column"
+                                          }}
+                                        >
+                                          <Textfield
+                                            name="firstNameCompanion"
+                                            label="First Name"
+                                          
+                                          />
+
+                                          <Textfield
+                                            name="lastNameCompanion"
+                                            label="Last Name"
+                              
+                                          />
+                                        </Box>
+                                      
+                                      </>
+                                    ) : (
+                                      ""
+                                    )}
+                                  </Box>
+                                </>
+
+                                <Grid item xs={12}>
+                                  <Typography
+                                    sx={{
+                                      textAlign: "left",
+                                      mt: "1rem",
+                                      mb: "1rem",
+                                    }}
+                                  >
+                                    Additional information
+                                  </Typography>
+                                </Grid>
+                                {/* <Grid item xs={12}>
                                 <Textfield
                                   name="message"
                                   label="Message"
@@ -310,66 +337,68 @@ export const FormSection = () => {
                                 />
                               </Grid> */}
 
-                              <Grid item xs={12} sx={{ textAlign: "left" }}>
-                                <Checkbox
-                                  name="isComing"
-                                  legend="Are you coming?"
-                                  label="Confirm"
-                                />
+                                <Grid item xs={12} sx={{ textAlign: "left" }}>
+                                  <Checkbox
+                                    name="isComing"
+                                    legend="Are you coming?"
+                                    label="Confirm"
+                                  />
+                                </Grid>
+
+                                <Grid item xs={12} sx={{ textAlign: "left" }}>
+                                  <FormLabel component="legend"> What food Are you allergic to? </FormLabel>
+                                  <FormGroup>
+                                    <FormControlLabel
+                                      control={<CheckboxField name="isPeanuts" />}
+                                      label="Peanuts"
+                                    />
+                                    <FormControlLabel
+                                      control={<CheckboxField name="isEggs" />}
+                                      label="Eggs"
+                                    />
+                                    <FormControlLabel
+                                      control={<CheckboxField name="isNuts" />}
+                                      label="nuts (e.g., almonds, walnuts, pecans)"
+                                    />
+                                  </FormGroup>
+                                </Grid>
+
+
+                                <Grid item xs={12} sx={{ textAlign: "left" }}>
+                                  <FormLabel component="legend"> What is your most liked alcoholic drink ?</FormLabel>
+                                  <FormGroup>
+                                    <FormControlLabel
+                                      control={<CheckboxField name="isVodka" />}
+                                      label="Vodka cocktails"
+                                    />
+                                    <FormControlLabel
+                                      control={<CheckboxField name="isGin" />}
+                                      label="Gin cocktails"
+                                    />
+                                    <FormControlLabel
+                                      control={<CheckboxField name="isWhisky" />}
+                                      label="Whisky cocktails"
+                                    />
+                                    <FormControlLabel
+                                      control={<CheckboxField name="isBeer" />}
+                                      label="Beer"
+                                    />
+                                    <FormControlLabel
+                                      control={<CheckboxField name="isNonAlcohol" />}
+                                      label="non-alcoholic cocktail"
+                                    />
+                                  </FormGroup>
+                                </Grid>
+
+
+                                <Grid item xs={12}>
+                                  <Button>Submit form</Button>
+                                </Grid>
+
                               </Grid>
+                            </Form>
+                          )}
 
-                              <Grid item xs={12} sx={{ textAlign: "left" }}>
-                                <FormLabel component="legend"> What food Are you allergic to? </FormLabel>
-                                <FormGroup>
-                                  <FormControlLabel
-                                    control={<CheckboxField name="isPeanuts" />}
-                                    label="Peanuts"
-                                  />
-                                  <FormControlLabel
-                                    control={<CheckboxField name="isEggs" />}
-                                    label="Eggs"
-                                  />
-                                  <FormControlLabel
-                                    control={<CheckboxField name="isNuts" />}
-                                    label="nuts (e.g., almonds, walnuts, pecans)"
-                                  />
-                                </FormGroup>
-                              </Grid>
-
-
-                              <Grid item xs={12} sx={{ textAlign: "left" }}>
-                                <FormLabel component="legend"> What is your most liked alcoholic drink ?</FormLabel>
-                                <FormGroup>
-                                  <FormControlLabel
-                                    control={<CheckboxField name="isVodka" />}
-                                    label="Vodka cocktails"
-                                  />
-                                  <FormControlLabel
-                                    control={<CheckboxField name="isGin" />}
-                                    label="Gin cocktails"
-                                  />
-                                  <FormControlLabel
-                                    control={<CheckboxField name="isWhisky" />}
-                                    label="Whisky cocktails"
-                                  />
-                                  <FormControlLabel
-                                    control={<CheckboxField name="isBeer" />}
-                                    label="Beer"
-                                  />
-                                  <FormControlLabel
-                                    control={<CheckboxField name="isNonAlcohol" />}
-                                    label="non-alcoholic cocktail"
-                                  />
-                                </FormGroup>
-                              </Grid>
-
-
-                              <Grid item xs={12}>
-                                <Button>Submit form</Button>
-                              </Grid>
-
-                            </Grid>
-                          </Form>
                         </Formik>
                       </Container>
                     </Grid>

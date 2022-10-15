@@ -27,6 +27,10 @@ export default async function handler(req, res) {
         isPeanuts: dataFrontend?.isPeanuts,
         isEggs: dataFrontend?.isEggs,
         isNuts: dataFrontend?.isNuts,
+
+        isCompany: dataFrontend?.isCompany,
+        idCompany: dataFrontend?.idCompany,
+        nameCompany: dataFrontend?.nameCompany,
     };
 
 
