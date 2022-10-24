@@ -15,6 +15,11 @@ export default async function handler(req, res) {
         lastName: dataFrontend?.lastName,
         email: dataFrontend?.email,
         phone: dataFrontend?.phone,
+
+        isWithCompanion: dataFrontend?.isWithCompanion,
+        firstNameCompanion: dataFrontend?.firstNameCompanion,
+        lastNameCompanion: dataFrontend?.lastNameCompanion,
+
         isComing: dataFrontend?.isComing,
 
         isVodka: dataFrontend?.isVodka,
@@ -22,15 +27,20 @@ export default async function handler(req, res) {
         isWhisky: dataFrontend?.isWhisky,
         isBeer: dataFrontend?.isBeer,
         isNonAlcohol: dataFrontend?.isNonAlcohol,
-  
-  
+
+
         isPeanuts: dataFrontend?.isPeanuts,
         isEggs: dataFrontend?.isEggs,
         isNuts: dataFrontend?.isNuts,
 
-        isCompany: dataFrontend?.isCompany,
-        idCompany: dataFrontend?.idCompany,
-        nameCompany: dataFrontend?.nameCompany,
+        isWithChildren: dataFrontend?.isWithChildren,
+        isOneChild: dataFrontend?.isOneChild,
+        isTwoChildren: dataFrontend?.isTwoChildren,
+        isThreeChildren: dataFrontend?.isThreeChildren,
+        isFourChildren: dataFrontend?.isFourChildren,
+
+
+
     };
 
 
