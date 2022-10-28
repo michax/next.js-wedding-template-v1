@@ -30,6 +30,7 @@ import { ConfettiSection } from "../ConfettiSection/ConfettiSection";
 import CheckboxField from "./FormsUI/CheckboxField";
 import ConfirmAttendanceRadioFields from "../ConfirmAttendanceRadioFields/ConfirmAttendanceRadioFields";
 import KidsRadioFields from "../KidsRadioFields/KidsRadioFields";
+import TeenagersRadioFields from "../TeenagersRadioFields/TeenagersRadioFields";
 
 // For showing notify
 toast.configure();
@@ -60,6 +61,7 @@ export const FormSection = () => {
 
     isComing: "Yes",
     amountKids: "1",
+    amountTeenagers: "1",
   };
 
   const FORM_VALIDATION = Yup.object().shape({
@@ -94,6 +96,7 @@ export const FormSection = () => {
 
       isComing: values.isComing,
       amountKids: values.amountKids,
+      amountTeenagers: values.amountTeenagers,
 
       isVodka: values.isVodka,
       isGin: values.isGin,
@@ -373,6 +376,8 @@ export const FormSection = () => {
                                             sx={{
                                               display: "flex",
                                               flexDirection: "column",
+                                              mb: "1.5rem",
+                                              mt: "1.5rem",
                                             }}
                                           >
                                             <FormControl>
@@ -387,6 +392,27 @@ export const FormSection = () => {
                                                 of 3 do you have?
                                               </FormLabel>
                                               <KidsRadioFields name="amountKids" />
+                                            </FormControl>
+                                          </Box>
+                                          <Box
+                                            sx={{
+                                              display: "flex",
+                                              flexDirection: "column",
+                                              mb: "1.5rem",
+                                              mt: "1.5rem",
+                                            }}
+                                          >
+                                            <FormControl>
+                                              <FormLabel
+                                                id="demo-radio-buttons-group-label"
+                                                sx={{
+                                                  fontWeight: "bold",
+                                                  mb: ".5rem",
+                                                }}
+                                              >
+                                                How many children above 3 year old do you have?
+                                              </FormLabel>
+                                              <TeenagersRadioFields name="amountTeenagers" />
                                             </FormControl>
                                           </Box>
                                         </>
