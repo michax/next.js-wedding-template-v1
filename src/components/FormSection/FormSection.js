@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 import {
   Box,
+  FormControl,
   FormControlLabel,
   FormGroup,
   FormLabel,
@@ -27,6 +28,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ConfettiSection } from "../ConfettiSection/ConfettiSection";
 import CheckboxField from "./FormsUI/CheckboxField";
+import RadioGroupField from "../RadioGroupField/RadioGroupField";
 
 // For showing notify
 toast.configure();
@@ -54,7 +56,8 @@ export const FormSection = () => {
     isWithCompanion: false,
     firstNameCompanion: "",
     lastNameCompanion: "",
-    isComing: true,
+
+    isComing: "Yes",
 
     isWithCompanion: false,
     firstNameCompanion: "",
@@ -69,9 +72,6 @@ export const FormSection = () => {
       .integer()
       .typeError("Please enter a valid phone number")
       .required("Required"),
-    // isComing: Yup.boolean()
-    //   .oneOf([true], "Will you attend to celebrate our special day with us??")
-    //   .required("Required"),
 
     isWithCompanion: Yup.boolean(),
     firstNameCompanion: Yup.string().when("isWithCompanion", {
@@ -247,7 +247,7 @@ export const FormSection = () => {
                             {({ values, errors, touched }) => (
                               <Form>
                                 <Grid container spacing={2}>
-                                  <Grid item xs={12} sx={{  mb:"3rem" }}>
+                                  <Grid item xs={12} sx={{ mb: "3rem" }}>
                                     <Typography
                                       variant="h4"
                                       sx={{ mb: "1rem" }}
@@ -256,12 +256,15 @@ export const FormSection = () => {
                                     </Typography>
                                   </Grid>
 
-
-                                  <Grid item xs={12} sx={{ textAlign: "left", mb:"1rem" }}>
+                                  <Grid
+                                    item
+                                    xs={12}
+                                    sx={{ textAlign: "left", mb: "1rem" }}
+                                  >
                                     <Typography
                                       sx={{
                                         textAlign: "left",
-                                        mb: ".3rem",
+                                        mb: "1rem",
                                         fontWeight: "bold",
                                         color: "#e74c3c",
                                       }}
@@ -269,13 +272,21 @@ export const FormSection = () => {
                                       Wedding day will be 8 July 2023
                                     </Typography>
 
-                                    <Checkbox
-                                      name="isComing"
-                                      legend="Will you attend to celebrate our special day with us?"
-                                      label={values.isComing ? "Yes, I will " : "Unfortunately, I will not"}
-                                      defaultChecked
-                                    />
+                                    <FormControl>
+                                      <FormLabel
+                                        id="demo-radio-buttons-group-label"
+                                        sx={{
+                                          fontWeight: "bold",
+                                          mb: ".5rem",
+                                        }}
+                                      >
+                                        Will you attend to celebrate our special
+                                        day with us?
+                                      </FormLabel>
+                                      <RadioGroupField name="isComing" />
+                                    </FormControl>
                                   </Grid>
+
                                   <Grid item xs={6}>
                                     <Textfield
                                       name="firstName"
@@ -320,7 +331,8 @@ export const FormSection = () => {
                                                 mb: "24px",
                                               }}
                                             >
-                                              Great! 😊 Please write the name and surname of this person
+                                              Great! 😊 Please write the name
+                                              and surname of this person
                                             </Typography>
                                           </Grid>
                                           <Grid item xs={6}>
@@ -345,7 +357,7 @@ export const FormSection = () => {
                                     <Box sx={{ mb: "24px", ml: "16px" }}>
                                       <Checkbox
                                         name="isWithChildren"
-                                        label="Will you join the wedding with your lovely children?"
+                                        label="Will you join with your lovely children?"
                                       />
                                     </Box>
                                     <Box>
@@ -360,7 +372,11 @@ export const FormSection = () => {
                                               mb: "24px",
                                             }}
                                           >
-                                            We plan to hire a person who will take care of the children 👶 while we will be dancing, we need to know :                                          </Typography>
+                                            We plan to hire a person who will
+                                            take care of the children 👶 while
+                                            we will be dancing, we need to know
+                                            :{" "}
+                                          </Typography>
                                           <Box
                                             sx={{
                                               display: "flex",
@@ -368,7 +384,6 @@ export const FormSection = () => {
                                             }}
                                           >
                                             <FormLabel component="legend">
-
                                               How many children under the age of
                                               3 do you have?
                                             </FormLabel>
@@ -409,6 +424,7 @@ export const FormSection = () => {
                                   <Grid item xs={12}>
                                     <Typography
                                       sx={{
+                                        fontWeight: "bold",
                                         textAlign: "left",
                                         mt: "1rem",
                                         mb: "1rem",
@@ -417,19 +433,14 @@ export const FormSection = () => {
                                       Additional information
                                     </Typography>
                                   </Grid>
-
-                                  {/* <Grid item xs={12}>
-                                <Textfield
-                                  name="message"
-                                  label="Message"
-                                  multiline={true}
-                                  rows={4}
-                                />
-                              </Grid> */}
-
-
                                   <Grid item xs={12} sx={{ textAlign: "left" }}>
-                                    <FormLabel component="legend">
+                                    <FormLabel
+                                      component="legend"
+                                      sx={{
+                                        fontWeight: "bold",
+                                        mb: ".5rem",
+                                      }}
+                                    >
                                       {" "}
                                       What food Are you allergic to?{" "}
                                     </FormLabel>
@@ -455,8 +466,18 @@ export const FormSection = () => {
                                     </FormGroup>
                                   </Grid>
 
-                                  <Grid item xs={12} sx={{ textAlign: "left" }}>
-                                    <FormLabel component="legend">
+                                  <Grid
+                                    item
+                                    xs={12}
+                                    sx={{ textAlign: "left", mt: "2rem" }}
+                                  >
+                                    <FormLabel
+                                      component="legend"
+                                      sx={{
+                                        fontWeight: "bold",
+                                        mb: ".5rem",
+                                      }}
+                                    >
                                       {" "}
                                       What is your most liked alcoholic drink ?
                                     </FormLabel>
