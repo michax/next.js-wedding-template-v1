@@ -54,7 +54,7 @@ export const FormSection = () => {
     isWithCompanion: false,
     firstNameCompanion: "",
     lastNameCompanion: "",
-    isComing: false,
+    isComing: true,
 
     isWithCompanion: false,
     firstNameCompanion: "",
@@ -69,9 +69,9 @@ export const FormSection = () => {
       .integer()
       .typeError("Please enter a valid phone number")
       .required("Required"),
-    isComing: Yup.boolean()
-      .oneOf([true], "Will you attend to celebrate special day us?")
-      .required("Required"),
+    // isComing: Yup.boolean()
+    //   .oneOf([true], "Will you attend to celebrate our special day with us??")
+    //   .required("Required"),
 
     isWithCompanion: Yup.boolean(),
     firstNameCompanion: Yup.string().when("isWithCompanion", {
@@ -247,13 +247,34 @@ export const FormSection = () => {
                             {({ values, errors, touched }) => (
                               <Form>
                                 <Grid container spacing={2}>
-                                  <Grid item xs={12}>
+                                  <Grid item xs={12} sx={{  mb:"3rem" }}>
                                     <Typography
                                       variant="h4"
                                       sx={{ mb: "1rem" }}
                                     >
                                       Wedding Form
                                     </Typography>
+                                  </Grid>
+
+
+                                  <Grid item xs={12} sx={{ textAlign: "left", mb:"1rem" }}>
+                                    <Typography
+                                      sx={{
+                                        textAlign: "left",
+                                        mb: ".3rem",
+                                        fontWeight: "bold",
+                                        color: "#e74c3c",
+                                      }}
+                                    >
+                                      Wedding day will be 8 July 2023
+                                    </Typography>
+
+                                    <Checkbox
+                                      name="isComing"
+                                      legend="Will you attend to celebrate our special day with us?"
+                                      label={values.isComing ? "Yes, I will " : "Unfortunately, I will not"}
+                                      defaultChecked
+                                    />
                                   </Grid>
                                   <Grid item xs={6}>
                                     <Textfield
@@ -299,7 +320,7 @@ export const FormSection = () => {
                                                 mb: "24px",
                                               }}
                                             >
-                                              SUPER!
+                                              Great! 😊 Please write the name and surname of this person
                                             </Typography>
                                           </Grid>
                                           <Grid item xs={6}>
@@ -339,11 +360,7 @@ export const FormSection = () => {
                                               mb: "24px",
                                             }}
                                           >
-                                            We plan to hire a person who will
-                                            take care of the children while we
-                                            are dancing, so the following
-                                            information is important to us
-                                          </Typography>
+                                            We plan to hire a person who will take care of the children 👶 while we will be dancing, we need to know :                                          </Typography>
                                           <Box
                                             sx={{
                                               display: "flex",
@@ -351,9 +368,9 @@ export const FormSection = () => {
                                             }}
                                           >
                                             <FormLabel component="legend">
-                                              {" "}
+
                                               How many children under the age of
-                                              3 do you have?{" "}
+                                              3 do you have?
                                             </FormLabel>
                                             <FormGroup>
                                               <FormControlLabel
@@ -400,6 +417,7 @@ export const FormSection = () => {
                                       Additional information
                                     </Typography>
                                   </Grid>
+
                                   {/* <Grid item xs={12}>
                                 <Textfield
                                   name="message"
@@ -409,13 +427,6 @@ export const FormSection = () => {
                                 />
                               </Grid> */}
 
-                                  <Grid item xs={12} sx={{ textAlign: "left" }}>
-                                    <Checkbox
-                                      name="isComing"
-                                      legend="Are you coming?"
-                                      label="Confirm"
-                                    />
-                                  </Grid>
 
                                   <Grid item xs={12} sx={{ textAlign: "left" }}>
                                     <FormLabel component="legend">
