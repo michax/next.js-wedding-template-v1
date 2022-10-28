@@ -9,8 +9,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { Box, Typography } from "@mui/material";
 import { useField } from "formik";
 
-
-const RadioGroupField = ({ name}) => {
+const KidsRadioFields = ({ name }) => {
   // useField need to get name
   const [field, meta] = useField(name);
 
@@ -23,18 +22,18 @@ const RadioGroupField = ({ name}) => {
     configTextfield.helperText = meta.error;
   }
 
-  
-
   return (
     <Box marginLeft="10px" marginTop="10px">
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="Yes"
+        defaultValue="1"
         name="radio-buttons-group"
         {...configTextfield}
       >
-        <FormControlLabel value="Yes" control={<Radio />} label="Yes, I will" />
-        <FormControlLabel value="No" control={<Radio />} label="Unfortunately, I will not" />
+        <FormControlLabel value="1" control={<Radio />} label="1 child" />
+        <FormControlLabel value="2" control={<Radio />} label="2 children" />
+        <FormControlLabel value="3" control={<Radio />} label="3 children" />
+        <FormControlLabel value="4" control={<Radio />} label="4 children" />
       </RadioGroup>
       <Typography
         sx={{
@@ -47,4 +46,4 @@ const RadioGroupField = ({ name}) => {
   );
 };
 
-export default RadioGroupField;
+export default KidsRadioFields;

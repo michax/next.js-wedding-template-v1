@@ -28,7 +28,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ConfettiSection } from "../ConfettiSection/ConfettiSection";
 import CheckboxField from "./FormsUI/CheckboxField";
-import RadioGroupField from "../RadioGroupField/RadioGroupField";
+import ConfirmAttendanceRadioFields from "../ConfirmAttendanceRadioFields/ConfirmAttendanceRadioFields";
+import KidsRadioFields from "../KidsRadioFields/KidsRadioFields";
 
 // For showing notify
 toast.configure();
@@ -58,10 +59,7 @@ export const FormSection = () => {
     lastNameCompanion: "",
 
     isComing: "Yes",
-
-    isWithCompanion: false,
-    firstNameCompanion: "",
-    lastNameCompanion: "",
+    amountKids: "1",
   };
 
   const FORM_VALIDATION = Yup.object().shape({
@@ -95,6 +93,7 @@ export const FormSection = () => {
       phone: values.phone,
 
       isComing: values.isComing,
+      amountKids: values.amountKids,
 
       isVodka: values.isVodka,
       isGin: values.isGin,
@@ -109,13 +108,6 @@ export const FormSection = () => {
       isWithCompanion: values.isWithCompanion,
       firstNameCompanion: values.firstNameCompanion,
       lastNameCompanion: values.lastNameCompanion,
-
-      //Children
-      isWithChildren: values.isWithChildren,
-      isOneChild: values.isOneChild,
-      isTwoChildren: values.isTwoChildren,
-      isThreeChildren: values.isThreeChildren,
-      isFourChildren: values.isFourChildren,
     };
     console.log("values from form", { values });
     await fetch("/api/user", {
@@ -283,7 +275,7 @@ export const FormSection = () => {
                                         Will you attend to celebrate our special
                                         day with us?
                                       </FormLabel>
-                                      <RadioGroupField name="isComing" />
+                                      <ConfirmAttendanceRadioFields name="isComing" />
                                     </FormControl>
                                   </Grid>
 
@@ -383,36 +375,19 @@ export const FormSection = () => {
                                               flexDirection: "column",
                                             }}
                                           >
-                                            <FormLabel component="legend">
-                                              How many children under the age of
-                                              3 do you have?
-                                            </FormLabel>
-                                            <FormGroup>
-                                              <FormControlLabel
-                                                control={
-                                                  <CheckboxField name="isOneChild" />
-                                                }
-                                                label="1 child"
-                                              />
-                                              <FormControlLabel
-                                                control={
-                                                  <CheckboxField name="isTwoChildren" />
-                                                }
-                                                label="2 children"
-                                              />
-                                              <FormControlLabel
-                                                control={
-                                                  <CheckboxField name="isThreeChildren" />
-                                                }
-                                                label="3 children"
-                                              />
-                                              <FormControlLabel
-                                                control={
-                                                  <CheckboxField name="isFourChildren" />
-                                                }
-                                                label="4 children"
-                                              />
-                                            </FormGroup>
+                                            <FormControl>
+                                              <FormLabel
+                                                id="demo-radio-buttons-group-label"
+                                                sx={{
+                                                  fontWeight: "bold",
+                                                  mb: ".5rem",
+                                                }}
+                                              >
+                                                How many children under the age
+                                                of 3 do you have?
+                                              </FormLabel>
+                                              <KidsRadioFields name="amountKids" />
+                                            </FormControl>
                                           </Box>
                                         </>
                                       ) : (
