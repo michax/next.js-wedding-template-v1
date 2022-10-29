@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import clientPromise from "../lib/mongodb";
 import CardDataSummary from "../src/components/CardDataSummary/CardDataSummary";
 
+const amountPeople = 100;
+
 export default function Summary({ isConnected }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -28,13 +30,24 @@ export default function Summary({ isConnected }) {
   }, []);
 
   console.log(data);
-  // How many people is coming
 
+  // How many people is coming
   const confirmedPeople = data.filter((person) => {
-    return person.isComing === true;
+    return person.isComing === "Yes";
   });
 
   console.log("confirmedPeople", confirmedPeople.length);
+
+  // How many people is not coming
+  const amountNotComingPeople = data.filter((person) => {
+    return person.isComing === "No";
+  });
+
+  // waiting for answer
+  const amountPendingPeople =
+    amountPeople -
+    Number(confirmedPeople.length) -
+    Number(amountNotComingPeople.length);
 
   const nutsAllergy = data.filter((person) => {
     return person.isNuts === true;
@@ -79,7 +92,7 @@ export default function Summary({ isConnected }) {
             <Grid item xs={12} sm={6} md={3}>
               <CardDataSummary
                 title="Not Coming"
-                total={10}
+                total={amountNotComingPeople.length}
                 color="info"
                 icon={"emojione-monotone:no-pedestrians"}
                 colorIcon="#011627"
@@ -98,8 +111,8 @@ export default function Summary({ isConnected }) {
 
             <Grid item xs={12} sm={6} md={3}>
               <CardDataSummary
-                title="Pending"
-                total={20}
+                title={"Pending"}
+                total={amountPendingPeople}
                 color="error"
                 icon={"ic:baseline-pending-actions"}
                 colorIcon="#FF3366"

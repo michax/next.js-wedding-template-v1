@@ -1,36 +1,19 @@
 import React, { useState } from "react";
-import Image from "next/image";
 
-import {
-  Box,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  FormLabel,
-  Grid,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { Container } from "@mui/system";
-import leftdeco from "../../../public/leftdeco.svg";
 
-import { Formik, Form } from "formik";
 import * as Yup from "yup";
-
-import Textfield from "./FormsUI/Textfield";
-
-import Checkbox from "./FormsUI/Checkbox";
-import Button from "./FormsUI/Button";
 
 // Importing toastify module
 import { toast } from "react-toastify";
 // Import toastify css file
 import "react-toastify/dist/ReactToastify.css";
 import { ConfettiSection } from "../ConfettiSection/ConfettiSection";
-import CheckboxField from "./FormsUI/CheckboxField";
-import ConfirmAttendanceRadioFields from "../ConfirmAttendanceRadioFields/ConfirmAttendanceRadioFields";
-import KidsRadioFields from "../KidsRadioFields/KidsRadioFields";
-import TeenagersRadioFields from "../TeenagersRadioFields/TeenagersRadioFields";
+import { HeaderForm } from "../HeaderForm/HeaderForm";
+import { ImageDecoration } from "../ImageDecoration/ImageDecoration";
+import { ConfirmedMessage } from "../ConfirmedMessage/ConfirmedMessage";
+import { MainFormContainer } from "../MainFormContainer/MainFormContainer";
 
 // For showing notify
 toast.configure();
@@ -167,9 +150,8 @@ export const FormSection = () => {
       }}
     >
       <ConfettiSection isExploding={isExploding} />
-
       {successMessage ? (
-        <ConfirmSection />
+        <ConfirmedMessage />
       ) : (
         <Container
           maxWidth="lg"
@@ -177,28 +159,8 @@ export const FormSection = () => {
             textAlign: "center",
           }}
         >
-          <Typography variant="h2" sx={{ mb: "5rem" }}>
-            Confirm your attendance
-          </Typography>
-          <Typography sx={{ maxWidth: "35em", margin: "0 auto" }}>
-            Join us as we celebrate our wedding, and use form to confirm your
-            attendance.
-          </Typography>
-          <Typography sx={{ maxWidth: "35em", margin: "0 auto" }}>
-            Please confirm your attendance no later than 24th March 2023
-          </Typography>
-          <Box
-            sx={{
-              position: "absolute",
-              top: { xs: "5%", sm: "0%", md: "-10%" },
-              left: { xs: "40%", sm: "10%", md: "40%" },
-              transform: "translate(-50%,-50%)",
-              height: { xs: "auto", sm: "200px", md: "200px" },
-              width: { xs: "450px", sm: "500px", md: "650px" },
-            }}
-          >
-            <Image src={leftdeco} alt="image" />
-          </Box>
+          <HeaderForm />
+          <ImageDecoration />
           <Box
             sx={{
               mt: "4rem",
@@ -211,323 +173,15 @@ export const FormSection = () => {
                 sx={{ justifyContent: "space-between" }}
               >
                 <Grid item xs={0} sm={1} md={2}>
-                  {/* svg */}
+                  {/* svg  svg in the future*/}
                 </Grid>
-                <Grid item xs={12} sm={10} md={8}>
-                  {/* form */}
-                  <Paper
-                    sx={{
-                      pt: "4rem",
-                      pb: "4rem",
-                      pl: { xs: "0", md: "2rem" },
-                      pr: { xs: "0", md: "2rem" },
-                    }}
-                  >
-                    <Grid container>
-                      <Grid item xs={12}>
-                        <Container maxWidth="md">
-                          <Formik
-                            initialValues={{
-                              ...INITIAL_FORM_STATE,
-                            }}
-                            validationSchema={FORM_VALIDATION}
-                            onSubmit={async (values, actions) => {
-                              // console.log("Values:", values);
-                              actions.setSubmitting(true);
-                              await onSubmit(values);
-                              actions.setSubmitting(false);
-                            }}
-                          >
-                            {/* FORM */}
-                            {({ values, errors, touched }) => (
-                              <Form>
-                                <Grid container spacing={2}>
-                                  <Grid item xs={12} sx={{ mb: "3rem" }}>
-                                    <Typography
-                                      variant="h4"
-                                      sx={{ mb: "1rem" }}
-                                    >
-                                      Wedding Form
-                                    </Typography>
-                                  </Grid>
-
-                                  <Grid
-                                    item
-                                    xs={12}
-                                    sx={{ textAlign: "left", mb: "1rem" }}
-                                  >
-                                    <Typography
-                                      sx={{
-                                        textAlign: "left",
-                                        mb: "1rem",
-                                        fontWeight: "bold",
-                                        color: "#e74c3c",
-                                      }}
-                                    >
-                                      Wedding day will be 8 July 2023
-                                    </Typography>
-
-                                    <FormControl>
-                                      <FormLabel
-                                        id="demo-radio-buttons-group-label"
-                                        sx={{
-                                          fontWeight: "bold",
-                                          mb: ".5rem",
-                                        }}
-                                      >
-                                        Will you attend to celebrate our special
-                                        day with us?
-                                      </FormLabel>
-                                      <ConfirmAttendanceRadioFields name="isComing" />
-                                    </FormControl>
-                                  </Grid>
-
-                                  <Grid item xs={6}>
-                                    <Textfield
-                                      name="firstName"
-                                      label="First Name"
-                                    />
-                                  </Grid>
-                                  <Grid item xs={6}>
-                                    <Textfield
-                                      name="lastName"
-                                      label="Last Name"
-                                    />
-                                  </Grid>
-                                  <Grid item xs={12}>
-                                    <Textfield name="email" label="Email" />
-                                  </Grid>
-                                  <Grid item xs={12}>
-                                    <Textfield name="phone" label="Phone" />
-                                  </Grid>
-                                  <>
-                                    <Box
-                                      sx={{
-                                        mb: "24px",
-                                        ml: "16px",
-                                        mt: "30px",
-                                      }}
-                                    >
-                                      <Checkbox
-                                        name="isWithCompanion"
-                                        label="Will you come with an accompanying person?"
-                                      />
-                                    </Box>
-
-                                    <Box sx={{ mb: "24px", width: "100%" }}>
-                                      {values.isWithCompanion === true ? (
-                                        <Grid container spacing={2}>
-                                          <Grid item xs={12}>
-                                            <Typography
-                                              variant="body1"
-                                              sx={{
-                                                textTransform: "none",
-                                                fontWeight: "600",
-                                                mb: "24px",
-                                              }}
-                                            >
-                                              Great! 😊 Please write the name
-                                              and surname of this person
-                                            </Typography>
-                                          </Grid>
-                                          <Grid item xs={6}>
-                                            <Textfield
-                                              name="firstNameCompanion"
-                                              label="First Name"
-                                            />
-                                          </Grid>
-                                          <Grid item xs={6}>
-                                            <Textfield
-                                              name="lastNameCompanion"
-                                              label="Last Name"
-                                            />
-                                          </Grid>
-                                        </Grid>
-                                      ) : (
-                                        ""
-                                      )}
-                                    </Box>
-                                  </>
-                                  <>
-                                    <Box sx={{ mb: "24px", ml: "16px" }}>
-                                      <Checkbox
-                                        name="isWithChildren"
-                                        label="Will you join with your lovely children?"
-                                      />
-                                    </Box>
-                                    <Box>
-                                      {values.isWithChildren === true ? (
-                                        <>
-                                          <Typography
-                                            variant="body1"
-                                            component="p"
-                                            sx={{
-                                              textTransform: "none",
-                                              fontWeight: "600",
-                                              mb: "24px",
-                                            }}
-                                          >
-                                            We plan to hire a person who will
-                                            take care of the children 👶 while
-                                            we will be dancing, we need to know
-                                            :{" "}
-                                          </Typography>
-                                          <Box
-                                            sx={{
-                                              display: "flex",
-                                              flexDirection: "column",
-                                              mb: "1.5rem",
-                                              mt: "1.5rem",
-                                            }}
-                                          >
-                                            <FormControl>
-                                              <FormLabel
-                                                id="demo-radio-buttons-group-label"
-                                                sx={{
-                                                  fontWeight: "bold",
-                                                  mb: ".5rem",
-                                                }}
-                                              >
-                                                How many children under the age
-                                                of 3 do you have?
-                                              </FormLabel>
-                                              <KidsRadioFields name="amountKids" />
-                                            </FormControl>
-                                          </Box>
-                                          <Box
-                                            sx={{
-                                              display: "flex",
-                                              flexDirection: "column",
-                                              mb: "1.5rem",
-                                              mt: "1.5rem",
-                                            }}
-                                          >
-                                            <FormControl>
-                                              <FormLabel
-                                                id="demo-radio-buttons-group-label"
-                                                sx={{
-                                                  fontWeight: "bold",
-                                                  mb: ".5rem",
-                                                }}
-                                              >
-                                                How many children above 3 year old do you have?
-                                              </FormLabel>
-                                              <TeenagersRadioFields name="amountTeenagers" />
-                                            </FormControl>
-                                          </Box>
-                                        </>
-                                      ) : (
-                                        ""
-                                      )}
-                                    </Box>
-                                  </>
-
-                                  <Grid item xs={12}>
-                                    <Typography
-                                      sx={{
-                                        fontWeight: "bold",
-                                        textAlign: "left",
-                                        mt: "1rem",
-                                        mb: "1rem",
-                                      }}
-                                    >
-                                      Additional information
-                                    </Typography>
-                                  </Grid>
-                                  <Grid item xs={12} sx={{ textAlign: "left" }}>
-                                    <FormLabel
-                                      component="legend"
-                                      sx={{
-                                        fontWeight: "bold",
-                                        mb: ".5rem",
-                                      }}
-                                    >
-                                      {" "}
-                                      What food Are you allergic to?{" "}
-                                    </FormLabel>
-                                    <FormGroup>
-                                      <FormControlLabel
-                                        control={
-                                          <CheckboxField name="isPeanuts" />
-                                        }
-                                        label="Peanuts"
-                                      />
-                                      <FormControlLabel
-                                        control={
-                                          <CheckboxField name="isEggs" />
-                                        }
-                                        label="Eggs"
-                                      />
-                                      <FormControlLabel
-                                        control={
-                                          <CheckboxField name="isNuts" />
-                                        }
-                                        label="nuts (e.g., almonds, walnuts, pecans)"
-                                      />
-                                    </FormGroup>
-                                  </Grid>
-
-                                  <Grid
-                                    item
-                                    xs={12}
-                                    sx={{ textAlign: "left", mt: "2rem" }}
-                                  >
-                                    <FormLabel
-                                      component="legend"
-                                      sx={{
-                                        fontWeight: "bold",
-                                        mb: ".5rem",
-                                      }}
-                                    >
-                                      {" "}
-                                      What is your most liked alcoholic drink ?
-                                    </FormLabel>
-                                    <FormGroup>
-                                      <FormControlLabel
-                                        control={
-                                          <CheckboxField name="isVodka" />
-                                        }
-                                        label="Vodka cocktails"
-                                      />
-                                      <FormControlLabel
-                                        control={<CheckboxField name="isGin" />}
-                                        label="Gin cocktails"
-                                      />
-                                      <FormControlLabel
-                                        control={
-                                          <CheckboxField name="isWhisky" />
-                                        }
-                                        label="Whisky cocktails"
-                                      />
-                                      <FormControlLabel
-                                        control={
-                                          <CheckboxField name="isBeer" />
-                                        }
-                                        label="Beer"
-                                      />
-                                      <FormControlLabel
-                                        control={
-                                          <CheckboxField name="isNonAlcohol" />
-                                        }
-                                        label="non-alcoholic cocktail"
-                                      />
-                                    </FormGroup>
-                                  </Grid>
-
-                                  <Grid item xs={12}>
-                                    <Button>Submit form</Button>
-                                  </Grid>
-                                </Grid>
-                              </Form>
-                            )}
-                          </Formik>
-                        </Container>
-                      </Grid>
-                    </Grid>
-                  </Paper>
-                </Grid>
+                <MainFormContainer
+                  INITIAL_FORM_STATE={INITIAL_FORM_STATE}
+                  FORM_VALIDATION={FORM_VALIDATION}
+                  onSubmit={onSubmit}
+                />
                 <Grid item xs={0} sm={1} md={2}>
-                  {/* svg */}
+                  {/* svg in the future */}
                 </Grid>
               </Grid>
             </Box>
@@ -535,35 +189,5 @@ export const FormSection = () => {
         </Container>
       )}
     </Box>
-  );
-};
-
-const ConfirmSection = () => {
-  return (
-    <Grid container>
-      <Grid item xs={12}>
-        <Container maxWidth="md">
-          <Paper
-            sx={{
-              pt: "4rem",
-              pb: "4rem",
-              pl: { xs: "0", md: "2rem" },
-              pr: { xs: "0", md: "2rem" },
-            }}
-          >
-            <Typography variant="h4" sx={{ mb: "1rem", textAlign: "center" }}>
-              Thank you for confirming your attendance at our wedding.
-            </Typography>
-            <Typography variant="body2" sx={{ textAlign: "center" }}>
-              We are so excited that you are going to join us in Santorini to
-              celebrate our special day. We are truly blessed to have so many
-              wonderful people in our lives that are willing to travel so far to
-              be with us as we embark on the greatest adventure of our live. It
-              means the world to us!
-            </Typography>
-          </Paper>
-        </Container>
-      </Grid>
-    </Grid>
   );
 };
