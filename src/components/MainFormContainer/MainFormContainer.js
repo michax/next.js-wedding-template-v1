@@ -123,14 +123,13 @@ export const MainFormContainer = ({
                           )}
                         </Box>
                       </Grid>
-
                       <Grid item xs={12}>
                         <Typography
+                          variant="body1"
                           sx={{
-                            fontWeight: "bold",
                             textAlign: "left",
-                            mt: "1rem",
-                            mb: "1rem",
+                            fontWeight: "bold",
+                            fontSize: "1.2rem",
                           }}
                         >
                           Additional information

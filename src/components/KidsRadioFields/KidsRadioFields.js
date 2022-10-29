@@ -30,6 +30,7 @@ const KidsRadioFields = ({ name }) => {
         name="radio-buttons-group"
         {...configTextfield}
       >
+        <FormControlLabel value="0" control={<Radio />} label="None" />
         <FormControlLabel value="1" control={<Radio />} label="1 child" />
         <FormControlLabel value="2" control={<Radio />} label="2 children" />
         <FormControlLabel value="3" control={<Radio />} label="3 children" />

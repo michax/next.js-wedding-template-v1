@@ -15,7 +15,7 @@ export const KidsQuestion = () => {
           textAlign: "left",
         }}
       >
-        We plan to hire a person who will take care of the children 👶 while we
+        Great! 😊 We plan to hire a person who will take care of the children 👶 while we
         will be dancing 💃🕺 Could you tell us:
       </Typography>
       <Box
