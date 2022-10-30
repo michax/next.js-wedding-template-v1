@@ -140,6 +140,7 @@ export const FormSection = () => {
 
   return (
     <Box
+      id="Confirm%20Attendance"
       sx={{
         pt: "8rem",
         pb: "8rem",

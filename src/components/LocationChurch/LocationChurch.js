@@ -15,6 +15,7 @@ const iframe = `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3
 export const LocationChurch = () => {
   return (
     <Box
+      id="Location"
       sx={{
         pb: "15rem",
         pt: "5rem",
@@ -23,7 +24,12 @@ export const LocationChurch = () => {
       <Container maxWidth="lg">
         <Typography
           variant="h2"
-          sx={{ mb: "5rem", mt: "5rem", textAlign: "center" }}
+          sx={{
+            mb: "5rem",
+            mt: "5rem",
+            textAlign: "center",
+            fontSize: { xs: "2.4rem", md: "3.1rem" },
+          }}
         >
           Location
         </Typography>

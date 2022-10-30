@@ -28,6 +28,7 @@ export const CountdownTimer = () => {
       }}
     >
       <Container
+        id="When"
         maxWidth="lg"
         sx={{
           textAlign: "center",
@@ -39,7 +40,7 @@ export const CountdownTimer = () => {
           sx={{
             mb: "3rem",
             mt: "5rem",
-            fontSize: { xs: "2.3rem", md: "3rem" },
+            fontSize: { xs: "2.4rem", md: "3.1rem" },
           }}
         >
           8 July 2023
@@ -52,7 +53,8 @@ export const CountdownTimer = () => {
             fontSize: { xs: ".9rem", sm: "1.1rem" },
           }}
         >
-          The sweetest day of my life is coming up, and I will really be excited to see you in:
+          The sweetest day of my life is coming up, and I will really be excited
+          to see you in:
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "center", mt: "5rem" }}>
           {TimeBox(countdown.days, "Days")}
@@ -61,7 +63,7 @@ export const CountdownTimer = () => {
             sx={{
               mr: "5px",
               ml: "5px",
-              fontSize: { xs: "2.3rem", md: "3rem" },
+              fontSize: { xs: "2.4rem", md: "3.1rem" },
             }}
           >
             :
@@ -72,7 +74,7 @@ export const CountdownTimer = () => {
             sx={{
               mr: "5px",
               ml: "5px",
-              fontSize: { xs: "2.3rem", md: "3rem" },
+              fontSize: { xs: "2.4rem", md: "3.1rem" },
             }}
           >
             :
@@ -83,7 +85,7 @@ export const CountdownTimer = () => {
             sx={{
               mr: "5px",
               ml: "5px",
-              fontSize: { xs: "2.3rem", md: "3rem" },
+              fontSize: { xs: "2.4rem", md: "3.1rem" },
             }}
           >
             :
@@ -98,7 +100,10 @@ export const CountdownTimer = () => {
 function TimeBox(type, label) {
   return (
     <div>
-      <Typography variant="h2" sx={{ fontSize: { xs: "2.3rem", md: "3rem" } }}>
+      <Typography
+        variant="h2"
+        sx={{ fontSize: { xs: "2.4rem", md: "3.1rem" } }}
+      >
         {type}
       </Typography>
       <Typography variant="body2" sx={{ color: "text.secondary" }}>

@@ -66,6 +66,7 @@ export const HistorySection = () => {
   return (
     <>
       <Box
+        id="Our%20Story"
         sx={{
           backgroundImage: `url(${wavetop.src})`,
           height: "300px",
@@ -98,13 +99,14 @@ export const HistorySection = () => {
           >
             <Typography
               variant="h2"
-              sx={{ mt: { sx: "none", md: "2rem", mb: "5rem" } }}
+              sx={{
+                mt: { sx: "none", md: "2rem" },
+                mb: "5rem",
+                fontSize: { xs: "2.4rem", md: "3.1rem" },
+              }}
             >
               Our Story
             </Typography>
-            {/* <Typography sx={{ opacity: 0.72 }}>
-            Nunc nonummy metus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis.
-          </Typography> */}
           </Stack>
 
           <Timeline position={"alternate"}>
@@ -155,7 +157,7 @@ export const HistorySection = () => {
                             sx={{
                               mt: 0.5,
                               mb: 1,
-                              fontSize:{ xs: "1.3rem", sm: "1.7rem" } ,
+                              fontSize: { xs: "1.3rem", sm: "1.7rem" },
                               textAlign: { xs: "center", sm: "left" },
                             }}
                           >
@@ -164,7 +166,7 @@ export const HistorySection = () => {
                           <Typography
                             variant="body2"
                             sx={{
-                              fontSize:{ xs: ".9rem", sm: "1.1rem" } ,
+                              fontSize: { xs: ".9rem", sm: "1.1rem" },
                               textAlign: { xs: "center", sm: "left" },
                               mt: "1rem",
                               mb: { xs: "1rem", sm: "0" },

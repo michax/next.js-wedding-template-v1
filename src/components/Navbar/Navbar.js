@@ -16,6 +16,7 @@ import Image from "next/image";
 import logo from "../../../public/logo.svg";
 
 const drawerWidth = 240;
+
 const navItemsLeft = ["Confirm Attendance", "Gifts", "Location"];
 const navItemsRight = ["When", "Our Story", "Our Memories"];
 
