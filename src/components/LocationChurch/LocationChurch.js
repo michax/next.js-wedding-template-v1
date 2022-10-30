@@ -20,7 +20,7 @@ export const LocationChurch = () => {
         pt: "5rem",
       }}
     >
-      <Container maxWidth="lg" >
+      <Container maxWidth="lg">
         <Typography
           variant="h2"
           sx={{ mb: "5rem", mt: "5rem", textAlign: "center" }}
@@ -29,7 +29,7 @@ export const LocationChurch = () => {
         </Typography>
 
         <Grid container justifyContent="space-between">
-          <Grid item xs={12} md={6} lg={6} >
+          <Grid item xs={12} md={6} lg={6}>
             <Typography variant="h3" sx={{ mb: "2.5rem", textAlign: "center" }}>
               Join us for the wedding{" "}
             </Typography>
@@ -50,14 +50,24 @@ export const LocationChurch = () => {
               </Box>
               <Typography
                 variant="body2"
-                sx={{ maxWidth: "20rem", mt: "1.5rem", textAlign: "center" }}
+                sx={{
+                  maxWidth: "20rem",
+                  mt: "1.5rem",
+                  textAlign: "center",
+                  fontSize: { xs: ".9rem", sm: "1.1rem" },
+                }}
               >
                 The Wedding will take place in Saint Pro-Cathedral 83
                 Marlborough Street, Oslo at 10.00 a.m
               </Typography>
               <Typography
                 variant="body2"
-                sx={{ maxWidth: "20rem", textAlign: "center", mt: "1.5rem" }}
+                sx={{
+                  maxWidth: "20rem",
+                  textAlign: "center",
+                  mt: "1.5rem",
+                  fontSize: { xs: ".9rem", sm: "1.1rem" },
+                }}
               >
                 Up to three hours free parking is available in town
               </Typography>
@@ -69,9 +79,10 @@ export const LocationChurch = () => {
                 <Typography
                   variant="body2"
                   sx={{
-                    color: '#f2779a',
-                    mt: '1em',
-                    textDecoration: 'underline'
+                    color: "#f2779a",
+                    mt: "1em",
+                    textDecoration: "underline",
+                    fontSize: { xs: ".9rem", sm: "1.1rem" },
                   }}
                 >
                   see the map
@@ -101,14 +112,24 @@ export const LocationChurch = () => {
               </Box>
               <Typography
                 variant="body2"
-                sx={{ maxWidth: "20rem", textAlign: "center", mt: "1.5rem" }}
+                sx={{
+                  maxWidth: "20rem",
+                  textAlign: "center",
+                  mt: "1.5rem",
+                  fontSize: { xs: ".9rem", sm: "1.1rem" },
+                }}
               >
                 Dinner and dancing will take place in Castleknock Hotel &
                 Country Club Castleknock, Oslo
               </Typography>
               <Typography
                 variant="body2"
-                sx={{ maxWidth: "20rem", textAlign: "center", mt: "1.5rem" }}
+                sx={{
+                  maxWidth: "20rem",
+                  textAlign: "center",
+                  mt: "1.5rem",
+                  fontSize: { xs: ".9rem", sm: "1.1rem" },
+                }}
               >
                 Up to three hours free parking is available in town
               </Typography>
@@ -120,9 +141,10 @@ export const LocationChurch = () => {
                 <Typography
                   variant="body2"
                   sx={{
-                    color: '#f2779a',
-                    mt: '1em',
-                    textDecoration: 'underline'
+                    color: "#f2779a",
+                    mt: "1em",
+                    textDecoration: "underline",
+                    fontSize: { xs: ".9rem", sm: "1.1rem" },
                   }}
                 >
                   see the map

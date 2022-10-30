@@ -76,7 +76,14 @@ export default function Summary({ isConnected }) {
         }}
       >
         <Container maxWidth="xl">
-          <Typography variant="h4" sx={{ mb: 5, textAlign: "center" }}>
+          <Typography
+            variant="h4"
+            sx={{
+              mb: 5,
+              textAlign: "center",
+              fontSize: { xs: "1.5rem", md: "1.9rem" }
+            }}
+          >
             Summary of your guest wedding invitations
           </Typography>
           <Grid container spacing={3}>

@@ -10,7 +10,7 @@ const style = {
 };
 
 const AnimationHearts = () => {
-  return <Lottie animationData={hearts}   style={style}/>;
+  return <Lottie animationData={hearts} style={style} />;
 };
 
 export const Header = () => {
@@ -19,8 +19,8 @@ export const Header = () => {
       <Box
         sx={{
           // height: "100vh",
-          pt:"5rem",
-          pb:"15rem",
+          pt: "5rem",
+          pb: "15rem",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -33,13 +33,26 @@ export const Header = () => {
           }}
         >
           <AnimationHearts />
-          <Typography variant="h1" sx={{ mb: "5rem" }}>
+          <Typography
+            variant="h1"
+            sx={{
+              mb: "3rem",
+              fontSize: { xs: "2.3rem", md: "3.3rem", xl: "4rem" },
+            }}
+          >
             Ewelina & Lukasz
           </Typography>
-          <Typography sx={{ maxWidth: "35em", margin: "0 auto" }}>
-            Welcome to our digital wedding invitation! We&apos;re looking forward to celebrating
-            our special day with you. Please join us as we celebrate our wedding, and
-            use form to confirm your attendance.
+          <Typography
+            variant="body2"
+            sx={{
+              maxWidth: "35em",
+              margin: "0 auto",
+              fontSize: { xs: ".9rem", sm: "1.1rem" },
+            }}
+          >
+            Welcome to our digital wedding invitation! We&apos;re looking
+            forward to celebrating our special day with you. Please join us as
+            we celebrate our wedding, and use form to confirm your attendance.
           </Typography>
           <Button
             sx={{ mt: "5rem", fontSize: "1.5rem", backgroundColor: "#F2779A" }}

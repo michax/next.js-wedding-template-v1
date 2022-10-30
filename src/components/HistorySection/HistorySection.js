@@ -155,8 +155,8 @@ export const HistorySection = () => {
                             sx={{
                               mt: 0.5,
                               mb: 1,
-                              fontSize: "1.6rem",
-                              textAlign: "left",
+                              fontSize:{ xs: "1.3rem", sm: "1.7rem" } ,
+                              textAlign: { xs: "center", sm: "left" },
                             }}
                           >
                             {title}
@@ -164,9 +164,10 @@ export const HistorySection = () => {
                           <Typography
                             variant="body2"
                             sx={{
-                              fontSize: "1.1rem",
-                              textAlign: "left",
+                              fontSize:{ xs: ".9rem", sm: "1.1rem" } ,
+                              textAlign: { xs: "center", sm: "left" },
                               mt: "1rem",
+                              mb: { xs: "1rem", sm: "0" },
                             }}
                           >
                             {description}

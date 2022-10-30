@@ -4,7 +4,6 @@ import React from "react";
 import useCountdown from "../../hooks/useCountdown";
 import Lottie from "lottie-react";
 
-
 import stopwatch from "../../../public/stopwatch.json";
 
 const style = {
@@ -14,7 +13,6 @@ const style = {
 const AnimationWatch = () => {
   return <Lottie animationData={stopwatch} style={style} />;
 };
-
 
 export const CountdownTimer = () => {
   // '10/05/2022 17:47' month/day/year time
@@ -35,20 +33,61 @@ export const CountdownTimer = () => {
           textAlign: "center",
         }}
       >
-      <AnimationWatch/>
-        <Typography variant="h1" sx={{ mb: "5rem" }}>
+        <AnimationWatch />
+        <Typography
+          variant="h2"
+          sx={{
+            mb: "3rem",
+            mt: "5rem",
+            fontSize: { xs: "2.3rem", md: "3rem" },
+          }}
+        >
           8 July 2023
         </Typography>
-        <Typography sx={{ maxWidth: "35em", margin: "0 auto" }}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum quidem
+        <Typography
+          variant="body2"
+          sx={{
+            maxWidth: "35em",
+            margin: "0 auto",
+            fontSize: { xs: ".9rem", sm: "1.1rem" },
+          }}
+        >
+          The sweetest day of my life is coming up, and I will really be excited to see you in:
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "center", mt: "5rem" }}>
           {TimeBox(countdown.days, "Days")}
-          <Typography variant="h2" sx={{ mr: "5px", ml: "5px" }}>:</Typography>
+          <Typography
+            variant="h2"
+            sx={{
+              mr: "5px",
+              ml: "5px",
+              fontSize: { xs: "2.3rem", md: "3rem" },
+            }}
+          >
+            :
+          </Typography>
           {TimeBox(countdown.hours, "Hours")}
-          <Typography variant="h2" sx={{ mr: "5px", ml: "5px" }}>:</Typography>
+          <Typography
+            variant="h2"
+            sx={{
+              mr: "5px",
+              ml: "5px",
+              fontSize: { xs: "2.3rem", md: "3rem" },
+            }}
+          >
+            :
+          </Typography>
           {TimeBox(countdown.minutes, "Minutes")}
-          <Typography variant="h2" sx={{ mr: "5px", ml: "5px" }}>:</Typography>
+          <Typography
+            variant="h2"
+            sx={{
+              mr: "5px",
+              ml: "5px",
+              fontSize: { xs: "2.3rem", md: "3rem" },
+            }}
+          >
+            :
+          </Typography>
           {TimeBox(countdown.seconds, "Seconds")}
         </Box>
       </Container>
@@ -59,8 +98,12 @@ export const CountdownTimer = () => {
 function TimeBox(type, label) {
   return (
     <div>
-      <Typography variant="h2">{type}</Typography>
-      <Typography sx={{ color: "text.secondary" }}>{label}</Typography>
+      <Typography variant="h2" sx={{ fontSize: { xs: "2.3rem", md: "3rem" } }}>
+        {type}
+      </Typography>
+      <Typography variant="body2" sx={{ color: "text.secondary" }}>
+        {label}
+      </Typography>
     </div>
   );
 }
