@@ -6,6 +6,9 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: #fcfff7;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 a {
   color: inherit;

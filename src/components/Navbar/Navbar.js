@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import { Container } from "@mui/system";
 import Image from "next/image";
 import logo from "../../../public/logo.svg";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 const drawerWidth = 240;
 
@@ -45,6 +46,7 @@ export const Navbar = (props) => {
         {navItemsRight.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
+           
               <Typography
                 key={item}
                 component="a"
