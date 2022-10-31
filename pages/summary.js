@@ -1,7 +1,9 @@
 import { Box, Card, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import clientPromise from "../lib/mongodb";
+import { BarChart } from "../src/components/BarChart/BarChart";
 import CardDataSummary from "../src/components/CardDataSummary/CardDataSummary";
+
 import { PieChart } from "../src/components/PieChart/PieChart";
 
 const amountPeople = 100;
@@ -10,7 +12,7 @@ export default function Summary({ isConnected }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [userDataDrinks, setUserDataDrinks] = useState([]);
-
+  const [userDataAllergyFood, setUserDataAllergyFood] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -44,6 +46,7 @@ export default function Summary({ isConnected }) {
     Number(confirmedPeople.length) -
     Number(amountNotComingPeople.length);
 
+  //====================================================================================================
   //drinks
   const vodkaAmount = data.filter((person) => {
     return person.isVodka === true;
@@ -60,8 +63,6 @@ export default function Summary({ isConnected }) {
   const isNonAlcoholAmount = data.filter((person) => {
     return person.isNonAlcohol === true;
   });
-
-
 
   useEffect(() => {
     setUserDataDrinks([
@@ -127,16 +128,68 @@ export default function Summary({ isConnected }) {
   };
 
   console.log("userDataDrink", userDataDrinks);
-
-  const PeanutsPeopleAllergies = data.filter((person) => {
+  // =================================================================================
+  // FOOD
+  const peanutsPeopleAllergies = data.filter((person) => {
     return person.isPeanuts === true;
   });
-  const EggsPeopleAllergies = data.filter((person) => {
+  const eggsPeopleAllergies = data.filter((person) => {
     return person.isEggs === true;
   });
-  const NutsPeopleAllergies = data.filter((person) => {
+  const nutsPeopleAllergies = data.filter((person) => {
     return person.isNuts === true;
   });
+
+  useEffect(() => {
+    setUserDataAllergyFood([
+      {
+        id: 1,
+        food: "Peanuts",
+        userGain: peanutsPeopleAllergies.length,
+      },
+      {
+        id: 2,
+        food: "Egg",
+        userGain: eggsPeopleAllergies.length,
+      },
+      {
+        id: 3,
+        food: "Nuts",
+        userGain: nutsPeopleAllergies.length,
+      },
+    ]);
+  }, [
+    peanutsPeopleAllergies.length,
+    eggsPeopleAllergies.length,
+    nutsPeopleAllergies.length,
+  ]);
+
+  const userDataFoodAllergy = {
+    labels: userDataAllergyFood?.map((data) => data?.food),
+    datasets: [
+      {
+        label: "Food Allergy",
+        data: userDataAllergyFood?.map((data) => data?.userGain),
+        backgroundColor: [
+          "rgba(155, 199, 232, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(155, 206, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(155, 159, 64, 0.2)",
+        ],
+        borderColor: [
+          "rgba(155, 199, 232, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(155, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(155, 159, 64, 1)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
 
   return (
     <div>
@@ -228,6 +281,23 @@ export default function Summary({ isConnected }) {
                     whiskyAmount={whiskyAmount.length}
                     beerAmount={beerAmount.length}
                     isNonAlcoholAmount={isNonAlcoholAmount.length}
+                  />
+                </Card>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Card
+                  sx={{
+                    py: 6,
+                    boxShadow: "5px",
+                    textAlign: "center",
+                    backgroundColor: "#FDFDEC",
+                  }}
+                >
+                  <BarChart
+                    chartData={userDataFoodAllergy}
+                    peanutsPeopleAllergies={peanutsPeopleAllergies.length}
+                    eggsPeopleAllergies={eggsPeopleAllergies.length}
+                    nutsPeopleAllergies={nutsPeopleAllergies.length}
                   />
                 </Card>
               </Grid>
