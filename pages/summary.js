@@ -209,7 +209,37 @@ export default function Summary({ isConnected }) {
 
   // Number of Children under  3
 
+  const numberChildren = data.filter((person) => {
+    return person.isWithChildren === true;
+  });
 
+  console.log("numberChildren", numberChildren);
+
+  const numberChildrenUnder3 = numberChildren.map((child) => {
+    return child.amountKids;
+  });
+
+  console.log("numberChildrenUnder3", numberChildrenUnder3);
+
+  const sumChildrenUnder3 = numberChildrenUnder3.reduce((prev, curr) => {
+    return Number(prev) + Number(curr);
+  }, 0);
+
+  console.log("sumChildrenUnder3", sumChildrenUnder3);
+
+  //// Number of Children above 3
+
+  const numberChildrenAbove3 = numberChildren.map((child) => {
+    return child.amountTeenagers;
+  });
+
+  console.log("numberChildrenAbove3", numberChildrenAbove3);
+
+  const sumChildrenAbove3 = numberChildrenAbove3.reduce((prev, curr) => {
+    return Number(prev) + Number(curr);
+  }, 0);
+
+  console.log("sumChildrenAbove3", sumChildrenAbove3);
 
   return (
     <div>
@@ -270,7 +300,7 @@ export default function Summary({ isConnected }) {
                 <CardDataSummary
                   title="Children"
                   subTitle="Total number of children under 3 years old"
-                  total={5}
+                  total={sumChildrenUnder3}
                   color="warning"
                   icon={"uil:kid"}
                   colorIcon="#2ec4b6"
@@ -280,7 +310,7 @@ export default function Summary({ isConnected }) {
                 <CardDataSummary
                   title="Children"
                   subTitle="Total number of children over 3 years old"
-                  total={5}
+                  total={sumChildrenAbove3}
                   color="warning"
                   icon={"fluent-emoji-high-contrast:children-crossing"}
                   colorIcon="#C490D1"

@@ -2,14 +2,16 @@
 
 ### Digital Wedding Invitations (Paperless Wedding Invitations)
 
-Project consist of Wedding Landing Page with smart and powerful Form which collect all necessary data and display  collected data on **summary** page in a clear way. 
+Project consist of Wedding Landing Page with smart and powerful Form which collect all necessary data (based on requirements ) and display collected data on **summary** page in a clear way.
+
+**summary page** will be protected by password only the invitation owner will be able to check the results collected from the Form and download the PDF file.
 
 
 ## Status
 
 **Work-in-Progress**
 
-- My own idea for full-stack project which I improve daily
+- My own idea for a full-stack project which I improve daily
 - I'm refactoring it, should be deployed in near future
 
 ## In the coming days I am planing : 
@@ -19,8 +21,7 @@ Project consist of Wedding Landing Page with smart and powerful Form which colle
 - create PDF document with collected date
 - refactoring, make reuseable components etc.
 - work on RWD and more 
-
-
+- summary page will be protected by password 
 
 
 
