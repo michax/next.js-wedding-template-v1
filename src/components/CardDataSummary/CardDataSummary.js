@@ -36,12 +36,14 @@ export default function CardDataSummary({
   icon,
   color = "primary",
   colorIcon,
+  subTitle,
   sx,
   ...other
 }) {
   return (
     <Card
       sx={{
+        width:"100%",
         py: 5,
         boxShadow: "5px",
         textAlign: "center",
@@ -61,9 +63,17 @@ export default function CardDataSummary({
 
       <Typography variant="h3">{total}</Typography>
 
-      <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        {title}
-      </Typography>
+      <Box sx={{display:"flex", flexDirection:"column", mt:"1rem",  alignItems:"center",justifyContent:"center"}}>
+        <Typography
+          variant="subtitle2"
+          sx={{ opacity: 0.92, textTransform: "uppercase" }}
+        >
+          {title}
+        </Typography>
+        <Typography variant="subtitle2" sx={{ opacity: 0.72, mt:"0.6rem", width:"80%" }}>
+          {subTitle}
+        </Typography>
+      </Box>
     </Card>
   );
 }

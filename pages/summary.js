@@ -30,15 +30,33 @@ export default function Summary({ isConnected }) {
 
   console.log("data featch", data);
 
-  // How many people is coming
+  // How many people is coming who answer Yes
   const confirmedPeople = data.filter((person) => {
     return person.isComing === "Yes";
   });
+
+  // How many people is coming plus with extra person
+
+  const confirmedPeopleWhoComingAndWithExtraPerson = data.filter((person) => {
+    return person.isWithCompanion === true && person.isComing === "Yes";
+  });
+
+  console.log("extra", confirmedPeopleWhoComingAndWithExtraPerson);
+
+  const confirmedPeopleWhoComingAlone = data.filter((person) => {
+    return person.isWithCompanion === false && person.isComing === "Yes";
+  });
+
+  console.log("coming but alone", confirmedPeopleWhoComingAlone);
 
   // How many people is not coming
   const amountNotComingPeople = data.filter((person) => {
     return person.isComing === "No";
   });
+
+  const amountConfirmedPeopleWhoComingAloneOrWithExtraPerson =
+    Number(confirmedPeopleWhoComingAndWithExtraPerson.length * 2) +
+    Number(confirmedPeopleWhoComingAlone.length);
 
   // waiting for answer
   const amountPendingPeople =
@@ -228,7 +246,8 @@ export default function Summary({ isConnected }) {
               <Grid item xs={12} sm={6} md={3}>
                 <CardDataSummary
                   title="Confirmed"
-                  total={confirmedPeople.length}
+                  subTitle="Total number of people who coming"
+                  total={amountConfirmedPeopleWhoComingAloneOrWithExtraPerson}
                   icon={"akar-icons:people-group"}
                   colorIcon="#20A4F3"
                 />
@@ -237,6 +256,7 @@ export default function Summary({ isConnected }) {
               <Grid item xs={12} sm={6} md={3}>
                 <CardDataSummary
                   title="Not Coming"
+                  subTitle="Total number of people who not coming"
                   total={amountNotComingPeople.length}
                   color="info"
                   icon={"emojione-monotone:no-pedestrians"}
@@ -247,6 +267,17 @@ export default function Summary({ isConnected }) {
               <Grid item xs={12} sm={6} md={3}>
                 <CardDataSummary
                   title="Children"
+                  subTitle="Total number of children under 3"
+                  total={5}
+                  color="warning"
+                  icon={"ic:round-child-care"}
+                  colorIcon="#2ec4b6"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <CardDataSummary
+                  title="Children"
+                  subTitle="Total number of children under 3"
                   total={5}
                   color="warning"
                   icon={"ic:round-child-care"}
@@ -257,6 +288,7 @@ export default function Summary({ isConnected }) {
               <Grid item xs={12} sm={6} md={3}>
                 <CardDataSummary
                   title={"Pending"}
+                  subTitle="Number of invitations not answered"
                   total={amountPendingPeople}
                   color="error"
                   icon={"ic:baseline-pending-actions"}
