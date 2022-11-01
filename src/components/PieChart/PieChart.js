@@ -12,7 +12,7 @@ export const PieChart = ({
   beerAmount,
   isNonAlcoholAmount,
 }) => {
-  console.log("chartData", chartData);
+//   console.log("chartData", chartData);
 
   return (
     <>

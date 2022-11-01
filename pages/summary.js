@@ -209,6 +209,8 @@ export default function Summary({ isConnected }) {
 
   // Number of Children under  3
 
+
+
   return (
     <div>
       {loading ? (
@@ -270,7 +272,7 @@ export default function Summary({ isConnected }) {
                   subTitle="Total number of children under 3 years old"
                   total={5}
                   color="warning"
-                  icon={"ic:round-child-care"}
+                  icon={"uil:kid"}
                   colorIcon="#2ec4b6"
                 />
               </Grid>
@@ -280,8 +282,8 @@ export default function Summary({ isConnected }) {
                   subTitle="Total number of children over 3 years old"
                   total={5}
                   color="warning"
-                  icon={"ic:round-child-care"}
-                  colorIcon="#2ec4b6"
+                  icon={"fluent-emoji-high-contrast:children-crossing"}
+                  colorIcon="#C490D1"
                 />
               </Grid>
 

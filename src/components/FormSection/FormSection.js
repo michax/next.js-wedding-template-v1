@@ -43,8 +43,10 @@ export const FormSection = () => {
     lastNameCompanion: "",
 
     isComing: "Yes",
-    amountKids: "1",
-    amountTeenagers: "1",
+
+    isWithChildren: false,
+    amountKids: "0",
+    amountTeenagers: "0",
   };
 
   const FORM_VALIDATION = Yup.object().shape({
@@ -67,7 +69,8 @@ export const FormSection = () => {
       then: Yup.string().required("Må fylles ut"),
       otherwise: Yup.string().nullable(),
     }),
-  });
+    isWithChildren: Yup.boolean(),
+  })
 
   const onSubmit = async (values) => {
     // alert(JSON.stringify(values, null, 2));
@@ -78,6 +81,8 @@ export const FormSection = () => {
       phone: values.phone,
 
       isComing: values.isComing,
+
+      isWithChildren:values.isWithChildren,
       amountKids: values.amountKids,
       amountTeenagers: values.amountTeenagers,
 

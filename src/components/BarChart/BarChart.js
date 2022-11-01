@@ -10,7 +10,7 @@ export const BarChart = ({
   eggsPeopleAllergies,
   nutsPeopleAllergies,
 }) => {
-  console.log("chartData", chartData);
+  // console.log("chartData", chartData);
 
   return (
     <>

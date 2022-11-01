@@ -21,6 +21,8 @@ export default async function handler(req, res) {
     lastNameCompanion: dataFrontend?.lastNameCompanion,
 
     isComing: dataFrontend?.isComing,
+
+    isWithChildren: dataFrontend?.isWithChildren,
     amountKids: dataFrontend?.amountKids,
     amountTeenagers: dataFrontend?.amountTeenagers,
 
