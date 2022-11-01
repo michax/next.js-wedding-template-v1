@@ -229,13 +229,13 @@ export default function Summary({ isConnected }) {
 
   //// Number of Children above 3
 
-  const numberChildrenAbove3 = numberChildren.map((child) => {
+  const numberChildrenOver3 = numberChildren.map((child) => {
     return child.amountTeenagers;
   });
 
-  console.log("numberChildrenAbove3", numberChildrenAbove3);
+  console.log("numberChildrenOver3", numberChildrenOver3);
 
-  const sumChildrenAbove3 = numberChildrenAbove3.reduce((prev, curr) => {
+  const sumChildrenAbove3 = numberChildrenOver3.reduce((prev, curr) => {
     return Number(prev) + Number(curr);
   }, 0);
 

@@ -7,11 +7,6 @@ import wine from "../../../public/wine.svg";
 
 import Image from "next/image";
 
-//https://www.npmjs.com/package/google-map-react
-//https://leafletjs.com/index.html
-
-const iframe = `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15993.067311743673!2d10.67386275!3d59.92992835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416d95a2fd9315%3A0xb5d6eb5de3a26594!2sNorwegian%20Radium%20Hospital!5e0!3m2!1spl!2sno!4v1665298540040!5m2!1spl!2sno" width="400" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
-
 export const LocationChurch = () => {
   return (
     <Box
@@ -83,12 +78,14 @@ export const LocationChurch = () => {
                 rel="noopener noreferrer"
               >
                 <Typography
+                  position="relative"
                   variant="body2"
                   sx={{
                     color: "#f2779a",
                     mt: "1em",
                     textDecoration: "underline",
                     fontSize: { xs: ".9rem", sm: "1.1rem" },
+                    zIndex: "99",
                   }}
                 >
                   see the map
