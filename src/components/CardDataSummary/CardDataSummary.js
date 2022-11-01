@@ -70,7 +70,7 @@ export default function CardDataSummary({
         >
           {title}
         </Typography>
-        <Typography variant="subtitle2" sx={{ opacity: 0.72, mt:"0.6rem", width:"80%" }}>
+        <Typography variant="subtitle2" sx={{ opacity: 0.72, mt:"0.6rem", width:"60%" }}>
           {subTitle}
         </Typography>
       </Box>

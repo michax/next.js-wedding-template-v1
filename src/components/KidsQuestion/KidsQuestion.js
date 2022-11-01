@@ -36,7 +36,7 @@ export const KidsQuestion = () => {
             }}
           >
             How many children{" "}
-            <span style={{ fontWeight: "bold" }}>under the age of 3</span> do
+            <span style={{ fontWeight: "bold" }}>under 3 years old</span> do
             you have?
           </FormLabel>
           <KidsRadioFields name="amountKids" />

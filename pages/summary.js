@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import clientPromise from "../lib/mongodb";
 import { BarChart } from "../src/components/BarChart/BarChart";
 import CardDataSummary from "../src/components/CardDataSummary/CardDataSummary";
-
 import { PieChart } from "../src/components/PieChart/PieChart";
 
 const amountPeople = 100;
@@ -36,18 +35,17 @@ export default function Summary({ isConnected }) {
   });
 
   // How many people is coming plus with extra person
-
   const confirmedPeopleWhoComingAndWithExtraPerson = data.filter((person) => {
     return person.isWithCompanion === true && person.isComing === "Yes";
   });
 
-  console.log("extra", confirmedPeopleWhoComingAndWithExtraPerson);
+  // console.log("extra", confirmedPeopleWhoComingAndWithExtraPerson);
 
   const confirmedPeopleWhoComingAlone = data.filter((person) => {
     return person.isWithCompanion === false && person.isComing === "Yes";
   });
 
-  console.log("coming but alone", confirmedPeopleWhoComingAlone);
+  // console.log("coming but alone", confirmedPeopleWhoComingAlone);
 
   // How many people is not coming
   const amountNotComingPeople = data.filter((person) => {
@@ -209,6 +207,8 @@ export default function Summary({ isConnected }) {
     ],
   };
 
+  // Number of Children under  3
+
   return (
     <div>
       {loading ? (
@@ -246,7 +246,7 @@ export default function Summary({ isConnected }) {
               <Grid item xs={12} sm={6} md={3}>
                 <CardDataSummary
                   title="Confirmed"
-                  subTitle="Total number of people who coming"
+                  subTitle="Total number of adults who are coming"
                   total={amountConfirmedPeopleWhoComingAloneOrWithExtraPerson}
                   icon={"akar-icons:people-group"}
                   colorIcon="#20A4F3"
@@ -256,7 +256,7 @@ export default function Summary({ isConnected }) {
               <Grid item xs={12} sm={6} md={3}>
                 <CardDataSummary
                   title="Not Coming"
-                  subTitle="Total number of people who not coming"
+                  subTitle="Total number of adults who are not coming"
                   total={amountNotComingPeople.length}
                   color="info"
                   icon={"emojione-monotone:no-pedestrians"}
@@ -267,7 +267,7 @@ export default function Summary({ isConnected }) {
               <Grid item xs={12} sm={6} md={3}>
                 <CardDataSummary
                   title="Children"
-                  subTitle="Total number of children under 3"
+                  subTitle="Total number of children under 3 years old"
                   total={5}
                   color="warning"
                   icon={"ic:round-child-care"}
@@ -277,7 +277,7 @@ export default function Summary({ isConnected }) {
               <Grid item xs={12} sm={6} md={3}>
                 <CardDataSummary
                   title="Children"
-                  subTitle="Total number of children under 3"
+                  subTitle="Total number of children over 3 years old"
                   total={5}
                   color="warning"
                   icon={"ic:round-child-care"}
