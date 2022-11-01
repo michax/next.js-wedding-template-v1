@@ -1,19 +1,27 @@
-## Next.js Project
+## Next.js, MongoDB, MUI, FORMIK, YUP Project
 
 ### Digital Wedding Invitations (Paperless Wedding Invitations)
 
-Project consist of Wedding Landing Page with smart and powerful Form which collect all necessary data and display  collected data on **summary* page in a clear way. 
+Project consist of Wedding Landing Page with smart and powerful Form which collect all necessary data and display  collected data on **summary** page in a clear way. 
+
+
 ## Status
 
 **Work-in-Progress**
 
+- My own idea for full-stack project which I improve daily
+- I'm refactoring it, should be deployed in near future
+
 ## In the coming days I am planing : 
 
-- refactoring code. Make reused function ( in summary repeat filter too many times)
-- make it more UX friendly.
+- refactoring code. Make reused function ( In summary file, repeat filters too many times.)
+- make it more UX friendly
 - create PDF document with collected date
-- refactoring,  make reuseable components etc.
-- work on RWD   
+- refactoring, make reuseable components etc.
+- work on RWD and more 
+
+
+
 
 
 
