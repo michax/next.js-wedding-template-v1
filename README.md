@@ -2,11 +2,13 @@
 
 ### Digital Wedding Invitations (Paperless Wedding Invitations)
 
+My own idea for a full-stack project which I improve daily. Project consists of a Wedding Landing Page with a smart and powerful form which collects all necessary data (based on requirements ) and displays collected data on the **summary page** in a clear way.
 
+```bash
+go to https://ditialweddinginivitation.netlify.app/summary
+```
 
-Project consist of Wedding Landing Page with smart and powerful Form which collect all necessary data (based on requirements ) and display collected data on **summary** page in a clear way.
-
-**summary page** will be protected by password only the invitation owner will be able to check the results collected from the Form and download the PDF file.
+**summary page** will be protected by password, only the invitation owner will be able to check the results collected from the form.
 
 
 ## DEMO Link
@@ -16,13 +18,13 @@ Project consist of Wedding Landing Page with smart and powerful Form which colle
 - Test the form by sending fake data and see how it works
 
 [Summary page ](https://ditialweddinginivitation.netlify.app/summary)
-- Check the results collected from the Form
+- Check the results collected from the form
 - It will be protected by password only the invitation owner will be able to check the results
 - There will be a button that allows you to download a PDF file with the collected data.
 - I plan add many more features that will solve problems with sending paper invitations. 
 
-### Landing Page
 
+### Landing Page
 
 The landing page provide basic information about the event. (In the future , I am planning to connect the landing page with Sanity CMS. The owner will be able to add / and change the content of the landing page. 
 
@@ -30,7 +32,7 @@ The landing page provide basic information about the event. (In the future , I a
 
 **Work-in-Progress**
 
-- My own idea for a full-stack project which I improve daily
+- Project which I improve daily
 - I'm refactoring it
 
 ## In the coming days I am planing : 
