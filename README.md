@@ -40,7 +40,7 @@ The landing page provide basic information about the event. (In the future , I a
 - refactoring code. Make reused function ( In summary file, repeat filters too many times.)
 - make it more UX friendly
 - create PDF document with collected date
-- refactoring, make reuseable components etc.
+- refactoring, make reuseable components etc
 - work on RWD and more 
 - summary page will be protected by password 
 
