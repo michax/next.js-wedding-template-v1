@@ -31,7 +31,7 @@ The landing page provide basic information about the event. (In the future , I a
 **Work-in-Progress**
 
 - My own idea for a full-stack project which I improve daily
-- I'm refactoring it, should be deployed in near future
+- I'm refactoring it
 
 ## In the coming days I am planing : 
 
