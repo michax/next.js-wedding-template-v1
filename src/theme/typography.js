@@ -1,43 +1,43 @@
 // ----------------------------------------------------------------------
 
-const FONT_PRIMARY = "Poppins, sans-serif";
-const FONT_SECONDARY = "Barlow, sans-serif";
+const FONT_PRIMARY = "Neucha, sans-serif";
+
 
 const typography = {
   fontFamily: FONT_PRIMARY,
   fontWeightSemiBold: 600,
   h1: {
-    fontFamily: FONT_SECONDARY,
+    fontFamily: FONT_PRIMARY,
     fontWeight: 700,
     lineHeight: 80 / 64,
     fontSize: "4.209rem",
   },
   h2: {
-    fontFamily: FONT_SECONDARY,
+    fontFamily: FONT_PRIMARY,
     fontWeight: 700,
     lineHeight: 64 / 48,
     fontSize: "3.157rem",
   },
   h3: {
-    fontFamily: FONT_SECONDARY,
+    fontFamily: FONT_PRIMARY,
     fontWeight: 700,
     lineHeight: 1.5,
     fontSize: "2.369rem",
   },
   h4: {
-    fontFamily: FONT_SECONDARY,
+    fontFamily: FONT_PRIMARY,
     fontWeight: 700,
     lineHeight: 1.5,
     fontSize: "2rem",
   },
   h5: {
-    fontFamily: FONT_SECONDARY,
+    fontFamily: FONT_PRIMARY,
     fontWeight: 600,
     lineHeight: 1.5,
     fontSize: "2rem",
   },
   h6: {
-    fontFamily: FONT_SECONDARY,
+    fontFamily: FONT_PRIMARY,
     fontWeight: 600,
     lineHeight: 28 / 18,
     fontSize: "1.8rem",
