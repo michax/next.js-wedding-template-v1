@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import { Container } from "@mui/system";
 import React from "react";
 import hearts from "../../../public/hearts.json";
-import stopwatch from "../../../public/stopwatch.json";
+import Link from "next/link";
 
 const style = {
   height: 200,
@@ -54,12 +54,18 @@ export const Header = () => {
             forward to celebrating our special day with you. Please join us as
             we celebrate our wedding, and use form to confirm your attendance.
           </Typography>
-          <Button
-            sx={{ mt: "5rem", fontSize: "1.5rem", backgroundColor: "#F2779A" }}
-            variant="contained"
-          >
-            Confirm attendance
-          </Button>
+          <Link href="#Confirm%20Attendance">
+            <Button
+              sx={{
+                mt: "5rem",
+                fontSize: "1.5rem",
+                backgroundColor: "#F2779A",
+              }}
+              variant="contained"
+            >
+              Confirm attendance
+            </Button>
+          </Link>
         </Container>
       </Box>
     </>
