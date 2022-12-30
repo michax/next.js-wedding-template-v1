@@ -11,7 +11,7 @@ export default function Summary({ isConnected }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [userDataDrinks, setUserDataDrinks] = useState([]);
-  const [userDataAllergyFood, setUserDataAllergyFood] = useState([]);
+
 
   useEffect(() => {
     setLoading(true);

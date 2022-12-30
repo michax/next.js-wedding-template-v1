@@ -29,6 +29,7 @@ const SideBar = () => {
         flex: 1,
         borderRight: "0.5px solid rgba(230, 227, 227)",
         minHeight: "100vh",
+        backgroundColor: "#FFF",
       }}
     >
       <div className={styles.top}>
@@ -48,6 +49,7 @@ const SideBar = () => {
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
           defaultExpanded={["1"]}
+          sx={{ textAlign: "left", mt: "10px", ml: "10px" }}
         >
           <TreeItem nodeId="1" label="Summary">
             <TreeItem

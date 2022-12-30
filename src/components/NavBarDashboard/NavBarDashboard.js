@@ -1,35 +1,40 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Divider from "@mui/material/Divider";
-import {
-  Box,
-  Button,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Drawer, IconButton } from "@mui/material";
 import logo from "../../../public/logo.svg";
 import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { useRouter } from "next/router";
+import TreeView from "@mui/lab/TreeView";
+import TreeItem from "@mui/lab/TreeItem";
+import MarkAsUnreadIcon from "@mui/icons-material/MarkAsUnread";
+import LocalBarIcon from "@mui/icons-material/LocalBar";
+import NoFoodIcon from "@mui/icons-material/NoFood";
 
 const drawerWidth = 240;
-
-const navItemsRight = ["When", "Our Story", "Our Memories"];
 
 const NavBarDashboard = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [activeLink, setActiveLink] = useState("");
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  const router = useRouter();
+
+  function handleClick(page) {
+    setActiveLink(page);
+    router.push(page);
+  }
+
   const drawer = (
     <Box
       onClick={handleDrawerToggle}
-      sx={{ textAlign: "center", backgroundColor: "#FCFFF7", height: "100%" }}
+      sx={{ textAlign: "center", backgroundColor: "#FFF", height: "100%" }}
     >
       <Box
         sx={{
@@ -43,23 +48,37 @@ const NavBarDashboard = (props) => {
       </Box>
       <Divider />
 
-      <List>
-        {navItemsRight.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <Typography
-                key={item}
-                component="a"
-                href={`#${item}`}
-                variant="p"
-                sx={{ display: { sm: "block", md: "none" } }}
-              >
-                {item}
-              </Typography>
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <TreeView
+        sx={{ textAlign: "left", mt: "10px", ml: "10px" }}
+        aria-label="file system navigator"
+        defaultCollapseIcon={<ExpandMoreIcon />}
+        defaultExpandIcon={<ChevronRightIcon />}
+        defaultExpanded={["1"]}
+      >
+        <TreeItem s nodeId="1" label="Summary">
+          <TreeItem
+            icon={<MarkAsUnreadIcon />}
+            nodeId="2"
+            label="Invitations"
+            selected={activeLink === "/invitations"}
+            onClick={() => handleClick("/invitations")}
+          />
+          <TreeItem
+            icon={<LocalBarIcon />}
+            nodeId="3"
+            label="Summary Drinks"
+            onClick={() => handleClick("/summary-drinks")}
+            selected={activeLink === "/summary-drinks"}
+          />
+          <TreeItem
+            icon={<NoFoodIcon />}
+            nodeId="4"
+            label="Summary Food Allergy"
+            onClick={() => handleClick("/summary-food")}
+            selected={activeLink === "/summary-food"}
+          />
+        </TreeItem>
+      </TreeView>
     </Box>
   );
 
@@ -74,6 +93,7 @@ const NavBarDashboard = (props) => {
           display: "flex",
           alignItems: "center",
           fontSize: "14px",
+          backgroundColor:"#FFF"
         }}
       >
         <Box
@@ -103,7 +123,7 @@ const NavBarDashboard = (props) => {
           </div>
         </Box>
       </Box>
-      <Divider />
+      <Divider  />
       <Box component="nav">
         <Drawer
           anchor="right"
