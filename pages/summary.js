@@ -27,7 +27,7 @@ export default function Summary({ isConnected }) {
     getData();
   }, []);
 
-  console.log("data featch", data);
+
 
   // How many people is coming who answer Yes
   const confirmedPeople = data.filter((person) => {
