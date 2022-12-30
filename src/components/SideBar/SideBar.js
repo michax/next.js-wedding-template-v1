@@ -49,7 +49,7 @@ const SideBar = () => {
           defaultExpandIcon={<ChevronRightIcon />}
           defaultExpanded={["1"]}
         >
-          <TreeItem nodeId="1" label="Dashboard">
+          <TreeItem nodeId="1" label="Summary">
             <TreeItem
               icon={<MarkAsUnreadIcon />}
               nodeId="2"
