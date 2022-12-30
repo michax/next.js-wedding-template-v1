@@ -17,7 +17,7 @@ go to https://ditialweddinginivitation.netlify.app/summary
 - The most important on this page will be the form that will allow you to collect the most important date (based on requirements)
 - Test the form by sending fake data and see how it works
 
-[Summary page ](https://ditialweddinginivitation.netlify.app/summary)
+[Dashboard- Summary page ](https://ditialweddinginivitation.netlify.app/invitations)
 - Check the results collected from the form
 - It will be protected by password only the invitation owner will be able to check the results
 - There will be a button that allows you to download a PDF file with the collected data.
@@ -37,10 +37,9 @@ The landing page provide basic information about the event. (In the future , I a
 
 ## In the coming days I am planing : 
 
-- refactoring code. Make reused function ( In summary file, repeat filters too many times.)
+- refactoring code. Make reused function 
 - make it more UX friendly
 - create PDF document with collected date
-- refactoring, make reuseable components etc
 - work on RWD and more 
 - summary page will be protected by password 
 
