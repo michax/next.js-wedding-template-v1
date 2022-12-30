@@ -1,16 +1,27 @@
 import styles from "./SideBar.module.css";
 import React, { useState } from "react";
-import Link from "next/link";
-import { Box, Divider, Typography } from "@mui/material";
-import DashboardIcon from "@mui/icons-material/Dashboard";
+import { Box, Divider } from "@mui/material";
 import logo from "../../../public/logo.svg";
 import Image from "next/image";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { useRouter } from "next/router";
+import TreeView from "@mui/lab/TreeView";
+import TreeItem from "@mui/lab/TreeItem";
+import MarkAsUnreadIcon from "@mui/icons-material/MarkAsUnread";
+import LocalBarIcon from "@mui/icons-material/LocalBar";
+import NoFoodIcon from "@mui/icons-material/NoFood";
 
 const SideBar = () => {
-  const [active, setActive] = useState(true);
-  const [activeLink, setActiveLink] = useState("dashboard");
-  console.log("activeLink", activeLink);
-  console.log("active", active);
+  const [activeLink, setActiveLink] = useState("");
+
+  const router = useRouter();
+
+  function handleClick(page) {
+    setActiveLink(page);
+    router.push(page);
+  }
+
   return (
     <Box
       sx={{
@@ -32,48 +43,36 @@ const SideBar = () => {
       </div>
       <Divider />
       <div className={styles.center}>
-        <ul className={styles.navMenu}>
-          <li className={styles.navItem} onClick={() => setActive(!active)}>
-            <DashboardIcon sx={{ mr: "10px" }} />
-            Dashboards
-          </li>
-          
-          <ul className={`${styles.subMenu} ${active ? styles.active : ""}`}>
-            <li
-              className={`${styles.subItem} ${
-                activeLink === "dashboard" ? styles.activeLink : ""
-              }`}
-            >
-              <Link href="/dashboard" onClick={() => setActiveLink("dashboard")}>
-                Invitations
-              </Link>
-            </li>
-            <li
-              className={`${styles.subItem} ${
-                activeLink === "summary-drinks" ? styles.activeLink : ""
-              }`}
-            >
-              <Link
-                href="summary-drinks"
-                onClick={() => setActiveLink("summary-drinks")}
-              >
-                Summary Drinks
-              </Link>
-            </li>
-            <li
-              className={`${styles.subItem} ${
-                activeLink === "summary-food" ? styles.activeLink : ""
-              }`}
-            >
-              <Link
-                href="summary-food"
-                onClick={() => setActiveLink("summary-food")}
-              >
-                Summary Food Allergy
-              </Link>
-            </li>
-          </ul>
-        </ul>
+        <TreeView
+          aria-label="file system navigator"
+          defaultCollapseIcon={<ExpandMoreIcon />}
+          defaultExpandIcon={<ChevronRightIcon />}
+          defaultExpanded={["1"]}
+        >
+          <TreeItem nodeId="1" label="Dashboard">
+            <TreeItem
+              icon={<MarkAsUnreadIcon />}
+              nodeId="2"
+              label="Invitations"
+              selected={activeLink === "/dashboard"}
+              onClick={() => handleClick("/dashboard")}
+            />
+            <TreeItem
+              icon={<LocalBarIcon />}
+              nodeId="3"
+              label="Summary Drinks"
+              onClick={() => handleClick("/summary-drinks")}
+              selected={activeLink === "/summary-drinks"}
+            />
+            <TreeItem
+              icon={<NoFoodIcon />}
+              nodeId="4"
+              label="Summary Food Allergy"
+              onClick={() => handleClick("/summary-food")}
+              selected={activeLink === "/summary-food"}
+            />
+          </TreeItem>
+        </TreeView>
       </div>
       <div className={styles.bottom}></div>
     </Box>

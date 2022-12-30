@@ -13,45 +13,18 @@ import {
 import logo from "../../../public/logo.svg";
 import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-  navbar: {
-    height: 60,
-    display: "flex",
-    alignItems: "center",
-    fontSize: 14,
-    backgroundColor: "rgba(255, 255, 255, 0.929)",
-    [theme.breakpoints.down("xs")]: {
-      height: 40,
-      fontSize: 12,
-    },
-  },
-  wrapper: {
-    padding: "0 20px",
-    width: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    [theme.breakpoints.down("xs")]: {
-      padding: "0 10px",
-    },
-  },
-}));
 
 const drawerWidth = 240;
 
 const navItemsRight = ["When", "Our Story", "Our Memories"];
 
-const MainNavBar = (props) => {
+const NavBarDashboard = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
-  const classes = useStyles();
 
   const drawer = (
     <Box
@@ -69,7 +42,7 @@ const MainNavBar = (props) => {
         <Image height="50%" src={logo} alt="Logo" />
       </Box>
       <Divider />
-      
+
       <List>
         {navItemsRight.map((item) => (
           <ListItem key={item} disablePadding>
@@ -95,8 +68,23 @@ const MainNavBar = (props) => {
 
   return (
     <>
-      <Box className={classes.navbar}>
-        <Box className={classes.wrapper}>
+      <Box
+        sx={{
+          height: "60px",
+          display: "flex",
+          alignItems: "center",
+          fontSize: "14px",
+        }}
+      >
+        <Box
+          sx={{
+            padding: "0 20px",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
           <div>
             <IconButton
               color="inherit"
@@ -108,8 +96,8 @@ const MainNavBar = (props) => {
               <MenuIcon />
             </IconButton>
           </div>
-          <div className={classes.items}>
-            <div className={classes.item}>
+          <div>
+            <div>
               <Button variant="contained">Download PDF</Button>
             </div>
           </div>
@@ -141,4 +129,4 @@ const MainNavBar = (props) => {
   );
 };
 1;
-export default MainNavBar;
+export default NavBarDashboard;
