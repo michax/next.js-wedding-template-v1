@@ -14,10 +14,9 @@ import Typography from "@mui/material/Typography";
 import { Container } from "@mui/system";
 import Image from "next/image";
 import logo from "../../../public/logo.svg";
-import { Link, animateScroll as scroll } from "react-scroll";
+
 
 const drawerWidth = 240;
-
 const navItemsLeft = ["Confirm Attendance", "Gifts", "Location"];
 const navItemsRight = ["When", "Our Story", "Our Memories"];
 
@@ -30,7 +29,10 @@ export const Navbar = (props) => {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center",  backgroundColor: "#FCFFF7", }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: "center", backgroundColor: "#FCFFF7", height: "100%" }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -46,7 +48,6 @@ export const Navbar = (props) => {
         {navItemsRight.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-           
               <Typography
                 key={item}
                 component="a"
@@ -95,9 +96,9 @@ export const Navbar = (props) => {
           top: "0",
           width: "100%",
           height: "5rem",
-          display:"flex",
-          justifyContent:"center",
-          alignItems:'center'
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <Container maxWidth="lg">
@@ -164,6 +165,7 @@ export const Navbar = (props) => {
       </AppBar>
       <Box component="nav">
         <Drawer
+          anchor="right"
           container={container}
           variant="temporary"
           open={mobileOpen}

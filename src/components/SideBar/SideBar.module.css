@@ -1,0 +1,52 @@
+
+
+.top {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.logo {
+  color: "#0021F5";
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.navMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 40px;
+  padding-top: 20px;
+}
+
+.subMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 40px;
+  padding-top: 10px;
+  display: none;
+}
+
+.subMenu.active {
+  display: block;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #FA541C;
+}
+.subItem {
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+.subItem.activeLink {
+  color: #FA541C;
+  font-weight: bold;
+}
