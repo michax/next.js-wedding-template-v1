@@ -54,8 +54,8 @@ const SideBar = () => {
               icon={<MarkAsUnreadIcon />}
               nodeId="2"
               label="Invitations"
-              selected={activeLink === "/dashboard"}
-              onClick={() => handleClick("/dashboard")}
+              selected={activeLink === "/invitations"}
+              onClick={() => handleClick("/invitations")}
             />
             <TreeItem
               icon={<LocalBarIcon />}
