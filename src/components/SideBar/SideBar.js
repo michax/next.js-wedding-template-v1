@@ -37,6 +37,7 @@ const SideBar = () => {
             <DashboardIcon sx={{ mr: "10px" }} />
             Dashboards
           </li>
+          
           <ul className={`${styles.subMenu} ${active ? styles.active : ""}`}>
             <li
               className={`${styles.subItem} ${

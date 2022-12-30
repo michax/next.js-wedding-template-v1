@@ -1,5 +1,4 @@
 import * as React from "react";
-import styles from "./MainNavBar.module.css";
 import Divider from "@mui/material/Divider";
 import {
   Box,
@@ -14,9 +13,34 @@ import {
 import logo from "../../../public/logo.svg";
 import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
+import { makeStyles } from "@material-ui/core/styles";
 
+const useStyles = makeStyles((theme) => ({
+  navbar: {
+    height: 60,
+    display: "flex",
+    alignItems: "center",
+    fontSize: 14,
+    backgroundColor: "rgba(255, 255, 255, 0.929)",
+    [theme.breakpoints.down("xs")]: {
+      height: 40,
+      fontSize: 12,
+    },
+  },
+  wrapper: {
+    padding: "0 20px",
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    [theme.breakpoints.down("xs")]: {
+      padding: "0 10px",
+    },
+  },
+}));
 
 const drawerWidth = 240;
+
 const navItemsRight = ["When", "Our Story", "Our Memories"];
 
 const MainNavBar = (props) => {
@@ -26,6 +50,8 @@ const MainNavBar = (props) => {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const classes = useStyles();
 
   const drawer = (
     <Box
@@ -43,6 +69,7 @@ const MainNavBar = (props) => {
         <Image height="50%" src={logo} alt="Logo" />
       </Box>
       <Divider />
+      
       <List>
         {navItemsRight.map((item) => (
           <ListItem key={item} disablePadding>
@@ -68,9 +95,9 @@ const MainNavBar = (props) => {
 
   return (
     <>
-      <div className={styles.navbar}>
-        <div className={styles.wrapper}>
-          <div className={styles.breadcrumb}>
+      <Box className={classes.navbar}>
+        <Box className={classes.wrapper}>
+          <div>
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -81,13 +108,13 @@ const MainNavBar = (props) => {
               <MenuIcon />
             </IconButton>
           </div>
-          <div className={styles.items}>
-            <div className={styles.item}>
-            <Button variant="contained">Download PDF</Button>
+          <div className={classes.items}>
+            <div className={classes.item}>
+              <Button variant="contained">Download PDF</Button>
             </div>
           </div>
-        </div>
-      </div>
+        </Box>
+      </Box>
       <Divider />
       <Box component="nav">
         <Drawer
