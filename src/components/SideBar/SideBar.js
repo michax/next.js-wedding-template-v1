@@ -15,7 +15,6 @@ import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 
 const SideBar = () => {
   const [activeLink, setActiveLink] = useState("");
-
   const router = useRouter();
 
   function handleClick(page) {
