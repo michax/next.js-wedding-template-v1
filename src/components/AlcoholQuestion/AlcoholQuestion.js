@@ -13,7 +13,7 @@ export const AlcoholQuestion = () => {
           mt: "10px",
         }}
       >
-        {" "}
+
         What is your most liked alcoholic drink ?
       </FormLabel>
       <FormGroup>
