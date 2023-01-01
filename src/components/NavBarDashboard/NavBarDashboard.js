@@ -12,6 +12,7 @@ import TreeItem from "@mui/lab/TreeItem";
 import MarkAsUnreadIcon from "@mui/icons-material/MarkAsUnread";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 import NoFoodIcon from "@mui/icons-material/NoFood";
+import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 
 const drawerWidth = 240;
 
@@ -55,7 +56,7 @@ const NavBarDashboard = (props) => {
         defaultExpandIcon={<ChevronRightIcon />}
         defaultExpanded={["1"]}
       >
-        <TreeItem  nodeId="1" label="Summary">
+        <TreeItem nodeId="1" label="Summary">
           <TreeItem
             icon={<MarkAsUnreadIcon />}
             nodeId="2"
@@ -79,6 +80,23 @@ const NavBarDashboard = (props) => {
           />
         </TreeItem>
       </TreeView>
+      <TreeView
+        aria-label="file system navigator"
+        defaultCollapseIcon={<ExpandMoreIcon />}
+        defaultExpandIcon={<ChevronRightIcon />}
+        defaultExpanded={["1"]}
+        sx={{ textAlign: "left", mt: "10px", ml: "10px" }}
+      >
+        <TreeItem nodeId="1" label="Guests ">
+          <TreeItem
+            icon={<EmojiPeopleIcon />}
+            nodeId="2"
+            label="Confirmed guests"
+            selected={activeLink === "/confirmed-guest"}
+            onClick={() => handleClick("/confirmed-guest")}
+          />
+        </TreeItem>
+      </TreeView>
     </Box>
   );
 
@@ -93,7 +111,7 @@ const NavBarDashboard = (props) => {
           display: "flex",
           alignItems: "center",
           fontSize: "14px",
-          backgroundColor:"#FFF"
+          backgroundColor: "#FFF",
         }}
       >
         <Box
@@ -123,7 +141,7 @@ const NavBarDashboard = (props) => {
           </div>
         </Box>
       </Box>
-      <Divider  />
+      <Divider />
       <Box component="nav">
         <Drawer
           anchor="right"
