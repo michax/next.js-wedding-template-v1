@@ -55,7 +55,7 @@ const NavBarDashboard = (props) => {
         defaultExpandIcon={<ChevronRightIcon />}
         defaultExpanded={["1"]}
       >
-        <TreeItem s nodeId="1" label="Summary">
+        <TreeItem  nodeId="1" label="Summary">
           <TreeItem
             icon={<MarkAsUnreadIcon />}
             nodeId="2"

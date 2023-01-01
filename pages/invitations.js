@@ -29,9 +29,7 @@ export default function Invitations({ isConnected }) {
   console.log("data featch", data);
 
   // How many people is coming who answer Yes
-  const confirmedPeople = data.filter((person) => {
-    return person.isComing === "Yes";
-  });
+  const comingGuests = data.filter((guest) => guest.isComing === "Yes");
 
   // How many people is coming plus with extra person
   const confirmedPeopleWhoComingAndWithExtraPerson = data.filter((person) => {
@@ -58,7 +56,7 @@ export default function Invitations({ isConnected }) {
   // waiting for answer
   const amountPendingPeople =
     amountPeople -
-    Number(confirmedPeople.length) -
+    Number(comingGuests.length) -
     Number(amountNotComingPeople.length);
 
   //====================================================================================================
@@ -141,7 +139,7 @@ export default function Invitations({ isConnected }) {
                       <Grid item xs={12} sm={6} md={3}>
                         <CardDataSummary
                           title="Confirmed"
-                          subTitle="Total number of adults who are coming"
+                          subTitle="Total number of adults coming, plus companions who indicated they are also coming "
                           total={
                             amountConfirmedPeopleWhoComingAloneOrWithExtraPerson
                           }
@@ -153,7 +151,7 @@ export default function Invitations({ isConnected }) {
                       <Grid item xs={12} sm={6} md={3}>
                         <CardDataSummary
                           title="Not Coming"
-                          subTitle="Total number of adults who are not coming"
+                          subTitle="Total number of adults  who indicated they are not coming"
                           total={amountNotComingPeople.length}
                           color="info"
                           icon={"emojione-monotone:no-pedestrians"}

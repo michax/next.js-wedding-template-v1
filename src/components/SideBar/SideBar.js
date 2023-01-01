@@ -11,6 +11,7 @@ import TreeItem from "@mui/lab/TreeItem";
 import MarkAsUnreadIcon from "@mui/icons-material/MarkAsUnread";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 import NoFoodIcon from "@mui/icons-material/NoFood";
+import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 
 const SideBar = () => {
   const [activeLink, setActiveLink] = useState("");
@@ -72,6 +73,23 @@ const SideBar = () => {
               label="Summary Food Allergy"
               onClick={() => handleClick("/summary-food")}
               selected={activeLink === "/summary-food"}
+            />
+          </TreeItem>
+        </TreeView>
+        <TreeView
+          aria-label="file system navigator"
+          defaultCollapseIcon={<ExpandMoreIcon />}
+          defaultExpandIcon={<ChevronRightIcon />}
+          defaultExpanded={["1"]}
+          sx={{ textAlign: "left", mt: "10px", ml: "10px" }}
+        >
+          <TreeItem nodeId="1" label="Guests ">
+            <TreeItem
+              icon={<EmojiPeopleIcon />}
+              nodeId="2"
+              label="Confirmed guests"
+              selected={activeLink === "/confirmed-guest"}
+              onClick={() => handleClick("/confirmed-guest")}
             />
           </TreeItem>
         </TreeView>
