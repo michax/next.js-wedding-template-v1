@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SideBar from "../src/components/SideBar/SideBar";
-
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import styles from "../styles/Home.module.css";
 import NavBarDashboard from "../src/components/NavBarDashboard/NavBarDashboard";
 import PieChartDrinks from "../src/components/PieChartDrinks/PieChartDrinks";

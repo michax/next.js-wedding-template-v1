@@ -37,18 +37,3 @@ const CheckboxField = ({
 export default CheckboxField;
 
 
-{/* <FormLabel component="legend"> Some asked question here? </FormLabel>
-<FormGroup>
-  <FormControlLabel
-    control={<Checkbox checked={one} color="primary" onChange={handleChange} name="isBaby" />}
-    label="0- 1 age"
-  />
-  <FormControlLabel
-    control={<Checkbox checked={two} color="primary" onChange={handleChange} name="isBaby2" />}
-    label="1-3 age"
-  />
-  <FormControlLabel
-    control={<Checkbox checked={three} color="primary" onChange={handleChange} name="isBaby3" />}
-    label="> 3"
-  />
-</FormGroup> */}

@@ -166,7 +166,7 @@ export const HistorySection = () => {
                           <Typography
                             variant="body2"
                             sx={{
-                              fontSize: { xs: ".9rem", sm: "1.1rem" },
+                              fontSize: { xs: "1.1rem", sm: "1.3rem" },
                               textAlign: { xs: "center", sm: "left" },
                               mt: "1rem",
                               mb: { xs: "1rem", sm: "0" },

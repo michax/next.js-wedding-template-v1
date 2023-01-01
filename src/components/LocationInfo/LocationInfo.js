@@ -7,7 +7,7 @@ import wine from "../../../public/wine.svg";
 
 import Image from "next/image";
 
-export const LocationChurch = () => {
+export const LocationInfo = () => {
   return (
     <Box
       id="Location"
@@ -53,9 +53,9 @@ export const LocationChurch = () => {
                 variant="body2"
                 sx={{
                   maxWidth: "20rem",
-                  mt: "1.5rem",
+                  mt: "1rem",
                   textAlign: "center",
-                  fontSize: { xs: ".9rem", sm: "1.1rem" },
+                  fontSize: { xs: "1.1rem", sm: "1.3rem" },
                 }}
               >
                 The Wedding will take place in Saint Pro-Cathedral 83
@@ -66,8 +66,8 @@ export const LocationChurch = () => {
                 sx={{
                   maxWidth: "20rem",
                   textAlign: "center",
-                  mt: "1.5rem",
-                  fontSize: { xs: ".9rem", sm: "1.1rem" },
+                  mt: "1rem",
+                  fontSize: { xs: "1.1rem", sm: "1.3rem" },
                 }}
               >
                 Up to three hours free parking is available in town
@@ -84,7 +84,7 @@ export const LocationChurch = () => {
                     color: "#f2779a",
                     mt: "1em",
                     textDecoration: "underline",
-                    fontSize: { xs: ".9rem", sm: "1.1rem" },
+                    fontSize: { xs: "1.1rem", sm: "1.3rem" },
                     zIndex: "99",
                   }}
                 >
@@ -118,8 +118,8 @@ export const LocationChurch = () => {
                 sx={{
                   maxWidth: "20rem",
                   textAlign: "center",
-                  mt: "1.5rem",
-                  fontSize: { xs: ".9rem", sm: "1.1rem" },
+                  mt: "1rem",
+                  fontSize: { xs: "1.1rem", sm: "1.3rem" },
                 }}
               >
                 Dinner and dancing will take place in Castleknock Hotel &
@@ -130,8 +130,8 @@ export const LocationChurch = () => {
                 sx={{
                   maxWidth: "20rem",
                   textAlign: "center",
-                  mt: "1.5rem",
-                  fontSize: { xs: ".9rem", sm: "1.1rem" },
+                  mt: "1rem",
+                  fontSize: { xs: "1.1rem", sm: "1.3rem" },
                 }}
               >
                 Up to three hours free parking is available in town
@@ -147,7 +147,7 @@ export const LocationChurch = () => {
                     color: "#f2779a",
                     mt: "1em",
                     textDecoration: "underline",
-                    fontSize: { xs: ".9rem", sm: "1.1rem" },
+                    fontSize: { xs: "1.1rem", sm: "1.3rem" },
                   }}
                 >
                   see the map

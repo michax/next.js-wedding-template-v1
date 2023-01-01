@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import SideBar from "../src/components/SideBar/SideBar";
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import NavBarDashboard from "../src/components/NavBarDashboard/NavBarDashboard";
 import BarChartFoodAllergy from "../src/components/BarChartFoodAllergy/BarChartFoodAllergy";
 
 const SummaryFoodAllergy = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-
   const [userDataAllergyFood, setUserDataAllergyFood] = useState([]);
 
   useEffect(() => {
@@ -25,10 +24,9 @@ const SummaryFoodAllergy = () => {
     getData();
   }, []);
 
-  console.log("data featch", data);
 
-  // =================================================================================
-  // FOOD
+
+
   const peanutsPeopleAllergies = data.filter((person) => {
     return person.isPeanuts === true;
   });

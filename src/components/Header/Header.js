@@ -47,7 +47,7 @@ export const Header = () => {
             sx={{
               maxWidth: "35em",
               margin: "0 auto",
-              fontSize: { xs: ".9rem", sm: "1.1rem" },
+              fontSize: { xs: "1.1rem", sm: "1.3rem" },
             }}
           >
             Welcome to our digital wedding invitation! We&apos;re looking

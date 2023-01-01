@@ -50,7 +50,7 @@ export const CountdownTimer = () => {
           sx={{
             maxWidth: "35em",
             margin: "0 auto",
-            fontSize: { xs: ".9rem", sm: "1.1rem" },
+            fontSize: { xs: "1.1rem", sm: "1.3rem" },
           }}
         >
           The sweetest day of my life is coming up, and I will really be excited

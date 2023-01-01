@@ -29,7 +29,7 @@ export const ConfirmedMessage = () => {
               variant="body2"
               sx={{
                 textAlign: "center",
-                fontSize: { xs: ".9rem", sm: "1.1rem" },
+                fontSize: { xs: "1.1rem", sm: "1.3rem" },
               }}
             >
               We are so excited that you are going to join us in Santorini to

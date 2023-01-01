@@ -52,11 +52,4 @@ export default async function handler(req, res) {
   const result = await registerUser({ collection, dataToInsert });
 
   console.log('result', result)
-  // here we should get what we have from return in register-user
-  // result.status(result.status).json({ message: result.message });
-  // console.log(
-  //   "result from registerUser in MongoDB",
-  //   result.status,
-  //   result.message
-  // );
 }
