@@ -12,6 +12,7 @@ import MarkAsUnreadIcon from "@mui/icons-material/MarkAsUnread";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 import NoFoodIcon from "@mui/icons-material/NoFood";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
+import PersonOffIcon from '@mui/icons-material/PersonOff';
 
 const SideBar = () => {
   const [activeLink, setActiveLink] = useState("");
@@ -62,14 +63,14 @@ const SideBar = () => {
             <TreeItem
               icon={<LocalBarIcon />}
               nodeId="3"
-              label="Summary Drinks"
+              label="Drinks"
               onClick={() => handleClick("/summary-drinks")}
               selected={activeLink === "/summary-drinks"}
             />
             <TreeItem
               icon={<NoFoodIcon />}
               nodeId="4"
-              label="Summary Food Allergy"
+              label="Food Allergy"
               onClick={() => handleClick("/summary-food")}
               selected={activeLink === "/summary-food"}
             />
@@ -89,6 +90,13 @@ const SideBar = () => {
               label="Confirmed guests"
               selected={activeLink === "/confirmed-guest"}
               onClick={() => handleClick("/confirmed-guest")}
+            />
+            <TreeItem
+              icon={<PersonOffIcon />}
+              nodeId="3"
+              label="Guests Who Will Not Attend"
+              selected={activeLink === "/guests-not-attend"}
+              onClick={() => handleClick("/guests-not-attend")}
             />
           </TreeItem>
         </TreeView>

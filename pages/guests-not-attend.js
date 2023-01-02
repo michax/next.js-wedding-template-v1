@@ -13,7 +13,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-const ConfirmedGuest = () => {
+const GuestsNotAttend = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -31,7 +31,7 @@ const ConfirmedGuest = () => {
     getData();
   }, []);
 
-  const comingGuests = data.filter((guest) => guest.isComing === "Yes");
+  const comingGuests = data.filter((guest) => guest.isComing === "No");
   console.log(data);
   console.log(comingGuests);
   return (
@@ -57,13 +57,11 @@ const ConfirmedGuest = () => {
                 sx={{
                   mb: 5,
                   mt: 1,
-                  textAlign: "left",
                 }}
               >
-                List of Confirmed Guests and Their Companions, with Number of
-                Children
+                Confirmed Guests Who Will Not Attend
               </Typography>
-              <TableContainer component={Paper} className="table">
+              <TableContainer component={Paper} sx={{ width: 750 }}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <TableHead>
                     <TableRow>
@@ -95,39 +93,6 @@ const ConfirmedGuest = () => {
                       >
                         Phone Number
                       </TableCell>
-                      <TableCell
-                        sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                        className="tableCell"
-                      >
-                        Companion
-                      </TableCell>
-                      <TableCell
-                        sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                        className="tableCell"
-                      >
-                        Companion Name
-                      </TableCell>
-                      <TableCell
-                        sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                        className="tableCell"
-                      >
-                        {" "}
-                        Companion Surname
-                      </TableCell>
-                      <TableCell
-                        sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                        className="tableCell"
-                      >
-                        {" "}
-                        Children Under 3 Years Old
-                      </TableCell>
-                      <TableCell
-                        sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                        className="tableCell"
-                      >
-                        {" "}
-                        Children Over 3 Years Old
-                      </TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -138,15 +103,6 @@ const ConfirmedGuest = () => {
                         <TableCell>{row.lastName}</TableCell>
                         <TableCell>{row.email}</TableCell>
                         <TableCell>{row.phone}</TableCell>
-                        <TableCell>
-                          {row.isWithCompanion ? "Yes" : "NO"}
-                        </TableCell>
-                        <TableCell>{row.firstNameCompanion}</TableCell>
-                        <TableCell>{row.lastNameCompanion}</TableCell>
-                        <TableCell align="center">{row.amountKids}</TableCell>
-                        <TableCell align="center">
-                          {row.amountTeenagers}
-                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -160,7 +116,7 @@ const ConfirmedGuest = () => {
   );
 };
 
-export default ConfirmedGuest;
+export default GuestsNotAttend;
 
 export async function getServerSideProps() {
   // Connect with MongoDB

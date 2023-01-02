@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SideBar from "../src/components/SideBar/SideBar";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import styles from "../styles/Home.module.css";
 import NavBarDashboard from "../src/components/NavBarDashboard/NavBarDashboard";
 import PieChartDrinks from "../src/components/PieChartDrinks/PieChartDrinks";
@@ -109,6 +109,16 @@ const SummaryDrinks = () => {
       <div className={styles.homeContainer}>
         <NavBarDashboard />
         <div className={styles.container}>
+          <Typography
+            variant="h3"
+            sx={{
+              mb: 5,
+              mt: 1,
+              textAlign: "left",
+            }}
+          >
+            Overview of Wedding Guests&apos; Drink Preferences
+          </Typography>
           <Grid container spacing={3}>
             <PieChartDrinks
               userData={userData}

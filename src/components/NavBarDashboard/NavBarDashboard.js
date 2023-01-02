@@ -13,6 +13,7 @@ import MarkAsUnreadIcon from "@mui/icons-material/MarkAsUnread";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 import NoFoodIcon from "@mui/icons-material/NoFood";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
+import PersonOffIcon from '@mui/icons-material/PersonOff';
 
 const drawerWidth = 240;
 
@@ -94,6 +95,13 @@ const NavBarDashboard = (props) => {
             label="Confirmed guests"
             selected={activeLink === "/confirmed-guest"}
             onClick={() => handleClick("/confirmed-guest")}
+          />
+          <TreeItem
+            icon={<PersonOffIcon />}
+            nodeId="3"
+            label="Guests Who Will Not Attend"
+            selected={activeLink === "/guests-not-attend"}
+            onClick={() => handleClick("/guests-not-attend")}
           />
         </TreeItem>
       </TreeView>

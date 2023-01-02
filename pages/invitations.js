@@ -114,86 +114,82 @@ export default function Invitations({ isConnected }) {
           <div className={styles.homeContainer}>
             <NavBarDashboard />
             <div className={styles.container}>
-              <Grid container spacing={3}>
-                <Box
+              <Box
+                sx={{
+                  mt: "1rem",
+                  display: "flex",
+                  justifyContent: "center",
+
+                  flexDirection: "column",
+                }}
+              >
+                <Typography
+                  variant="h3"
                   sx={{
-                    // height: "100vh",
-                    pt: "5rem",
-                    pb: "15rem",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
+                    mb: 5,
+                    mt: 1,
+                    textAlign: "left",
                   }}
                 >
-                  <Container maxWidth="xl">
-                    <Typography
-                      variant="h3"
-                      sx={{
-                        mb: 5,
-                        textAlign: "center",
-                      }}
-                    >
-                      Summary of your guest wedding invitations
-                    </Typography>
-                    <Grid container spacing={3}>
-                      <Grid item xs={12} sm={6} md={3}>
-                        <CardDataSummary
-                          title="Confirmed"
-                          subTitle="Total number of adults coming, plus companions who indicated they are also coming "
-                          total={
-                            amountConfirmedPeopleWhoComingAloneOrWithExtraPerson
-                          }
-                          icon={"akar-icons:people-group"}
-                          colorIcon="#20A4F3"
-                        />
-                      </Grid>
+                  Wedding Guest Invitation Summary
+                </Typography>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <CardDataSummary
+                      title="Confirmed"
+                      subTitle="Total number of adults coming, plus companions who indicated they are also coming "
+                      total={
+                        amountConfirmedPeopleWhoComingAloneOrWithExtraPerson
+                      }
+                      icon={"akar-icons:people-group"}
+                      colorIcon="#20A4F3"
+                    />
+                  </Grid>
 
-                      <Grid item xs={12} sm={6} md={3}>
-                        <CardDataSummary
-                          title="Not Coming"
-                          subTitle="Total number of adults  who indicated they are not coming"
-                          total={amountNotComingPeople.length}
-                          color="info"
-                          icon={"emojione-monotone:no-pedestrians"}
-                          colorIcon="#011627"
-                        />
-                      </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <CardDataSummary
+                      title="Not Coming"
+                      subTitle="Total number of adults  who indicated they are not coming"
+                      total={amountNotComingPeople.length}
+                      color="info"
+                      icon={"emojione-monotone:no-pedestrians"}
+                      colorIcon="#011627"
+                    />
+                  </Grid>
 
-                      <Grid item xs={12} sm={6} md={3}>
-                        <CardDataSummary
-                          title="Children"
-                          subTitle="Total number of children under 3 years old"
-                          total={sumChildrenUnder3}
-                          color="warning"
-                          icon={"uil:kid"}
-                          colorIcon="#2ec4b6"
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6} md={3}>
-                        <CardDataSummary
-                          title="Children"
-                          subTitle="Total number of children over 3 years old"
-                          total={sumChildrenAbove3}
-                          color="warning"
-                          icon={"fluent-emoji-high-contrast:children-crossing"}
-                          colorIcon="#C490D1"
-                        />
-                      </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <CardDataSummary
+                      title="Children"
+                      subTitle="Total number of children under 3 years old"
+                      total={sumChildrenUnder3}
+                      color="warning"
+                      icon={"uil:kid"}
+                      colorIcon="#2ec4b6"
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <CardDataSummary
+                      title="Children"
+                      subTitle="Total number of children over 3 years old"
+                      total={sumChildrenAbove3}
+                      color="warning"
+                      icon={"fluent-emoji-high-contrast:children-crossing"}
+                      colorIcon="#C490D1"
+                    />
+                  </Grid>
 
-                      <Grid item xs={12} sm={6} md={3}>
-                        <CardDataSummary
-                          title={"Pending"}
-                          subTitle="Number of invitations not answered"
-                          total={amountPendingPeople}
-                          color="error"
-                          icon={"ic:baseline-pending-actions"}
-                          colorIcon="#FF3366"
-                        />
-                      </Grid>
-                    </Grid>
-                  </Container>
-                </Box>
-              </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <CardDataSummary
+                      title={"Pending"}
+                      subTitle="Number of invitations not answered"
+                      total={amountPendingPeople}
+                      color="error"
+                      icon={"ic:baseline-pending-actions"}
+                      colorIcon="#FF3366"
+                    />
+                  </Grid>
+                </Grid>
+              </Box>
             </div>
           </div>
         </div>

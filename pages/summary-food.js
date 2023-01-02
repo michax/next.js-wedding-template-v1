@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import SideBar from "../src/components/SideBar/SideBar";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import NavBarDashboard from "../src/components/NavBarDashboard/NavBarDashboard";
 import BarChartFoodAllergy from "../src/components/BarChartFoodAllergy/BarChartFoodAllergy";
 
@@ -94,6 +94,16 @@ const SummaryFoodAllergy = () => {
       <div className={styles.homeContainer}>
         <NavBarDashboard />
         <div className={styles.container}>
+        <Typography
+            variant="h3"
+            sx={{
+              mb: 5,
+              mt: 1,
+              textAlign: "left",
+            }}
+          >
+            Summary of Wedding Guests&apos; Food Allergies
+          </Typography>
           <Grid container spacing={3}>
             <BarChartFoodAllergy
               userDataFoodAllergy={userDataFoodAllergy}
