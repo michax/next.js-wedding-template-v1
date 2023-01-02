@@ -38,6 +38,7 @@ const GuestsNotAttend = () => {
     <div>
       {loading ? (
         <Typography
+        
           variant="h3"
           sx={{
             mb: 5,
@@ -55,6 +56,7 @@ const GuestsNotAttend = () => {
               <Typography
                 variant="h3"
                 sx={{
+                  
                   mb: 5,
                   mt: 1,
                 }}

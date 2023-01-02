@@ -30,7 +30,7 @@ const SideBar = () => {
         flex: 1,
         borderRight: "0.5px solid rgba(230, 227, 227)",
         minHeight: "100vh",
-        backgroundColor: "#FFF",
+        backgroundColor: "#212B36", color: "#FFF"
       }}
     >
       <div className={styles.top}>
