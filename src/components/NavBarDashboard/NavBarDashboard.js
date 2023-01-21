@@ -144,6 +144,7 @@ const NavBarDashboard = (props) => {
           </div>
           <div>
             <div>
+              {/* After clicking in that button */}
               <Button variant="contained">Download PDF</Button>
             </div>
           </div>
@@ -174,5 +175,5 @@ const NavBarDashboard = (props) => {
     </>
   );
 };
-1;
+
 export default NavBarDashboard;

@@ -10,7 +10,7 @@ import Image from "next/image";
 export const LocationInfo = () => {
   return (
     <Box
-      id="Location"
+      id="location"
       sx={{
         pb: "15rem",
         pt: "5rem",

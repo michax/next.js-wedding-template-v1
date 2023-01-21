@@ -4,6 +4,7 @@ import { Container } from "@mui/system";
 import React from "react";
 import hearts from "../../../public/hearts.json";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const style = {
   height: 200,
@@ -14,6 +15,7 @@ const AnimationHearts = () => {
 };
 
 export const Header = () => {
+  const router = useRouter();
   return (
     <>
       <Box
@@ -54,18 +56,19 @@ export const Header = () => {
             forward to celebrating our special day with you. Please join us as
             we celebrate our wedding, and use form to confirm your attendance.
           </Typography>
-          <Link href="#Confirm%20Attendance">
-            <Button
-              sx={{
-                mt: "5rem",
-                fontSize: "1.5rem",
-                backgroundColor: "#F2779A",
-              }}
-              variant="contained"
-            >
-              Confirm attendance
-            </Button>
-          </Link>
+
+          <Button
+            sx={{
+              mt: "5rem",
+              fontSize: "1.5rem",
+              backgroundColor: "#F2779A",
+            }}
+            variant="contained"
+            color="primary"
+            onClick={() => router.push("#confirm-attendance")}
+          >
+            Confirm Attendance
+          </Button>
         </Container>
       </Box>
     </>

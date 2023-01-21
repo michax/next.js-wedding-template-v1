@@ -28,7 +28,7 @@ export const CountdownTimer = () => {
       }}
     >
       <Container
-        id="When"
+        id="when"
         maxWidth="lg"
         sx={{
           textAlign: "center",

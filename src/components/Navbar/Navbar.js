@@ -15,10 +15,7 @@ import { Container } from "@mui/system";
 import Image from "next/image";
 import logo from "../../../public/logo.svg";
 
-
 const drawerWidth = 240;
-const navItemsLeft = ["Confirm Attendance", "Gifts", "Location"];
-const navItemsRight = ["When", "Our Story", "Our Memories"];
 
 export const Navbar = (props) => {
   const { window } = props;
@@ -45,38 +42,81 @@ export const Navbar = (props) => {
       </Box>
       <Divider />
       <List>
-        {navItemsRight.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <Typography
-                key={item}
-                component="a"
-                href={`#${item}`}
-                variant="p"
-                sx={{ display: { sm: "block", md: "none" } }}
-              >
-                {item}
-              </Typography>
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem key="Confirm Attendance" disablePadding>
+          <ListItemButton sx={{ textAlign: "center" }}>
+            <Typography
+              component="a"
+              href="#confirm-attendance"
+              variant="p"
+              sx={{ display: { sm: "block", md: "none" } }}
+            >
+              Confirm Attendance
+            </Typography>
+          </ListItemButton>
+        </ListItem>
+        <ListItem key="Gifts" disablePadding>
+          <ListItemButton sx={{ textAlign: "center" }}>
+            <Typography
+              component="a"
+              href="#gifts"
+              variant="p"
+              sx={{ display: { sm: "block", md: "none" } }}
+            >
+              Gifts
+            </Typography>
+          </ListItemButton>
+        </ListItem>
+        <ListItem key="Location" disablePadding>
+          <ListItemButton sx={{ textAlign: "center" }}>
+            <Typography
+              component="a"
+              href="#location"
+              variant="p"
+              sx={{ display: { sm: "block", md: "none" } }}
+            >
+              Location
+            </Typography>
+          </ListItemButton>
+        </ListItem>
       </List>
+
       <List>
-        {navItemsLeft.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <Typography
-                key={item}
-                component="a"
-                href={`#${item}`}
-                variant="p"
-                sx={{ display: { sm: "block", md: "none" } }}
-              >
-                {item}
-              </Typography>
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem key="When" disablePadding>
+          <ListItemButton sx={{ textAlign: "center" }}>
+            <Typography
+              component="a"
+              href="#when"
+              variant="p"
+              sx={{ display: { sm: "block", md: "none" } }}
+            >
+              When
+            </Typography>
+          </ListItemButton>
+        </ListItem>
+        <ListItem key="Our Story" disablePadding>
+          <ListItemButton sx={{ textAlign: "center" }}>
+            <Typography
+              component="a"
+              href="#our-story"
+              variant="p"
+              sx={{ display: { sm: "block", md: "none" } }}
+            >
+              Our Story
+            </Typography>
+          </ListItemButton>
+        </ListItem>
+        <ListItem key="Our Memories" disablePadding>
+          <ListItemButton sx={{ textAlign: "center" }}>
+            <Typography
+              component="a"
+              href="#our-memories"
+              variant="p"
+              sx={{ display: { sm: "block", md: "none" } }}
+            >
+              Our Memories
+            </Typography>
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );
@@ -121,20 +161,39 @@ export const Navbar = (props) => {
               }}
             >
               <Box sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
-                {navItemsRight.map((item) => (
-                  <Typography
-                    key={item}
-                    component="a"
-                    href={`#${item}`}
-                    sx={{
-                      display: { sm: "none", md: "block" },
-                      ml: "35px",
-                      color: "#212B36",
-                    }}
-                  >
-                    {item}
-                  </Typography>
-                ))}
+                <Typography
+                  component="a"
+                  href="#confirm-attendance"
+                  sx={{
+                    display: { sm: "none", md: "block" },
+                    ml: "35px",
+                    color: "#212B36",
+                  }}
+                >
+                  Confirm Attendance
+                </Typography>
+                <Typography
+                  component="a"
+                  href="#gifts"
+                  sx={{
+                    display: { sm: "none", md: "block" },
+                    ml: "35px",
+                    color: "#212B36",
+                  }}
+                >
+                  Gifts{" "}
+                </Typography>
+                <Typography
+                  component="a"
+                  href="#location"
+                  sx={{
+                    display: { sm: "none", md: "block" },
+                    ml: "35px",
+                    color: "#212B36",
+                  }}
+                >
+                  Location
+                </Typography>
               </Box>
 
               <Box
@@ -148,16 +207,29 @@ export const Navbar = (props) => {
                 <Image src={logo} alt="Logo" />
               </Box>
               <Box sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
-                {navItemsLeft.map((item) => (
-                  <Typography
-                    key={item}
-                    component="a"
-                    href={`#${item}`}
-                    sx={{ ml: "35px", color: "#212B36" }}
-                  >
-                    {item}
-                  </Typography>
-                ))}
+                <Typography
+                  component="a"
+                  href="#when"
+                  sx={{ ml: "35px", color: "#212B36" }}
+                >
+                  When
+                </Typography>
+
+                <Typography
+                  component="a"
+                  href="#our-story"
+                  sx={{ ml: "35px", color: "#212B36" }}
+                >
+                  Our Story
+                </Typography>
+
+                <Typography
+                  component="a"
+                  href="#our-memories"
+                  sx={{ ml: "35px", color: "#212B36" }}
+                >
+                  Our Memories
+                </Typography>
               </Box>
             </Box>
           </Toolbar>

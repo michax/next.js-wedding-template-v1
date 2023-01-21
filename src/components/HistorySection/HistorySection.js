@@ -66,7 +66,7 @@ export const HistorySection = () => {
   return (
     <>
       <Box
-        id="Our%20Story"
+        id="our-story"
         sx={{
           backgroundImage: `url(${wavetop.src})`,
           height: "300px",

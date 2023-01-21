@@ -38,7 +38,7 @@ export default function GallerySplide() {
   };
   return (
     <Box
-      id="Our%20Memories"
+      id="our-memories"
       sx={{
         pt: "5rem",
         pb: "8rem",
