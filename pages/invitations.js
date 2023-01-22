@@ -5,8 +5,8 @@ import CardDataSummary from "../src/components/CardDataSummary/CardDataSummary";
 import SideBar from "../src/components/SideBar/SideBar";
 import NavBarDashboard from "../src/components/NavBarDashboard/NavBarDashboard";
 import styles from "../styles/Home.module.css";
-import jsPDF from 'jspdf'
-import autoTable from 'jspdf-autotable'
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 const amountPeople = 100;
 
@@ -62,54 +62,63 @@ export default function Invitations({ isConnected }) {
     Number(amountNotComingPeople.length);
 
   // Number of Children under  3
-
   const numberChildren = data.filter((person) => {
     return person.isWithChildren === true;
   });
-
-  console.log("numberChildren", numberChildren);
 
   const numberChildrenUnder3 = numberChildren.map((child) => {
     return child.amountKids;
   });
 
-  console.log("numberChildrenUnder3", numberChildrenUnder3);
-
   const sumChildrenUnder3 = numberChildrenUnder3.reduce((prev, curr) => {
     return Number(prev) + Number(curr);
   }, 0);
 
-  console.log("sumChildrenUnder3", sumChildrenUnder3);
-
   //// Number of Children above 3
-
   const numberChildrenOver3 = numberChildren.map((child) => {
     return child.amountTeenagers;
   });
 
-  console.log("numberChildrenOver3", numberChildrenOver3);
-
   const sumChildrenAbove3 = numberChildrenOver3.reduce((prev, curr) => {
     return Number(prev) + Number(curr);
   }, 0);
-
-  console.log("sumChildrenAbove3", sumChildrenAbove3);
 
   // PDF
 
   const generatePDF = () => {
     // create a new pdf document
     const doc = new jsPDF();
-    var col = ["Data", "Value"];
-    var rows = [
-      ["Coming Guests", comingGuests.length],
-      ["Extra person", confirmedPeopleWhoComingAndWithExtraPerson.length],
+
+    // add title
+    doc.text(20, 20, "Wedding Guest Invitation Summary");
+
+    var data = [
+      [
+        "Coming Guests with extra Person or not",
+        amountConfirmedPeopleWhoComingAloneOrWithExtraPerson,
+      ],
       ["Not coming", amountNotComingPeople.length],
       ["Children under 3", sumChildrenUnder3],
       ["Children above 3", sumChildrenAbove3],
     ];
 
-    doc.autoTable(col, rows);
+    var columns = ["Data", "Value"];
+
+    var options = {
+      startY: 30,
+      head: [columns],
+      body: data,
+    };
+
+    doc.autoTable(options);
+    var today = new Date();
+    var date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    doc.text(80, 10, "Date: " + date);
     // save the pdf
     doc.save("file.pdf");
   };
