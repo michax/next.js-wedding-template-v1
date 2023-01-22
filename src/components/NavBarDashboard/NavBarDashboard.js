@@ -13,12 +13,12 @@ import MarkAsUnreadIcon from "@mui/icons-material/MarkAsUnread";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 import NoFoodIcon from "@mui/icons-material/NoFood";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
-import PersonOffIcon from '@mui/icons-material/PersonOff';
+import PersonOffIcon from "@mui/icons-material/PersonOff";
 
 const drawerWidth = 240;
 
 const NavBarDashboard = (props) => {
-  const { window } = props;
+  const { window, generatePDF } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [activeLink, setActiveLink] = useState("");
 
@@ -145,7 +145,9 @@ const NavBarDashboard = (props) => {
           <div>
             <div>
               {/* After clicking in that button */}
-              <Button variant="contained">Download PDF</Button>
+              <Button onClick={generatePDF} variant="contained">
+                Download PDF
+              </Button>
             </div>
           </div>
         </Box>

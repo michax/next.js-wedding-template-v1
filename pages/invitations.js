@@ -5,6 +5,8 @@ import CardDataSummary from "../src/components/CardDataSummary/CardDataSummary";
 import SideBar from "../src/components/SideBar/SideBar";
 import NavBarDashboard from "../src/components/NavBarDashboard/NavBarDashboard";
 import styles from "../styles/Home.module.css";
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable'
 
 const amountPeople = 100;
 
@@ -59,9 +61,6 @@ export default function Invitations({ isConnected }) {
     Number(comingGuests.length) -
     Number(amountNotComingPeople.length);
 
-  //====================================================================================================
-  //drinks
-
   // Number of Children under  3
 
   const numberChildren = data.filter((person) => {
@@ -96,6 +95,25 @@ export default function Invitations({ isConnected }) {
 
   console.log("sumChildrenAbove3", sumChildrenAbove3);
 
+  // PDF
+
+  const generatePDF = () => {
+    // create a new pdf document
+    const doc = new jsPDF();
+    var col = ["Data", "Value"];
+    var rows = [
+      ["Coming Guests", comingGuests.length],
+      ["Extra person", confirmedPeopleWhoComingAndWithExtraPerson.length],
+      ["Not coming", amountNotComingPeople.length],
+      ["Children under 3", sumChildrenUnder3],
+      ["Children above 3", sumChildrenAbove3],
+    ];
+
+    doc.autoTable(col, rows);
+    // save the pdf
+    doc.save("file.pdf");
+  };
+
   return (
     <div>
       {loading ? (
@@ -112,7 +130,7 @@ export default function Invitations({ isConnected }) {
         <div className={styles.home}>
           <SideBar />
           <div className={styles.homeContainer}>
-            <NavBarDashboard />
+            <NavBarDashboard generatePDF={generatePDF} />
             <div className={styles.container}>
               <Box
                 sx={{
