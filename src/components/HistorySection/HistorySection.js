@@ -6,8 +6,8 @@ import {
   TimelineItem,
   TimelineSeparator,
 } from "@mui/lab";
-import { Box, Paper, Stack, Typography } from "@mui/material";
-import { Container } from "@mui/system";
+import { Box, Container, Paper, Stack, Typography } from "@mui/material";
+
 
 import React from "react";
 import wavetop from "../../../public/wavetop.svg";

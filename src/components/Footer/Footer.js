@@ -1,5 +1,6 @@
+import { Typography } from "@mui/material";
 import React from "react";
 
 export const Footer = () => {
-  return <div>Footer</div>;
+  return <div><Typography>Footer</Typography></div>;
 };

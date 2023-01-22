@@ -1,5 +1,4 @@
-import { Grid, Paper, Typography } from "@mui/material";
-import { Container } from "@mui/system";
+import { Container, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
 
 export const ConfirmedMessage = () => {

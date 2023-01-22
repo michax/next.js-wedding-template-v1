@@ -1,11 +1,10 @@
-import { Grid, Typography } from "@mui/material";
-import { Box, Container, Stack } from "@mui/system";
-import React from "react";
 
+import React from "react";
 import church from "../../../public/church.svg";
 import wine from "../../../public/wine.svg";
-
 import Image from "next/image";
+import Link from "next/link";
+import { Box, Container, Grid, Typography } from "@mui/material";
 
 export const LocationInfo = () => {
   return (
@@ -55,7 +54,6 @@ export const LocationInfo = () => {
                   maxWidth: "20rem",
                   mt: "1rem",
                   textAlign: "center",
-                  fontSize: { xs: "1.1rem", sm: "1.3rem" },
                 }}
               >
                 The Wedding will take place in Saint Pro-Cathedral 83
@@ -67,16 +65,11 @@ export const LocationInfo = () => {
                   maxWidth: "20rem",
                   textAlign: "center",
                   mt: "1rem",
-                  fontSize: { xs: "1.1rem", sm: "1.3rem" },
                 }}
               >
                 Up to three hours free parking is available in town
               </Typography>
-              <a
-                href="https://goo.gl/maps/3q59iGCWT1WseYMK7"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="https://goo.gl/maps/3q59iGCWT1WseYMK7">
                 <Typography
                   position="relative"
                   variant="body1"
@@ -84,13 +77,13 @@ export const LocationInfo = () => {
                     color: "#f2779a",
                     mt: "1em",
                     textDecoration: "underline",
-                    fontSize: { xs: "1.1rem", sm: "1.3rem" },
                     zIndex: "99",
+                    
                   }}
                 >
                   see the map
                 </Typography>
-              </a>
+              </Link>
             </Box>
           </Grid>
 
@@ -119,7 +112,6 @@ export const LocationInfo = () => {
                   maxWidth: "20rem",
                   textAlign: "center",
                   mt: "1rem",
-                  fontSize: { xs: "1.1rem", sm: "1.3rem" },
                 }}
               >
                 Dinner and dancing will take place in Castleknock Hotel &
@@ -131,28 +123,22 @@ export const LocationInfo = () => {
                   maxWidth: "20rem",
                   textAlign: "center",
                   mt: "1rem",
-                  fontSize: { xs: "1.1rem", sm: "1.3rem" },
                 }}
               >
                 Up to three hours free parking is available in town
               </Typography>
-              <a
-                href="https://goo.gl/maps/3q59iGCWT1WseYMK7"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="https://goo.gl/maps/3q59iGCWT1WseYMK7">
                 <Typography
                   variant="body1"
                   sx={{
                     color: "#f2779a",
                     mt: "1em",
                     textDecoration: "underline",
-                    fontSize: { xs: "1.1rem", sm: "1.3rem" },
                   }}
                 >
                   see the map
                 </Typography>
-              </a>
+              </Link>
             </Box>
           </Grid>
         </Grid>

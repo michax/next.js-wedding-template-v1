@@ -1,7 +1,7 @@
 import React from "react";
-import { Checkbox, Grid, Typography } from "@mui/material";
+import { Box, Checkbox, Grid, Typography } from "@mui/material";
 import Textfield from "../FormSection/FormsUI/Textfield";
-import { Box } from "@mui/system";
+
 
 export const AttendanceExtraPersonDetailsQuestion = ({values}) => {
   return (

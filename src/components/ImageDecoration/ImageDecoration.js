@@ -1,7 +1,8 @@
-import { Box } from "@mui/system";
+
 import React from "react";
 import Image from "next/image";
 import imageDecoration from "../../../public/imageDecoration.svg";
+import { Box } from "@mui/material";
 
 export const ImageDecoration = () => {
   return (

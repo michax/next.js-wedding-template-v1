@@ -1,6 +1,6 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import Lottie from "lottie-react";
-import { Container } from "@mui/system";
+
 import React from "react";
 import hearts from "../../../public/hearts.json";
 
@@ -53,6 +53,7 @@ export const Header = () => {
             forward to celebrating our special day with you. Please join us as
             we celebrate our wedding, and use form to confirm your attendance.
           </Typography>
+          
 
           <Button
             sx={{
