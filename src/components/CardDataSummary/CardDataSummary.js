@@ -68,8 +68,8 @@ export default function CardDataSummary({
         }}
       >
         <Typography
-          variant="subtitle2"
-          sx={{ opacity: 0.92, textTransform: "uppercase" }}
+          variant="body1"
+          sx={{ opacity: 0.99, textTransform: "uppercase" }}
         >
           {title}
         </Typography>

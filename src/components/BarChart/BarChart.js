@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { Bar } from "react-chartjs-2";
 
-
 export const BarChart = ({
   chartData,
   peanutsPeopleAllergies,
@@ -26,15 +25,13 @@ export const BarChart = ({
           alignItems: "center",
         }}
       >
-        <Typography variant="body1" sx={{ opacity: 0.9, textAlign: "left" }}>
+        <Typography variant="body1" sx={{ textAlign: "left" }}>
           Peanuts: {peanutsPeopleAllergies} people
         </Typography>
-        <Typography variant="body1" sx={{ opacity: 0.9, mb: "0.5rem" }}>
-          {" "}
+        <Typography variant="body1" sx={{ mb: "0.5rem" }}>
           Eggs: {eggsPeopleAllergies} people
         </Typography>
-        <Typography variant="body1" sx={{ opacity: 0.9, mb: "0.5rem" }}>
-          {" "}
+        <Typography variant="body1" sx={{ mb: "0.5rem" }}>
           Nuts: {nutsPeopleAllergies} people
         </Typography>
       </Box>

@@ -118,12 +118,12 @@ const NavBarDashboard = (props) => {
           height: "60px",
           display: "flex",
           alignItems: "center",
-  
           backgroundColor: "#FFF",
         }}
       >
         <Box
           sx={{
+            height: "60px",
             padding: "0 20px",
             width: "100%",
             display: "flex",

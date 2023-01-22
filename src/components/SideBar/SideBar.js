@@ -12,7 +12,7 @@ import MarkAsUnreadIcon from "@mui/icons-material/MarkAsUnread";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 import NoFoodIcon from "@mui/icons-material/NoFood";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
-import PersonOffIcon from '@mui/icons-material/PersonOff';
+import PersonOffIcon from "@mui/icons-material/PersonOff";
 
 const SideBar = () => {
   const [activeLink, setActiveLink] = useState("");
@@ -30,7 +30,8 @@ const SideBar = () => {
         flex: 1,
         borderRight: "0.5px solid rgba(230, 227, 227)",
         minHeight: "100vh",
-        backgroundColor: "#212B36", color: "#FFF"
+        backgroundColor: "#212B36",
+        color: "#FFF",
       }}
     >
       <div className={styles.top}>
@@ -38,19 +39,20 @@ const SideBar = () => {
           sx={{
             display: "flex",
             justifyContent: "center",
+
           }}
         >
-          <Image height="50%" src={logo} alt="Logo" />
+          <Image height="60%" src={logo} alt="Logo" />
         </Box>
       </div>
       <Divider />
-      <div className={styles.center}>
+    
         <TreeView
           aria-label="file system navigator"
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
           defaultExpanded={["1"]}
-          sx={{ textAlign: "left", mt: "10px", ml: "10px" }}
+          sx={{ textAlign: "left", mt: "50px", ml: "10px" }}
         >
           <TreeItem nodeId="1" label="Summary">
             <TreeItem
@@ -81,7 +83,7 @@ const SideBar = () => {
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
           defaultExpanded={["1"]}
-          sx={{ textAlign: "left", mt: "10px", ml: "10px" }}
+          sx={{ textAlign: "left", mt: "30px", ml: "10px" }}
         >
           <TreeItem nodeId="1" label="Guests ">
             <TreeItem
@@ -100,7 +102,7 @@ const SideBar = () => {
             />
           </TreeItem>
         </TreeView>
-      </div>
+
       <div className={styles.bottom}></div>
     </Box>
   );
