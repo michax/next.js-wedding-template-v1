@@ -10,7 +10,7 @@ import { LocationInfo } from "../src/components/LocationInfo/LocationInfo";
 export default function Home() {
   return (
     <Layout>
-      <Box sx={{ mt: "5rem" }}>
+      <Box sx={{ mt: "2.5rem" }}>
         <Header />
         <CountdownTimer />
         <HistorySection />
