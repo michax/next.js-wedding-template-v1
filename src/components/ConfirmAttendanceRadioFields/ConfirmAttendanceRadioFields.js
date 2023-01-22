@@ -1,7 +1,4 @@
 import React from "react";
-
-// FORM
-
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -9,8 +6,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { Box, Typography } from "@mui/material";
 import { useField } from "formik";
 
-
-const ConfirmAttendanceRadioFields = ({ name}) => {
+const ConfirmAttendanceRadioFields = ({ name }) => {
   // useField need to get name
   const [field, meta] = useField(name);
 
@@ -23,8 +19,6 @@ const ConfirmAttendanceRadioFields = ({ name}) => {
     configTextfield.helperText = meta.error;
   }
 
-  
-
   return (
     <Box marginLeft="10px" marginTop="10px">
       <RadioGroup
@@ -34,7 +28,11 @@ const ConfirmAttendanceRadioFields = ({ name}) => {
         {...configTextfield}
       >
         <FormControlLabel value="Yes" control={<Radio />} label="Yes, I will" />
-        <FormControlLabel value="No" control={<Radio />} label="Unfortunately, I will not" />
+        <FormControlLabel
+          value="No"
+          control={<Radio />}
+          label="Unfortunately, I will not"
+        />
       </RadioGroup>
       <Typography
         sx={{

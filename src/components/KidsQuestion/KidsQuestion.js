@@ -15,8 +15,9 @@ export const KidsQuestion = () => {
           textAlign: "left",
         }}
       >
-        Great! 😊 We plan to hire a person who will take care of the children 👶 while we
-        will be dancing 💃🕺 Could you tell us:
+        Great! 😊 We&apos;re hiring a pro to keep the kids entertained while
+        we dance the night away!💃🕺 Just a heads up, we want to get an idea of
+        how many mini guests to expect.
       </Typography>
       <Box
         sx={{
@@ -35,9 +36,8 @@ export const KidsQuestion = () => {
               color: "#212B36",
             }}
           >
-            How many children{" "}
-            <span style={{ fontWeight: "bold" }}>under 3 years old</span> do
-            you have?
+            Could you please let us know the number of children
+            <span style={{ fontWeight: "bold" }}> under 3 </span>?
           </FormLabel>
           <KidsRadioFields name="amountKids" />
         </FormControl>

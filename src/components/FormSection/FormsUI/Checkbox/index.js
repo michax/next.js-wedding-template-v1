@@ -1,7 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import { useField, useFormikContext } from 'formik';
-import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel } from '@mui/material';
+import { useField, useFormikContext } from "formik";
+import {
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
+} from "@mui/material";
 
 const CheckboxWrapper = ({
   name,
@@ -13,16 +19,15 @@ const CheckboxWrapper = ({
   const { setFieldValue } = useFormikContext();
   const [field, meta] = useField(name);
 
-  const handleChange = evt => {
+  const handleChange = (evt) => {
     const { checked } = evt.target;
     setFieldValue(name, checked);
   };
 
   const configCheckbox = {
-   
     ...field,
-    defaultChecked ,
-    onChange: handleChange
+    defaultChecked,
+    onChange: handleChange,
   };
 
   const configFormControl = {};
@@ -35,7 +40,7 @@ const CheckboxWrapper = ({
       <FormLabel component="legend">{legend}</FormLabel>
       <FormGroup>
         <FormControlLabel
-          control={<Checkbox  {...configCheckbox} />}
+          control={<Checkbox {...configCheckbox} />}
           label={label}
         />
       </FormGroup>

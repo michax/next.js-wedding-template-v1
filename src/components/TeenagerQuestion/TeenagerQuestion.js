@@ -22,9 +22,8 @@ export const TeenagerQuestion = () => {
             textAlign: "left",
           }}
         >
-          How many children{" "}
-          <span style={{ fontWeight: "bold" }}>over 3 years old</span> old do you
-          have? 
+          Could you please let us know the number of children
+          <span style={{ fontWeight: "bold" }}> over 3 </span> ? 
         </FormLabel>
         <TeenagersRadioFields name="amountTeenagers" />
       </FormControl>

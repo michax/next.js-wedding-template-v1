@@ -3,7 +3,6 @@ import { Container } from "@mui/system";
 import React from "react";
 import useCountdown from "../../hooks/useCountdown";
 import Lottie from "lottie-react";
-
 import stopwatch from "../../../public/stopwatch.json";
 
 const style = {

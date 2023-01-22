@@ -5,7 +5,7 @@ const FONT_PRIMARY = "Neucha, sans-serif";
 
 const typography = {
   fontFamily: FONT_PRIMARY,
-  fontWeightSemiBold: 600,
+  fontWeigh: 600,
   h1: {
     fontFamily: FONT_PRIMARY,
     fontWeight: 700,

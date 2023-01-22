@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import { Container } from "@mui/system";
 import React from "react";
 import hearts from "../../../public/hearts.json";
-import Link from "next/link";
+
 import { useRouter } from "next/router";
 
 const style = {
@@ -20,7 +20,6 @@ export const Header = () => {
     <>
       <Box
         sx={{
-          // height: "100vh",
           pt: "5rem",
           pb: "15rem",
           display: "flex",

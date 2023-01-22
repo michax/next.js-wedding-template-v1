@@ -49,7 +49,7 @@ export const HeaderForm = () => {
             maxWidth: "30rem",
             margin: "0 auto",
             fontSize: { xs: "1.1rem", sm: "1.3rem" },
-            fontWeight:"bold",
+            fontWeight: "bold",
           }}
         >
           24th March 2023

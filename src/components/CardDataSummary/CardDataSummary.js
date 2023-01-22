@@ -1,13 +1,11 @@
-// @mui
+
 import PropTypes from "prop-types";
-import { alpha, styled } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import { Box, Card, Typography } from "@mui/material";
 import { Icon } from "@iconify/react";
-// utils
 
-// components
 
-// ----------------------------------------------------------------------
+
 
 const IconWrapperStyle = styled("div")(({ theme }) => ({
   margin: "auto",
