@@ -2,6 +2,7 @@ import { Card, Grid } from "@mui/material";
 import React from "react";
 import { BarChart } from "../BarChart/BarChart";
 
+
 const BarChartFoodAllergy = ({
   userDataFoodAllergy,
   peanutsPeopleAllergies,
