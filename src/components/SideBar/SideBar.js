@@ -59,6 +59,7 @@ const SideBar = () => {
               icon={<MarkAsUnreadIcon />}
               nodeId="2"
               label="Invitations"
+              className={activeLink === "/invitations" ? styles.selectedTreeItem : null}  
               selected={activeLink === "/invitations"}
               onClick={() => handleClick("/invitations")}
             />
@@ -68,6 +69,7 @@ const SideBar = () => {
               label="Drinks"
               onClick={() => handleClick("/summary-drinks")}
               selected={activeLink === "/summary-drinks"}
+              className={activeLink === "/summary-drinks" ? styles.selectedTreeItem : null}  
             />
             <TreeItem
               icon={<NoFoodIcon />}
@@ -75,6 +77,7 @@ const SideBar = () => {
               label="Food Allergy"
               onClick={() => handleClick("/summary-food")}
               selected={activeLink === "/summary-food"}
+              className={activeLink === "/summary-food" ? styles.selectedTreeItem : null}  
             />
           </TreeItem>
         </TreeView>
@@ -91,13 +94,15 @@ const SideBar = () => {
               nodeId="2"
               label="Confirmed guests"
               selected={activeLink === "/confirmed-guest"}
+              className={activeLink === "/confirmed-guest" ? styles.selectedTreeItem : null}  
               onClick={() => handleClick("/confirmed-guest")}
             />
             <TreeItem
               icon={<PersonOffIcon />}
               nodeId="3"
-              label="Guests Who Will Not Attend"
+              label="Guests  Not Attend"
               selected={activeLink === "/guests-not-attend"}
+              className={activeLink === "/guests-not-attend" ? styles.selectedTreeItem : null}  
               onClick={() => handleClick("/guests-not-attend")}
             />
           </TreeItem>

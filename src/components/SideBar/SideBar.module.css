@@ -34,14 +34,15 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: #fa541c;
+
 }
 .subItem {
   padding-top: 10px;
   font-size: 14px;
 }
 
-.subItem.activeLink {
-  color: #fa541c;
-  font-weight: bold;
+
+.selectedTreeItem {
+  background-color: #fa541c;
+  color: white;
 }
