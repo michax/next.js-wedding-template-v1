@@ -129,7 +129,6 @@ export const MainFormContainer = ({
                           sx={{
                             textAlign: "left",
                             fontWeight: "bold",
-                            fontSize: "1.2rem",
                           }}
                         >
                           Additional information

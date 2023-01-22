@@ -45,11 +45,11 @@ export const CountdownTimer = () => {
           8 July 2023
         </Typography>
         <Typography
-          variant="body2"
+          variant="body1"
           sx={{
             maxWidth: "35em",
             margin: "0 auto",
-            fontSize: { xs: "1.1rem", sm: "1.3rem" },
+         
           }}
         >
           The sweetest day of my life is coming up, and I will really be excited

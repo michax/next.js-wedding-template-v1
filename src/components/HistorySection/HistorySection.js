@@ -102,7 +102,6 @@ export const HistorySection = () => {
               sx={{
                 mt: { sx: "none", md: "2rem" },
                 mb: "5rem",
-                fontSize: { xs: "2.4rem", md: "3.1rem" },
               }}
             >
               Our Story
@@ -130,12 +129,7 @@ export const HistorySection = () => {
                     />
                   </TimelineSeparator>
                   <TimelineContent sx={{ pb: { xs: 3, md: 5 } }}>
-                    <Typography
-                      variant="subtitle1"
-                      // sx={{ color: "primary.dark" }}
-                    >
-                      {year}
-                    </Typography>
+                    <Typography variant="subtitle1">{year}</Typography>
                     <Paper
                       sx={{
                         p: "1.5rem",
@@ -153,20 +147,19 @@ export const HistorySection = () => {
                       >
                         <Box sx={{ flex: 2, ml: "10px", mr: "10px" }}>
                           <Typography
-                            variant="h5"
+                            variant="h3"
                             sx={{
                               mt: 0.5,
                               mb: 1,
-                              fontSize: { xs: "1.3rem", sm: "1.7rem" },
+
                               textAlign: { xs: "center", sm: "left" },
                             }}
                           >
                             {title}
                           </Typography>
                           <Typography
-                            variant="body2"
+                            variant="body1"
                             sx={{
-                              fontSize: { xs: "1.1rem", sm: "1.3rem" },
                               textAlign: { xs: "center", sm: "left" },
                               mt: "1rem",
                               mb: { xs: "1rem", sm: "0" },

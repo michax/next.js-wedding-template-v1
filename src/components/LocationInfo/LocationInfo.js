@@ -50,7 +50,7 @@ export const LocationInfo = () => {
                 <Image src={church} alt="icon church" />
               </Box>
               <Typography
-                variant="body2"
+                variant="body1"
                 sx={{
                   maxWidth: "20rem",
                   mt: "1rem",
@@ -62,7 +62,7 @@ export const LocationInfo = () => {
                 Marlborough Street, Oslo at 10.00 a.m
               </Typography>
               <Typography
-                variant="body2"
+                variant="body1"
                 sx={{
                   maxWidth: "20rem",
                   textAlign: "center",
@@ -79,7 +79,7 @@ export const LocationInfo = () => {
               >
                 <Typography
                   position="relative"
-                  variant="body2"
+                  variant="body1"
                   sx={{
                     color: "#f2779a",
                     mt: "1em",
@@ -114,7 +114,7 @@ export const LocationInfo = () => {
                 <Image src={wine} alt="icon wine" />
               </Box>
               <Typography
-                variant="body2"
+                variant="body1"
                 sx={{
                   maxWidth: "20rem",
                   textAlign: "center",
@@ -126,7 +126,7 @@ export const LocationInfo = () => {
                 Country Club Castleknock, Oslo
               </Typography>
               <Typography
-                variant="body2"
+                variant="body1"
                 sx={{
                   maxWidth: "20rem",
                   textAlign: "center",
@@ -142,7 +142,7 @@ export const LocationInfo = () => {
                 rel="noopener noreferrer"
               >
                 <Typography
-                  variant="body2"
+                  variant="body1"
                   sx={{
                     color: "#f2779a",
                     mt: "1em",

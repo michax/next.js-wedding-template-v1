@@ -1,6 +1,6 @@
+import "../styles/globals.css";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import "../styles/globals.css";
 import Head from "next/head";
 import theme from "../src/theme/theme";
 // lightbox
@@ -14,14 +14,13 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Digital Wedding Invitations</title>
-        <meta name="theme-color" content={theme.palette.primary.main} />
         <meta
           name="description"
           content="Application designed to help couples plan and organize their special day "
         />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <ThemeProvider>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>

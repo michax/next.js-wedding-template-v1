@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
 
-html,
 body {
   padding: 0;
   margin: 0;
   background-color: #fcfff7;
-  font-family: "Neucha", cursive;
+
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -59,4 +59,4 @@ a {
   fill: #f2779a !important;
 }
 
-/* Iframe */
+

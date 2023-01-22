@@ -20,7 +20,7 @@ export const ConfirmedMessage = () => {
               sx={{
                 mb: "1rem",
                 textAlign: "center",
-                fontSize: { xs: "1.5rem", md: "1.9rem" },
+                
               }}
             >
               Thank you for confirming your attendance at our wedding.
@@ -29,7 +29,7 @@ export const ConfirmedMessage = () => {
               variant="body2"
               sx={{
                 textAlign: "center",
-                fontSize: { xs: "1.1rem", sm: "1.3rem" },
+                
               }}
             >
               We are so excited that you are going to join us in Santorini to

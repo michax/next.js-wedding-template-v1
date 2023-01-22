@@ -1,11 +1,7 @@
-
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
 import { Box, Card, Typography } from "@mui/material";
 import { Icon } from "@iconify/react";
-
-
-
 
 const IconWrapperStyle = styled("div")(({ theme }) => ({
   margin: "auto",
@@ -42,7 +38,6 @@ export default function CardDataSummary({
     <Card
       sx={{
         height: "350px",
-        fontSize: "16px",
         width: "100%",
         py: 5,
         boxShadow: "5px",
@@ -81,11 +76,8 @@ export default function CardDataSummary({
         <Typography
           variant="subtitle2"
           sx={{
-      
             mt: "1rem",
             width: "70%",
-            fontSize: "15px",
-
           }}
         >
           {subTitle}

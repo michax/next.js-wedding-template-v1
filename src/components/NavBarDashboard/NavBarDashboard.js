@@ -118,7 +118,7 @@ const NavBarDashboard = (props) => {
           height: "60px",
           display: "flex",
           alignItems: "center",
-          fontSize: "14px",
+  
           backgroundColor: "#FFF",
         }}
       >

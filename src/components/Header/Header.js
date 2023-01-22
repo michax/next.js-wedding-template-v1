@@ -38,17 +38,15 @@ export const Header = () => {
             variant="h1"
             sx={{
               mb: "3rem",
-              fontSize: { xs: "2.3rem", md: "3.3rem", xl: "4rem" },
             }}
           >
             Ewelina & Lukasz
           </Typography>
           <Typography
-            variant="body2"
+            variant="body1"
             sx={{
               maxWidth: "35em",
               margin: "0 auto",
-              fontSize: { xs: "1.1rem", sm: "1.3rem" },
             }}
           >
             Welcome to our digital wedding invitation! We&apos;re looking
