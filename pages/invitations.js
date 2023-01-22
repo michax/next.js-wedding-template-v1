@@ -1,8 +1,8 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import clientPromise from "../lib/mongodb";
 import CardDataSummary from "../src/components/CardDataSummary/CardDataSummary";
-
+import autoTable from "jspdf-autotable";
 import jsPDF from "jspdf";
 
 import LayoutDashboard from "../src/components/LayoutDashboard/LayoutDashboard";
@@ -110,6 +110,7 @@ export default function Invitations({ isConnected }) {
     };
 
     doc.autoTable(options);
+
     var today = new Date();
     var date =
       today.getFullYear() +
@@ -145,16 +146,30 @@ export default function Invitations({ isConnected }) {
               flexDirection: "column",
             }}
           >
-            <Typography
-              variant="h3"
+            <Box
               sx={{
-                mb: 5,
-                mt: 1,
-                textAlign: "left",
+                display: "flex",
+                justifyContent: "space-between",
               }}
             >
-              Wedding Guest Invitation Summary
-            </Typography>
+              <Typography
+                variant="h3"
+                sx={{
+                  mb: 5,
+                  mt: 1,
+                  textAlign: "left",
+                }}
+              >
+                Wedding Guest Invitation Summary
+              </Typography>
+              <Button
+                sx={{ height: "40px" }}
+                onClick={generatePDF}
+                variant="contained"
+              >
+                Download PDF
+              </Button>
+            </Box>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6} md={3}>
                 <CardDataSummary

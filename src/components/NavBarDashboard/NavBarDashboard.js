@@ -142,14 +142,7 @@ const NavBarDashboard = (props) => {
               <MenuIcon />
             </IconButton>
           </div>
-          <div>
-            <div>
-              {/* After clicking in that button */}
-              <Button onClick={generatePDF} variant="contained">
-                Download PDF
-              </Button>
-            </div>
-          </div>
+
         </Box>
       </Box>
       <Divider />
