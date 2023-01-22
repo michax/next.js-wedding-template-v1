@@ -4,6 +4,7 @@ import SideBar from "../src/components/SideBar/SideBar";
 import { Grid, Typography } from "@mui/material";
 import NavBarDashboard from "../src/components/NavBarDashboard/NavBarDashboard";
 import BarChartFoodAllergy from "../src/components/BarChartFoodAllergy/BarChartFoodAllergy";
+import LayoutDashboard from "../src/components/LayoutDashboard/LayoutDashboard";
 
 const SummaryFoodAllergy = () => {
   const [data, setData] = useState([]);
@@ -23,9 +24,6 @@ const SummaryFoodAllergy = () => {
 
     getData();
   }, []);
-
-
-
 
   const peanutsPeopleAllergies = data.filter((person) => {
     return person.isPeanuts === true;
@@ -89,32 +87,26 @@ const SummaryFoodAllergy = () => {
   };
 
   return (
-    <div className={styles.home}>
-      <SideBar />
-      <div className={styles.homeContainer}>
-        <NavBarDashboard />
-        <div className={styles.container}>
-        <Typography
-            variant="h3"
-            sx={{
-              mb: 5,
-              mt: 1,
-              textAlign: "left",
-            }}
-          >
-            Summary of Wedding Guests&apos; Food Allergies
-          </Typography>
-          <Grid container spacing={3}>
-            <BarChartFoodAllergy
-              userDataFoodAllergy={userDataFoodAllergy}
-              peanutsPeopleAllergies={peanutsPeopleAllergies}
-              eggsPeopleAllergies={eggsPeopleAllergies}
-              nutsPeopleAllergies={nutsPeopleAllergies}
-            />
-          </Grid>
-        </div>
-      </div>
-    </div>
+    <LayoutDashboard>
+      <Typography
+        variant="h3"
+        sx={{
+          mb: 5,
+          mt: 1,
+          textAlign: "left",
+        }}
+      >
+        Summary of Wedding Guests&apos; Food Allergies
+      </Typography>
+      <Grid container spacing={3}>
+        <BarChartFoodAllergy
+          userDataFoodAllergy={userDataFoodAllergy}
+          peanutsPeopleAllergies={peanutsPeopleAllergies}
+          eggsPeopleAllergies={eggsPeopleAllergies}
+          nutsPeopleAllergies={nutsPeopleAllergies}
+        />
+      </Grid>
+    </LayoutDashboard>
   );
 };
 

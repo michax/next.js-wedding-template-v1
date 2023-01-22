@@ -12,6 +12,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import LayoutDashboard from "../src/components/LayoutDashboard/LayoutDashboard";
 
 const GuestsNotAttend = () => {
   const [data, setData] = useState([]);
@@ -38,7 +39,6 @@ const GuestsNotAttend = () => {
     <div>
       {loading ? (
         <Typography
-        
           variant="h3"
           sx={{
             mb: 5,
@@ -48,71 +48,64 @@ const GuestsNotAttend = () => {
           Loading...
         </Typography>
       ) : (
-        <div className={styles.home}>
-          <SideBar />
-          <div className={styles.homeContainer}>
-            <NavBarDashboard />
-            <div className={styles.container}>
-              <Typography
-                variant="h3"
-                sx={{
-                  
-                  mb: 5,
-                  mt: 1,
-                }}
-              >
-                Confirmed Guests Who Will Not Attend
-              </Typography>
-              <TableContainer component={Paper} sx={{ width: 750 }}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell
-                        sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                        className="tableCell"
-                      ></TableCell>
-                      <TableCell
-                        sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                        className="tableCell"
-                      >
-                        Name
-                      </TableCell>
-                      <TableCell
-                        sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                        className="tableCell"
-                      >
-                        Surname
-                      </TableCell>
-                      <TableCell
-                        sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                        className="tableCell"
-                      >
-                        Email
-                      </TableCell>
-                      <TableCell
-                        sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                        className="tableCell"
-                      >
-                        Phone Number
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {comingGuests.map((row, index) => (
-                      <TableRow key={index}>
-                        <TableCell>{index + 1}</TableCell>
-                        <TableCell>{row.firstName}</TableCell>
-                        <TableCell>{row.lastName}</TableCell>
-                        <TableCell>{row.email}</TableCell>
-                        <TableCell>{row.phone}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </div>
-          </div>
-        </div>
+        <LayoutDashboard>
+          <Typography
+            variant="h3"
+            sx={{
+              mb: 5,
+              mt: 1,
+            }}
+          >
+            Confirmed Guests Who Will Not Attend
+          </Typography>
+          <TableContainer component={Paper} sx={{ width: 750 }}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                    className="tableCell"
+                  ></TableCell>
+                  <TableCell
+                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                    className="tableCell"
+                  >
+                    Name
+                  </TableCell>
+                  <TableCell
+                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                    className="tableCell"
+                  >
+                    Surname
+                  </TableCell>
+                  <TableCell
+                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                    className="tableCell"
+                  >
+                    Email
+                  </TableCell>
+                  <TableCell
+                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                    className="tableCell"
+                  >
+                    Phone Number
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {comingGuests.map((row, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>{row.firstName}</TableCell>
+                    <TableCell>{row.lastName}</TableCell>
+                    <TableCell>{row.email}</TableCell>
+                    <TableCell>{row.phone}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </LayoutDashboard>
       )}
     </div>
   );
