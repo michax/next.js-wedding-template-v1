@@ -88,7 +88,6 @@ export default function Invitations({ isConnected }) {
     // create a new pdf document
     const doc = new jsPDF();
 
-    // add title
     doc.text(20, 20, "Wedding Guest Invitation Summary");
 
     var data = [
@@ -142,14 +141,16 @@ export default function Invitations({ isConnected }) {
               mt: "1rem",
               display: "flex",
               justifyContent: "center",
-
               flexDirection: "column",
             }}
           >
             <Box
               sx={{
                 display: "flex",
-                justifyContent: "space-between",
+
+                justifyContent: { xs: "center", sm: "space-between" },
+                alignItems: { xs: "center", sm: "flex-start" },
+                flexDirection: { xs: "column", sm: "row" },
               }}
             >
               <Typography
@@ -163,7 +164,7 @@ export default function Invitations({ isConnected }) {
                 Wedding Guest Invitation Summary
               </Typography>
               <Button
-                sx={{ height: "40px" }}
+                sx={{ height: "40px", mb: { xs: "30px", sm: "0" } }}
                 onClick={generatePDF}
                 variant="contained"
               >
