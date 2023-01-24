@@ -9,6 +9,16 @@ import LayoutDashboard from "../src/components/LayoutDashboard/LayoutDashboard";
 
 const amountPeople = 100;
 
+const logFetch = (body) => {
+  fetch("/api/log", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+};
+
 export default function Invitations({ isConnected }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -25,6 +35,7 @@ export default function Invitations({ isConnected }) {
     }
 
     getData();
+    logFetch({ log: "mount" });
   }, []);
 
   console.log("data featch", data);
@@ -85,41 +96,49 @@ export default function Invitations({ isConnected }) {
   // PDF
 
   const generatePDF = () => {
-    // create a new pdf document
-    const doc = new jsPDF();
+    try {
+      // create a new pdf document
+      const doc = new jsPDF();
 
-    doc.text(20, 20, "Wedding Guest Invitation Summary");
+      doc.text(20, 20, "Wedding Guest Invitation Summary");
 
-    var data = [
-      [
-        "Coming Guests with extra Person or not",
-        amountConfirmedPeopleWhoComingAloneOrWithExtraPerson,
-      ],
-      ["Not coming", amountNotComingPeople.length],
-      ["Children under 3", sumChildrenUnder3],
-      ["Children above 3", sumChildrenAbove3],
-    ];
+      var data = [
+        [
+          "Coming Guests with extra Person or not",
+          amountConfirmedPeopleWhoComingAloneOrWithExtraPerson,
+        ],
+        ["Not coming", amountNotComingPeople.length],
+        ["Children under 3", sumChildrenUnder3],
+        ["Children above 3", sumChildrenAbove3],
+      ];
 
-    var columns = ["Data", "Value"];
+      var columns = ["Data", "Value"];
 
-    var options = {
-      startY: 30,
-      head: [columns],
-      body: data,
-    };
+      var options = {
+        startY: 30,
+        head: [columns],
+        body: data,
+      };
 
-    doc.autoTable(options);
+      doc.autoTable(options);
 
-    var today = new Date();
-    var date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-    doc.text(80, 10, "Date: " + date);
-    // save the pdf
-    doc.save("file.pdf");
+      var today = new Date();
+      var date =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getDate();
+      doc.text(80, 10, "Date: " + date);
+      // save the pdf
+      doc.save("file.pdf");
+    } catch (error) {
+      const body = {
+        log: "generatePdf",
+        errorMessage: error.message,
+      };
+      logFetch(body);
+    }
   };
 
   return (
