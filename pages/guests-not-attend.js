@@ -60,7 +60,7 @@ const GuestsNotAttend = () => {
           </Typography>
           <Paper
             sx={{
-              width: { xs: "45vh", sm: "60vh", md: "100%" },
+              width: { xs: "50vw", sm: "60vw", md: "100%" },
               overflow: "hidden",
             }}
           >

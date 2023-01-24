@@ -60,9 +60,9 @@ const ConfirmedGuest = () => {
             List of Confirmed Guests and Their Companions, with Number of
             Children
           </Typography>
-          <Paper sx={{ width: { xs: "45vh", sm: "60vh",md:"100%" }, overflow: "hidden" }}>
+          <Paper sx={{ width: { xs: "50vw", sm: "60vw",md:"100%" }, overflow: "hidden" }}>
             <TableContainer sx={{ maxHeight: 540 }}>
-              <Table aria-label="simple table" stickyHeader>
+              <Table aria-label="simple table" >
                 <TableHead>
                   <TableRow>
                     <TableCell
