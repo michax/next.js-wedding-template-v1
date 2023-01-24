@@ -60,91 +60,97 @@ const ConfirmedGuest = () => {
             List of Confirmed Guests and Their Companions, with Number of
             Children
           </Typography>
-          <TableContainer component={Paper} className="table">
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  ></TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  >
-                    Name
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  >
-                    Surname
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  >
-                    Email
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  >
-                    Phone Number
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  >
-                    Companion
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  >
-                    Companion Name
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  >
-                    {" "}
-                    Companion Surname
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  >
-                    {" "}
-                    Children Under 3 Years Old
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  >
-                    {" "}
-                    Children Over 3 Years Old
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {comingGuests.map((row, index) => (
-                  <TableRow key={index}>
-                    <TableCell>{index + 1}</TableCell>
-                    <TableCell>{row.firstName}</TableCell>
-                    <TableCell>{row.lastName}</TableCell>
-                    <TableCell>{row.email}</TableCell>
-                    <TableCell>{row.phone}</TableCell>
-                    <TableCell>{row.isWithCompanion ? "Yes" : "NO"}</TableCell>
-                    <TableCell>{row.firstNameCompanion}</TableCell>
-                    <TableCell>{row.lastNameCompanion}</TableCell>
-                    <TableCell align="center">{row.amountKids}</TableCell>
-                    <TableCell align="center">{row.amountTeenagers}</TableCell>
+          <Paper sx={{ width: { xs: "45vh", sm: "60vh",md:"100%" }, overflow: "hidden" }}>
+            <TableContainer sx={{ maxHeight: 540 }}>
+              <Table aria-label="simple table" stickyHeader>
+                <TableHead>
+                  <TableRow>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    ></TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    >
+                      Name
+                    </TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    >
+                      Surname
+                    </TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    >
+                      Email
+                    </TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    >
+                      Phone Number
+                    </TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    >
+                      Companion
+                    </TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    >
+                      Companion Name
+                    </TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    >
+                      {" "}
+                      Companion Surname
+                    </TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    >
+                      {" "}
+                      Children Under 3 Years Old
+                    </TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    >
+                      {" "}
+                      Children Over 3 Years Old
+                    </TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableHead>
+                <TableBody>
+                  {comingGuests.map((row, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{index + 1}</TableCell>
+                      <TableCell>{row.firstName}</TableCell>
+                      <TableCell>{row.lastName}</TableCell>
+                      <TableCell>{row.email}</TableCell>
+                      <TableCell>{row.phone}</TableCell>
+                      <TableCell>
+                        {row.isWithCompanion ? "Yes" : "NO"}
+                      </TableCell>
+                      <TableCell>{row.firstNameCompanion}</TableCell>
+                      <TableCell>{row.lastNameCompanion}</TableCell>
+                      <TableCell align="center">{row.amountKids}</TableCell>
+                      <TableCell align="center">
+                        {row.amountTeenagers}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
         </LayoutDashboard>
       )}
     </div>

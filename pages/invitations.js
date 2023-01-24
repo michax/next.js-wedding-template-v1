@@ -40,6 +40,7 @@ export default function Invitations({ isConnected }) {
 
   console.log("data featch", data);
 
+
   // How many people is coming who answer Yes
   const comingGuests = data.filter((guest) => guest.isComing === "Yes");
 

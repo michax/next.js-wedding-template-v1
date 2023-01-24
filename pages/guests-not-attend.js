@@ -58,53 +58,60 @@ const GuestsNotAttend = () => {
           >
             Confirmed Guests Who Will Not Attend
           </Typography>
-          <TableContainer component={Paper} sx={{ width: 750 }}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  ></TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  >
-                    Name
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  >
-                    Surname
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  >
-                    Email
-                  </TableCell>
-                  <TableCell
-                    sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                    className="tableCell"
-                  >
-                    Phone Number
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {comingGuests.map((row, index) => (
-                  <TableRow key={index}>
-                    <TableCell>{index + 1}</TableCell>
-                    <TableCell>{row.firstName}</TableCell>
-                    <TableCell>{row.lastName}</TableCell>
-                    <TableCell>{row.email}</TableCell>
-                    <TableCell>{row.phone}</TableCell>
+          <Paper
+            sx={{
+              width: { xs: "45vh", sm: "60vh", md: "100%" },
+              overflow: "hidden",
+            }}
+          >
+            <TableContainer sx={{ maxHeight: 540 }}>
+              <Table aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    ></TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    >
+                      Name
+                    </TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    >
+                      Surname
+                    </TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    >
+                      Email
+                    </TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
+                      className="tableCell"
+                    >
+                      Phone Number
+                    </TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableHead>
+                <TableBody>
+                  {comingGuests.map((row, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{index + 1}</TableCell>
+                      <TableCell>{row.firstName}</TableCell>
+                      <TableCell>{row.lastName}</TableCell>
+                      <TableCell>{row.email}</TableCell>
+                      <TableCell>{row.phone}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
         </LayoutDashboard>
       )}
     </div>
