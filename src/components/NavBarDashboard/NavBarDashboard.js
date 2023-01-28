@@ -18,7 +18,7 @@ import PersonOffIcon from "@mui/icons-material/PersonOff";
 const drawerWidth = 240;
 
 const NavBarDashboard = (props) => {
-  const { window, generatePDF } = props;
+  const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [activeLink, setActiveLink] = useState("");
 
@@ -142,7 +142,6 @@ const NavBarDashboard = (props) => {
               <MenuIcon />
             </IconButton>
           </div>
-
         </Box>
       </Box>
       <Divider />
