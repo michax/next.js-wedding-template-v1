@@ -5,7 +5,6 @@ body {
   padding: 0;
   margin: 0;
   background-color: #fcfff7;
-
 }
 
 html {
@@ -59,4 +58,72 @@ a {
   fill: #f2779a !important;
 }
 
+.home {
+  display: flex;
+}
 
+.homeContainer {
+  flex: 6;
+  display: flex;
+  flex-direction: column;
+}
+
+/* styles for Projects PAGE */
+.container {
+  padding: 20px;
+}
+.projectList {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.itemProject {
+  margin-top: 10px;
+}
+.projectDescription {
+  font-size: 14px;
+}
+
+.projectSpan {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.itemProject {
+  font-size: 14px;
+  color: #243ee8;
+}
+
+/* styles for Login PAGE */
+
+.loginBtn {
+  font-size: 24px;
+  color: "#243EE8";
+  font-weight: bold;
+}
+
+/* styles for Details PAGE */
+.detailsList {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.detailsName {
+  color: #243ee8;
+  font-size: 14px;
+}
+
+.itemDetails {
+  color: #243ee8;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.detailsDescription {
+  font-size: 14px;
+}
+
+.detailsSpan {
+  font-size: 14px;
+  font-weight: bold;
+}

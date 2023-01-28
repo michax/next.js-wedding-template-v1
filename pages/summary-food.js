@@ -1,37 +1,22 @@
+import connectPromise from "../lib/mongodb";
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
-import SideBar from "../src/components/SideBar/SideBar";
 import { Grid, Typography } from "@mui/material";
-import NavBarDashboard from "../src/components/NavBarDashboard/NavBarDashboard";
 import BarChartFoodAllergy from "../src/components/BarChartFoodAllergy/BarChartFoodAllergy";
-import LayoutDashboard from "../src/components/LayoutDashboard/LayoutDashboard";
+import NavBarDetails from "../src/components/NavBarDetails/NavBarDetails";
+import SideBarDetails from "../src/components/SideBarDetails/SideBarDetails";
+import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 
-const SummaryFoodAllergy = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
+const SummaryFoodAllergy = ({ data, error }) => {
   const [userDataAllergyFood, setUserDataAllergyFood] = useState([]);
 
-  useEffect(() => {
-    setLoading(true);
-
-    async function getData() {
-      const response = await fetch("/api/get-data");
-      const responseData = await response.json();
-      const all = responseData.all;
-      setData(all);
-      setLoading(false);
-    }
-
-    getData();
-  }, []);
-
-  const peanutsPeopleAllergies = data.filter((person) => {
+  const peanutsPeopleAllergies = data?.filter((person) => {
     return person.isPeanuts === true;
   });
-  const eggsPeopleAllergies = data.filter((person) => {
+  const eggsPeopleAllergies = data?.filter((person) => {
     return person.isEggs === true;
   });
-  const nutsPeopleAllergies = data.filter((person) => {
+  const nutsPeopleAllergies = data?.filter((person) => {
     return person.isNuts === true;
   });
 
@@ -40,23 +25,23 @@ const SummaryFoodAllergy = () => {
       {
         id: 1,
         food: "Peanuts",
-        userGain: peanutsPeopleAllergies.length,
+        userGain: peanutsPeopleAllergies?.length,
       },
       {
         id: 2,
         food: "Egg",
-        userGain: eggsPeopleAllergies.length,
+        userGain: eggsPeopleAllergies?.length,
       },
       {
         id: 3,
         food: "Nuts",
-        userGain: nutsPeopleAllergies.length,
+        userGain: nutsPeopleAllergies?.length,
       },
     ]);
   }, [
-    peanutsPeopleAllergies.length,
-    eggsPeopleAllergies.length,
-    nutsPeopleAllergies.length,
+    peanutsPeopleAllergies?.length,
+    eggsPeopleAllergies?.length,
+    nutsPeopleAllergies?.length,
   ]);
 
   const userDataFoodAllergy = {
@@ -87,27 +72,77 @@ const SummaryFoodAllergy = () => {
   };
 
   return (
-    <LayoutDashboard>
-      <Typography
-        variant="h3"
-        sx={{
-          mb: 5,
-          mt: 1,
-          textAlign: "left",
-        }}
-      >
-        Summary of Wedding Guests&apos; Food Allergies
-      </Typography>
-      <Grid container spacing={3}>
-        <BarChartFoodAllergy
-          userDataFoodAllergy={userDataFoodAllergy}
-          peanutsPeopleAllergies={peanutsPeopleAllergies}
-          eggsPeopleAllergies={eggsPeopleAllergies}
-          nutsPeopleAllergies={nutsPeopleAllergies}
-        />
-      </Grid>
-    </LayoutDashboard>
+    <>
+      {error?.status === 500 ? (
+        <ErrorMessage message="Sorry, there was a problem with the server. Please try again later." />
+      ) : error?.status === 400 ? (
+        <ErrorMessage message="Sorry, there was a problem with your request. Please try again later." />
+      ) : error ? (
+        <ErrorMessage message="Sorry, there was a problem fetching the data. Please try again later." />
+      ) : data === null ? (
+        <ErrorMessage message="No data found." />
+      ) : (
+        <div className={styles.home}>
+          <SideBarDetails />
+          <div className={styles.homeContainer}>
+            <NavBarDetails />
+            <div style={{ color: "#494949" }} className={styles.container}>
+              <Typography
+                variant="h3"
+                sx={{
+                  mb: 5,
+                  mt: 1,
+                  textAlign: "left",
+                }}
+              >
+                Summary of Wedding Guests&apos; Food Allergies
+              </Typography>
+              <Grid container spacing={3}>
+                <BarChartFoodAllergy
+                  userDataFoodAllergy={userDataFoodAllergy}
+                  peanutsPeopleAllergies={peanutsPeopleAllergies}
+                  eggsPeopleAllergies={eggsPeopleAllergies}
+                  nutsPeopleAllergies={nutsPeopleAllergies}
+                />
+              </Grid>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
 export default SummaryFoodAllergy;
+
+export async function getServerSideProps() {
+  try {
+    // Connect with MongoDB
+    const client = await connectPromise;
+    const isConnected = await client.isConnected();
+
+    if (!isConnected) {
+      throw new Error("MongoDB client is not connected");
+    }
+
+    // Fetch data from MongoDB
+    const db = client.db("testwedingdatabase");
+    const collection = db.collection("userlist");
+    const data = await collection.find({}).toArray();
+
+    if (!data || !data.length) {
+      return { props: { error: { status: 400 } } };
+    }
+
+    // to fix error serialized to JSON, MongoDB return _id property as object not STRING
+    const jsonData = data.map((item) => {
+      item._id = item._id.toString();
+      return item;
+    });
+
+    return { props: { data: jsonData } };
+  } catch (error) {
+    console.error(error);
+    return { props: { error: { status: 500 } } };
+  }
+}

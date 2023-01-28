@@ -1,0 +1,36 @@
+.sidebar {
+  width: 15.625rem;
+  border-right: 0.5px solid rgba(230, 227, 227);
+  min-height: 100vh;
+}
+
+.navMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.subMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.subMenu.active {
+  display: block;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #fa541c;
+  height: 3rem;
+  width: 100%;
+  padding-left: 10px;
+}
+
+.navItem:hover {
+  background-color: #f5f5f5;
+}

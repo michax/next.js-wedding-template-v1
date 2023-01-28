@@ -1,0 +1,25 @@
+.subMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.subMenu.active {
+  display: block;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #fa541c;
+}
+.subItem {
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+.activeLink {
+  color: #fa541c;
+  font-weight: bold;
+}

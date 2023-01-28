@@ -1,46 +1,17 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import clientPromise from "../lib/mongodb";
+import connectPromise from "../lib/mongodb";
+import React from "react";
+import styles from "../styles/Home.module.css";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import CardDataSummary from "../src/components/CardDataSummary/CardDataSummary";
 import autoTable from "jspdf-autotable";
 import jsPDF from "jspdf";
-
-import LayoutDashboard from "../src/components/LayoutDashboard/LayoutDashboard";
+import SideBarDetails from "../src/components/SideBarDetails/SideBarDetails";
+import NavBarDetails from "../src/components/NavBarDetails/NavBarDetails";
+import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 
 const amountPeople = 100;
 
-const logFetch = (body) => {
-  fetch("/api/log", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  });
-};
-
-export default function Invitations({ isConnected }) {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-
-    async function getData() {
-      const response = await fetch("/api/get-data");
-      const responseData = await response.json();
-      const all = responseData.all;
-      setData(all);
-      setLoading(false);
-    }
-
-    getData();
-    logFetch({ log: "mount" });
-  }, []);
-
-  console.log("data featch", data);
-
-
+const Invitations = ({ data, error }) => {
   // How many people is coming who answer Yes
   const comingGuests = data.filter((guest) => guest.isComing === "Yes");
 
@@ -95,7 +66,6 @@ export default function Invitations({ isConnected }) {
   }, 0);
 
   // PDF
-
   const generatePDF = () => {
     try {
       // create a new pdf document
@@ -143,122 +113,149 @@ export default function Invitations({ isConnected }) {
   };
 
   return (
-    <div>
-      {loading ? (
-        <Typography
-          variant="h3"
-          sx={{
-            mb: 5,
-            textAlign: "center",
-          }}
-        >
-          Loading...
-        </Typography>
+    <>
+      {error?.status === 500 ? (
+        <ErrorMessage message="Sorry, there was a problem with the server. Please try again later." />
+      ) : error?.status === 400 ? (
+        <ErrorMessage message="Sorry, there was a problem with your request. Please try again later." />
+      ) : error ? (
+        <ErrorMessage message="Sorry, there was a problem fetching the data. Please try again later." />
+      ) : data === null ? (
+        <ErrorMessage message="No data found." />
       ) : (
-        <LayoutDashboard>
-          <Box
-            sx={{
-              mt: "1rem",
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-
-                justifyContent: { xs: "center", sm: "space-between" },
-                alignItems: { xs: "center", sm: "flex-start" },
-                flexDirection: { xs: "column", sm: "row" },
-              }}
-            >
-              <Typography
-                variant="h3"
+        <div className={styles.home}>
+          <SideBarDetails />
+          <div className={styles.homeContainer}>
+            <NavBarDetails />
+            <div style={{ color: "#494949" }} className={styles.container}>
+              <Box
                 sx={{
-                  mb: 5,
-                  mt: 1,
-                  textAlign: "left",
+                  display: "flex",
+                  justifyContent: "center",
+                  flexDirection: "column",
                 }}
               >
-                Wedding Guest Invitation Summary
-              </Typography>
-              <Button
-                sx={{ height: "40px", mb: { xs: "30px", sm: "0" } }}
-                onClick={generatePDF}
-                variant="contained"
-              >
-                Download PDF
-              </Button>
-            </Box>
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={6} md={3}>
-                <CardDataSummary
-                  title="Confirmed"
-                  subTitle="Total number of adults coming, plus companions who indicated they are also coming "
-                  total={amountConfirmedPeopleWhoComingAloneOrWithExtraPerson}
-                  icon={"akar-icons:people-group"}
-                  colorIcon="#20A4F3"
-                />
-              </Grid>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: { xs: "center", sm: "space-between" },
+                    alignItems: { xs: "center", sm: "flex-start" },
+                    flexDirection: { xs: "column", sm: "row" },
+                  }}
+                >
+                  <Typography
+                    variant="h3"
+                    sx={{
+                      mb: 5,
+                      mt: 1,
+                      textAlign: "left",
+                    }}
+                  >
+                    Wedding Guest Invitation Summary
+                  </Typography>
+                  <Button
+                    sx={{ height: "40px", mb: { xs: "30px", sm: "0" } }}
+                    onClick={generatePDF}
+                    variant="contained"
+                  >
+                    Download PDF
+                  </Button>
+                </Box>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <CardDataSummary
+                      title="Confirmed"
+                      subTitle="Total number of adults coming, plus companions who indicated they are also coming "
+                      total={
+                        amountConfirmedPeopleWhoComingAloneOrWithExtraPerson
+                      }
+                      icon={"akar-icons:people-group"}
+                      colorIcon="#20A4F3"
+                    />
+                  </Grid>
 
-              <Grid item xs={12} sm={6} md={3}>
-                <CardDataSummary
-                  title="Not Coming"
-                  subTitle="Total number of adults  who indicated they are not coming"
-                  total={amountNotComingPeople.length}
-                  color="info"
-                  icon={"emojione-monotone:no-pedestrians"}
-                  colorIcon="#011627"
-                />
-              </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <CardDataSummary
+                      title="Not Coming"
+                      subTitle="Total number of adults  who indicated they are not coming"
+                      total={amountNotComingPeople.length}
+                      color="info"
+                      icon={"emojione-monotone:no-pedestrians"}
+                      colorIcon="#011627"
+                    />
+                  </Grid>
 
-              <Grid item xs={12} sm={6} md={3}>
-                <CardDataSummary
-                  title="Children"
-                  subTitle="Total number of children under 3 years old"
-                  total={sumChildrenUnder3}
-                  color="warning"
-                  icon={"uil:kid"}
-                  colorIcon="#2ec4b6"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6} md={3}>
-                <CardDataSummary
-                  title="Children"
-                  subTitle="Total number of children over 3 years old"
-                  total={sumChildrenAbove3}
-                  color="warning"
-                  icon={"fluent-emoji-high-contrast:children-crossing"}
-                  colorIcon="#C490D1"
-                />
-              </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <CardDataSummary
+                      title="Children"
+                      subTitle="Total number of children under 3 years old"
+                      total={sumChildrenUnder3}
+                      color="warning"
+                      icon={"uil:kid"}
+                      colorIcon="#2ec4b6"
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <CardDataSummary
+                      title="Children"
+                      subTitle="Total number of children over 3 years old"
+                      total={sumChildrenAbove3}
+                      color="warning"
+                      icon={"fluent-emoji-high-contrast:children-crossing"}
+                      colorIcon="#C490D1"
+                    />
+                  </Grid>
 
-              <Grid item xs={12} sm={6} md={3}>
-                <CardDataSummary
-                  title={"Pending"}
-                  subTitle="Number of invitations not answered"
-                  total={amountPendingPeople}
-                  color="error"
-                  icon={"ic:baseline-pending-actions"}
-                  colorIcon="#FF3366"
-                />
-              </Grid>
-            </Grid>
-          </Box>
-        </LayoutDashboard>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <CardDataSummary
+                      title={"Pending"}
+                      subTitle="Number of invitations not answered"
+                      total={amountPendingPeople}
+                      color="error"
+                      icon={"ic:baseline-pending-actions"}
+                      colorIcon="#FF3366"
+                    />
+                  </Grid>
+                </Grid>
+              </Box>
+            </div>
+          </div>
+        </div>
       )}
-    </div>
+    </>
   );
-}
+};
+
+export default Invitations;
 
 export async function getServerSideProps() {
-  // Connect with MongoDB
-  const client = await clientPromise;
+  try {
+    // Connect with MongoDB
+    const client = await connectPromise;
+    const isConnected = await client.isConnected();
 
-  const isConnected = await client.isConnected();
+    if (!isConnected) {
+      throw new Error("MongoDB client is not connected");
+    }
 
-  return {
-    props: { isConnected },
-  };
+    // Fetch data from MongoDB
+    const db = client.db("testwedingdatabase");
+    const collection = db.collection("userlist");
+    const data = await collection.find({}).toArray();
+
+    if (!data || !data.length) {
+      return { props: { error: { status: 400 } } };
+    }
+
+    // to fix error serialized to JSON, MongoDB return _id property as object not STRING
+    const jsonData = data.map((item) => {
+      item._id = item._id.toString();
+      return item;
+    });
+
+    return { props: { data: jsonData } };
+  } catch (error) {
+    console.error(error);
+    return { props: { error: { status: 500 } } };
+  }
 }
