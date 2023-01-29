@@ -77,7 +77,7 @@ export default function CardDataSummary({
           variant="subtitle2"
           sx={{
             mt: "1rem",
-            width: "70%",
+            width: "55%",
           }}
         >
           {subTitle}
