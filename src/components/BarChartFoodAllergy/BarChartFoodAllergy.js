@@ -21,9 +21,9 @@ const BarChartFoodAllergy = ({
       >
         <BarChart
           chartData={userDataFoodAllergy}
-          peanutsPeopleAllergies={peanutsPeopleAllergies.length}
-          eggsPeopleAllergies={eggsPeopleAllergies.length}
-          nutsPeopleAllergies={nutsPeopleAllergies.length}
+          peanutsPeopleAllergies={peanutsPeopleAllergies?.length}
+          eggsPeopleAllergies={eggsPeopleAllergies?.length}
+          nutsPeopleAllergies={nutsPeopleAllergies?.length}
         />
       </Card>
     </Grid>
