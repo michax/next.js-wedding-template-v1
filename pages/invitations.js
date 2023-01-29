@@ -165,7 +165,7 @@ const Invitations = ({ data, error }) => {
                   <Grid item xs={12} sm={6} md={3}>
                     <CardDataSummary
                       title="Confirmed"
-                      subTitle="Total number of adults coming, plus companions who indicated they are also coming "
+                      subTitle="Number of confirmed adult guests and their companions"
                       total={
                         amountConfirmedPeopleWhoComingAloneOrWithExtraPerson
                       }
@@ -177,7 +177,7 @@ const Invitations = ({ data, error }) => {
                   <Grid item xs={12} sm={6} md={3}>
                     <CardDataSummary
                       title="Not Coming"
-                      subTitle="Total number of adults  who indicated they are not coming"
+                      subTitle="Number of confirmed adult guests who will not be attending"
                       total={amountNotComingPeople.length}
                       color="info"
                       icon={"emojione-monotone:no-pedestrians"}
@@ -188,7 +188,7 @@ const Invitations = ({ data, error }) => {
                   <Grid item xs={12} sm={6} md={3}>
                     <CardDataSummary
                       title="Children"
-                      subTitle="Total number of children under 3 years old"
+                      subTitle="Number of confirmed guests under the age of 3"
                       total={sumChildrenUnder3}
                       color="warning"
                       icon={"uil:kid"}
@@ -198,7 +198,7 @@ const Invitations = ({ data, error }) => {
                   <Grid item xs={12} sm={6} md={3}>
                     <CardDataSummary
                       title="Children"
-                      subTitle="Total number of children over 3 years old"
+                      subTitle="Number of confirmed guests aged 3 and over"
                       total={sumChildrenAbove3}
                       color="warning"
                       icon={"fluent-emoji-high-contrast:children-crossing"}
@@ -209,7 +209,7 @@ const Invitations = ({ data, error }) => {
                   <Grid item xs={12} sm={6} md={3}>
                     <CardDataSummary
                       title={"Pending"}
-                      subTitle="Number of invitations not answered"
+                      subTitle="Number of unconfirmed guests"
                       total={amountPendingPeople}
                       color="error"
                       icon={"ic:baseline-pending-actions"}
