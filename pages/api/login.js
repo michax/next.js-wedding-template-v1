@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     if (!existingUser) {
       console.log(`User "${username}" doesn't exist`);
       return res
-        .status(404)
+        .status(402)
         .json({ success: false, message: "User not found" });
     }
 

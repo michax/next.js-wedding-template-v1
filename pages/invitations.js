@@ -12,6 +12,10 @@ import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 const amountPeople = 100;
 
 const Invitations = ({ data, error }) => {
+
+
+
+
   // How many people is coming who answer Yes
   const comingGuests = data.filter((guest) => guest.isComing === "Yes");
 

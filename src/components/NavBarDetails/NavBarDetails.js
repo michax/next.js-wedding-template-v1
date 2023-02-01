@@ -7,6 +7,9 @@ import Divider from "@mui/material/Divider";
 import styles from "./NavBarDetails.module.css";
 import HomeIcon from "@mui/icons-material/Home";
 import { useRouter } from "next/router";
+import { Button } from "@mui/material";
+import { Box } from "@mui/system";
+import { setCookie, getCookie, deleteCookie } from "cookies-next";
 
 const NavBarDetails = () => {
   const router = useRouter();
@@ -15,6 +18,36 @@ const NavBarDetails = () => {
   let summaryLinkText = "";
   let summaryLinkHref = "";
   let secondLinkText = "";
+
+  const handleLogout = async (event) => {
+    event.preventDefault();
+
+    const username = "Maciek";
+
+    const sessionId = getCookie("session");
+    console.log(sessionId);
+
+    if (!sessionId) {
+      console.log("No sessionId found");
+      return;
+    }
+
+    const response = await fetch("api/logout", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sessionId: sessionId, username: username }),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      //main page
+      deleteCookie("session");
+      router.push("/login");
+    } else {
+      console.log(data.message);
+    }
+  };
 
   // determine the text and href links based on the current route
   switch (currentRoute) {
@@ -85,7 +118,6 @@ const NavBarDetails = () => {
               </Link>
               {secondLinkText && (
                 <Link
-                
                   onClick={(event) =>
                     redirectToFistSubmenu(event, secondLinkText)
                   }
@@ -98,7 +130,7 @@ const NavBarDetails = () => {
               )}
             </Breadcrumbs>
           </div>
-          <div className={styles.items}>
+          <Box sx={{ display: "flex" }}>
             <Link
               underline="hover"
               sx={{ display: "flex", alignItems: "center", color: "#fa541c" }}
@@ -107,7 +139,17 @@ const NavBarDetails = () => {
               <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
               Back to Wedding Page
             </Link>
-          </div>
+
+            <Button
+              sx={{ ml: "50px" }}
+              onClick={handleLogout}
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
+              Logout
+            </Button>
+          </Box>
         </div>
       </div>
       <Divider />

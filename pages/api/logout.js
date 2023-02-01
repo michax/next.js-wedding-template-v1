@@ -1,6 +1,5 @@
-import bcrypt from "bcrypt";
 import connectPromise from "../../lib/mongodb";
-import { setCookie } from "cookies-next";
+import { deleteCookie } from "cookies-next";
 
 export default async function handler(req, res) {
   // new instance of the Cookies class
@@ -10,9 +9,9 @@ export default async function handler(req, res) {
     const client = await connectPromise;
     const isConnected = client.isConnected();
 
-    const { username, password } = req.body;
+    const { username, sessionId } = req.body;
 
-    console.log(username, password);
+    console.log(username, sessionId);
 
     if (!isConnected) {
       throw new Error("MongoDB client is not connected");
@@ -20,9 +19,9 @@ export default async function handler(req, res) {
 
     const db = client.db("userAccount");
     const userCollection = db.collection("users");
+    const sessionCollection = db.collection("session");
 
     // Check if user exists in the database
-
     const existingUser = await userCollection.findOne({ username });
 
     if (!existingUser) {
@@ -32,9 +31,25 @@ export default async function handler(req, res) {
         .json({ success: false, message: "User nor found" });
     }
 
-    // need to add code
+    // Check sessionsId exists
+    const existingSession = await sessionCollection.findOne({ sessionId });
 
-    return res.status(200).json({ success: true, sessionId: sessionId });
+    if (!existingSession) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Session not found" });
+    }
+
+    const successDeleteSession = await sessionCollection.deleteOne({
+      sessionId,
+    });
+
+    if (successDeleteSession) {
+      console.log("DeleteSession success");
+    }
+    deleteCookie("sessionId");
+
+    return res.status(200).json({ success: true });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ success: false, error: error.message });
