@@ -1,5 +1,7 @@
 import { Button, TextField } from "@mui/material";
+import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -7,6 +9,8 @@ const LoginPage = () => {
   const [success, setSuccess] = useState(false);
   const [isLogging, setIsLogging] = useState(false);
   const [registered, setRegistered] = useState(false);
+
+  const router = useRouter();
 
   // Registering a temporary user to the database
   useEffect(() => {
@@ -42,8 +46,14 @@ const LoginPage = () => {
     }
   }, [registered]);
 
-  
+  // redirect
+  useEffect(() => {
+    if (isLogging) {
+      router.push("/invitations");
+    }
+  }, [isLogging]);
 
+  // Handle login
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -62,6 +72,27 @@ const LoginPage = () => {
       console.log(data.message);
     }
   };
+
+  // Handle login out
+  const handleLogout = async (event) => {
+    event.preventDefault();
+
+    const response = await fetch("api/logout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+  
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      //main page
+      setIsLogging(false);
+    } else {
+      console.log(data.message);
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       {success ? <p>User exist </p> : <p>no user</p>}
@@ -85,9 +116,24 @@ const LoginPage = () => {
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>
-      <Button type="submit" variant="contained" color="primary">
-        Login
-      </Button>
+      <Box sx={{ display: "flex" }}>
+        <Button
+          sx={{ mr: "10px" }}
+          type="submit"
+          variant="contained"
+          color="primary"
+        >
+          Login
+        </Button>
+        <Button
+          onClick={handleLogout}
+          type="submit"
+          variant="contained"
+          color="primary"
+        >
+          Logout
+        </Button>
+      </Box>
     </form>
   );
 };
