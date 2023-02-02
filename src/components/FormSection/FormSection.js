@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Box, Container, Grid } from "@mui/material";
 
-
 import * as Yup from "yup";
 
 // Importing toastify module
@@ -20,6 +19,7 @@ toast.configure();
 export const FormSection = () => {
   const [successMessage, setSuccessMessage] = useState(false);
   const [isExploding, setIsExploding] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const INITIAL_FORM_STATE = {
     firstName: "",
@@ -69,10 +69,11 @@ export const FormSection = () => {
       otherwise: Yup.string().nullable(),
     }),
     isWithChildren: Yup.boolean(),
-  })
+  });
 
   const onSubmit = async (values) => {
     // alert(JSON.stringify(values, null, 2));
+    setIsLoading(true);
     const data = {
       firstName: values.firstName,
       lastName: values.lastName,
@@ -81,7 +82,7 @@ export const FormSection = () => {
 
       isComing: values.isComing,
 
-      isWithChildren:values.isWithChildren,
+      isWithChildren: values.isWithChildren,
       amountKids: values.amountKids,
       amountTeenagers: values.amountTeenagers,
 
@@ -118,6 +119,7 @@ export const FormSection = () => {
           toast.success(" We have successfully saved your data 😊", {
             autoClose: 3000,
           });
+          setIsLoading(false);
           setIsExploding(true);
         } else if (responseStatus === 400) {
           setSuccessMessage(false);
@@ -183,6 +185,7 @@ export const FormSection = () => {
                 <MainFormContainer
                   INITIAL_FORM_STATE={INITIAL_FORM_STATE}
                   FORM_VALIDATION={FORM_VALIDATION}
+                  isLoading={isLoading}
                   onSubmit={onSubmit}
                 />
                 <Grid item xs={0} sm={1} md={2}>

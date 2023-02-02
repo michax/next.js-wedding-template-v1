@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { useFormikContext } from "formik";
 
-const ButtonWrapper = ({ children, ...otherProps }) => {
+const ButtonWrapper = ({ children, isLoading }) => {
   const { submitForm } = useFormikContext();
 
   const handleSubmit = () => {
@@ -16,7 +16,11 @@ const ButtonWrapper = ({ children, ...otherProps }) => {
   };
 
   return (
-    <Button sx={{ backgroundColor: "#F2779A" }} {...configButton}>
+    <Button
+      disabled={isLoading}
+      sx={{ backgroundColor: "#F2779A" }}
+      {...configButton}
+    >
       {children}
     </Button>
   );

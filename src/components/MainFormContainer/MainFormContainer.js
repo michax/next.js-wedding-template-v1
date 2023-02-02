@@ -22,6 +22,7 @@ export const MainFormContainer = ({
   INITIAL_FORM_STATE,
   FORM_VALIDATION,
   onSubmit,
+  isLoading,
 }) => {
   return (
     <Grid item xs={12} sm={10} md={8}>
@@ -136,7 +137,9 @@ export const MainFormContainer = ({
                       <FoodAllergicQuestion />
                       <AlcoholQuestion />
                       <Grid item xs={12}>
-                        <Button>Submit form</Button>
+                        <Button isLoading={isLoading}>
+                          Submit form
+                        </Button>
                       </Grid>
                     </Grid>
                   </Form>
