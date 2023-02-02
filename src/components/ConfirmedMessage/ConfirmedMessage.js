@@ -15,27 +15,28 @@ export const ConfirmedMessage = () => {
             }}
           >
             <Typography
-              variant="h4"
+              variant="h3"
               sx={{
                 mb: "1rem",
                 textAlign: "center",
-                
               }}
             >
               Thank you for confirming your attendance at our wedding.
             </Typography>
             <Typography
-              variant="body2"
+              variant="body1"
               sx={{
+                mt: "50px",
                 textAlign: "center",
-                
               }}
             >
-              We are so excited that you are going to join us in Santorini to
-              celebrate our special day. We are truly blessed to have so many
-              wonderful people in our lives that are willing to travel so far to
-              be with us as we embark on the greatest adventure of our live. It
-              means the world to us!
+              Thank you for confirming your attendance at our wedding. We are
+              overjoyed to know that you will be joining us on our special day
+              in Santorini. Your presence means a lot to us and we feel
+              incredibly blessed to have such wonderful friends and family in
+              our lives. We can't wait to celebrate this new chapter of our
+              lives together with all of you. Thank you again for your support
+              and we look forward to seeing you soon!
             </Typography>
           </Paper>
         </Container>

@@ -23,6 +23,7 @@ export const MainFormContainer = ({
   FORM_VALIDATION,
   onSubmit,
   isLoading,
+  isExistingUser,
 }) => {
   return (
     <Grid item xs={12} sm={10} md={8}>
@@ -137,9 +138,16 @@ export const MainFormContainer = ({
                       <FoodAllergicQuestion />
                       <AlcoholQuestion />
                       <Grid item xs={12}>
-                        <Button isLoading={isLoading}>
-                          Submit form
-                        </Button>
+                        {isExistingUser ? (
+                          <Typography variant="body1" sx={{ color: "#FA541c" }}>
+                            Thank you for your inquiry. We have checked our
+                            database and the email address provided is already
+                            registered for our wedding event. If you have any
+                            questions or concerns, please let us know.
+                          </Typography>
+                        ) : (
+                          <Button isLoading={isLoading}>Submit form</Button>
+                        )}
                       </Grid>
                     </Grid>
                   </Form>

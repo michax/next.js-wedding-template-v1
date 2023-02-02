@@ -20,6 +20,7 @@ export const FormSection = () => {
   const [successMessage, setSuccessMessage] = useState(false);
   const [isExploding, setIsExploding] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isExistingUser, setIsExistingUser] = useState(false);
 
   const INITIAL_FORM_STATE = {
     firstName: "",
@@ -131,6 +132,12 @@ export const FormSection = () => {
           setIsExploding(false);
         }
 
+        if (responseStatus == 402) {
+          setIsExistingUser(true);
+        } else {
+          setIsExistingUser(false);
+        }
+
         return res.json();
       })
       .then((data) => {
@@ -186,6 +193,7 @@ export const FormSection = () => {
                   INITIAL_FORM_STATE={INITIAL_FORM_STATE}
                   FORM_VALIDATION={FORM_VALIDATION}
                   isLoading={isLoading}
+                  isExistingUser={isExistingUser}
                   onSubmit={onSubmit}
                 />
                 <Grid item xs={0} sm={1} md={2}>

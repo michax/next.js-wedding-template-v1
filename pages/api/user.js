@@ -1,55 +1,74 @@
 import connectPromise from "../../lib/mongodb";
-import { registerUser } from "../../lib/register-user";
 
 export default async function handler(req, res) {
-  const connect = await connectPromise;
-  const database = await connect.db("testwedingdatabase");
-  const collection = database.collection("userlist");
+  try {
+    // Connect with MongoDB
+    const client = await connectPromise;
+    const isConnected = client.isConnected();
 
-  const dataFrontend = req.body;
+    const database = client.db("testwedingdatabase");
+    const collection = database.collection("userlist");
 
-  console.log("data from frontend", dataFrontend);
+    if (!isConnected) {
+      throw new Error("MongoDB client is not connected");
+    }
 
-  const dataToInsert = {
-    firstName: dataFrontend?.firstName,
-    lastName: dataFrontend?.lastName,
-    email: dataFrontend?.email,
-    phone: dataFrontend?.phone,
+    const dataFrontend = req.body;
 
-    isWithCompanion: dataFrontend?.isWithCompanion,
-    firstNameCompanion: dataFrontend?.firstNameCompanion,
-    lastNameCompanion: dataFrontend?.lastNameCompanion,
+    if (!dataFrontend) {
+      res
+        .status(400)
+        .json({ message: "missing data from frontend", error: "missing-data" });
+      return;
+    }
 
-    isComing: dataFrontend?.isComing,
+    const dataToInsert = {
+      firstName: dataFrontend?.firstName,
+      lastName: dataFrontend?.lastName,
+      email: dataFrontend?.email,
+      phone: dataFrontend?.phone,
 
-    isWithChildren: dataFrontend?.isWithChildren,
-    amountKids: dataFrontend?.amountKids,
-    amountTeenagers: dataFrontend?.amountTeenagers,
+      isWithCompanion: dataFrontend?.isWithCompanion,
+      firstNameCompanion: dataFrontend?.firstNameCompanion,
+      lastNameCompanion: dataFrontend?.lastNameCompanion,
 
-    isVodka: dataFrontend?.isVodka,
-    isGin: dataFrontend?.isGin,
-    isWhisky: dataFrontend?.isWhisky,
-    isBeer: dataFrontend?.isBeer,
-    isNonAlcohol: dataFrontend?.isNonAlcohol,
+      isComing: dataFrontend?.isComing,
 
-    isPeanuts: dataFrontend?.isPeanuts,
-    isEggs: dataFrontend?.isEggs,
-    isNuts: dataFrontend?.isNuts,
-  };
+      isWithChildren: dataFrontend?.isWithChildren,
+      amountKids: dataFrontend?.amountKids,
+      amountTeenagers: dataFrontend?.amountTeenagers,
 
-  if (!dataFrontend) {
-    res
-      .status(400)
-      .json({ message: "missing data from frontend", error: "missing-data" });
-    return;
-  } else {
-    res.status(200).json({
-      myBody: dataFrontend,
-      message: "we got your values from FORM",
+      isVodka: dataFrontend?.isVodka,
+      isGin: dataFrontend?.isGin,
+      isWhisky: dataFrontend?.isWhisky,
+      isBeer: dataFrontend?.isBeer,
+      isNonAlcohol: dataFrontend?.isNonAlcohol,
+
+      isPeanuts: dataFrontend?.isPeanuts,
+      isEggs: dataFrontend?.isEggs,
+      isNuts: dataFrontend?.isNuts,
+    };
+
+    // Search for existing user in MongoDB
+    const existingUsersInMdb = await collection.findOne({
+      email: dataToInsert.email,
     });
+
+    if (existingUsersInMdb) {
+      console.log(`User "${dataToInsert.email}" exist`);
+      return res.status(402).json({ success: false, message: "User exist" });
+    }
+
+    const result = await collection.insertOne(dataToInsert);
+
+    if (!result.insertedCount) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Unable to insert data" });
+    }
+
+    return res.status(200).json({ success: true });
+  } catch (error) {
+    return res.status(500).json({ success: false, error: error.message });
   }
-
-  const result = await registerUser({ collection, dataToInsert });
-
-  console.log('result', result)
 }
