@@ -2,6 +2,7 @@ import { Card, Grid, Typography } from "@mui/material";
 import React from "react";
 import { PieChart } from "../PieChart/PieChart";
 import { Box } from "@mui/system";
+import InfoAmountCard from "../InfoAmountCard/InfoAmountCard";
 
 const PieChartDrinks = ({
   userData,
@@ -31,70 +32,16 @@ const PieChartDrinks = ({
           isNonAlcoholAmount={isNonAlcoholAmount.length}
         />
       </Card>
-      <Card
-        sx={{
-          p: "30px",
-          boxShadow: "5px",
-          backgroundColor: "#FDFDEC",
-          mr: "50px",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <Typography variant="h3" sx={{ mb: "2rem", textAlign: "center" }}>
-            Cocktail Popularity
-          </Typography>
-
-          <Box sx={{ display: "flex" }}>
-            <Typography variant="body1" sx={{ mb: "0.5rem", color: "primary" }}>
-              Vodka cocktails:
-            </Typography>
-            <Typography variant="body1" color="primary" sx={{ ml: "5px" }}>
-              {vodkaAmount.length}{" "}
-              {vodkaAmount.length === 1 ? "person" : "people"}
-            </Typography>
-          </Box>
-          <Box sx={{ display: "flex" }}>
-            <Typography variant="body1" sx={{ mb: "0.5rem", color: "primary" }}>
-              Gin cocktails:
-            </Typography>
-            <Typography variant="body1" color="primary" sx={{ ml: "5px" }}>
-              {ginAmount.length} {ginAmount.length === 1 ? "person" : "people"}
-            </Typography>
-          </Box>
-          <Box sx={{ display: "flex" }}>
-            <Typography variant="body1" sx={{ mb: "0.5rem", color: "primary" }}>
-              Whisky cocktails:
-            </Typography>
-            <Typography variant="body1" color="primary" sx={{ ml: "5px" }}>
-              {whiskyAmount.length}{" "}
-              {whiskyAmount.length === 1 ? "person" : "people"}
-            </Typography>
-          </Box>
-          <Box sx={{ display: "flex" }}>
-            <Typography variant="body1" sx={{ mb: "0.5rem", color: "primary" }}>
-              Beer cocktails:
-            </Typography>
-            <Typography variant="body1" color="primary" sx={{ ml: "5px" }}>
-              {beerAmount.length}{" "}
-              {beerAmount.length === 1 ? "person" : "people"}
-            </Typography>
-          </Box>
-          <Box sx={{ display: "flex" }}>
-            <Typography variant="body1" sx={{ mb: "0.5rem", color: "primary" }}>
-              Non-alcoholic cocktails:
-            </Typography>
-            <Typography variant="body1" color="primary" sx={{ ml: "5px" }}>
-              {isNonAlcoholAmount.length}{" "}
-              {isNonAlcoholAmount.length === 1 ? "person" : "people"}
-            </Typography>
-          </Box>
-        </Box>
-      </Card>
+      <InfoAmountCard
+        title="Cocktail Popularity"
+        cocktails={[
+          { name: "Vodka cocktails", amount: vodkaAmount },
+          { name: "Gin cocktails", amount: ginAmount },
+          { name: "Whisky cocktails", amount: whiskyAmount },
+          { name: "Beer cocktails", amount: beerAmount },
+          { name: "Non-alcoholic cocktails", amount: isNonAlcoholAmount },
+        ]}
+      />
     </Box>
   );
 };

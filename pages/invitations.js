@@ -159,6 +159,7 @@ const Invitations = ({ data, error }) => {
                     sx={{ height: "40px", mb: { xs: "30px", sm: "0" } }}
                     onClick={generatePDF}
                     variant="contained"
+                    color="secondary"
                   >
                     Download PDF
                   </Button>

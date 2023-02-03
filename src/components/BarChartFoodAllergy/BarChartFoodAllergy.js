@@ -1,7 +1,7 @@
-import { Card, Grid } from "@mui/material";
+import { Box, Card, Grid } from "@mui/material";
 import React from "react";
 import { BarChart } from "../BarChart/BarChart";
-
+import InfoAmountCard from "../InfoAmountCard/InfoAmountCard";
 
 const BarChartFoodAllergy = ({
   userDataFoodAllergy,
@@ -10,13 +10,14 @@ const BarChartFoodAllergy = ({
   nutsPeopleAllergies,
 }) => {
   return (
-    <Grid item xs={12} sm={6} md={4}>
+    <Box sx={{ pl: "30px", display: "flex" }}>
       <Card
         sx={{
-          py: 6,
+          p: "30px",
           boxShadow: "5px",
           textAlign: "center",
           backgroundColor: "#FDFDEC",
+          mr: "50px",
         }}
       >
         <BarChart
@@ -26,7 +27,15 @@ const BarChartFoodAllergy = ({
           nutsPeopleAllergies={nutsPeopleAllergies?.length}
         />
       </Card>
-    </Grid>
+      <InfoAmountCard
+        title="Food Allergy Summary"
+        cocktails={[
+          { name: "Peanuts", amount: peanutsPeopleAllergies },
+          { name: "Eggs", amount: eggsPeopleAllergies },
+          { name: "Nuts", amount: nutsPeopleAllergies },
+        ]}
+      />
+    </Box>
   );
 };
 
