@@ -61,7 +61,7 @@ const LoginPage = () => {
     if (isLogging) {
       router.push("/invitations");
     }
-  }, [isLogging]);
+  }, [isLogging, router]);
 
   // Handle login
   const handleSubmit = async (event) => {

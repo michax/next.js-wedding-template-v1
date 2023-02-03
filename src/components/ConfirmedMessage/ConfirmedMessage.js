@@ -34,7 +34,7 @@ export const ConfirmedMessage = () => {
               overjoyed to know that you will be joining us on our special day
               in Santorini. Your presence means a lot to us and we feel
               incredibly blessed to have such wonderful friends and family in
-              our lives. We can't wait to celebrate this new chapter of our
+              our lives. We can&apos;t wait to celebrate this new chapter of our
               lives together with all of you. Thank you again for your support
               and we look forward to seeing you soon!
             </Typography>
