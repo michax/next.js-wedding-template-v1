@@ -128,7 +128,7 @@ export const FormSection = () => {
           setIsExploding(false);
         } else {
           setSuccessMessage(false);
-          toast.error("Unknown server error", { autoClose: 1000 });
+
           setIsExploding(false);
         }
 
