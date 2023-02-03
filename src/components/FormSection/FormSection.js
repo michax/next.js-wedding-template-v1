@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Box, Container, Grid } from "@mui/material";
-
 import * as Yup from "yup";
-
 // Importing toastify module
 import { toast } from "react-toastify";
 // Import toastify css file
@@ -101,7 +99,7 @@ export const FormSection = () => {
       firstNameCompanion: values.firstNameCompanion,
       lastNameCompanion: values.lastNameCompanion,
     };
-    console.log("values from form", { values });
+  
     await fetch("/api/user", {
       method: "POST",
       headers: {
@@ -128,7 +126,6 @@ export const FormSection = () => {
           setIsExploding(false);
         } else {
           setSuccessMessage(false);
-
           setIsExploding(false);
         }
 

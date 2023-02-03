@@ -2,7 +2,6 @@ import connectPromise from "../../lib/mongodb";
 import { deleteCookie } from "cookies-next";
 
 export default async function handler(req, res) {
-  // new instance of the Cookies class
 
   try {
     // Connect with MongoDB
@@ -48,6 +47,13 @@ export default async function handler(req, res) {
       console.log("DeleteSession success");
     }
     deleteCookie("sessionId");
+    const successDeleteUser = await userCollection.deleteOne({
+      username,
+    });
+
+    if (successDeleteUser) {
+      console.log("successDeleteUser", successDeleteUser);
+    }
 
     return res.status(200).json({ success: true });
   } catch (error) {

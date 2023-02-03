@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { setCookie, getCookie, deleteCookie } from "cookies-next";
-import { Typography } from "@material-ui/core";
+
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
