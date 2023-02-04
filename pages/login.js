@@ -2,59 +2,17 @@ import { Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { setCookie, getCookie, deleteCookie } from "cookies-next";
-
+import { setCookie } from "cookies-next";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [success, setSuccess] = useState(false);
   const [isLogging, setIsLogging] = useState(false);
-  const [registered, setRegistered] = useState(false);
 
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   const router = useRouter();
-
-  // Registering a temporary user to the database
-  useEffect(() => {
-    if (!registered) {
-      const password = "secretpassword";
-      const username = "Maciek";
-
-      const body = { username: username, password: password };
-
-      try {
-        async function addTestUser() {
-          const response = await fetch("api/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(body),
-          });
-
-          if (response.status === 409) {
-            console.log("Conflict: User already exists");
-            return;
-          }
-
-          const data = await response.json();
-
-          if (data.success) {
-            //main page
-            setSuccess(true);
-            setRegistered(true);
-          } else {
-            console.log(data.message);
-          }
-        }
-
-        addTestUser();
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }, [registered]);
 
   // redirect
   useEffect(() => {
@@ -96,36 +54,6 @@ const LoginPage = () => {
     }
   };
 
-  // Handle login out
-  const handleLogout = async (event) => {
-    event.preventDefault();
-
-    const username = "Maciek";
-
-    const sessionId = getCookie("session");
-    console.log(sessionId);
-
-    if (!sessionId) {
-      console.log("No sessionId found");
-      return;
-    }
-
-    const response = await fetch("api/logout", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ sessionId: sessionId, username: username }),
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      //main page
-      deleteCookie("session");
-      setIsLogging(false);
-    } else {
-      console.log(data.message);
-    }
-  };
 
   return (
     <Box
@@ -183,14 +111,6 @@ const LoginPage = () => {
           >
             Login
           </Button>
-          {/* <Button
-            onClick={handleLogout}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Logout
-          </Button> */}
         </Box>
       </form>
     </Box>

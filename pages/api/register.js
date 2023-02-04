@@ -1,7 +1,16 @@
 import bcrypt from "bcrypt";
 import connectPromise from "../../lib/mongodb";
 
+const ENABLE_REGISTRATION = false;
+
+/**
+ * Todo: Add authorization against password you will only known. Should be difficult one.
+ * Require for that password to be present in Authorization header.
+ */
 export default async function handler(req, res) {
+  if (!ENABLE_REGISTRATION) {
+    return false;
+  }
   try {
     // Connect with MongoDB
     const client = await connectPromise;
@@ -9,7 +18,7 @@ export default async function handler(req, res) {
 
     const { username, password } = req.body;
 
-    console.log(username, password);
+    console.log("Received username and password", username, password);
 
     if (!isConnected) {
       throw new Error("MongoDB client is not connected");
@@ -44,6 +53,8 @@ export default async function handler(req, res) {
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ success: false, error: error.message });
+    return res
+      .status(500)
+      .json({ success: false, error: "Unknown error occurred" });
   }
 }
