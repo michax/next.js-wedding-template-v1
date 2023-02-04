@@ -1,5 +1,5 @@
 import connectPromise from "../lib/mongodb";
-import React, {  } from "react";
+import React, { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
 import styles from "../styles/Home.module.css";
 import Table from "@mui/material/Table";
@@ -12,9 +12,22 @@ import Paper from "@mui/material/Paper";
 import NavBarDetails from "../src/components/NavBarDetails/NavBarDetails";
 import SideBarDetails from "../src/components/SideBarDetails/SideBarDetails";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
+import { getCookie } from "cookies-next";
+import { useRouter } from "next/router";
 
 const GuestsNotAttend = ({ data, error }) => {
   const comingGuests = data.filter((guest) => guest.isComing === "No");
+
+  // to check cookies session
+  const router = useRouter();
+
+  useEffect(() => {
+    const sessionId = getCookie("session");
+
+    if (!sessionId) {
+      router.push("/login");
+    }
+  }, [router]);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import connectPromise from "../lib/mongodb";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import CardDataSummary from "../src/components/CardDataSummary/CardDataSummary";
@@ -8,11 +8,22 @@ import jsPDF from "jspdf";
 import SideBarDetails from "../src/components/SideBarDetails/SideBarDetails";
 import NavBarDetails from "../src/components/NavBarDetails/NavBarDetails";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
+import { getCookie } from "cookies-next";
+import { useRouter } from "next/router";
 
 const amountPeople = 100;
 
 const Invitations = ({ data, error }) => {
+  // to check cookies session
+  const router = useRouter();
 
+  useEffect(() => {
+    const sessionId = getCookie("session");
+
+    if (!sessionId) {
+      router.push("/login");
+    }
+  }, [router]);
 
   // How many people is coming who answer Yes
   const comingGuests = data.filter((guest) => guest.isComing === "Yes");

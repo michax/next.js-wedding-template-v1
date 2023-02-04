@@ -183,14 +183,14 @@ const LoginPage = () => {
           >
             Login
           </Button>
-          <Button
+          {/* <Button
             onClick={handleLogout}
             type="submit"
             variant="contained"
             color="primary"
           >
             Logout
-          </Button>
+          </Button> */}
         </Box>
       </form>
     </Box>

@@ -6,8 +6,20 @@ import BarChartFoodAllergy from "../src/components/BarChartFoodAllergy/BarChartF
 import NavBarDetails from "../src/components/NavBarDetails/NavBarDetails";
 import SideBarDetails from "../src/components/SideBarDetails/SideBarDetails";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
+import { useRouter } from "next/router";
+import { getCookie } from "cookies-next";
 
 const SummaryFoodAllergy = ({ data, error }) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const sessionId = getCookie("session");
+
+    if (!sessionId) {
+      router.push("/login");
+    }
+  }, [router]);
+
   const [userDataAllergyFood, setUserDataAllergyFood] = useState([]);
 
   const peanutsPeopleAllergies = data?.filter((person) => {
