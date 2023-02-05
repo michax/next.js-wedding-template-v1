@@ -1,5 +1,5 @@
 import connectPromise from "../lib/mongodb";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "../styles/Home.module.css";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import CardDataSummary from "../src/components/CardDataSummary/CardDataSummary";
@@ -9,22 +9,10 @@ import SideBarDetails from "../src/components/SideBarDetails/SideBarDetails";
 import NavBarDetails from "../src/components/NavBarDetails/NavBarDetails";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
-import { useRouter } from "next/router";
 
 const amountPeople = 100;
 
 const Invitations = ({ data, error }) => {
-  // to check cookies session
-  const router = useRouter();
-
-  useEffect(() => {
-    const sessionId = getCookie("session");
-
-    if (!sessionId) {
-      router.push("/login");
-    }
-  }, [router]);
-
   // How many people is coming who answer Yes
   const comingGuests = data.filter((guest) => guest.isComing === "Yes");
 
@@ -242,7 +230,19 @@ const Invitations = ({ data, error }) => {
 
 export default Invitations;
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ req, res }) {
+ 
+  const session = getCookie("session", { req, res });
+
+  // check if tes object is falsy, not defined, or empty value 
+  if (!session) {
+    res.writeHead(302, {
+      Location: "/login",
+    });
+    res.end();
+    return { props: {} };
+  }
+
   try {
     // Connect with MongoDB
     const client = await connectPromise;

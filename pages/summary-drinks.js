@@ -1,27 +1,16 @@
 import connectPromise from "../lib/mongodb";
-import React, { useEffect, useState } from "react";
+import React, { useEffect,useState } from "react";
 import { Grid, Typography } from "@mui/material";
 import PieChartDrinks from "../src/components/PieChartDrinks/PieChartDrinks";
 import styles from "../styles/Home.module.css";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 import SideBarDetails from "../src/components/SideBarDetails/SideBarDetails";
 import NavBarDetails from "../src/components/NavBarDetails/NavBarDetails";
-import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
 
 const SummaryDrinks = ({ data, error }) => {
   const [userDataDrinks, setUserDataDrinks] = useState([]);
-
-  const router = useRouter();
-
-  useEffect(() => {
-    const sessionId = getCookie("session");
-
-    if (!sessionId) {
-      router.push("/login");
-    }
-  }, [router]);
-
+  
   const vodkaAmount = data.filter((person) => {
     return person.isVodka === true;
   });
@@ -148,7 +137,17 @@ const SummaryDrinks = ({ data, error }) => {
 
 export default SummaryDrinks;
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ req, res }) {
+  const session = getCookie("session", { req, res });
+
+  if (!session) {
+    res.writeHead(302, {
+      Location: "/login",
+    });
+    res.end();
+    return { props: {} };
+  }
+
   try {
     // Connect with MongoDB
     const client = await connectPromise;

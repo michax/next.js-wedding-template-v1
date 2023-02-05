@@ -21,14 +21,14 @@ export default async function handler(req, res) {
     const sessionCollection = db.collection("session");
 
     // Check if user exists in the database
-    const existingUser = await userCollection.findOne({ username });
+    // const existingUser = await userCollection.findOne({ username });
 
-    if (!existingUser) {
-      console.log(`User "${username}" doesn't exist`);
-      return res
-        .status(404)
-        .json({ success: false, message: "User nor found" });
-    }
+    // if (!existingUser) {
+    //   console.log(`User "${username}" doesn't exist`);
+    //   return res
+    //     .status(404)
+    //     .json({ success: false, message: "User nor found" });
+    // }
 
     // Check sessionsId exists
     const existingSession = await sessionCollection.findOne({ sessionId });
@@ -46,16 +46,18 @@ export default async function handler(req, res) {
     if (successDeleteSession) {
       console.log("DeleteSession success");
     }
-    deleteCookie("sessionId");
-    const successDeleteUser = await userCollection.deleteOne({
-      username,
-    });
+    
+    // deleteCookie("sessionId");
+    // const successDeleteUser = await userCollection.deleteOne({
+    //   username,
+    // });
 
-    if (successDeleteUser) {
-      console.log("successDeleteUser", successDeleteUser);
-    }
+    // if (successDeleteUser) {
+    //   console.log("successDeleteUser", successDeleteUser);
+    // }
 
     return res.status(200).json({ success: true });
+
   } catch (error) {
     console.error(error);
     return res.status(500).json({ success: false, error: error.message });

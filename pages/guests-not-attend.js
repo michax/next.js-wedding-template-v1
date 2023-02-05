@@ -1,5 +1,4 @@
 import connectPromise from "../lib/mongodb";
-import React, { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
 import styles from "../styles/Home.module.css";
 import Table from "@mui/material/Table";
@@ -13,21 +12,10 @@ import NavBarDetails from "../src/components/NavBarDetails/NavBarDetails";
 import SideBarDetails from "../src/components/SideBarDetails/SideBarDetails";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
-import { useRouter } from "next/router";
+
 
 const GuestsNotAttend = ({ data, error }) => {
   const comingGuests = data.filter((guest) => guest.isComing === "No");
-
-  // to check cookies session
-  const router = useRouter();
-
-  useEffect(() => {
-    const sessionId = getCookie("session");
-
-    if (!sessionId) {
-      router.push("/login");
-    }
-  }, [router]);
 
   return (
     <>
@@ -118,7 +106,17 @@ const GuestsNotAttend = ({ data, error }) => {
 
 export default GuestsNotAttend;
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ req, res }) {
+  const session = getCookie("session", { req, res });
+
+  // check if tes object is falsy, not defined, or empty value
+  if (!session) {
+    res.writeHead(302, {
+      Location: "/login",
+    });
+    res.end();
+    return { props: {} };
+  }
   try {
     // Connect with MongoDB
     const client = await connectPromise;
