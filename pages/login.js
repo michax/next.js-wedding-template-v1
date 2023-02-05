@@ -1,17 +1,19 @@
-import { Button, TextField } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { setCookie } from "cookies-next";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import Textfield from "../src/components/FormSection/FormsUI/Textfield";
+
+const validationSchema = Yup.object().shape({
+  username: Yup.string().required("Username is required"),
+  password: Yup.string().required("Password is required"),
+});
 
 const LoginPage = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [isLogging, setIsLogging] = useState(false);
-
-  const [usernameError, setUsernameError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-
   const router = useRouter();
 
   // redirect
@@ -21,23 +23,22 @@ const LoginPage = () => {
     }
   }, [isLogging, router]);
 
-  // Handle login
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
+    setSubmitting(true);
 
     const response = await fetch("api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify(values),
     });
 
     if (response.status === 402) {
-      setUsernameError("User is incorrect");
+      setFieldError("username", "User is incorrect");
       return;
     }
 
     if (response.status === 401) {
-      setPasswordError("Password is incorrect");
+      setFieldError("password", "Password is incorrect");
       return;
     }
 
@@ -52,8 +53,9 @@ const LoginPage = () => {
     } else {
       console.log(data.message);
     }
-  };
 
+    setSubmitting(false);
+  };
 
   return (
     <Box
@@ -66,53 +68,32 @@ const LoginPage = () => {
         width: "100%",
       }}
     >
-      <form
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "400px",
-          height: "200px",
-        }}
+      <Formik
+        initialValues={{ username: "", password: "" }}
+        validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <div>
-          <TextField
-            sx={{ mb: "30px" }}
-            id="username"
-            label="Username"
-            variant="outlined"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-            error={Boolean(usernameError)}
-            helperText={usernameError}
-          />
-        </div>
-        <div>
-          <TextField
-            sx={{ mb: "30px" }}
-            id="password"
-            label="Password"
-            type="password"
-            variant="outlined"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            error={Boolean(passwordError)}
-            helperText={passwordError}
-          />
-        </div>
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <Button
-            sx={{ mb: "10px" }}
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Login
-          </Button>
-        </Box>
-      </form>
+        {({ isSubmitting }) => (
+          <Grid container sx={{ p:"10px" }} maxWidth="sm">
+            <Grid item xs={12}>
+              {" "}
+              <Textfield sx={{ mb: "20px" }} name="username" label="Username" />
+            </Grid>
+            <Grid item xs={12}>
+              {" "}
+              <Textfield
+                sx={{ mb: "20px" }}
+                name="password"
+                label="Password"
+                type="password"
+              />
+            </Grid>
+            <Button sx={{width:"100%"}} type="submit" variant="contained" color="primary">
+              Login
+            </Button>
+          </Grid>
+        )}
+      </Formik>
     </Box>
   );
 };
