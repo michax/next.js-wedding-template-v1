@@ -1,4 +1,11 @@
-import { Button, Grid } from "@mui/material";
+import {
+  AppBar,
+  Button,
+  Container,
+  Grid,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -67,55 +74,81 @@ const LoginPage = () => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
-        width: "100%",
-      }}
-    >
-      <Formik
-        initialValues={{ username: "", password: "" }}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
+    <>
+      <Navigation />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+          width: "100%",
+        }}
       >
-        {({ isSubmitting, values }) => (
-          <Form>
-            <Grid container sx={{ p: "10px" }} maxWidth="sm">
-              <Grid item xs={12}>
-                {" "}
-                <TextfieldWrapper
-                  sx={{ mb: "20px" }}
-                  name="username"
-                  label="Username"
-                />
+        <Formik
+          initialValues={{ username: "", password: "" }}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ isSubmitting, values }) => (
+            <Form>
+              <Grid container sx={{ p: "10px" }} maxWidth="sm">
+                <Grid item xs={12}>
+                  {" "}
+                  <TextfieldWrapper
+                    sx={{ mb: "20px" }}
+                    name="username"
+                    label="Username"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  {" "}
+                  <TextfieldWrapper
+                    sx={{ mb: "20px" }}
+                    name="password"
+                    label="Password"
+                    type="password"
+                  />
+                </Grid>
+                <Button
+                  sx={{ width: "100%" }}
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                >
+                  Login
+                </Button>
               </Grid>
-              <Grid item xs={12}>
-                {" "}
-                <TextfieldWrapper
-                  sx={{ mb: "20px" }}
-                  name="password"
-                  label="Password"
-                  type="password"
-                />
-              </Grid>
-              <Button
-                sx={{ width: "100%" }}
-                type="submit"
-                variant="contained"
-                color="primary"
-              >
-                Login
-              </Button>
-            </Grid>
-          </Form>
-        )}
-      </Formik>
-    </Box>
+            </Form>
+          )}
+        </Formik>
+      </Box>
+    </>
   );
 };
 
 export default LoginPage;
+
+const Navigation = () => {
+  return (
+    <AppBar sx={{ backgroundColor: "#fcfff7" }} elevation={1} position="static">
+      <Container maxWidth="md">
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography color="primary" variant="h3">
+            E&L
+          </Typography>
+          <Button variant="contained" color="primary" href="/">
+            Return to Main Page
+          </Button>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+};
