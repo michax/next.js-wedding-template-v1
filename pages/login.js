@@ -3,9 +3,9 @@ import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { setCookie } from "cookies-next";
-import { Formik } from "formik";
 import * as Yup from "yup";
-import Textfield from "../src/components/FormSection/FormsUI/Textfield";
+import { Formik, Form } from "formik";
+import TextfieldWrapper from "../src/components/FormSection/FormsUI/Textfield";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required("Username is required"),
@@ -25,11 +25,17 @@ const LoginPage = () => {
 
   const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
     setSubmitting(true);
+    setIsLogging(false);
+
+    const dataToSend = {
+      username: values.username,
+      password: values.password,
+    };
 
     const response = await fetch("api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
+      body: JSON.stringify(dataToSend),
     });
 
     if (response.status === 402) {
@@ -40,6 +46,9 @@ const LoginPage = () => {
     if (response.status === 401) {
       setFieldError("password", "Password is incorrect");
       return;
+    }
+    if (response.status === 200) {
+      setIsLogging(true);
     }
 
     const data = await response.json();
@@ -73,25 +82,36 @@ const LoginPage = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
-          <Grid container sx={{ p:"10px" }} maxWidth="sm">
-            <Grid item xs={12}>
-              {" "}
-              <Textfield sx={{ mb: "20px" }} name="username" label="Username" />
+        {({ isSubmitting, values }) => (
+          <Form>
+            <Grid container sx={{ p: "10px" }} maxWidth="sm">
+              <Grid item xs={12}>
+                {" "}
+                <TextfieldWrapper
+                  sx={{ mb: "20px" }}
+                  name="username"
+                  label="Username"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                {" "}
+                <TextfieldWrapper
+                  sx={{ mb: "20px" }}
+                  name="password"
+                  label="Password"
+                  type="password"
+                />
+              </Grid>
+              <Button
+                sx={{ width: "100%" }}
+                type="submit"
+                variant="contained"
+                color="primary"
+              >
+                Login
+              </Button>
             </Grid>
-            <Grid item xs={12}>
-              {" "}
-              <Textfield
-                sx={{ mb: "20px" }}
-                name="password"
-                label="Password"
-                type="password"
-              />
-            </Grid>
-            <Button sx={{width:"100%"}} type="submit" variant="contained" color="primary">
-              Login
-            </Button>
-          </Grid>
+          </Form>
         )}
       </Formik>
     </Box>
