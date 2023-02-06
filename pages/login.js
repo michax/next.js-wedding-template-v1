@@ -13,8 +13,9 @@ import { setCookie } from "cookies-next";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import TextfieldWrapper from "../src/components/FormSection/FormsUI/Textfield";
-import LoadingButton from "@mui/lab/LoadingButton";
-import SaveIcon from "@mui/icons-material/Save";
+import HomeIcon from "@mui/icons-material/Home";
+import Link from "@mui/material/Link";
+import NextLink from "next/link";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required("Username is required"),
@@ -95,8 +96,8 @@ const LoginPage = () => {
         >
           {({ isSubmitting, values }) => (
             <Form>
-              <Grid container sx={{ p: "10px" }} maxWidth="sm">
-                <Grid item xs={12}>
+              <Grid container maxWidth="sm">
+                <Grid item xs={12} sx={{ pl: "16px", pr: "16px" }}>
                   {" "}
                   <TextfieldWrapper
                     sx={{ mb: "20px" }}
@@ -104,7 +105,7 @@ const LoginPage = () => {
                     label="Username"
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{ pl: "16px", pr: "16px" }}>
                   {" "}
                   <TextfieldWrapper
                     sx={{ mb: "20px" }}
@@ -115,13 +116,13 @@ const LoginPage = () => {
                 </Grid>
 
                 <Button
-                  disabled={isSubmitting}
-                  sx={{ width: "100%" }}
+                  disabled={isLogging}
+                  sx={{ width: "100%", ml: "16px", mr: "16px" }}
                   type="submit"
                   variant="contained"
                   color="primary"
                 >
-                  {isSubmitting ? "Loading..." : "Login"}
+                  {isLogging ? "Loading..." : "Login"}
                 </Button>
               </Grid>
             </Form>
@@ -143,14 +144,25 @@ const Navigation = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            p: "0",
           }}
         >
           <Typography color="primary" variant="h3">
             E&L
           </Typography>
-          <Button variant="contained" color="primary" href="/">
-            Return to Main Page
-          </Button>
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <HomeIcon sx={{ mr: 0.5 }} color="primary" />
+            <Link color="primary" component={NextLink} href="/">
+              Back to Wedding Page
+            </Link>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
