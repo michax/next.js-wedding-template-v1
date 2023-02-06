@@ -13,6 +13,8 @@ import { setCookie } from "cookies-next";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import TextfieldWrapper from "../src/components/FormSection/FormsUI/Textfield";
+import LoadingButton from "@mui/lab/LoadingButton";
+import SaveIcon from "@mui/icons-material/Save";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required("Username is required"),
@@ -111,13 +113,15 @@ const LoginPage = () => {
                     type="password"
                   />
                 </Grid>
+
                 <Button
+                  disabled={isSubmitting}
                   sx={{ width: "100%" }}
                   type="submit"
                   variant="contained"
                   color="primary"
                 >
-                  Login
+                  {isSubmitting ? "Loading..." : "Login"}
                 </Button>
               </Grid>
             </Form>
