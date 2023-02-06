@@ -3,7 +3,6 @@ import Lottie from "lottie-react";
 import couple from "../../../public/couple.jpg";
 import React from "react";
 import hearts from "../../../public/hearts.json";
-
 import { useRouter } from "next/router";
 import Image from "next/image";
 
@@ -21,7 +20,7 @@ export const Header = () => {
     <>
       <Box
         sx={{
-          pt: { xs: "8rem", sm: "8rem", md: "12rem" },
+          pt: { xs: "8rem", sm: "8rem", md: "15rem" },
           pb: { xs: "5rem", sm: "5rem", md: "15rem" },
           heigh: "100%",
         }}
@@ -39,11 +38,11 @@ export const Header = () => {
           <Box
             sx={{
               display: "flex",
-              justifyContent:"space-between",
-              alignItems:"center",
+              justifyContent: "space-between",
+              alignItems: { xs: "center", sm: "center", md: "flex-start" },
               flexDirection: "column",
               heigh: "auto",
-              mr: { xs: "0", sm: "0", md: "2rem" },
+
               width: { xs: "100%", sm: "100%", md: "50%" },
             }}
           >
@@ -51,7 +50,7 @@ export const Header = () => {
               variant="h1"
               sx={{
                 mb: { xs: "2.5rem", sm: "2.5rem", md: "3rem" },
-                textAlign: { xs: "center", sm: "center", md: "flex-start" },
+                textAlign: { xs: "center", sm: "center", md: "left" },
               }}
             >
               Ewelina & Lukasz
@@ -60,7 +59,7 @@ export const Header = () => {
               variant="body1"
               sx={{
                 maxWidth: "30rem",
-                textAlign: "center",
+                textAlign: { xs: "center", sm: "center", md: "left" },
                 marginBottom: { xs: "2rem", sm: "2rem", md: "3rem" },
               }}
             >
@@ -74,8 +73,8 @@ export const Header = () => {
                 //how to set button on the bottom in this box
                 fontSize: "1.5rem",
                 backgroundColor: "#F2779A",
-                width: { xs: "70%", sm: "70%", md: "100%" },
-                mt:{ xs: "2.5rem", sm: "2.5rem", md: "0rem" }
+                width: { xs: "80%", sm: "80%", md: "100%" },
+                mt: { xs: "2.5rem", sm: "2.5rem", md: "0rem" },
               }}
               variant="contained"
               color="primary"
