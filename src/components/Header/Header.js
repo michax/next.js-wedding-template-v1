@@ -1,6 +1,6 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import Lottie from "lottie-react";
-import couple from "../../../public/couple.png";
+import couple from "../../../public/couple.jpg";
 import React from "react";
 import hearts from "../../../public/hearts.json";
 
@@ -39,6 +39,8 @@ export const Header = () => {
           <Box
             sx={{
               display: "flex",
+              justifyContent:"space-between",
+              alignItems:"center",
               flexDirection: "column",
               heigh: "auto",
               mr: { xs: "0", sm: "0", md: "2rem" },
@@ -48,7 +50,7 @@ export const Header = () => {
             <Typography
               variant="h1"
               sx={{
-                mb: { xs: "2rem", sm: "2rem", md: "5rem" },
+                mb: { xs: "2.5rem", sm: "2.5rem", md: "3rem" },
                 textAlign: { xs: "center", sm: "center", md: "flex-start" },
               }}
             >
@@ -59,7 +61,7 @@ export const Header = () => {
               sx={{
                 maxWidth: "30rem",
                 textAlign: "center",
-                marginBottom: { xs: "2rem", sm: "2rem", md: "5rem" },
+                marginBottom: { xs: "2rem", sm: "2rem", md: "3rem" },
               }}
             >
               Welcome to our digital wedding invitation! We&apos;re looking
@@ -72,7 +74,8 @@ export const Header = () => {
                 //how to set button on the bottom in this box
                 fontSize: "1.5rem",
                 backgroundColor: "#F2779A",
-                width: "100%",
+                width: { xs: "50%", sm: "70%", md: "100%" },
+                mt:{ xs: "2.5rem", sm: "2.5rem", md: "0rem" }
               }}
               variant="contained"
               color="primary"
