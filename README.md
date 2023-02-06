@@ -13,6 +13,8 @@ Additional features, such as a budget tracker and guest list manager, will be ad
 - The most important feature on this page is the form that will allow you to collect the most important data (based on requirements)
 - Test the form by sending fake data and see how it works by going too [Here ](https://ditialweddinginivitation.netlify.app/invitations)
 
+
+
 [Dashboard- Summary page ](https://ditialweddinginivitation.netlify.app/invitations)
 
 - Currently only available for desktop, a mobile version will be added soon
@@ -20,6 +22,23 @@ Additional features, such as a budget tracker and guest list manager, will be ad
 - Check the results collected from the form
 - A simple login page with password and login functionality is planned for future development
 - A button is added that allows the invitation owner to download a PDF file
+
+[Login Page ](https://ditialweddinginivitation.netlify.app/login)
+
+- The component displays a form for users to input their username and password, and a submit button to log in. 
+- The component makes a POST request to an API endpoint 'api/login' with the entered username and password, and upon a successful response, 
+- It sets a cookie and redirects the user to the '/invitations' page.
+### API endpoint 'api/login'
+This is an endpoint for handling user authentication and login. When a user submits their username and password, the endpoint will verify their credentials. If the credentials are valid, the endpoint generates a unique session ID and sets it in a cookie. If the credentials are not valid, the endpoint returns an error message. The endpoint also uses MongoDB to store and retrieve user data and sessions.
+
+#### To test:
+```bash
+username:Maciek
+# or
+password:secretpassword
+
+```
+
 
 ### Landing Page
 
@@ -37,7 +56,7 @@ The landing page provides basic information about the event. In the future, I pl
 - Refactor code to make reusable functions
 - Improve user experience
 - Developing a mobile version of the dashboard
-- Adding a login page
+
 
 
 ![image 1](https://user-images.githubusercontent.com/47687566/199193895-4b9838a3-d3fb-462f-af01-13edae7478ff.jpg)
