@@ -156,10 +156,11 @@ const Navigation = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              color: "#FA541A",
             }}
           >
             <HomeIcon sx={{ mr: 0.5 }} color="primary" />
-            <Link color="primary" component={NextLink} href="/">
+            <Link component={NextLink} href="/">
               Back to Wedding Page
             </Link>
           </Box>
