@@ -16,6 +16,17 @@ import TextfieldWrapper from "../src/components/FormSection/FormsUI/Textfield";
 import HomeIcon from "@mui/icons-material/Home";
 import Link from "@mui/material/Link";
 import NextLink from "next/link";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  link: {
+    color: "#FA541A",
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "underline",
+    },
+  },
+});
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required("Username is required"),
@@ -136,6 +147,7 @@ const LoginPage = () => {
 export default LoginPage;
 
 const Navigation = () => {
+  const classes = useStyles();
   return (
     <AppBar sx={{ backgroundColor: "#fcfff7" }} elevation={1} position="static">
       <Container maxWidth="md">
@@ -160,7 +172,8 @@ const Navigation = () => {
             }}
           >
             <HomeIcon sx={{ mr: 0.5 }} color="primary" />
-            <Link component={NextLink} href="/">
+            <Link component={NextLink} href="/" className={classes.link}>
+              
               Back to Wedding Page
             </Link>
           </Box>
