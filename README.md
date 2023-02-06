@@ -34,7 +34,7 @@ This is an endpoint for handling user authentication and login. When a user subm
 #### To test:
 ```bash
 username:Maciek
-# or
+# and
 password:secretpassword
 
 ```
