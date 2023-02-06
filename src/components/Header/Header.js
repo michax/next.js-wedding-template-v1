@@ -74,7 +74,7 @@ export const Header = () => {
                 //how to set button on the bottom in this box
                 fontSize: "1.5rem",
                 backgroundColor: "#F2779A",
-                width: { xs: "50%", sm: "70%", md: "100%" },
+                width: { xs: "70%", sm: "70%", md: "100%" },
                 mt:{ xs: "2.5rem", sm: "2.5rem", md: "0rem" }
               }}
               variant="contained"
