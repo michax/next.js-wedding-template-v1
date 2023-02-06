@@ -6,6 +6,7 @@ import { Header } from "../src/components/Header/Header";
 import { HistorySection } from "../src/components/HistorySection/HistorySection";
 import { Layout } from "../src/components/Layout/Layout";
 import { LocationInfo } from "../src/components/LocationInfo/LocationInfo";
+import { GiftSection } from "../src/components/GiftSection/GiftSection";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <CountdownTimer />
         <HistorySection />
         <GallerySplide />
+        <GiftSection/>
         <LocationInfo />
         <FormSection />
       </Box>
