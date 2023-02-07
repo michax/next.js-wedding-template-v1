@@ -105,14 +105,14 @@ const ConfirmedGuest = ({ data, error }) => {
                           className="tableCell"
                         >
                           {" "}
-                          Children Under 3 Years Old
+                          Kids Under 3
                         </TableCell>
                         <TableCell
                           sx={{ backgroundColor: "#212B36", color: "#FFF" }}
                           className="tableCell"
                         >
                           {" "}
-                          Children Over 3 Years Old
+                          Old Kids Over 3
                         </TableCell>
                       </TableRow>
                     </TableHead>
