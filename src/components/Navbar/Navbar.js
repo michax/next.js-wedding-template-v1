@@ -144,15 +144,6 @@ export const Navbar = (props) => {
       >
         <Container maxWidth="lg">
           <Toolbar sx={{ width: 1 }}>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { md: "none" }, color: "#212B36" }}
-            >
-              <MenuIcon />
-            </IconButton>
             <Box
               sx={{
                 display: "flex",
@@ -233,12 +224,21 @@ export const Navbar = (props) => {
                 </Typography>
               </Box>
             </Box>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { md: "none" }, color: "#212B36" }}
+            >
+              <MenuIcon />
+            </IconButton>
           </Toolbar>
         </Container>
       </AppBar>
       <Box component="nav">
         <Drawer
-          anchor="right"
+          anchor="left"
           container={container}
           variant="temporary"
           open={mobileOpen}
