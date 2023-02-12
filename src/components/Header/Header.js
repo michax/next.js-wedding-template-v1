@@ -53,7 +53,7 @@ export const Header = () => {
                 textAlign: { xs: "center", sm: "center", md: "left" },
               }}
             >
-              Ewelina & Lukasz
+              Emily & Lucas
             </Typography>
             <Typography
               variant="body1"
