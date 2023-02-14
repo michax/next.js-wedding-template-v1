@@ -7,8 +7,6 @@ const CommonSidebar = ({ children, subTop }) => {
   return (
     <div className={styles.sidebar}>
       <LogoTop />
-
-
       <div className={styles.center}>{children}</div>
       <div className={styles.bottom}></div>
     </div>
