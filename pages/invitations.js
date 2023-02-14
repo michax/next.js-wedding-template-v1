@@ -76,12 +76,16 @@ const Invitations = ({ data, error }) => {
 
       var data = [
         [
-          "Coming Guests with extra Person or not",
+          "Number of confirmed adult guests and their companions",
           amountConfirmedPeopleWhoComingAloneOrWithExtraPerson,
         ],
-        ["Not coming", amountNotComingPeople.length],
-        ["Children under 3", sumChildrenUnder3],
-        ["Children above 3", sumChildrenAbove3],
+        [
+          "Number of confirmed adult guests who will not be attending",
+          amountNotComingPeople.length,
+        ],
+        ["Number of confirmed guests under the age of 3", sumChildrenUnder3],
+        ["Number of confirmed guests aged 3 and over", sumChildrenAbove3],
+
       ];
 
       var columns = ["Data", "Value"];
@@ -231,10 +235,9 @@ const Invitations = ({ data, error }) => {
 export default Invitations;
 
 export async function getServerSideProps({ req, res }) {
- 
   const session = getCookie("session", { req, res });
 
-  // check if tes object is falsy, not defined, or empty value 
+  // check if tes object is falsy, not defined, or empty value
   if (!session) {
     res.writeHead(302, {
       Location: "/login",
