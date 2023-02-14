@@ -18,7 +18,7 @@ import { Container } from "@mui/material";
 
 const drawerWidth = 240;
 
-export const Navbar = (props) => {
+export const NavbarLandingPage = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -261,7 +261,7 @@ export const Navbar = (props) => {
   );
 };
 
-Navbar.propTypes = {
+NavbarLandingPage.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.

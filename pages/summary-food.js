@@ -1,12 +1,10 @@
 import connectPromise from "../lib/mongodb";
 import React, { useState, useEffect } from "react";
-import styles from "../styles/Home.module.css";
 import { Grid, Typography } from "@mui/material";
 import BarChartFoodAllergy from "../src/components/BarChartFoodAllergy/BarChartFoodAllergy";
-import NavBarDetails from "../src/components/NavBarDetails/NavBarDetails";
-import SideBarDetails from "../src/components/SideBarDetails/SideBarDetails";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
+import LayoutDashboard from "../src/components/LayoutDashboard/LayoutDashboard";
 
 const SummaryFoodAllergy = ({ data, error }) => {
   const [userDataAllergyFood, setUserDataAllergyFood] = useState([]);
@@ -83,32 +81,26 @@ const SummaryFoodAllergy = ({ data, error }) => {
       ) : data === null ? (
         <ErrorMessage message="No data found." />
       ) : (
-        <div className={styles.home}>
-          <SideBarDetails />
-          <div className={styles.homeContainer}>
-            <NavBarDetails />
-            <div style={{ color: "#494949" }} className={styles.container}>
-              <Typography
-                variant="h3"
-                sx={{
-                  mb: 5,
-                  mt: 1,
-                  textAlign: "left",
-                }}
-              >
-                Summary of Wedding Guests&apos; Food Allergies
-              </Typography>
-              <Grid container spacing={3}>
-                <BarChartFoodAllergy
-                  userDataFoodAllergy={userDataFoodAllergy}
-                  peanutsPeopleAllergies={peanutsPeopleAllergies}
-                  eggsPeopleAllergies={eggsPeopleAllergies}
-                  nutsPeopleAllergies={nutsPeopleAllergies}
-                />
-              </Grid>
-            </div>
-          </div>
-        </div>
+        <LayoutDashboard>
+          <Typography
+            variant="h3"
+            sx={{
+              mb: 5,
+              mt: 1,
+              textAlign: "left",
+            }}
+          >
+            Summary of Wedding Guests&apos; Food Allergies
+          </Typography>
+          <Grid container spacing={3}>
+            <BarChartFoodAllergy
+              userDataFoodAllergy={userDataFoodAllergy}
+              peanutsPeopleAllergies={peanutsPeopleAllergies}
+              eggsPeopleAllergies={eggsPeopleAllergies}
+              nutsPeopleAllergies={nutsPeopleAllergies}
+            />
+          </Grid>
+        </LayoutDashboard>
       )}
     </>
   );
@@ -117,17 +109,15 @@ const SummaryFoodAllergy = ({ data, error }) => {
 export default SummaryFoodAllergy;
 
 export async function getServerSideProps({ req, res }) {
+  const session = getCookie("session", { req, res });
 
- 
-    const session = getCookie("session", { req, res });
-
-    if (!session) {
-      res.writeHead(302, {
-        Location: "/login",
-      });
-      res.end();
-      return { props: {} };
-    }
+  if (!session) {
+    res.writeHead(302, {
+      Location: "/login",
+    });
+    res.end();
+    return { props: {} };
+  }
   try {
     // Connect with MongoDB
     const client = await connectPromise;

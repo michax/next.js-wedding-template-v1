@@ -1,14 +1,12 @@
 import connectPromise from "../lib/mongodb";
 import React from "react";
-import styles from "../styles/Home.module.css";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import CardDataSummary from "../src/components/CardDataSummary/CardDataSummary";
 import autoTable from "jspdf-autotable";
 import jsPDF from "jspdf";
-import SideBarDetails from "../src/components/SideBarDetails/SideBarDetails";
-import NavBarDetails from "../src/components/NavBarDetails/NavBarDetails";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
+import LayoutDashboard from "../src/components/LayoutDashboard/LayoutDashboard";
 
 const amountPeople = 100;
 
@@ -85,7 +83,6 @@ const Invitations = ({ data, error }) => {
         ],
         ["Number of confirmed guests under the age of 3", sumChildrenUnder3],
         ["Number of confirmed guests aged 3 and over", sumChildrenAbove3],
-
       ];
 
       var columns = ["Data", "Value"];
@@ -128,105 +125,97 @@ const Invitations = ({ data, error }) => {
       ) : data === null ? (
         <ErrorMessage message="No data found." />
       ) : (
-        <div className={styles.home}>
-          <SideBarDetails />
-          <div className={styles.homeContainer}>
-            <NavBarDetails />
-            <div style={{ color: "#494949" }} className={styles.container}>
-              <Box
+        <LayoutDashboard>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: { xs: "center", sm: "space-between" },
+                alignItems: { xs: "center", sm: "flex-start" },
+                flexDirection: { xs: "column", sm: "row" },
+              }}
+            >
+              <Typography
+                variant="h3"
                 sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  flexDirection: "column",
+                  mb: 5,
+                  mt: 1,
+                  textAlign: "left",
                 }}
               >
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: { xs: "center", sm: "space-between" },
-                    alignItems: { xs: "center", sm: "flex-start" },
-                    flexDirection: { xs: "column", sm: "row" },
-                  }}
-                >
-                  <Typography
-                    variant="h3"
-                    sx={{
-                      mb: 5,
-                      mt: 1,
-                      textAlign: "left",
-                    }}
-                  >
-                    Wedding Guest Invitation Summary
-                  </Typography>
-                  <Button
-                    sx={{ height: "40px", mb: { xs: "30px", sm: "0" } }}
-                    onClick={generatePDF}
-                    variant="contained"
-                    color="secondary"
-                  >
-                    Download PDF
-                  </Button>
-                </Box>
-                <Grid container spacing={3}>
-                  <Grid item xs={12} sm={6} md={3}>
-                    <CardDataSummary
-                      title="Confirmed"
-                      subTitle="Number of confirmed adult guests and their companions"
-                      total={
-                        amountConfirmedPeopleWhoComingAloneOrWithExtraPerson
-                      }
-                      icon={"akar-icons:people-group"}
-                      colorIcon="#20A4F3"
-                    />
-                  </Grid>
+                Wedding Guest Invitation Summary
+              </Typography>
+              <Button
+                sx={{ height: "40px", mb: { xs: "30px", sm: "0" } }}
+                onClick={generatePDF}
+                variant="contained"
+                color="secondary"
+              >
+                Download PDF
+              </Button>
+            </Box>
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={6} md={3}>
+                <CardDataSummary
+                  title="Confirmed"
+                  subTitle="Number of confirmed adult guests and their companions"
+                  total={amountConfirmedPeopleWhoComingAloneOrWithExtraPerson}
+                  icon={"akar-icons:people-group"}
+                  colorIcon="#20A4F3"
+                />
+              </Grid>
 
-                  <Grid item xs={12} sm={6} md={3}>
-                    <CardDataSummary
-                      title="Not Coming"
-                      subTitle="Number of confirmed adult guests who will not be attending"
-                      total={amountNotComingPeople.length}
-                      color="info"
-                      icon={"emojione-monotone:no-pedestrians"}
-                      colorIcon="#011627"
-                    />
-                  </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <CardDataSummary
+                  title="Not Coming"
+                  subTitle="Number of confirmed adult guests who will not be attending"
+                  total={amountNotComingPeople.length}
+                  color="info"
+                  icon={"emojione-monotone:no-pedestrians"}
+                  colorIcon="#011627"
+                />
+              </Grid>
 
-                  <Grid item xs={12} sm={6} md={3}>
-                    <CardDataSummary
-                      title="Children"
-                      subTitle="Number of confirmed guests under the age of 3"
-                      total={sumChildrenUnder3}
-                      color="warning"
-                      icon={"uil:kid"}
-                      colorIcon="#2ec4b6"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6} md={3}>
-                    <CardDataSummary
-                      title="Children"
-                      subTitle="Number of confirmed guests aged 3 and over"
-                      total={sumChildrenAbove3}
-                      color="warning"
-                      icon={"fluent-emoji-high-contrast:children-crossing"}
-                      colorIcon="#C490D1"
-                    />
-                  </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <CardDataSummary
+                  title="Children"
+                  subTitle="Number of confirmed guests under the age of 3"
+                  total={sumChildrenUnder3}
+                  color="warning"
+                  icon={"uil:kid"}
+                  colorIcon="#2ec4b6"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <CardDataSummary
+                  title="Children"
+                  subTitle="Number of confirmed guests aged 3 and over"
+                  total={sumChildrenAbove3}
+                  color="warning"
+                  icon={"fluent-emoji-high-contrast:children-crossing"}
+                  colorIcon="#C490D1"
+                />
+              </Grid>
 
-                  <Grid item xs={12} sm={6} md={3}>
-                    <CardDataSummary
-                      title={"Pending"}
-                      subTitle="Number of unconfirmed guests"
-                      total={amountPendingPeople}
-                      color="error"
-                      icon={"ic:baseline-pending-actions"}
-                      colorIcon="#FF3366"
-                    />
-                  </Grid>
-                </Grid>
-              </Box>
-            </div>
-          </div>
-        </div>
+              <Grid item xs={12} sm={6} md={3}>
+                <CardDataSummary
+                  title={"Pending"}
+                  subTitle="Number of unconfirmed guests"
+                  total={amountPendingPeople}
+                  color="error"
+                  icon={"ic:baseline-pending-actions"}
+                  colorIcon="#FF3366"
+                />
+              </Grid>
+            </Grid>
+          </Box>
+        </LayoutDashboard>
       )}
     </>
   );

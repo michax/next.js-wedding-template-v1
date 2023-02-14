@@ -1,16 +1,14 @@
 import connectPromise from "../lib/mongodb";
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Typography } from "@mui/material";
 import PieChartDrinks from "../src/components/PieChartDrinks/PieChartDrinks";
-import styles from "../styles/Home.module.css";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
-import SideBarDetails from "../src/components/SideBarDetails/SideBarDetails";
-import NavBarDetails from "../src/components/NavBarDetails/NavBarDetails";
 import { getCookie } from "cookies-next";
+import LayoutDashboard from "../src/components/LayoutDashboard/LayoutDashboard";
 
 const SummaryDrinks = ({ data, error }) => {
   const [userDataDrinks, setUserDataDrinks] = useState([]);
-  
+
   const vodkaAmount = data.filter((person) => {
     return person.isVodka === true;
   });
@@ -102,34 +100,28 @@ const SummaryDrinks = ({ data, error }) => {
       ) : data === null ? (
         <ErrorMessage message="No data found." />
       ) : (
-        <div className={styles.home}>
-          <SideBarDetails />
-          <div className={styles.homeContainer}>
-            <NavBarDetails />
-            <div style={{ color: "#494949" }} className={styles.container}>
-              <Typography
-                variant="h3"
-                sx={{
-                  mb: 5,
-                  mt: 1,
-                  textAlign: "left",
-                }}
-              >
-                Overview of Wedding Guests&apos; Drink Preferences
-              </Typography>
-              <Grid container spacing={3}>
-                <PieChartDrinks
-                  userData={userData}
-                  vodkaAmount={vodkaAmount}
-                  ginAmount={ginAmount}
-                  whiskyAmount={whiskyAmount}
-                  beerAmount={beerAmount}
-                  isNonAlcoholAmount={isNonAlcoholAmount}
-                />
-              </Grid>
-            </div>
-          </div>
-        </div>
+        <LayoutDashboard>
+          <Typography
+            variant="h3"
+            sx={{
+              mb: 5,
+              mt: 1,
+              textAlign: "left",
+            }}
+          >
+            Overview of Wedding Guests&apos; Drink Preferences
+          </Typography>
+          <Grid container spacing={3}>
+            <PieChartDrinks
+              userData={userData}
+              vodkaAmount={vodkaAmount}
+              ginAmount={ginAmount}
+              whiskyAmount={whiskyAmount}
+              beerAmount={beerAmount}
+              isNonAlcoholAmount={isNonAlcoholAmount}
+            />
+          </Grid>
+        </LayoutDashboard>
       )}
     </>
   );

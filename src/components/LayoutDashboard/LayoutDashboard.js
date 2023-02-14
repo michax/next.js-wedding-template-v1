@@ -1,14 +1,14 @@
 import React from "react";
-import styles from "../../../styles/Home.module.css";
-import SideBar from "../SideBar/SideBar";
-import NavBarDashboard from "../NavBarDashboard/NavBarDashboard";
+import styles from "./LayoutDashboard.module.css";
+import SideBarDetails from "../SideBarDetails/SideBarDetails";
+import NavBarDetails from "../NavBarDetails/NavBarDetails";
 
-const LayoutDashboard = ({ children,generatePDF }) => {
+const LayoutDashboard = ({ children }) => {
   return (
     <div className={styles.home}>
-      <SideBar />
+      <SideBarDetails />
       <div className={styles.homeContainer}>
-        <NavBarDashboard generatePDF={generatePDF} />
+        <NavBarDetails />
         <div className={styles.container}>{children}</div>
       </div>
     </div>
