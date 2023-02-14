@@ -12,7 +12,7 @@ export const GiftSection = () => {
       <Box
         sx={{
           pt: { xs: "3rem", sm: "5rem", md: "10rem" },
-          pb: { xs: "3rem", sm: "5rem", md: "10rem" },
+          pb: { xs: "0rem", sm: "1rem", md: "8rem" },
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

@@ -69,7 +69,7 @@ export const HistorySection = () => {
         id="our-story"
         sx={{
           backgroundImage: `url(${wavetop.src})`,
-          height: "300px",
+          height: {xs:"200px",md:"340px"},
           width: 1,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
