@@ -45,11 +45,11 @@ const ConfirmedGuest = ({ data, error }) => {
               </Typography>
               <Paper
                 sx={{
-                  width: { xs: "50vw", sm: "60vw", md: "100%" },
+                  width: { xs: "70vw", sm: "75vw", md: "80vw" },
                   overflow: "hidden",
                 }}
               >
-                <TableContainer sx={{ maxHeight: 540 }}>
+                <TableContainer sx={{ maxHeight: 840 }}>
                   <Table aria-label="simple table">
                     <TableHead>
                       <TableRow>
