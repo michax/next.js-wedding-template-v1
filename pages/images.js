@@ -10,6 +10,7 @@ import { storage } from "../src/firebase/clientApp";
 import { v4 } from "uuid";
 import { Box, Button, Container, Grid, Paper, Typography } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import Image from "next/image";
 
 //reference to the "images" folder in Firebase storage
 const imagesListRef = ref(storage, "images/");
@@ -79,9 +80,9 @@ function Images({}) {
       </Paper>
       <Grid container spacing={2} sx={{ mt: 2 }}>
         {imageUrls?.map((url, index) => (
-          <Grid item key={index} xs={12} sm={6} md={4}>
+          <Grid key={index} item xs={12} sm={6} md={4}>
             <Box sx={{ position: "relative" }}>
-              <img src={url} alt="uploaded" width="100%" />
+              <Image src={url} alt="uploaded" layout="responsive" width="100%" height="100%" />
               <Button
                 variant="contained"
                 color="error"
