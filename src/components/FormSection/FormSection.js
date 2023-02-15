@@ -19,6 +19,7 @@ export const FormSection = () => {
   const [isExploding, setIsExploding] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isExistingUser, setIsExistingUser] = useState(false);
+  const [isComing, setIsComing] = useState(false);
 
   const INITIAL_FORM_STATE = {
     firstName: "",
@@ -73,6 +74,13 @@ export const FormSection = () => {
   const onSubmit = async (values) => {
     // alert(JSON.stringify(values, null, 2));
     setIsLoading(true);
+
+    if (values.isComing === "Yes") {
+      setIsComing(true);
+    } else {
+      setIsComing(false);
+    }
+
     const data = {
       firstName: values.firstName,
       lastName: values.lastName,
@@ -99,7 +107,7 @@ export const FormSection = () => {
       firstNameCompanion: values.firstNameCompanion,
       lastNameCompanion: values.lastNameCompanion,
     };
-  
+
     await fetch("/api/user", {
       method: "POST",
       headers: {
@@ -162,7 +170,7 @@ export const FormSection = () => {
     >
       <ConfettiSection isExploding={isExploding} />
       {successMessage ? (
-        <ConfirmedMessage />
+        <ConfirmedMessage isComing={isComing} />
       ) : (
         <Container
           maxWidth="lg"
@@ -178,12 +186,7 @@ export const FormSection = () => {
             }}
           >
             <Box sx={{ flexGrow: 1 }}>
-              <Grid
-                container
-                spacing={1}
-                sx={{ justifyContent: "center" }}
-              >
-
+              <Grid container spacing={1} sx={{ justifyContent: "center" }}>
                 <MainFormContainer
                   INITIAL_FORM_STATE={INITIAL_FORM_STATE}
                   FORM_VALIDATION={FORM_VALIDATION}
@@ -191,7 +194,6 @@ export const FormSection = () => {
                   isExistingUser={isExistingUser}
                   onSubmit={onSubmit}
                 />
-        
               </Grid>
             </Box>
           </Box>
