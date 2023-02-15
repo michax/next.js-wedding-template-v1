@@ -36,7 +36,7 @@ export async function getServerSideProps() {
   );
 
   const imageUrlHeader = await getDownloadURL(
-    ref(storage, "header/people-gbb97e737d_640.jpg")
+    ref(storage, "header/pexels-criativithy-1805416.jpg")
   );
 
   return {

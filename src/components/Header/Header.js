@@ -1,6 +1,5 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import Lottie from "lottie-react";
-import couple from "../../../public/couple.jpg";
 import React from "react";
 import hearts from "../../../public/hearts.json";
 import { useRouter } from "next/router";

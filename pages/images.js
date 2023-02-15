@@ -10,13 +10,13 @@ import { storage } from "../src/firebase/clientApp";
 import { v4 } from "uuid";
 import { Box } from "@mui/material";
 
-function Images({ imageUrls }) {
-  const [imageUpload, setImageUpload] = useState([]);
-  const [urls, setUrls] = useState(imageUrls);
-  // const [imageUrls, setImageUrls] = useState([]);
+//reference to the "images" folder in Firebase storage
+const imagesListRef = ref(storage, "images/");
 
-  //reference to the "images" folder in Firebase storage
-  const imagesListRef = ref(storage, "images/");
+function Images({}) {
+  const [imageUpload, setImageUpload] = useState(null);
+
+  const [imageUrls, setImageUrls] = useState([]);
 
   const uploadFile = () => {
     if (imageUpload == null) return;
@@ -26,7 +26,7 @@ function Images({ imageUrls }) {
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       // Get the download URL for the uploaded image
       getDownloadURL(snapshot.ref).then((url) => {
-        setUrls((prev) => [...prev, url]);
+        setImageUrls((prev) => [...prev, url]);
       });
     });
   };
@@ -36,19 +36,19 @@ function Images({ imageUrls }) {
     const imageRef = ref(storage, url);
     deleteObject(imageRef).then(() => {
       // Delete the image file from Firebase storage
-      setImageUpload((prev) => prev.filter((item) => item !== url));
+      setImageUrls((prev) => prev.filter((item) => item !== url));
     });
   };
 
-  // useEffect(() => {
-  //   listAll(imagesListRef).then((response) => {
-  //     response.items.forEach((item) => {
-  //       getDownloadURL(item).then((url) => {
-  //         setUrls((prev) => [...prev, url]);
-  //       });
-  //     });
-  //   });
-  // }, [imagesListRef]);
+  useEffect(() => {
+    listAll(imagesListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImageUrls((prev) => [...prev, url]);
+        });
+      });
+    });
+  }, [imagesListRef]);
 
   return (
     <div className="imagesContainer">
@@ -72,11 +72,3 @@ function Images({ imageUrls }) {
 }
 
 export default Images;
-export async function getServerSideProps() {
-  const imagesListRef = ref(storage, "images/");
-  const response = await listAll(imagesListRef);
-  const imageUrls = await Promise.all(
-    response.items.map((item) => getDownloadURL(item))
-  );
-  return { props: { imageUrls } };
-}
