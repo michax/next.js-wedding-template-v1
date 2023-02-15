@@ -32,6 +32,7 @@ export default function GallerySplide({imageUrls}) {
       sx={{
         pt: "5rem",
         pb: "8rem",
+   
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -42,6 +43,7 @@ export default function GallerySplide({imageUrls}) {
         maxWidth="lg"
         sx={{
           textAlign: "center",
+
         }}
       >
         <Typography

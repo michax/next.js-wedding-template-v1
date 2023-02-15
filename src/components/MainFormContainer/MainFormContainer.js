@@ -23,7 +23,7 @@ export const MainFormContainer = ({
   isExistingUser,
 }) => {
   return (
-    <Grid item xs={12} sm={10} md={8}>
+    <Grid item xs={12} sm={12} md={10}>
       {/* form */}
       <Paper
         sx={{

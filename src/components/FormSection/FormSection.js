@@ -181,11 +181,9 @@ export const FormSection = () => {
               <Grid
                 container
                 spacing={1}
-                sx={{ justifyContent: "space-between" }}
+                sx={{ justifyContent: "center" }}
               >
-                <Grid item xs={0} sm={1} md={2}>
-                  {/* svg  svg in the future*/}
-                </Grid>
+
                 <MainFormContainer
                   INITIAL_FORM_STATE={INITIAL_FORM_STATE}
                   FORM_VALIDATION={FORM_VALIDATION}
@@ -193,9 +191,7 @@ export const FormSection = () => {
                   isExistingUser={isExistingUser}
                   onSubmit={onSubmit}
                 />
-                <Grid item xs={0} sm={1} md={2}>
-                  {/* svg in the future */}
-                </Grid>
+        
               </Grid>
             </Box>
           </Box>

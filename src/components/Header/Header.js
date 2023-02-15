@@ -20,6 +20,8 @@ export const Header = () => {
     <>
       <Box
         sx={{
+          pl:"1rem",
+          pr:"1rem",
           pt: { xs: "8rem", sm: "8rem", md: "15rem" },
           pb: { xs: "5rem", sm: "5rem", md: "15rem" },
           heigh: "100%",

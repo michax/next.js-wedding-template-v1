@@ -1,18 +1,11 @@
 import { useState, useEffect } from "react";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  listAll,
-
-} from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
 import { storage } from "../src/firebase/clientApp";
 import { v4 } from "uuid";
 
 function Images() {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
- 
 
   const imagesListRef = ref(storage, "images/");
   const uploadFile = () => {
@@ -33,7 +26,7 @@ function Images() {
         });
       });
     });
-  }, []);
+  }, [imagesListRef]);
 
   return (
     <div className="imagesContainer">
