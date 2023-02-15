@@ -8,14 +8,14 @@ import {
 } from "firebase/storage";
 import { storage } from "../src/firebase/clientApp";
 import { v4 } from "uuid";
-import { Box } from "@mui/material";
+import { Box, Button, Container, Grid, Paper, Typography } from "@mui/material";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 //reference to the "images" folder in Firebase storage
 const imagesListRef = ref(storage, "images/");
 
 function Images({}) {
   const [imageUpload, setImageUpload] = useState(null);
-
   const [imageUrls, setImageUrls] = useState([]);
 
   const uploadFile = () => {
@@ -51,23 +51,50 @@ function Images({}) {
   }, [imagesListRef]);
 
   return (
-    <div className="imagesContainer">
-      <input
-        type="file"
-        onChange={(event) => {
-          setImageUpload(event.target.files[0]);
-        }}
-      />
-      <button onClick={uploadFile}> Upload Image</button>
-      {imageUrls?.map((url, index) => {
-        return (
-          <Box key={index}>
-            <img className="img" src={url} alt="text" />
-            <button onClick={() => deleteImage(url)}>Delete</button>
-          </Box>
-        );
-      })}
-    </div>
+    <Container maxWidth="md" sx={{ mt: 4 }}>
+      <Typography variant="h4" gutterBottom>
+        Image Upload
+      </Typography>
+      <Paper elevation={3} sx={{ p: 2 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={8}>
+            <input
+              type="file"
+              onChange={(event) => {
+                setImageUpload(event.target.files[0]);
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <Button
+              variant="contained"
+              startIcon={<CloudUploadIcon />}
+              onClick={uploadFile}
+              fullWidth
+            >
+              Upload
+            </Button>
+          </Grid>
+        </Grid>
+      </Paper>
+      <Grid container spacing={2} sx={{ mt: 2 }}>
+        {imageUrls?.map((url, index) => (
+          <Grid item key={index} xs={12} sm={6} md={4}>
+            <Box sx={{ position: "relative" }}>
+              <img src={url} alt="uploaded" width="100%" />
+              <Button
+                variant="contained"
+                color="error"
+                onClick={() => deleteImage(url)}
+                sx={{ position: "absolute", top: 8, right: 8 }}
+              >
+                Delete
+              </Button>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
 }
 
