@@ -4,7 +4,7 @@ import {
   uploadBytes,
   getDownloadURL,
   listAll,
-  list,
+
 } from "firebase/storage";
 import { storage } from "../src/firebase/clientApp";
 import { v4 } from "uuid";
@@ -12,6 +12,7 @@ import { v4 } from "uuid";
 function Images() {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
+ 
 
   const imagesListRef = ref(storage, "images/");
   const uploadFile = () => {
@@ -35,7 +36,7 @@ function Images() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="imagesContainer">
       <input
         type="file"
         onChange={(event) => {
@@ -44,7 +45,7 @@ function Images() {
       />
       <button onClick={uploadFile}> Upload Image</button>
       {imageUrls.map((url, index) => {
-        return <img key={index} src={url} alt="text" />;
+        return <img className="img" key={index} src={url} alt="text" />;
       })}
     </div>
   );

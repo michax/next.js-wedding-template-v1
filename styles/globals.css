@@ -127,3 +127,18 @@ a {
   font-size: 14px;
   font-weight: bold;
 }
+
+/* Test styles for images page */
+
+.imagesContainer {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.img {
+  width: 300px;
+  margin: 10px;
+}

@@ -13,25 +13,15 @@ import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import LightboxModal from "./LightboxModal";
 // ----------------------------------------------------------------------
 
-const IMAGE_MAP = [
-  "https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  "https://images.unsplash.com/photo-1426543881949-cbd9a76740a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-  "https://images.unsplash.com/photo-1513279922550-250c2129b13a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-  "https://images.unsplash.com/photo-1529305068150-201f3ded72c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-  "https://images.unsplash.com/photo-1568484653093-ed0c410326fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-  "https://images.unsplash.com/photo-1438962136829-452260720431?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80,",
-];
 
-// ----------------------------------------------------------------------
-
-export default function GallerySplide() {
+export default function GallerySplide({imageUrls}) {
   const [openLightbox, setOpenLightbox] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
   const ref = useRef();
 
   const handleOpenLightbox = (itemUrl) => {
     // find index of clicked img
-    const selectedImage = IMAGE_MAP.findIndex((index) => itemUrl === index);
+    const selectedImage = imageUrls.findIndex((index) => itemUrl === index);
     console.log(selectedImage);
     setOpenLightbox(true);
     setSelectedImage(selectedImage);
@@ -102,7 +92,7 @@ export default function GallerySplide() {
             },
           }}
         >
-          {IMAGE_MAP?.map((item, index) => {
+          {imageUrls?.map((item, index) => {
             return (
               <SplideSlide key={`img-${index}`} className="slide">
                 <Box
@@ -135,8 +125,8 @@ export default function GallerySplide() {
 
       {openLightbox && (
         <LightboxModal
-          images={IMAGE_MAP}
-          mainSrc={IMAGE_MAP[selectedImage]}
+          images={imageUrls}
+          mainSrc={imageUrls[selectedImage]}
           photoIndex={selectedImage}
           setPhotoIndex={setSelectedImage}
           isOpen={openLightbox}
