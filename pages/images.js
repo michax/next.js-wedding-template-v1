@@ -45,7 +45,7 @@ function Images({}) {
     listAll(imagesListRef).then((response) => {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
-          setImageUrls((prev) => [...prev, url]);
+          setImageUrls((prev) => [url, ...prev]);
         });
       });
     });
@@ -82,7 +82,13 @@ function Images({}) {
         {imageUrls?.map((url, index) => (
           <Grid key={index} item xs={12} sm={6} md={4}>
             <Box sx={{ position: "relative" }}>
-              <Image src={url} alt="uploaded" layout="responsive" width="100%" height="100%" />
+              <Image
+                src={url}
+                alt="uploaded"
+                layout="responsive"
+                width="100%"
+                height="100%"
+              />
               <Button
                 variant="contained"
                 color="error"
