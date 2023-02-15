@@ -31,9 +31,24 @@ export const Header = ({ imageUrlHeader }) => {
           maxWidth="lg"
           sx={{
             display: "flex",
-            justifyContent: { xs: "center", sm: "center", md: "space-between" },
-            alignItems: { xs: "center", sm: "center", md: "flex-start" },
-            flexDirection: { xs: "column", sm: "column", md: "row" },
+            justifyContent: {
+              xs: "center",
+              sm: "center",
+              md: "center",
+              lg: "space-between",
+            },
+            alignItems: {
+              xs: "center",
+              sm: "center",
+              md: "center",
+              lg: "flex-start",
+            },
+            flexDirection: {
+              xs: "column",
+              sm: "column",
+              md: "column",
+              lg: "row",
+            },
             heigh: "100%",
           }}
         >
@@ -41,7 +56,12 @@ export const Header = ({ imageUrlHeader }) => {
             sx={{
               display: "flex",
               justifyContent: "space-between",
-              alignItems: { xs: "center", sm: "center", md: "flex-start" },
+              alignItems: {
+                xs: "center",
+                sm: "center",
+                md: "center",
+                lg: "flex-start",
+              },
               flexDirection: "column",
               heigh: "auto",
 
@@ -61,7 +81,12 @@ export const Header = ({ imageUrlHeader }) => {
               variant="body1"
               sx={{
                 maxWidth: "30rem",
-                textAlign: { xs: "center", sm: "center", md: "left" },
+                textAlign: {
+                  xs: "center",
+                  sm: "center",
+                  md: "center",
+                  lg: "left",
+                },
                 marginBottom: { xs: "2rem", sm: "2rem", md: "3rem" },
               }}
             >
