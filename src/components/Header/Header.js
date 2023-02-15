@@ -14,14 +14,14 @@ const AnimationHearts = () => {
   return <Lottie animationData={hearts} style={style} />;
 };
 
-export const Header = () => {
+export const Header = ({ imageUrlHeader }) => {
   const router = useRouter();
   return (
     <>
       <Box
         sx={{
-          pl:"1rem",
-          pr:"1rem",
+          pl: "1rem",
+          pr: "1rem",
           pt: { xs: "8rem", sm: "8rem", md: "15rem" },
           pb: { xs: "5rem", sm: "5rem", md: "15rem" },
           heigh: "100%",
@@ -93,15 +93,22 @@ export const Header = () => {
           >
             <AnimationHearts />
           </Box>
+
           <Box
             sx={{
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "flex-end",
               ml: { xs: "0", sm: "0", md: "2rem" },
+              width: { xs: "100%", sm: "100%", md: "50%" },
+              boxShadow: "0px 15px 15px -10px rgba(0, 0, 0, 0.3)",
+              borderRadius: "10px",
             }}
           >
-            <Image src={couple} alt="couple" />
+            <Image
+              height={350}
+              width={500}
+              layout="responsive"
+              src={imageUrlHeader}
+              alt="couple"
+            />
           </Box>
         </Container>
       </Box>

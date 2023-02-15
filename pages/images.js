@@ -1,32 +1,54 @@
 import { useState, useEffect } from "react";
-import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+  deleteObject,
+} from "firebase/storage";
 import { storage } from "../src/firebase/clientApp";
 import { v4 } from "uuid";
+import { Box } from "@mui/material";
 
-function Images() {
-  const [imageUpload, setImageUpload] = useState(null);
-  const [imageUrls, setImageUrls] = useState([]);
+function Images({ imageUrls }) {
+  const [imageUpload, setImageUpload] = useState([]);
+  const [urls, setUrls] = useState(imageUrls);
+  // const [imageUrls, setImageUrls] = useState([]);
 
+  //reference to the "images" folder in Firebase storage
   const imagesListRef = ref(storage, "images/");
+
   const uploadFile = () => {
     if (imageUpload == null) return;
+    //new reference to a unique image file in Firebase storage
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    //Upload the image file to Firebase storage and get a snapshot of it
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      // Get the download URL for the uploaded image
       getDownloadURL(snapshot.ref).then((url) => {
-        setImageUrls((prev) => [...prev, url]);
+        setUrls((prev) => [...prev, url]);
       });
     });
   };
 
-  useEffect(() => {
-    listAll(imagesListRef).then((response) => {
-      response.items.forEach((item) => {
-        getDownloadURL(item).then((url) => {
-          setImageUrls((prev) => [...prev, url]);
-        });
-      });
+  const deleteImage = (url) => {
+    // Get a reference to the image in Firebase storage using its download URL
+    const imageRef = ref(storage, url);
+    deleteObject(imageRef).then(() => {
+      // Delete the image file from Firebase storage
+      setImageUpload((prev) => prev.filter((item) => item !== url));
     });
-  }, [imagesListRef]);
+  };
+
+  // useEffect(() => {
+  //   listAll(imagesListRef).then((response) => {
+  //     response.items.forEach((item) => {
+  //       getDownloadURL(item).then((url) => {
+  //         setUrls((prev) => [...prev, url]);
+  //       });
+  //     });
+  //   });
+  // }, [imagesListRef]);
 
   return (
     <div className="imagesContainer">
@@ -37,11 +59,24 @@ function Images() {
         }}
       />
       <button onClick={uploadFile}> Upload Image</button>
-      {imageUrls.map((url, index) => {
-        return <img className="img" key={index} src={url} alt="text" />;
+      {imageUrls?.map((url, index) => {
+        return (
+          <Box key={index}>
+            <img className="img" src={url} alt="text" />
+            <button onClick={() => deleteImage(url)}>Delete</button>
+          </Box>
+        );
       })}
     </div>
   );
 }
 
 export default Images;
+export async function getServerSideProps() {
+  const imagesListRef = ref(storage, "images/");
+  const response = await listAll(imagesListRef);
+  const imageUrls = await Promise.all(
+    response.items.map((item) => getDownloadURL(item))
+  );
+  return { props: { imageUrls } };
+}

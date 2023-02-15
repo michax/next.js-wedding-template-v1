@@ -10,13 +10,13 @@ import { GiftSection } from "../src/components/GiftSection/GiftSection";
 import { storage } from "../src/firebase/clientApp";
 import { ref, getDownloadURL, list } from "firebase/storage";
 
-export default function Home({ imageUrls, imageUrlsHeader }) {
+export default function Home({ imageUrls, imageUrlHeader }) {
   console.log("imageUrls", imageUrls);
-  console.log("imageUrlsHeader", imageUrlsHeader);
+  console.log("imageUrlsHeader", imageUrlHeader);
   return (
     <Layout>
       <Box sx={{ mt: "2.5rem" }}>
-        <Header imageUrlsHeader={imageUrlsHeader}/>
+        <Header imageUrlHeader={imageUrlHeader} />
         <CountdownTimer />
         <HistorySection />
         <GallerySplide imageUrls={imageUrls} />
@@ -30,21 +30,19 @@ export default function Home({ imageUrls, imageUrlsHeader }) {
 
 export async function getServerSideProps() {
   const imagesListRef = ref(storage, "images/");
-  const imagesListRefHeader = ref(storage, "header/");
   const images = await list(imagesListRef);
-  const imagesHeader = await list(imagesListRefHeader);
   const imageUrls = await Promise.all(
     images.items.map((item) => getDownloadURL(item))
   );
 
-  const imageUrlsHeader = await Promise.all(
-    imagesHeader.items.map((item) => getDownloadURL(item))
+  const imageUrlHeader = await getDownloadURL(
+    ref(storage, "header/people-gbb97e737d_640.jpg")
   );
 
   return {
     props: {
       imageUrls,
-      imageUrlsHeader,
+      imageUrlHeader,
     },
   };
 }
