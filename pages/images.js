@@ -20,6 +20,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import Image from "next/image";
 import Masonry from "@mui/lab/Masonry";
@@ -32,6 +33,8 @@ function Images({}) {
   const [imageUrls, setImageUrls] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const uploadFile = () => {
     if (imageUpload == null) return;
@@ -56,13 +59,22 @@ function Images({}) {
   };
 
   useEffect(() => {
-    listAll(imagesListRef).then((response) => {
-      response.items.forEach((item) => {
-        getDownloadURL(item).then((url) => {
-          setImageUrls((prev) => [url, ...prev]);
+    setIsLoading(true);
+    setError(null);
+    try {
+      listAll(imagesListRef).then((response) => {
+        response.items.forEach((item) => {
+          getDownloadURL(item).then((url) => {
+            setImageUrls((prev) => [url, ...prev]);
+          });
         });
       });
-    });
+    } catch (error) {
+      console.log(error);
+      setError("Error loading images.");
+    } finally {
+      setIsLoading(false);
+    }
   }, [imagesListRef]);
 
   // Handle Dialog
@@ -76,6 +88,29 @@ function Images({}) {
     setSelectedImage(null);
     setDialogOpen(false);
   };
+
+  if (isLoading) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Typography variant="h4" color="error" gutterBottom>
+        Error: {error.message}
+      </Typography>
+    );
+  }
 
   return (
     <>
