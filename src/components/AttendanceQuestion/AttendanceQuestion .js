@@ -1,9 +1,8 @@
 import { FormControl, FormLabel, Grid, Typography } from "@mui/material";
-import React from "react";
 import ConfirmAttendanceRadioFields from "../ConfirmAttendanceRadioFields/ConfirmAttendanceRadioFields";
 import Textfield from "../FormSection/FormsUI/Textfield";
 
-export const AttendanceGuestDetailsQuestion = () => {
+export const AttendanceQuestion = () => {
   return (
     <>
       <Grid item xs={12} sx={{ textAlign: "left", mb: "1rem" }}>
@@ -25,7 +24,6 @@ export const AttendanceGuestDetailsQuestion = () => {
         <Typography
           variant="body1"
           sx={{
-            
             textAlign: "left",
             fontWeight: "bold",
             fontSize: "1.2rem",

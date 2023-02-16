@@ -1,18 +1,24 @@
-import { Box, Container, Grid, Paper, Typography } from "@mui/material";
+import { Container, Grid, Paper } from "@mui/material";
 import { Formik, Form } from "formik";
-import Textfield from "../FormSection/FormsUI/Textfield";
-import Checkbox from "../FormSection/FormsUI/Checkbox";
-import Button from "../FormSection/FormsUI/Button";
-
-// Importing toastify module
-// Import toastify css file
-import "react-toastify/dist/ReactToastify.css";
 import { AlcoholQuestion } from "../AlcoholQuestion/AlcoholQuestion";
 import { FoodAllergicQuestion } from "../FoodAllergicQuestion/FoodAllergicQuestion";
-import { TeenagerQuestion } from "../TeenagerQuestion/TeenagerQuestion";
-import { KidsQuestion } from "../KidsQuestion/KidsQuestion";
 import { TitleForm } from "../TitleForm/TitleForm";
-import { AttendanceGuestDetailsQuestion } from "../AttendanceGuestDetailsQuestion/AttendanceGuestDetailsQuestion";
+import { AttendanceQuestion as AttendanceQuestion } from "../AttendanceQuestion/AttendanceQuestion ";
+import CompanionQuestion from "../CompanionQuestion/CompanionQuestion";
+import AdditionalInformationQuestionTitle from "../AdditionalInformationQuestionTitle/AdditionalInformationQuestionTitle";
+import ChildrenQuestion from "../ChildrenQuestion/ChildrenQuestion";
+import ExistingUserCheck from "../ExistingUserCheck/ExistingUserCheck";
+import "react-toastify/dist/ReactToastify.css";
+
+/**
+ * The main form container for the wedding event RSVP form.
+ * @param {Object} props - The component props.
+ * @param {Object} props.INITIAL_FORM_STATE - The initial form state.
+ * @param {Object} props.FORM_VALIDATION - The form validation schema.
+ * @param {Function} props.onSubmit - The form submit handler.
+ * @param {Boolean} props.isLoading - A flag indicating whether the form is currently submitting.
+ * @param {Boolean} props.isExistingUser - A flag indicating whether the user has already submitted a response.
+ */
 
 export const MainFormContainer = ({
   INITIAL_FORM_STATE,
@@ -20,7 +26,6 @@ export const MainFormContainer = ({
   onSubmit,
   isLoading,
   isExistingUser,
-  showQuestions,
 }) => {
   return (
     <Grid item xs={12} sm={12} md={10}>
@@ -53,105 +58,29 @@ export const MainFormContainer = ({
                   <Form>
                     <Grid container spacing={2}>
                       <TitleForm />
-                      <AttendanceGuestDetailsQuestion />
+                      {/* Attendance guest details question */}
+                      <AttendanceQuestion />
 
                       {values.isComing === "Yes" && (
                         <>
-                          {" "}
-                          <Grid item xs={12}>
-                            <Box
-                              sx={{
-                                mb: "24px",
-                                mt: "24px",
-                                textAlign: "left",
-                              }}
-                            >
-                              <Checkbox
-                                name="isWithCompanion"
-                                label="Will you come with an accompanying person?"
-                              />
-                            </Box>
-                            <Grid container sx={{ mb: "24px" }}>
-                              {values.isWithCompanion === true ? (
-                                <Grid container spacing={2}>
-                                  <Grid item xs={12}>
-                                    <Typography
-                                      variant="body1"
-                                      sx={{
-                                        textTransform: "none",
-                                        fontWeight: "600",
-                                        mb: "24px",
-                                        textAlign: "left",
-                                      }}
-                                    >
-                                      Great! 😊 Please write the name and
-                                      surname of this person
-                                    </Typography>
-                                  </Grid>
-                                  <Grid item xs={6}>
-                                    <Textfield
-                                      name="firstNameCompanion"
-                                      label="First Name"
-                                    />
-                                  </Grid>
-                                  <Grid item xs={6}>
-                                    <Textfield
-                                      name="lastNameCompanion"
-                                      label="Last Name"
-                                    />
-                                  </Grid>
-                                </Grid>
-                              ) : (
-                                ""
-                              )}
-                            </Grid>
-                          </Grid>
-                          <Grid item xs={12}>
-                            <Box sx={{ mb: "24px", textAlign: "left" }}>
-                              <Checkbox
-                                name="isWithChildren"
-                                label="Will you join with your lovely children?"
-                              />
-                            </Box>
-                            <Box>
-                              {values.isWithChildren === true ? (
-                                <>
-                                  <KidsQuestion />
-                                  <TeenagerQuestion />
-                                </>
-                              ) : (
-                                ""
-                              )}
-                            </Box>
-                          </Grid>
-                          <Grid item xs={12}>
-                            <Typography
-                              variant="body1"
-                              sx={{
-                                textAlign: "left",
-                                fontWeight: "bold",
-                              }}
-                            >
-                              Additional information
-                            </Typography>
-                          </Grid>
+                          {/* Companion question */}
+                          <CompanionQuestion values={values} />
+                          {/* Children question */}
+                          <ChildrenQuestion values={values} />
+                          {/* Additional information Title */}
+                          <AdditionalInformationQuestionTitle />
+                          {/* Food Allergic question */}
                           <FoodAllergicQuestion />
+                          {/* Alcohol question */}
                           <AlcoholQuestion />
                         </>
                       )}
-
-                      <Grid item xs={12}>
-                        {isExistingUser ? (
-                          <Typography variant="body1" sx={{ color: "#FA541c" }}>
-                            Thank you for your inquiry. We have checked our
-                            database and the email address provided is already
-                            registered for our wedding event. If you have any
-                            questions or concerns, please let us know.
-                          </Typography>
-                        ) : (
-                          <Button isLoading={isLoading}>Submit form</Button>
-                        )}
-                      </Grid>
+                      {/*This component displays a message if the user already exists in the database  */}
+                      {/* or a button to submit the form if the user is new. */}
+                      <ExistingUserCheck
+                        isExistingUser={isExistingUser}
+                        isLoading={isLoading}
+                      />
                     </Grid>
                   </Form>
                 )}

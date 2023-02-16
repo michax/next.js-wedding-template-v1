@@ -3,7 +3,7 @@ import React from "react";
 
 export const ConfirmedMessage = ({ isComing }) => {
   const confirmationText = isComing
-    ? "Thank you for confirming your attendance at our wedding. We are overjoyed to know that you will be joining us on our special day in Santorini."
+    ? "Thank you for confirming your attendance at our wedding. We are overjoyed to know that you will be joining us on our special day in Santorini.  We can&apos;t wait to celebrate this new chapter of our lives together with all of you. Thank you again for your support and we look forward to seeing you soon!"
     : "Thank you for letting us know that you won't be able to attend our wedding. We will miss you, but we understand that sometimes things come up. We hope to see you soon.";
   return (
     <Grid container>
@@ -33,11 +33,7 @@ export const ConfirmedMessage = ({ isComing }) => {
                 textAlign: "center",
               }}
             >
-              {confirmationText} Your presence means a lot to us and we feel
-              incredibly blessed to have such wonderful friends and family in
-              our lives. We can&apos;t wait to celebrate this new chapter of our
-              lives together with all of you. Thank you again for your support
-              and we look forward to seeing you soon!
+              {confirmationText}
             </Typography>
           </Paper>
         </Container>

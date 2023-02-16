@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Box, Container, Grid } from "@mui/material";
 import * as Yup from "yup";
-// Importing toastify module
-import { toast } from "react-toastify";
-// Import toastify css file
-import "react-toastify/dist/ReactToastify.css";
 import { ConfettiSection } from "../ConfettiSection/ConfettiSection";
 import { HeaderForm } from "../HeaderForm/HeaderForm";
 import { ImageDecoration } from "../ImageDecoration/ImageDecoration";
 import { ConfirmedMessage } from "../ConfirmedMessage/ConfirmedMessage";
 import { MainFormContainer } from "../MainFormContainer/MainFormContainer";
+// Importing toastify module
+import { toast } from "react-toastify";
+// Import toastify css file
+import "react-toastify/dist/ReactToastify.css";
 
 // For showing notify
 toast.configure();
