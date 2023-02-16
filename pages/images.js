@@ -11,6 +11,7 @@ import { v4 } from "uuid";
 import { Box, Button, Container, Grid, Paper, Typography } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import Image from "next/image";
+import Masonry from "@mui/lab/Masonry";
 
 //reference to the "images" folder in Firebase storage
 const imagesListRef = ref(storage, "images/");
@@ -57,7 +58,7 @@ function Images({}) {
         Image Upload
       </Typography>
       <Paper elevation={3} sx={{ p: 2 }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{ mb: "20px" }}>
           <Grid item xs={12} sm={8}>
             <input
               type="file"
@@ -77,30 +78,24 @@ function Images({}) {
             </Button>
           </Grid>
         </Grid>
-      </Paper>
-      <Grid container spacing={2} sx={{ mt: 2 }}>
-        {imageUrls?.map((url, index) => (
-          <Grid key={index} item xs={12} sm={6} md={4}>
-            <Box sx={{ position: "relative" }}>
-              <Image
-                src={url}
-                alt="uploaded"
-                layout="responsive"
-                width="100%"
-                height="100%"
-              />
-              <Button
-                variant="contained"
-                color="error"
-                onClick={() => deleteImage(url)}
-                sx={{ position: "absolute", top: 8, right: 8 }}
-              >
-                Delete
-              </Button>
+        <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={2}>
+          {imageUrls?.map((url, index) => (
+            <Box key={index}>
+              <Paper elevation={3} sx={{ position: "relative", p: 1 }}>
+                <img src={url} alt="uploaded" width="100%" />
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={() => deleteImage(url)}
+                  sx={{ position: "absolute", top: 8, right: 8 }}
+                >
+                  Delete
+                </Button>
+              </Paper>
             </Box>
-          </Grid>
-        ))}
-      </Grid>
+          ))}
+        </Masonry>
+      </Paper>
     </Container>
   );
 }

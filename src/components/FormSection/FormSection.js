@@ -118,7 +118,7 @@ export const FormSection = () => {
       .then((res) => {
         let responseStatus = res.status;
 
-        console.log("response z api", { res, status: responseStatus });
+        //console.log("response z api", { res, status: responseStatus });
 
         // Success Message
         if (responseStatus === 200) {
