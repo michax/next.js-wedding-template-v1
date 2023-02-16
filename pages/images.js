@@ -8,7 +8,18 @@ import {
 } from "firebase/storage";
 import { storage } from "../src/firebase/clientApp";
 import { v4 } from "uuid";
-import { Box, Button, Container, Grid, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Paper,
+  Typography,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import Image from "next/image";
 import Masonry from "@mui/lab/Masonry";
@@ -19,6 +30,8 @@ const imagesListRef = ref(storage, "images/");
 function Images({}) {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const uploadFile = () => {
     if (imageUpload == null) return;
@@ -52,51 +65,84 @@ function Images({}) {
     });
   }, [imagesListRef]);
 
+  // Handle Dialog
+
+  const handleImageClick = (url) => {
+    setSelectedImage(url);
+    setDialogOpen(true);
+  };
+
+  const handleClose = () => {
+    setSelectedImage(null);
+    setDialogOpen(false);
+  };
+
   return (
-    <Container maxWidth="md" sx={{ mt: 4 }}>
-      <Typography variant="h4" gutterBottom>
-        Image Upload
-      </Typography>
-      <Paper elevation={3} sx={{ p: 2 }}>
-        <Grid container spacing={2} sx={{ mb: "20px" }}>
-          <Grid item xs={12} sm={8}>
-            <input
-              type="file"
-              onChange={(event) => {
-                setImageUpload(event.target.files[0]);
-              }}
-            />
+    <>
+      <Container maxWidth="md" sx={{ mt: 4 }}>
+        <Typography variant="h4" gutterBottom>
+          Image Upload
+        </Typography>
+        <Paper elevation={3} sx={{ p: 2 }}>
+          <Grid container spacing={2} sx={{ mb: "20px" }}>
+            <Grid item xs={12} sm={8}>
+              <input
+                type="file"
+                onChange={(event) => {
+                  setImageUpload(event.target.files[0]);
+                }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Button
+                variant="contained"
+                startIcon={<CloudUploadIcon />}
+                onClick={uploadFile}
+                fullWidth
+              >
+                Upload
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <Button
-              variant="contained"
-              startIcon={<CloudUploadIcon />}
-              onClick={uploadFile}
-              fullWidth
-            >
-              Upload
-            </Button>
-          </Grid>
-        </Grid>
-        <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={2}>
-          {imageUrls?.map((url, index) => (
-            <Box key={index}>
-              <Paper elevation={3} sx={{ position: "relative", p: 1 }}>
-                <img src={url} alt="uploaded" width="100%" />
-                <Button
-                  variant="contained"
-                  color="error"
-                  onClick={() => deleteImage(url)}
-                  sx={{ position: "absolute", top: 8, right: 8 }}
-                >
-                  Delete
-                </Button>
-              </Paper>
-            </Box>
-          ))}
-        </Masonry>
-      </Paper>
-    </Container>
+          <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={2}>
+            {imageUrls?.map((url, index) => (
+              <Box key={index} onClick={() => handleImageClick(url)}>
+                <Paper elevation={3} sx={{ position: "relative", p: 1 }}>
+                  <img src={url} alt="uploaded" width="100%" />
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={() => deleteImage(url)}
+                    sx={{ position: "absolute", top: 8, right: 8 }}
+                  >
+                    Delete
+                  </Button>
+                </Paper>
+              </Box>
+            ))}
+          </Masonry>
+        </Paper>
+      </Container>
+      <Dialog open={dialogOpen} onClose={handleClose}>
+        <DialogTitle>Selected Image</DialogTitle>
+        <DialogContent>
+          <Box sx={{ maxWidth: "100%" }}>
+            {selectedImage && (
+              <Image
+                src={selectedImage}
+                alt="selected"
+                width={1200}
+                height={1200}
+                objectFit="contain"
+              />
+            )}
+          </Box>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Close</Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 }
 
