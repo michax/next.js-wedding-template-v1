@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import PopperSubMenu from "../PopperSubMenu/PopperSubMenu";
 import SubMenu from "../SubMenu/SubMenu";
 
-const NavMenuSidebar = ({ title, icon, subMenuItems }) => {
+const NavMenuSidebar = ({ title, icon, subMenuItems, isSmallScreen }) => {
   const router = useRouter();
   const currentRoute = router.pathname;
 
@@ -45,12 +45,18 @@ const NavMenuSidebar = ({ title, icon, subMenuItems }) => {
         {title}
       </Typography>
 
-      <PopperSubMenu
-        popupState={popupState}
-        subMenuItems={subMenuItems}
-        currentRoute={currentRoute}
-        foundSubMenuItems={foundSubMenuItems}
-      />
+      {isSmallScreen ? (
+        ""
+      ) : (
+        <PopperSubMenu
+          popupState={popupState}
+          subMenuItems={subMenuItems}
+          currentRoute={currentRoute}
+          foundSubMenuItems={foundSubMenuItems}
+        />
+      )}
+
+
 
       <SubMenu
         subMenuItems={subMenuItems}

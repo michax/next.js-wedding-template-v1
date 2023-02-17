@@ -151,7 +151,7 @@ export default function LayoutDashboardDesktop({ children }) {
           </Button>
         </DrawerHeader>
         <Divider />
-        <SideBarDetails />
+        <SideBarDetails  isSmallScreen={isSmallScreen} />
       </Drawer>
       <Main open={open}>
         <DrawerHeader />

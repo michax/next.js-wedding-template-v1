@@ -6,7 +6,7 @@ import LocalBarIcon from "@mui/icons-material/LocalBar";
 import GroupIcon from "@mui/icons-material/Group";
 import { useRouter } from "next/router";
 
-const SideBarDetails = () => {
+const SideBarDetails = ({ isSmallScreen }) => {
   const router = useRouter();
   // console.log("router.query", router.query);
   // console.log("router.pathname", router.pathname);
@@ -14,6 +14,7 @@ const SideBarDetails = () => {
   return (
     <CommonSidebar>
       <NavMenuSidebar
+        isSmallScreen={isSmallScreen}
         title="Summary"
         icon={<MarkAsUnreadIcon sx={{ mr: "10px" }} />}
         subMenuItems={[
@@ -24,6 +25,7 @@ const SideBarDetails = () => {
         ]}
       />
       <NavMenuSidebar
+        isSmallScreen={isSmallScreen}
         title="Meal"
         icon={<LocalBarIcon sx={{ mr: "10px" }} />}
         subMenuItems={[
@@ -38,6 +40,7 @@ const SideBarDetails = () => {
         ]}
       />
       <NavMenuSidebar
+        isSmallScreen={isSmallScreen}
         title="List of guests"
         icon={<GroupIcon sx={{ mr: "10px" }} />}
         subMenuItems={[
