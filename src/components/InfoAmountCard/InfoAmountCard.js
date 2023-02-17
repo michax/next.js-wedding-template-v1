@@ -10,7 +10,7 @@ const InfoAmountCard = ({ title, cocktails }) => {
         p: { xs: "20px", sm: "30px" },
         boxShadow: "5px",
         backgroundColor: "#FDFDEC",
-    
+      
       }}
     >
       <Box

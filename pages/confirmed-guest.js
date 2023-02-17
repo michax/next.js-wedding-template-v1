@@ -9,7 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
-import DrawerTest from "../src/components/DrawerTest/DrawerTest";
+import LayoutDashboardDesktop from "../src/components/LayoutDashboardDesktop/LayoutDashboardDesktop";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -31,7 +31,7 @@ const ConfirmedGuest = ({ data, error }) => {
       ) : data === null ? (
         <ErrorMessage message="No data found." />
       ) : (
-        <DrawerTest>
+        <LayoutDashboardDesktop>
           <Typography
             variant="h3"
             sx={{
@@ -45,81 +45,106 @@ const ConfirmedGuest = ({ data, error }) => {
           </Typography>
           <Paper
             sx={{
-              overflow: "hidden",
+              overflowX: "auto",
+              maxHeight: isSmallScreen ? "100%" : 840,
             }}
           >
             <TableContainer
               sx={{
-                maxHeight: 840,
-                overflowX: "auto",
-                "@media (max-width: 600px)": {
-                  maxWidth: 600,
-                },
-                "@media (max-width: 400px)": {
-                  maxWidth: 400,
-                },
+                fontSize: isSmallScreen ? "0.8rem" : "inherit",
+                minWidth: isSmallScreen && isSmallTabletScreen ? 650 : "auto",
               }}
             >
-              <Table stickyHeader aria-label="sticky table">
+              <Table aria-label="sticky table">
                 <TableHead>
                   <TableRow>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     ></TableCell>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     >
                       Name
                     </TableCell>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     >
                       Surname
                     </TableCell>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     >
                       Email
                     </TableCell>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     >
                       Phone Number
                     </TableCell>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     >
                       Companion
                     </TableCell>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     >
                       Companion Name
                     </TableCell>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     >
                       {" "}
                       Companion Surname
                     </TableCell>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     >
                       {" "}
                       Kids Under 3
                     </TableCell>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     >
                       {" "}
                       Old Kids Over 3
@@ -149,7 +174,7 @@ const ConfirmedGuest = ({ data, error }) => {
               </Table>
             </TableContainer>
           </Paper>
-        </DrawerTest>
+        </LayoutDashboardDesktop>
       )}
     </>
   );

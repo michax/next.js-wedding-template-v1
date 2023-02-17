@@ -9,10 +9,17 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
-import DrawerTest from "../src/components/DrawerTest/DrawerTest";
+import LayoutDashboardDesktop from "../src/components/LayoutDashboardDesktop/LayoutDashboardDesktop";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const GuestsNotAttend = ({ data, error }) => {
   const comingGuests = data.filter((guest) => guest.isComing === "No");
+
+  const theme = useTheme();
+
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmallTabletScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <>
@@ -25,7 +32,7 @@ const GuestsNotAttend = ({ data, error }) => {
       ) : data === null ? (
         <ErrorMessage message="No data found." />
       ) : (
-        <DrawerTest>
+        <LayoutDashboardDesktop>
           <Typography
             variant="h3"
             sx={{
@@ -37,38 +44,59 @@ const GuestsNotAttend = ({ data, error }) => {
           </Typography>
           <Paper
             sx={{
-              overflow: "hidden",
+              overflowX: "auto",
+              maxHeight: isSmallScreen ? "100%" : 840,
             }}
           >
-            <TableContainer sx={{ maxHeight: 840 }}>
-              <Table stickyHeader aria-label="sticky table">
+            <TableContainer
+              sx={{
+                fontSize: isSmallScreen ? "0.8rem" : "inherit",
+                minWidth: isSmallScreen && isSmallTabletScreen ? 650 : "auto",
+              }}
+            >
+              <Table aria-label="sticky table">
                 <TableHead>
                   <TableRow>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     ></TableCell>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     >
                       Name
                     </TableCell>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     >
                       Surname
                     </TableCell>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     >
                       Email
                     </TableCell>
                     <TableCell
-                      sx={{ backgroundColor: "#212B36", color: "#FFF" }}
-                      className="tableCell"
+                      sx={{
+                        backgroundColor: "#212B36",
+                        color: "#FFF",
+                        p: { xs: "8px", md: "16px" },
+                      }}
                     >
                       Phone Number
                     </TableCell>
@@ -88,7 +116,7 @@ const GuestsNotAttend = ({ data, error }) => {
               </Table>
             </TableContainer>
           </Paper>
-        </DrawerTest>
+        </LayoutDashboardDesktop>
       )}
     </>
   );

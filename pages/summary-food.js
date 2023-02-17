@@ -1,10 +1,10 @@
 import connectPromise from "../lib/mongodb";
 import React, { useState, useEffect } from "react";
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import BarChartFoodAllergy from "../src/components/BarChartFoodAllergy/BarChartFoodAllergy";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
-import DrawerTest from "../src/components/DrawerTest/DrawerTest";
+import LayoutDashboardDesktop from "../src/components/LayoutDashboardDesktop/LayoutDashboardDesktop";
 
 const SummaryFoodAllergy = ({ data, error }) => {
   const [userDataAllergyFood, setUserDataAllergyFood] = useState([]);
@@ -81,7 +81,7 @@ const SummaryFoodAllergy = ({ data, error }) => {
       ) : data === null ? (
         <ErrorMessage message="No data found." />
       ) : (
-        <DrawerTest>
+        <LayoutDashboardDesktop>
           <Typography
             variant="h3"
             sx={{
@@ -92,15 +92,22 @@ const SummaryFoodAllergy = ({ data, error }) => {
           >
             Summary of Wedding Guests&apos; Food Allergies
           </Typography>
-          <Grid container spacing={3}>
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: { xs: "center", sm: "flex-start" },
+              flexDirection: { xs: "column", sm: "row" },
+            }}
+          >
             <BarChartFoodAllergy
               userDataFoodAllergy={userDataFoodAllergy}
               peanutsPeopleAllergies={peanutsPeopleAllergies}
               eggsPeopleAllergies={eggsPeopleAllergies}
               nutsPeopleAllergies={nutsPeopleAllergies}
             />
-          </Grid>
-        </DrawerTest>
+          </Box>
+        </LayoutDashboardDesktop>
       )}
     </>
   );

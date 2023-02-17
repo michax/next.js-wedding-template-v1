@@ -10,14 +10,15 @@ const BarChartFoodAllergy = ({
   nutsPeopleAllergies,
 }) => {
   return (
-    <Box sx={{ pl: "30px", display: "flex" }}>
+    <>
       <Card
         sx={{
           p: "30px",
           boxShadow: "5px",
           textAlign: "center",
           backgroundColor: "#FDFDEC",
-          mr: "50px",
+          mb: { xs: "20px", sm: "0" },
+          mr: { xs: "0px", sm: "20px" },
         }}
       >
         <BarChart
@@ -35,7 +36,7 @@ const BarChartFoodAllergy = ({
           { name: "Nuts", amount: nutsPeopleAllergies },
         ]}
       />
-    </Box>
+    </>
   );
 };
 

@@ -4,7 +4,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import PieChartDrinks from "../src/components/PieChartDrinks/PieChartDrinks";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
-import DrawerTest from "../src/components/DrawerTest/DrawerTest";
+import LayoutDashboardDesktop from "../src/components/LayoutDashboardDesktop/LayoutDashboardDesktop";
 
 const SummaryDrinks = ({ data, error }) => {
   const [userDataDrinks, setUserDataDrinks] = useState([]);
@@ -100,7 +100,7 @@ const SummaryDrinks = ({ data, error }) => {
       ) : data === null ? (
         <ErrorMessage message="No data found." />
       ) : (
-        <DrawerTest>
+        <LayoutDashboardDesktop>
           <Typography
             variant="h3"
             sx={{
@@ -114,8 +114,7 @@ const SummaryDrinks = ({ data, error }) => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: { xs: "center", sm: "space-between" },
-              alignItems: { xs: "center", sm: "flex-start" },
+              justifyContent: { xs: "center", sm: "flex-start" },
               flexDirection: { xs: "column", sm: "row" },
             }}
           >
@@ -128,7 +127,7 @@ const SummaryDrinks = ({ data, error }) => {
               isNonAlcoholAmount={isNonAlcoholAmount}
             />
           </Box>
-        </DrawerTest>
+        </LayoutDashboardDesktop>
       )}
     </>
   );

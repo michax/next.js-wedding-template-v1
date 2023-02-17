@@ -15,7 +15,8 @@ const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
-    flexGrow: 0,
+    width: "100%",
+
     padding: theme.spacing(2),
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
@@ -58,9 +59,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function DrawerTest({ children }) {
+export default function LayoutDashboardDesktop({ children }) {
   const theme = useTheme();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [drawerTemporary, setDrawerTemporary] = useState(false);
 
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -133,7 +134,10 @@ export default function DrawerTest({ children }) {
             boxSizing: "border-box",
           },
         }}
-        variant={getDrawerVariant(isSmallScreen, drawerTemporary)}
+        variant={getDrawerVariant(
+          isSmallScreen,
+          drawerTemporary
+        )}
         anchor="left"
         open={open}
       >

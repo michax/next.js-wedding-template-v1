@@ -6,8 +6,7 @@ import autoTable from "jspdf-autotable";
 import jsPDF from "jspdf";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
-import LayoutDashboard from "../src/components/LayoutDashboard/LayoutDashboard";
-import DrawerTest from "../src/components/DrawerTest/DrawerTest";
+import LayoutDashboardDesktop from "../src/components/LayoutDashboardDesktop/LayoutDashboardDesktop";
 
 const amountPeople = 100;
 
@@ -126,7 +125,7 @@ const Invitations = ({ data, error }) => {
       ) : data === null ? (
         <ErrorMessage message="No data found." />
       ) : (
-        <DrawerTest>
+        <LayoutDashboardDesktop>
           <Box
             sx={{
               display: "flex",
@@ -216,7 +215,7 @@ const Invitations = ({ data, error }) => {
               </Grid>
             </Grid>
           </Box>
-        </DrawerTest>
+        </LayoutDashboardDesktop>
       )}
     </>
   );
