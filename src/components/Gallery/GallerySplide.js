@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 // @mui
 
-import { Typography, Container, Box } from "@mui/material";
+import { Typography, Container, Box, Paper } from "@mui/material";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 
@@ -13,8 +13,7 @@ import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import LightboxModal from "./LightboxModal";
 // ----------------------------------------------------------------------
 
-
-export default function GallerySplide({imageUrls}) {
+export default function GallerySplide({ imageUrls }) {
   const [openLightbox, setOpenLightbox] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
   const ref = useRef();
@@ -32,7 +31,7 @@ export default function GallerySplide({imageUrls}) {
       sx={{
         pt: "5rem",
         pb: "8rem",
-   
+
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -43,7 +42,6 @@ export default function GallerySplide({imageUrls}) {
         maxWidth="lg"
         sx={{
           textAlign: "center",
-
         }}
       >
         <Typography
@@ -97,27 +95,22 @@ export default function GallerySplide({imageUrls}) {
           {imageUrls?.map((item, index) => {
             return (
               <SplideSlide key={`img-${index}`} className="slide">
-                <Box
-                  sx={{
-                    // backgroundColor: "#F2779A",
-                    backgroundColor: "#FDECF1",
-                    padding: "0.75rem",
-                    borderRadius: "14px",
-                  }}
-                >
-                  <Box
-                    component="img"
-                    sx={{
-                      height: 333,
-                      width: 1,
-                      objectFit: "cover",
-                      borderRadius: "7px",
-                      cursor: "pointer",
-                    }}
-                    alt="image"
-                    src={item}
-                    onClick={() => handleOpenLightbox(item)}
-                  />
+                <Box sx={{ p: 1 }}>
+                  <Paper elevation={2} sx={{ pt: 2,pb: 5, pl: 2,pr: 2,}}>
+                    <Box
+                      component="img"
+                      sx={{
+                        height: 333,
+                        width: 1,
+                        objectFit: "cover",
+                        borderRadius: "5px",
+                        cursor: "pointer",
+                      }}
+                      alt="image"
+                      src={item}
+                      onClick={() => handleOpenLightbox(item)}
+                    />
+                  </Paper>
                 </Box>
               </SplideSlide>
             );
