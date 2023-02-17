@@ -13,14 +13,15 @@ const PieChartDrinks = ({
   isNonAlcoholAmount,
 }) => {
   return (
-    <Box sx={{ pl: "30px", display: "flex" }}>
+    <>
       <Card
         sx={{
-          p: "30px",
+          p: { xs: "20px", sm: "30px" },
           boxShadow: "5px",
           textAlign: "center",
           backgroundColor: "#FDFDEC",
-          mr: "50px",
+          mb: { xs: "20px", sm: "0" },
+          mr: { xs: "0px", sm: "20px" },
         }}
       >
         <PieChart
@@ -42,7 +43,7 @@ const PieChartDrinks = ({
           { name: "Non-alcoholic cocktails", amount: isNonAlcoholAmount },
         ]}
       />
-    </Box>
+    </>
   );
 };
 

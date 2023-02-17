@@ -1,10 +1,10 @@
 import connectPromise from "../lib/mongodb";
 import React, { useEffect, useState } from "react";
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import PieChartDrinks from "../src/components/PieChartDrinks/PieChartDrinks";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
-import LayoutDashboard from "../src/components/LayoutDashboard/LayoutDashboard";
+import DrawerTest from "../src/components/DrawerTest/DrawerTest";
 
 const SummaryDrinks = ({ data, error }) => {
   const [userDataDrinks, setUserDataDrinks] = useState([]);
@@ -100,7 +100,7 @@ const SummaryDrinks = ({ data, error }) => {
       ) : data === null ? (
         <ErrorMessage message="No data found." />
       ) : (
-        <LayoutDashboard>
+        <DrawerTest>
           <Typography
             variant="h3"
             sx={{
@@ -111,7 +111,14 @@ const SummaryDrinks = ({ data, error }) => {
           >
             Overview of Wedding Guests&apos; Drink Preferences
           </Typography>
-          <Grid container spacing={3}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: { xs: "center", sm: "space-between" },
+              alignItems: { xs: "center", sm: "flex-start" },
+              flexDirection: { xs: "column", sm: "row" },
+            }}
+          >
             <PieChartDrinks
               userData={userData}
               vodkaAmount={vodkaAmount}
@@ -120,8 +127,8 @@ const SummaryDrinks = ({ data, error }) => {
               beerAmount={beerAmount}
               isNonAlcoholAmount={isNonAlcoholAmount}
             />
-          </Grid>
-        </LayoutDashboard>
+          </Box>
+        </DrawerTest>
       )}
     </>
   );

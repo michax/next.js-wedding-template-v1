@@ -9,10 +9,16 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
-import LayoutDashboard from "../src/components/LayoutDashboard/LayoutDashboard";
+import DrawerTest from "../src/components/DrawerTest/DrawerTest";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const ConfirmedGuest = ({ data, error }) => {
+  const theme = useTheme();
   const comingGuests = data.filter((guest) => guest.isComing === "Yes");
+
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSmallTabletScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <>
@@ -25,7 +31,7 @@ const ConfirmedGuest = ({ data, error }) => {
       ) : data === null ? (
         <ErrorMessage message="No data found." />
       ) : (
-        <LayoutDashboard>
+        <DrawerTest>
           <Typography
             variant="h3"
             sx={{
@@ -39,12 +45,22 @@ const ConfirmedGuest = ({ data, error }) => {
           </Typography>
           <Paper
             sx={{
-              width: { xs: "70vw", sm: "75vw", md: "80vw" },
               overflow: "hidden",
             }}
           >
-            <TableContainer sx={{ maxHeight: 840 }}>
-              <Table aria-label="simple table">
+            <TableContainer
+              sx={{
+                maxHeight: 840,
+                overflowX: "auto",
+                "@media (max-width: 600px)": {
+                  maxWidth: 600,
+                },
+                "@media (max-width: 400px)": {
+                  maxWidth: 400,
+                },
+              }}
+            >
+              <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
                     <TableCell
@@ -133,7 +149,7 @@ const ConfirmedGuest = ({ data, error }) => {
               </Table>
             </TableContainer>
           </Paper>
-        </LayoutDashboard>
+        </DrawerTest>
       )}
     </>
   );

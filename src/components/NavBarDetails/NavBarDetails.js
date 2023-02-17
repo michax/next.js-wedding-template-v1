@@ -11,7 +11,7 @@ import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import { setCookie, getCookie, deleteCookie } from "cookies-next";
 
-const NavBarDetails = () => {
+const NavBarDetails = ({ hideBreadcrumbs = false, isSmallScreen }) => {
   const router = useRouter();
   const currentRoute = router.pathname;
 
@@ -104,44 +104,48 @@ const NavBarDetails = () => {
       <div className={styles.navbar}>
         <div className={styles.wrapper}>
           <div className={styles.breadcrumb}>
-            <Breadcrumbs
-              sx={{ fontSize: "14px" }}
-              separator={<ArrowForwardIcon fontSize="small" />}
-              aria-label="breadcrumb"
-            >
-              <Link
-                sx={{ textDecoration: "none", color: "#0021F5" }}
-                href={summaryLinkHref}
-                component={NextLink}
+            {!isSmallScreen ? (
+              <Breadcrumbs
+                sx={{ fontSize: "14px", color: "primary.main" }}
+                separator={<ArrowForwardIcon fontSize="small" />}
+                aria-label="breadcrumb"
               >
-                {summaryLinkText}
-              </Link>
-              {secondLinkText && (
                 <Link
-                  onClick={(event) =>
-                    redirectToFistSubmenu(event, secondLinkText)
-                  }
-                  sx={{ textDecoration: "none", color: "#fa541c" }}
-                  component={NextLink}
+                  sx={{ textDecoration: "none", color: "#0021F5" }}
                   href={summaryLinkHref}
+                  component={NextLink}
                 >
-                  {secondLinkText}
+                  {summaryLinkText}
                 </Link>
-              )}
-            </Breadcrumbs>
+                {secondLinkText && (
+                  <Link
+                    onClick={(event) =>
+                      redirectToFistSubmenu(event, secondLinkText)
+                    }
+                    sx={{ textDecoration: "none", color: "#fa541c" }}
+                    component={NextLink}
+                    href={summaryLinkHref}
+                  >
+                    {secondLinkText}
+                  </Link>
+                )}
+              </Breadcrumbs>
+            ) : (
+              ""
+            )}
           </div>
-          <Box sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
             <Link
               underline="hover"
               sx={{ display: "flex", alignItems: "center", color: "#fa541c" }}
               href="/"
             >
-              <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-              Back to Wedding Page
+              <HomeIcon sx={{ mr: 0.5, color: "#fa541c" }} fontSize="inherit" />
+              {isSmallScreen ? "Wedding Page" : "Back to Wedding Page"}
             </Link>
 
             <Button
-              sx={{ ml: "50px" }}
+              sx={{ ml: { xs: "15px", sm: "20px", md: "50px" } }}
               onClick={handleLogout}
               type="submit"
               variant="contained"

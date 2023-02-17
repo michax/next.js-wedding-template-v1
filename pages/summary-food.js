@@ -4,7 +4,7 @@ import { Grid, Typography } from "@mui/material";
 import BarChartFoodAllergy from "../src/components/BarChartFoodAllergy/BarChartFoodAllergy";
 import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
-import LayoutDashboard from "../src/components/LayoutDashboard/LayoutDashboard";
+import DrawerTest from "../src/components/DrawerTest/DrawerTest";
 
 const SummaryFoodAllergy = ({ data, error }) => {
   const [userDataAllergyFood, setUserDataAllergyFood] = useState([]);
@@ -81,7 +81,7 @@ const SummaryFoodAllergy = ({ data, error }) => {
       ) : data === null ? (
         <ErrorMessage message="No data found." />
       ) : (
-        <LayoutDashboard>
+        <DrawerTest>
           <Typography
             variant="h3"
             sx={{
@@ -100,7 +100,7 @@ const SummaryFoodAllergy = ({ data, error }) => {
               nutsPeopleAllergies={nutsPeopleAllergies}
             />
           </Grid>
-        </LayoutDashboard>
+        </DrawerTest>
       )}
     </>
   );

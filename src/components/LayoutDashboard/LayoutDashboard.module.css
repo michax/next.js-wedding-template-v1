@@ -1,17 +1,16 @@
-.home {
-    display: flex;
-  }
-  
-  .homeContainer {
-    flex: 6;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* styles for Projects PAGE */
-  .container {
-    padding: 20px;
-    /* background-color: #f3f3f3; */
-    height: 100%;
-  }
-  
+/* .home {
+  display: flex;
+}
+
+.homeContainer {
+  flex: 6;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.container {
+  padding: 20px;
+
+  height: 100%;
+} */
