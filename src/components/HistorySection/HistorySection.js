@@ -23,20 +23,20 @@ import Image from "next/image";
 const CORE_VALUES = [
   {
     year: "May 2018",
-    title: "We met in the modern way",
-    description: "by swiping right on Tinder (swoon!) ",
+    title: "From Swipe to Soul Mate",
+    description: "We met in the modern way by swiping right on Tinder (swoon!) ",
     img: phoneDate,
   },
   {
     year: "December 2019",
     title: "First date",
     description:
-      "First date was a bit of a disaster—it started pouring while we were enjoying our outdoor dinner",
+      "Our first date was off to a great start, until it started pouring rain while we were enjoying our outdoor dinner.",
     img: dinner,
   },
   {
     year: "June 2020",
-    title: "Our first vacation",
+    title: "Adventuring Together",
     description:
       "We traveled extensively—backpacking through Europe in Italy. One of our favorite memories!",
     img: travelImg,
@@ -50,8 +50,8 @@ const CORE_VALUES = [
   },
   {
     year: "July 2022",
-    title: "I said YES !!!!",
-    description: "During a sunset walk on the beach, Sam got down on one knee.",
+    title: "I said YES !!",
+    description: "During a sunset walk on the beach, Lucas got down on one knee.",
     img: engagement,
   },
   {

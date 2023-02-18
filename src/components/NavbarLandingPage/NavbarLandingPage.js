@@ -1,5 +1,4 @@
-import * as React from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -11,7 +10,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-
 import Image from "next/image";
 import logo from "../../../public/logo.svg";
 import { Container } from "@mui/material";
@@ -20,7 +18,7 @@ const drawerWidth = 240;
 
 export const NavbarLandingPage = (props) => {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -160,6 +158,11 @@ export const NavbarLandingPage = (props) => {
                     display: { sm: "none", md: "block" },
                     ml: "35px",
                     color: "#212B36",
+                    textDecoration: "none",
+                    borderBottom: "2px solid transparent",
+                    ":hover": {
+                      borderBottomColor: "#f2779ad6",
+                    },
                   }}
                 >
                   Confirm Attendance
@@ -171,6 +174,11 @@ export const NavbarLandingPage = (props) => {
                     display: { sm: "none", md: "block" },
                     ml: "35px",
                     color: "#212B36",
+                    textDecoration: "none",
+                    borderBottom: "2px solid transparent",
+                    ":hover": {
+                      borderBottomColor: "#f2779ad6",
+                    },
                   }}
                 >
                   Gifts{" "}
@@ -182,6 +190,11 @@ export const NavbarLandingPage = (props) => {
                     display: { sm: "none", md: "block" },
                     ml: "35px",
                     color: "#212B36",
+                    textDecoration: "none",
+                    borderBottom: "2px solid transparent",
+                    ":hover": {
+                      borderBottomColor: "#f2779ad6",
+                    },
                   }}
                 >
                   Location
@@ -202,7 +215,15 @@ export const NavbarLandingPage = (props) => {
                 <Typography
                   component="a"
                   href="#when"
-                  sx={{ ml: "35px", color: "#212B36" }}
+                  sx={{
+                    ml: "35px",
+                    color: "#212B36",
+                    textDecoration: "none",
+                    borderBottom: "2px solid transparent",
+                    ":hover": {
+                      borderBottomColor: "#f2779ad6",
+                    },
+                  }}
                 >
                   When
                 </Typography>
@@ -210,7 +231,15 @@ export const NavbarLandingPage = (props) => {
                 <Typography
                   component="a"
                   href="#our-story"
-                  sx={{ ml: "35px", color: "#212B36" }}
+                  sx={{
+                    ml: "35px",
+                    color: "#212B36",
+                    textDecoration: "none",
+                    borderBottom: "2px solid transparent",
+                    ":hover": {
+                      borderBottomColor: "#f2779ad6",
+                    },
+                  }}
                 >
                   Our Story
                 </Typography>
@@ -218,7 +247,15 @@ export const NavbarLandingPage = (props) => {
                 <Typography
                   component="a"
                   href="#our-memories"
-                  sx={{ ml: "35px", color: "#212B36" }}
+                  sx={{
+                    ml: "35px",
+                    color: "#212B36",
+                    textDecoration: "none",
+                    borderBottom: "2px solid transparent",
+                    ":hover": {
+                      borderBottomColor: "#f2779ad6",
+                    },
+                  }}
                 >
                   Our Memories
                 </Typography>
@@ -229,7 +266,16 @@ export const NavbarLandingPage = (props) => {
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { md: "none" }, color: "#212B36" }}
+              sx={{
+                mr: 2,
+                display: { md: "none" },
+                color: "#212B36",
+                textDecoration: "none",
+                borderBottom: "2px solid transparent",
+                ":hover": {
+                  borderBottomColor: "#f2779ad6",
+                },
+              }}
             >
               <MenuIcon />
             </IconButton>
@@ -259,12 +305,4 @@ export const NavbarLandingPage = (props) => {
       </Box>
     </Box>
   );
-};
-
-NavbarLandingPage.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
 };
