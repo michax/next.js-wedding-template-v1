@@ -5,14 +5,15 @@ import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import { Container } from "@mui/material";
+import NavLinksLeft from "./NavLinksLeft";
+import NavLinksRight from "./NavLinksRight";
+import Logo from "./Logo";
 import Image from "next/image";
 import logo from "../../../public/logo.svg";
-import { Container } from "@mui/material";
+import NavItemMobile from "./NavItemMobile";
 
 const drawerWidth = 240;
 
@@ -27,95 +28,21 @@ export const NavbarLandingPage = (props) => {
   const drawer = (
     <Box
       onClick={handleDrawerToggle}
-      sx={{ textAlign: "center", backgroundColor: "#FCFFF7", height: "100%" }}
+      sx={{ textAlign: "center", backgroundColor: "#FCFFF7", height: "100%",    padding: ".5rem ", }}
     >
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          padding: "0.5rem ",
+          padding: ".5rem ",
         }}
       >
         <Image height="50%" src={logo} alt="Logo" />
       </Box>
       <Divider />
-      <List>
-        <ListItem key="Confirm Attendance" disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            <Typography
-              component="a"
-              href="#confirm-attendance"
-              variant="p"
-              sx={{ display: { sm: "block", md: "none" } }}
-            >
-              Confirm Attendance
-            </Typography>
-          </ListItemButton>
-        </ListItem>
-        <ListItem key="Gifts" disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            <Typography
-              component="a"
-              href="#gifts"
-              variant="p"
-              sx={{ display: { sm: "block", md: "none" } }}
-            >
-              Gifts
-            </Typography>
-          </ListItemButton>
-        </ListItem>
-        <ListItem key="Location" disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            <Typography
-              component="a"
-              href="#location"
-              variant="p"
-              sx={{ display: { sm: "block", md: "none" } }}
-            >
-              Location
-            </Typography>
-          </ListItemButton>
-        </ListItem>
-      </List>
-
-      <List>
-        <ListItem key="When" disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            <Typography
-              component="a"
-              href="#when"
-              variant="p"
-              sx={{ display: { sm: "block", md: "none" } }}
-            >
-              When
-            </Typography>
-          </ListItemButton>
-        </ListItem>
-        <ListItem key="Our Story" disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            <Typography
-              component="a"
-              href="#our-story"
-              variant="p"
-              sx={{ display: { sm: "block", md: "none" } }}
-            >
-              Our Story
-            </Typography>
-          </ListItemButton>
-        </ListItem>
-        <ListItem key="Our Memories" disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            <Typography
-              component="a"
-              href="#our-memories"
-              variant="p"
-              sx={{ display: { sm: "block", md: "none" } }}
-            >
-              Our Memories
-            </Typography>
-          </ListItemButton>
-        </ListItem>
+      <List sx={{mt:"1rem"}}>
+        <NavItemMobile />
       </List>
     </Box>
   );
@@ -151,114 +78,11 @@ export const NavbarLandingPage = (props) => {
               }}
             >
               <Box sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
-                <Typography
-                  component="a"
-                  href="#confirm-attendance"
-                  sx={{
-                    display: { sm: "none", md: "block" },
-                    ml: "35px",
-                    color: "#212B36",
-                    textDecoration: "none",
-                    borderBottom: "2px solid transparent",
-                    ":hover": {
-                      borderBottomColor: "#f2779ad6",
-                    },
-                  }}
-                >
-                  Confirm Attendance
-                </Typography>
-                <Typography
-                  component="a"
-                  href="#gifts"
-                  sx={{
-                    display: { sm: "none", md: "block" },
-                    ml: "35px",
-                    color: "#212B36",
-                    textDecoration: "none",
-                    borderBottom: "2px solid transparent",
-                    ":hover": {
-                      borderBottomColor: "#f2779ad6",
-                    },
-                  }}
-                >
-                  Gifts{" "}
-                </Typography>
-                <Typography
-                  component="a"
-                  href="#location"
-                  sx={{
-                    display: { sm: "none", md: "block" },
-                    ml: "35px",
-                    color: "#212B36",
-                    textDecoration: "none",
-                    borderBottom: "2px solid transparent",
-                    ":hover": {
-                      borderBottomColor: "#f2779ad6",
-                    },
-                  }}
-                >
-                  Location
-                </Typography>
+                <NavLinksLeft />
               </Box>
-
-              <Box
-                sx={{
-                  display: { xs: "none", sm: "none", md: "block" },
-                  width: "100px",
-                  ml: "35px",
-                  mt: "10px",
-                }}
-              >
-                <Image src={logo} alt="Logo" />
-              </Box>
+              <Logo />
               <Box sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
-                <Typography
-                  component="a"
-                  href="#when"
-                  sx={{
-                    ml: "35px",
-                    color: "#212B36",
-                    textDecoration: "none",
-                    borderBottom: "2px solid transparent",
-                    ":hover": {
-                      borderBottomColor: "#f2779ad6",
-                    },
-                  }}
-                >
-                  When
-                </Typography>
-
-                <Typography
-                  component="a"
-                  href="#our-story"
-                  sx={{
-                    ml: "35px",
-                    color: "#212B36",
-                    textDecoration: "none",
-                    borderBottom: "2px solid transparent",
-                    ":hover": {
-                      borderBottomColor: "#f2779ad6",
-                    },
-                  }}
-                >
-                  Our Story
-                </Typography>
-
-                <Typography
-                  component="a"
-                  href="#our-memories"
-                  sx={{
-                    ml: "35px",
-                    color: "#212B36",
-                    textDecoration: "none",
-                    borderBottom: "2px solid transparent",
-                    ":hover": {
-                      borderBottomColor: "#f2779ad6",
-                    },
-                  }}
-                >
-                  Our Memories
-                </Typography>
+                <NavLinksRight />
               </Box>
             </Box>
             <IconButton
@@ -306,3 +130,5 @@ export const NavbarLandingPage = (props) => {
     </Box>
   );
 };
+
+
