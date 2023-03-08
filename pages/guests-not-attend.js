@@ -7,9 +7,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
+import { ErrorMessage } from "../src/components/Labels/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
-import LayoutDashboardDesktop from "../src/components/LayoutDashboardDesktop/LayoutDashboardDesktop";
+import LayoutDashboardDesktop from "../src/components/Layouts/LayoutDashboardDesktop/LayoutDashboardDesktop";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -18,6 +18,7 @@ const GuestsNotAttend = ({ data, error }) => {
 
   const theme = useTheme();
 
+  // Create util hook which just requires specific size variant as parameter and replace all usages with itl.
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isSmallTabletScreen = useMediaQuery(theme.breakpoints.down("md"));
 

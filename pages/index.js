@@ -1,12 +1,12 @@
 import { Box } from "@mui/material";
-import { CountdownTimer } from "../src/components/CountdownTimer/CountdownTimer";
-import { FormSection } from "../src/components/FormSection/FormSection";
-import GallerySplide from "../src/components/Gallery/GallerySplide";
-import { Header } from "../src/components/Header/Header";
-import { HistorySection } from "../src/components/HistorySection/HistorySection";
-import { Layout } from "../src/components/Layout/Layout";
-import { LocationInfo } from "../src/components/LocationInfo/LocationInfo";
-import { GiftSection } from "../src/components/GiftSection/GiftSection";
+import { CountdownTimer } from "../src/components/Blocks/CountdownTimer/CountdownTimer";
+import { FormSection } from "../src/components/Sections/FormSection/FormSection";
+import GallerySplide from "../src/components/Blocks/Gallery/GallerySplide";
+import { Header } from "../src/components/App/Header/Header";
+import { HistorySection } from "../src/components/Sections/HistorySection/HistorySection";
+import { Layout } from "../src/components/Layouts/Layout/Layout";
+import { LocationInfo } from "../src/components/Blocks/LocationInfo/LocationInfo";
+import { GiftSection } from "../src/components/Sections/GiftSection/GiftSection";
 import { storage } from "../src/firebase/clientApp";
 import { ref, getDownloadURL, list } from "firebase/storage";
 

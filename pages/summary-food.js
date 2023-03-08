@@ -1,10 +1,10 @@
 import connectPromise from "../lib/mongodb";
 import React, { useState, useEffect } from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import BarChartFoodAllergy from "../src/components/BarChartFoodAllergy/BarChartFoodAllergy";
-import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
+import BarChartFoodAllergy from "../src/components/Charts/BarChartFoodAllergy/BarChartFoodAllergy";
+import { ErrorMessage } from "../src/components/Labels/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
-import LayoutDashboardDesktop from "../src/components/LayoutDashboardDesktop/LayoutDashboardDesktop";
+import LayoutDashboardDesktop from "../src/components/Layouts/LayoutDashboardDesktop/LayoutDashboardDesktop";
 
 const SummaryFoodAllergy = ({ data, error }) => {
   const [userDataAllergyFood, setUserDataAllergyFood] = useState([]);

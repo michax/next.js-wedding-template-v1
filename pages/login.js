@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { setCookie } from "cookies-next";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
-import TextfieldWrapper from "../src/components/FormSection/FormsUI/Textfield";
+import TextfieldWrapper from "../src/components/Sections/FormSection/FormsUI/Textfield";
 import HomeIcon from "@mui/icons-material/Home";
 import Link from "@mui/material/Link";
 import NextLink from "next/link";

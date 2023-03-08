@@ -1,10 +1,10 @@
 import connectPromise from "../lib/mongodb";
 import React, { useEffect, useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import PieChartDrinks from "../src/components/PieChartDrinks/PieChartDrinks";
-import { ErrorMessage } from "../src/components/ErrorMessage/ErrorMessage";
+import PieChartDrinks from "../src/components/Charts/PieChartDrinks/PieChartDrinks";
+import { ErrorMessage } from "../src/components/Labels/ErrorMessage/ErrorMessage";
 import { getCookie } from "cookies-next";
-import LayoutDashboardDesktop from "../src/components/LayoutDashboardDesktop/LayoutDashboardDesktop";
+import LayoutDashboardDesktop from "../src/components/Layouts/LayoutDashboardDesktop/LayoutDashboardDesktop";
 
 const SummaryDrinks = ({ data, error }) => {
   const [userDataDrinks, setUserDataDrinks] = useState([]);
