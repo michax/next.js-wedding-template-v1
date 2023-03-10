@@ -34,6 +34,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginPage = () => {
+  // Review. Better name would be isLoggedIn, setIsLoggedIn or isAuthenticated, setIsAuthenticated.
   const [isLogging, setIsLogging] = useState(false);
   const router = useRouter();
 
@@ -78,6 +79,11 @@ const LoginPage = () => {
       setCookie("session", data.sessionId, {
         maxAge: 30 * 24 * 60 * 60, // 30 days
         path: "/",
+        // Review: For security reason consider setting httpOnly to true and secure to true to make sure session is always encrypted.
+        httpOnly: true,
+        secure: true,
+        // Review: It's also good practice to set sameSite to 'strict'. This ensures cookie will not leak to another page.
+        sameSite: "strict"
       });
       setIsLogging(true);
     } else {
@@ -105,6 +111,7 @@ const LoginPage = () => {
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
+          {/* Review: Values argument is not used.   */}
           {({ isSubmitting, values }) => (
             <Form>
               <Grid container maxWidth="sm">
@@ -126,6 +133,7 @@ const LoginPage = () => {
                   />
                 </Grid>
 
+                {/* Review: isLogging is wrong to be used here. Instead i think you wanted to use isSubmitting because isLogging currently is set to false during 'logging' process.   */}
                 <Button
                   disabled={isLogging}
                   sx={{ width: "100%", ml: "16px", mr: "16px" }}
@@ -146,6 +154,7 @@ const LoginPage = () => {
 
 export default LoginPage;
 
+// Review: For clarity might be worth moving it to separate file as an component.
 const Navigation = () => {
   const classes = useStyles();
   return (

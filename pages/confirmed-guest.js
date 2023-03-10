@@ -183,6 +183,7 @@ const ConfirmedGuest = ({ data, error }) => {
 export default ConfirmedGuest;
 
 export async function getServerSideProps({ req, res }) {
+  // Review: Most of the code from this function is duplicated in other pages like guest-not-attended. Create some function which would encapsulate shared logic. But check first comments in guests-not-attended file.
   const session = getCookie("session", { req, res });
 
   // check if tes object is falsy, not defined, or empty value
