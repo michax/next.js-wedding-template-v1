@@ -157,7 +157,7 @@ export async function getServerSideProps({ req, res }) {
     }
 
     // Review: As performance improvement, in SPA app it would be better to fetch data once and share it betweem multiple pages and either updated data by using streaming or pooling (or just on mount).
-    //  Above might be bigge change, so for initial app version, current approach is fine.
+    //  Above might be bigger change, so for initial app version, current approach is fine.
     // Fetch data from MongoDB
     const db = client.db("testwedingdatabase");
     const collection = db.collection("userlist");
