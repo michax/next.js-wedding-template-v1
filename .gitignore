@@ -43,3 +43,5 @@ next-env.d.ts
 
 LOCAL.DATA.md
 .env
+
+.idea

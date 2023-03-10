@@ -128,6 +128,7 @@ export async function getServerSideProps({ req, res }) {
   const session = getCookie("session", { req, res });
 
   // check if tes object is falsy, not defined, or empty value
+  // Review: Where do you validate if session is one that exists in Database?
   if (!session) {
     res.writeHead(302, {
       Location: "/login",
@@ -141,15 +142,18 @@ export async function getServerSideProps({ req, res }) {
     const isConnected = await client.isConnected();
 
     if (!isConnected) {
+      // Review: It would be better to log error and redirect to some specific page for failures like 500.html which can inform user that unexpected error occured and only include details in logs using for example console.log or console.error.
       throw new Error("MongoDB client is not connected");
     }
 
     // Fetch data from MongoDB
+    // Review: Db name should be moved to some config/env file. Same goes for collection name.
     const db = client.db("testwedingdatabase");
     const collection = db.collection("userlist");
     const data = await collection.find({}).toArray();
 
     if (!data || !data.length) {
+      // Review: It would be better to create pages for 400 error and redirect it there.
       return { props: { error: { status: 400 } } };
     }
 
