@@ -25,6 +25,7 @@ const SummaryDrinks = ({ data, error }) => {
     return person.isNonAlcohol === true;
   });
 
+  // Review: It would be faster to use useMemo to just calculate user data drinks and use same deps as for this effect.
   useEffect(() => {
     setUserDataDrinks([
       {
@@ -155,6 +156,8 @@ export async function getServerSideProps({ req, res }) {
       throw new Error("MongoDB client is not connected");
     }
 
+    // Review: As performance improvement, in SPA app it would be better to fetch data once and share it betweem multiple pages and either updated data by using streaming or pooling (or just on mount).
+    //  Above might be bigge change, so for initial app version, current approach is fine.
     // Fetch data from MongoDB
     const db = client.db("testwedingdatabase");
     const collection = db.collection("userlist");
